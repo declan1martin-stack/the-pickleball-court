@@ -1,6 +1,6 @@
 ---
 import AffiliateButton from './AffiliateButton.astro';
-import { getProductById } from '../lib/products';
+import { getProductById, isPriceTier } from '../lib/products';
 
 interface Props {
 	productId: string;
@@ -9,6 +9,11 @@ interface Props {
 
 const { productId, eyebrow = 'Top pick' } = Astro.props;
 const product = getProductById(productId);
+const priceLabel = product
+	? isPriceTier(product.price)
+		? `Approximate price tier ${product.price}`
+		: `Approximate listed price (not live): ${product.price}`
+	: '';
 ---
 
 {product ? (
@@ -31,7 +36,7 @@ const product = getProductById(productId);
 				<p class="mt-1 text-sm font-semibold text-zinc-500">{product.brand}</p>
 				<p class="mt-3 text-sm leading-relaxed text-zinc-600">{product.description}</p>
 				<p class="mt-3 text-xs text-zinc-500">
-					Approximate listed price (not live): <span class="font-semibold text-zinc-700">{product.price}</span>
+					{priceLabel}
 					— confirm the current price on Amazon.ca.
 				</p>
 				<ul class="mt-4 space-y-2 text-sm text-zinc-700">

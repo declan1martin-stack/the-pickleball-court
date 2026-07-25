@@ -48,8 +48,16 @@ export function assertAffiliateUrl(url: string): string {
 
 /** Approximate catalog price tier — never presented as a live Amazon price. */
 export function getPriceTier(price: string): '$' | '$$' | '$$$' {
+	const trimmed = price.trim();
+	if (trimmed === '$' || trimmed === '$$' || trimmed === '$$$') return trimmed;
 	const amount = Number(price.replace(/[^0-9.]/g, ''));
 	if (!Number.isFinite(amount) || amount < 150) return '$';
 	if (amount < 220) return '$$';
 	return '$$$';
+}
+
+/** True when `price` is already a tier token, not a dollar amount. */
+export function isPriceTier(price: string): boolean {
+	const trimmed = price.trim();
+	return trimmed === '$' || trimmed === '$$' || trimmed === '$$$';
 }

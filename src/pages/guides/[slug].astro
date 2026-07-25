@@ -18,7 +18,7 @@ import {
 	categoryPath,
 } from '../../lib/articles';
 import { articleSchema } from '../../lib/seo';
-import { getProductById } from '../../lib/products';
+import { getProductById, isPriceTier } from '../../lib/products';
 
 export async function getStaticPaths() {
 	const articles = await getCollection('articles');
@@ -128,7 +128,11 @@ const crumbs = [
 							<li class="flex flex-col gap-2 rounded-xl border border-zinc-200 bg-zinc-50 p-4 sm:flex-row sm:items-center sm:justify-between">
 								<div>
 									<p class="font-bold text-zinc-900">{product.name}</p>
-									<p class="text-xs text-zinc-500">Approx. listed: {product.price} — confirm on Amazon.ca</p>
+									<p class="text-xs text-zinc-500">
+										{isPriceTier(product.price)
+											? `Approx. price tier ${product.price} — confirm on Amazon.ca`
+											: `Approx. listed: ${product.price} — confirm on Amazon.ca`}
+									</p>
 								</div>
 								<AffiliateButton href={product.affiliateUrl} variant="secondary" label="Check current price on Amazon" />
 							</li>

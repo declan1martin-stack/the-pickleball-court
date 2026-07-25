@@ -1,7 +1,7 @@
 ---
 import AffiliateButton from './AffiliateButton.astro';
 import StarRating from './StarRating.astro';
-import { getPriceTier, type Product } from '../lib/products';
+import { getPriceTier, isPriceTier, type Product } from '../lib/products';
 
 interface Props {
 	product: Product;
@@ -11,6 +11,7 @@ interface Props {
 
 const { product, rating = null } = Astro.props;
 const tier = getPriceTier(product.price);
+const priceIsTier = isPriceTier(product.price);
 ---
 
 <article class="group flex h-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]">
@@ -39,7 +40,9 @@ const tier = getPriceTier(product.price);
 			</span>
 		</div>
 		<p class="mt-2 text-xs text-ink-faint">
-			Approx. listed {product.price} — confirm current price on Amazon.ca
+			{priceIsTier
+				? 'Approximate price tier — confirm current price on Amazon.ca'
+				: `Approx. listed ${product.price} — confirm current price on Amazon.ca`}
 		</p>
 		<p class="mt-3 line-clamp-3 text-sm leading-relaxed text-ink-muted">{product.description}</p>
 
