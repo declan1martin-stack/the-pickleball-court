@@ -1,0 +1,47 @@
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
+import gear from '../data/gear.json';
+
+/** Valid product IDs from gear.json — articles reference products by ID only. */
+const productIds = new Set(gear.map((product) => product.id));
+
+const faqSchema = z.object({
+	question: z.string(),
+	answer: z.string(),
+});
+
+/**
+ * Articles content collection.
+ * Product data lives only in gear.json — relatedProducts stores IDs, never duplicated fields.
+ */
+export const articles = defineCollection({
+	loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		slug: z.string(),
+		category: z.enum(['paddles', 'shoes', 'nets', 'guides', 'rules']),
+		type: z.enum(['buying-guide', 'comparison', 'review', 'how-to', 'informational']),
+		author: z.string(),
+		publishDate: z.coerce.date(),
+		updatedDate: z.coerce.date(),
+		heroImage: z.string(),
+		heroAlt: z.string(),
+		featured: z.boolean().default(false),
+		relatedProducts: z.array(z.string()).superRefine((ids, ctx) => {
+			for (const id of ids) {
+				if (!productIds.has(id)) {
+					ctx.addIssue({
+						code: 'custom',
+						message: `Unknown relatedProducts ID "${id}". Must match an id in src/data/gear.json.`,
+					});
+				}
+			}
+		}),
+		tags: z.array(z.string()),
+		faq: z.array(faqSchema),
+	}),
+});
+
+export const collections = { articles };
