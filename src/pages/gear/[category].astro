@@ -4,6 +4,9 @@ import ProductCard from '../../components/ProductCard.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import gear from '../../data/gear.json';
 import { getArticlesByCategory, CATEGORY_PILLARS } from '../../lib/articles';
+import { getPriceTier } from '../../lib/products';
+
+const tierRank = { $: 1, $$: 2, $$$: 3 } as const;
 
 export function getStaticPaths() {
 	const categories = ['paddles', 'shoes', 'nets'] as const;
@@ -18,7 +21,7 @@ const categoryMeta = {
 		description:
 			'Compare top JOOLA, Selkirk, and Six Zero pickleball paddles popular with Canadian players. Find power, control, and spin options with Amazon.ca availability.',
 		intro:
-			'Browse high-intent paddle picks engineered for Canadian indoor gyms and outdoor acrylic courts — from thermoformed power frames to control-first kitchen weapons.',
+			'Browse beginner-friendly value paddles through intermediate and tournament frames — sorted from $ to $$$ so budget and flagship options are easy to compare.',
 	},
 	shoes: {
 		h1: 'Best Pickleball Shoes in Canada',
@@ -39,7 +42,14 @@ const categoryMeta = {
 const { category } = Astro.params;
 const typedCategory = category as keyof typeof categoryMeta;
 const meta = categoryMeta[typedCategory];
-const products = gear.filter((item) => item.category === typedCategory);
+const products = gear
+	.filter((item) => item.category === typedCategory)
+	.slice()
+	.sort((a, b) => {
+		const tierDiff = tierRank[getPriceTier(a.price)] - tierRank[getPriceTier(b.price)];
+		if (tierDiff !== 0) return tierDiff;
+		return a.name.localeCompare(b.name);
+	});
 const relatedArticles = (await getArticlesByCategory(typedCategory)).slice(0, 3);
 const pillar = CATEGORY_PILLARS[typedCategory];
 ---

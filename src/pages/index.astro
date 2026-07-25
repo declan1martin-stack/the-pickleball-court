@@ -1,10 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
-import gear from '../data/gear.json';
 import { getFeaturedArticles, getAllArticles } from '../lib/articles';
+import { getProductsByIds } from '../lib/products';
 
-const featured = gear.slice(0, 3);
+/** Mix value + performance so Featured Gear is not three flagships. */
+const featured = getProductsByIds([
+	'joola-vision-c15',
+	'selkirk-slk-halo-control-xl',
+	'joola-perseus-16mm',
+]);
 const featuredGuides = await getFeaturedArticles(4);
 const allArticles = await getAllArticles();
 const comparisons = allArticles.filter((article) => article.data.type === 'comparison').slice(0, 3);
