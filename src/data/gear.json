@@ -121,18 +121,20 @@
   },
   {
     "id": "skechers-viper-court-pro",
-    "name": "Skechers Viper Court Pro Pickleball Shoes",
+    "name": "Viper Court Pro Men's Pickleball Shoes",
     "category": "shoes",
     "brand": "Skechers",
-    "price": "$169.99 CAD",
+    "price": "$$",
     "features": [
-      "Court-specific outsole gum rubber for multi-directional traction",
-      "Arch Fit insole support for long Canadian outdoor session comfort",
-      "Lightweight upper that stays breathable during summer league matches"
+      "SKECHERS PICKLEBALL SHOES: workout in supportive comfort with Skechers Pickleball Pro court shoes (pickleball shoes men); featuring Goodyear",
+      "MEDIUM (D) AND EXTRA WIDE FIT (4E): these tennis shoes feature a relaxed fit with an adjustable lace-up front (top of shoe) for a comfortabl",
+      "SKECHERS ARCH FIT (INSOLE CUSHION): these podiatrist-certified arch support insoles offer a podiatrist-designed shape developed with 20 year",
+      "ATHLETIC ACTIVITIES: pickleball, tennis, badminton, volleyball, walking, running, treadmill, workouts, training, gym, lifting, multi-sport e",
+      "MULTI-PURPOSE (FUNCTION): add performance comfort to casual occasions; wear around the house, to and from work, business, for travel, or eve"
     ],
-    "description": "Skechers Viper Court Pro is one of the most-searched pickleball shoes in Canada for players who need lateral stability without bulk. Ideal if you play hard-court community centres and want reliable grip on abrupt kitchen stops.",
-    "affiliateUrl": "https://www.amazon.ca/s?k=Skechers+Viper+Court+Pro+pickleball+shoes&tag=thepickleb050-20",
-    "imageUrl": "/images/products/skechers-viper-court-pro.jpg"
+    "description": "Skechers Viper Court Pro for Canadian players who need Arch Fit support and Goodyear rubber traction for hard-court kitchen stops and lateral cuts. Skill level: intermediate.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0B5FRV59F/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0B5FRV59F.jpg"
   },
   {
     "id": "skechers-viper-court-shoe",
@@ -178,6 +180,236 @@
     "description": "The Gel-Resolution 9 is a top-tier court shoe search among serious Canadian pickleball athletes who demand lockdown support. Expect elite stability when lunging for wide dinks and explosive recovery steps after overheads.",
     "affiliateUrl": "https://www.amazon.ca/s?k=ASICS+Gel-Resolution+9+court+shoes&tag=thepickleb050-20",
     "imageUrl": "/images/products/asics-gel-resolution-9.jpg"
+  },
+  {
+    "id": "shoe-turafo-court-unisex",
+    "name": "Unisex Pickleball Court Shoes",
+    "category": "shoes",
+    "brand": "TURAFO",
+    "price": "$",
+    "features": [
+      "Breathable Knit Mesh Upper – Ideal badminton shoes for men or womens pickleball shoes keep feet cool, dry, and blister-free.",
+      "Non-Slip Rubber Outsole – Reliable grip for tennis shoes, court shoes, or mens pickleball shoes on indoor/outdoor courts.",
+      "High-Rebound Cushioning – Perfect for badminton shoes and pickleball shoes men needing explosive energy return and joint protection.",
+      "Ultra-Lightweight Feel – Great for pickleball shoes and pickleball shoes for women who want agile, fatigue-free movement.",
+      "Versatile Court Shoes – Works as badminton shoes, tennis shoes, pickleball shoes men, or all-around court shoes for daily training."
+    ],
+    "description": "Budget unisex court sneakers for Canadian players who want lightweight breathable shoes for pickleball, badminton, or tennis without premium pricing. Skill level: beginner.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0H1NGHQCH/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0H1NGHQCH.jpg"
+  },
+  {
+    "id": "shoe-hiuzylqx-indoor-court",
+    "name": "Indoor Court Shoes (Tennis / Pickleball)",
+    "category": "shoes",
+    "brand": "Hiuzylqx",
+    "price": "$",
+    "features": [
+      "VERSATILE DESIGN: Athletic court shoes featuring a striking black and orange colour scheme with white accents, perfect for indoor sports and",
+      "SUPERIOR GRIP: Non-slip gum rubber outsole provides excellent traction and control on indoor court surfaces while preventing unwanted slidin",
+      "COMFORT FEATURES: Breathable mesh upper combined with cushioned midsole offers superior ventilation and impact absorption during intense act",
+      "DURABLE CONSTRUCTION: Premium synthetic leather overlays reinforce the shoe structure, whilst mesh panels enhance flexibility and durability",
+      "SECURE FIT: Traditional lace-up closure system with padded collar and tongue ensures a snug, adjustable fit for optimal performance."
+    ],
+    "description": "Value indoor court shoes for recreational pickleball and multi-sport play when you want non-slip grip and cushioning on a beginner budget. Skill level: beginner.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0F6BKQ19P/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0F6BKQ19P.jpg"
+  },
+  {
+    "id": "shoe-asics-gel-dedicate-5",
+    "name": "Gel-Dedicate 5 Men's Tennis Shoe",
+    "category": "shoes",
+    "brand": "ASICS",
+    "price": "$",
+    "features": [
+      "SOLID RUBBER OUTSOLE: Provides enhanced durability and traction.",
+      "TRUSSTIC SYSTEM TECHNOLOGY: Reduces the weight of the sole unit while retaining the structural integrity of the shoe.",
+      "FOREFOOT GEL BRAND TECHNOLOGY CUSHIONING SYSTEM: Enhances shock attenuation during propulsion."
+    ],
+    "description": "An older-generation ASICS court shoe still popular as a value option for Canadian club players who want GEL cushioning and TRUSSTIC stability without flagship pricing. Skill level: beginner to intermediate.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B01N3TA0FC/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B01N3TA0FC.jpg"
+  },
+  {
+    "id": "shoe-kswiss-court-express-men",
+    "name": "Court Express Men's Pickleball Shoe",
+    "category": "shoes",
+    "brand": "K-Swiss",
+    "price": "$$",
+    "features": [
+      "PLAYER LEVEL: Designed for the entry level, part-time, weekend player. For frequent players, we recommend the Express Light Pickleball Shoe.",
+      "K-EVA: Special formula EVA to provide maximized cushioning and enhance durability of the midsole",
+      "AOSTA II RUBBER COMPOUND: High-density non-marking outsole provides unsurpassed durability from heel-to-toe",
+      "ORTHOLITE SOCK LINER: keeps feet cool and minimizes the effects of perspiration"
+    ],
+    "description": "Entry-level K-Swiss pickleball shoe for weekend Canadian players who want court-specific traction and cushioning without jumping to a performance model. Skill level: beginner.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0BW14ZBQQ/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0BW14ZBQQ.jpg"
+  },
+  {
+    "id": "shoe-kswiss-hypercourt-express-2-men",
+    "name": "Hypercourt Express 2 Men's Tennis Shoe",
+    "category": "shoes",
+    "brand": "K-Swiss",
+    "price": "$$",
+    "features": [
+      "AOSTA 7.0 RUBBER COMPOUND: High-density outsole provides unsurpassed durability from heel-to-toe",
+      "180 PSC: A 180 degree thermal plastic Plantar Support Chassis that enhances mid-foot stability",
+      "SURGELITE: Lightweight, flexible, and durable cushioning technology for maximum comfort",
+      "DURAWRAP FLEX: A durable, yet light material that provides protection and flex so there is no break-in period",
+      "ORTHOLITE SOCK LINER: The unique open-cell structure of OrthoLite foam creates a moisture management system, helping to move moisture away a"
+    ],
+    "description": "A lighter performance court shoe for intermediate Canadian players who want durable outsole rubber and midfoot stability for tennis-to-pickleball crossover play. Skill level: intermediate.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B08VNWF2YY/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B08VNWF2YY.jpg"
+  },
+  {
+    "id": "shoe-fitville-amadeus-v2-men",
+    "name": "Amadeus V2 Wide Pickleball / Tennis Shoes (Men)",
+    "category": "shoes",
+    "brand": "FitVille",
+    "price": "$$",
+    "features": [
+      "TORSION-RESISTANT & NON-SLIP OUTSOLES: Upgraded Outsoles with improved performance provide you solid gripping and motion stability. The Dual",
+      "SHOCK ABSORPTION MIDSOLES: EVA mid-soles act as shock absorbers and reduces impact from intense motion while providing maximum comfort and c",
+      "ERGONOMIC ORTHOLITE INSOLES: OrthoLite insoles enhance stability and facilitate natural foot motion for shock absorption and pain relief. Br",
+      "UPGRADED BREATHABLE UPPER: With an upgraded breathable upper, your feet will remain cool and dry after hours of intense rally."
+    ],
+    "description": "Wide-fit FitVille court shoes for Canadian men who need a roomy toe box and arch support for pickleball and other racquet sports. Skill level: beginner to intermediate.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0C69JCZQC/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0C69JCZQC.jpg"
+  },
+  {
+    "id": "shoe-fitville-wide-men-plantar",
+    "name": "Wide Width Men’s Pickleball Shoes (Arch Support)",
+    "category": "shoes",
+    "brand": "FitVille",
+    "price": "$$",
+    "features": [
+      "NEW DESIGN: Casual tennis shoes, simple and straightforward , full coverage of functional attributes required for sports, suitable for daily",
+      "UPPER: Fashionable mesh and super soft microfiber upper. Anti-odor technology and breathable material keep your feet clean and cool.",
+      "WIDE & EXTRA WIDE: FitVille sneakers are made especially for those with wider feet, allowing your toes freedom of movement and a more comfor",
+      "INSOLES: The interior of the shoe uses a honeycomb insole and Ortholite material to add cushioning and provide extra support."
+    ],
+    "description": "Wide pickleball court shoes aimed at Canadian men dealing with plantar fasciitis or needing extra arch support and toe room. Skill level: beginner to intermediate.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B09DS6WQJ4/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B09DS6WQJ4.jpg"
+  },
+  {
+    "id": "shoe-fitville-extra-wide-men",
+    "name": "Extra Wide Men’s Pickleball Court Shoes",
+    "category": "shoes",
+    "brand": "FitVille",
+    "price": "$$",
+    "features": [
+      "【Slip Resistant and Cushioned Soles】Our shoes come equipped with high rebound technology, providing a responsive and cushioned feel with eve",
+      "【Torsion Resistant】Anti-torsion TPU rubber acts as shock absorbers and enhance agility, allowing you to play your best on the tennis, pickle",
+      "【Wide Toe Box Design】 Good arch support will relief your foot pain, especially for plantar fasciitis, flat feet, bunions and hammertoes. Roo",
+      "【Lightweight & Breathable】Weights only 720g/pair(base on US size 9) with mesh knit and leather upper. The soft sponge insole relieves pressu"
+    ],
+    "description": "Extra-wide FitVille court shoes for Canadian players who want a roomy toe box, arch support, and lightweight breathability for pickleball and badminton. Skill level: beginner to intermediate.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0C91M8M1L/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0C91M8M1L.jpg"
+  },
+  {
+    "id": "shoe-kswiss-court-express-women",
+    "name": "Court Express Women's Pickleball Shoe",
+    "category": "shoes",
+    "brand": "K-Swiss",
+    "price": "$$",
+    "features": [
+      "PLAYER LEVEL: Designed for the entry level, part-time, weekend player. For frequent players, we recommend the Express Light Pickleball Shoe.",
+      "K-EVA: Special formula EVA to provide maximized cushioning and enhance durability of the midsole",
+      "AOSTA II RUBBER COMPOUND: High-density non-marking outsole provides unsurpassed durability from heel-to-toe",
+      "ORTHOLITE SOCK LINER: keeps feet cool and minimizes the effects of perspiration",
+      "PLAYER LEVEL: Designed for the entry level, part-time, weekend player. For frequent players, we recommend the Express Light Pickleball Shoe."
+    ],
+    "description": "Women’s entry-level K-Swiss pickleball shoe for Canadian recreational players wanting court traction and Ortholite comfort at a value tier. Skill level: beginner.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0BWFVHQNV/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0BWFVHQNV.jpg"
+  },
+  {
+    "id": "shoe-kswiss-express-light-women",
+    "name": "Express Light Women's Pickleball Shoe",
+    "category": "shoes",
+    "brand": "K-Swiss",
+    "price": "$$",
+    "features": [
+      "FIT: Built for Court Sports: K-Swiss Women’s pickleball shoes have a wide toe box that suits the flexibility needed for pickleball, Heels st",
+      "ALL-COURT OUTSOLE: Special EVA in pickleball shoes gives max cushioning, boosting midsole durability. OrthoLite foam's unique open-cell stru",
+      "DRAGGUARD 7.0: Tough rubber reinforcement in high-wear toes and heels helps these shoes stand up to constant pivots and drags, perfect for t",
+      "DURAWRAP UPPER: A tough overlay fights toe-dragging wear, but stays airy enough for marathon volleyball matches or all-day tennis sessions.N",
+      "SIZING: Whether you need standard width or wide pickleball shoes for women, sizing up by ½ is often ideal for toe room during quick moves."
+    ],
+    "description": "A lighter women’s K-Swiss pickleball shoe for frequent Canadian players who want a secure heel, durable DragGuard rubber, and a court-ready wide toe box. Skill level: intermediate.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B07YRZT19S/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B07YRZT19S.jpg"
+  },
+  {
+    "id": "shoe-kswiss-hypercourt-express-2-women",
+    "name": "Hypercourt Express 2 Women's Tennis Shoe",
+    "category": "shoes",
+    "brand": "K-Swiss",
+    "price": "$$",
+    "features": [
+      "AOSTA 7.0 RUBBER COMPOUND: High-density outsole provides unsurpassed durability from heel-to-toe",
+      "180 PSC: A 180 degree thermal plastic Plantar Support Chassis that enhances mid-foot stability",
+      "SURGELITE: Lightweight, flexible, and durable cushioning technology for maximum comfort",
+      "DURAWRAP FLEX: A durable, yet light material that provides protection and flex so there is no break-in period",
+      "ORTHOLITE SOCK LINER: The unique open-cell structure of OrthoLite foam creates a moisture management system, helping to move moisture away a"
+    ],
+    "description": "Women’s Hypercourt Express 2 for Canadian players who want a stable, cushioned tennis/pickleball crossover shoe with durable AOSTA outsole rubber. Skill level: intermediate.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0841HZQN7/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0841HZQN7.jpg"
+  },
+  {
+    "id": "shoe-skechers-viper-court-women",
+    "name": "Viper Court Women's Pickleball Shoes",
+    "category": "shoes",
+    "brand": "Skechers",
+    "price": "$$",
+    "features": [
+      "SKECHERS PICKLEBALL SHOES: workout in supportive comfort with Skechers Pickleball court shoes (pickleball shoes for women); featuring Goodye",
+      "RELAXED FIT: these tennis shoes feature a relaxed fit with an adjustable lace-up front (top of shoe) for a comfortable workout; breathable a",
+      "SKECHERS ARCH FIT (INSOLE CUSHION): these podiatrist-certified arch support insoles offer a podiatrist-designed shape developed with 20 year",
+      "ATHLETIC ACTIVITIES: pickleball, tennis, cross-training, badminton, volleyball, walking, running, treadmill, workouts, training, gym, liftin",
+      "MULTI-PURPOSE (FUNCTION): add performance comfort to casual occasions; wear around the house, to and from work, business, for travel, or eve"
+    ],
+    "description": "Women’s Skechers Viper Court pickleball shoes with Arch Fit support and Goodyear rubber for Canadian indoor and outdoor hard courts. Skill level: beginner to intermediate.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0DL4GRLMF/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0DL4GRLMF.jpg"
+  },
+  {
+    "id": "shoe-skechers-viper-court-rally-women",
+    "name": "Viper Court Rally Women's Court Shoes",
+    "category": "shoes",
+    "brand": "Skechers",
+    "price": "$$",
+    "features": [
+      "Lightweight Move Foam cushioned insole for added comfort",
+      "Goodyear Gold compound outsole delivers enhanced traction, stability and durability",
+      "Mesh upper with perforated leather overlays and lace-up front",
+      "Padel friendly court shoe design"
+    ],
+    "description": "Skechers Viper Court Rally for Canadian women who want a lighter court shoe with Goodyear traction for pickleball and padel-style play. Skill level: beginner to intermediate.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0CPBV1ZDC/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0CPBV1ZDC.jpg"
+  },
+  {
+    "id": "shoe-fitville-wide-women",
+    "name": "Wide Women's Pickleball Court Shoes",
+    "category": "shoes",
+    "brand": "FitVille",
+    "price": "$$",
+    "features": [
+      "Extra-wide fit with roomy toe box",
+      "Arch support for racquet-sport movement",
+      "Court-ready traction for pickleball and badminton",
+      "Cushioned build for longer sessions"
+    ],
+    "description": "Extra-wide women’s FitVille pickleball shoes for Canadian players needing a roomy toe box and arch support for indoor and outdoor court sessions. Skill level: beginner to intermediate.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0DWMY6K6X/?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0DWMY6K6X.jpg"
   },
   {
     "id": "franklin-signature-portable-net",
