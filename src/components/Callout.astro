@@ -1,0 +1,37 @@
+---
+interface Props {
+	type?: 'tip' | 'warning' | 'pick';
+	title?: string;
+}
+
+const { type = 'tip', title } = Astro.props;
+
+const styles = {
+	tip: {
+		wrap: 'border-sky-200 bg-sky-50 text-sky-950',
+		label: 'Tip',
+		defaultTitle: 'Good to know',
+	},
+	warning: {
+		wrap: 'border-amber-200 bg-amber-50 text-amber-950',
+		label: 'Warning',
+		defaultTitle: 'Watch out',
+	},
+	pick: {
+		wrap: 'border-emerald-200 bg-emerald-50 text-emerald-950',
+		label: 'Our pick',
+		defaultTitle: 'Editor’s pick',
+	},
+} as const;
+
+const style = styles[type];
+const heading = title ?? style.defaultTitle;
+---
+
+<aside class:list={['my-6 rounded-2xl border px-4 py-4 sm:px-5', style.wrap]} aria-label={style.label}>
+	<p class="text-xs font-bold uppercase tracking-wider opacity-80">{style.label}</p>
+	<p class="mt-1 text-base font-bold">{heading}</p>
+	<div class="mt-2 text-sm leading-relaxed [&_a]:font-semibold [&_a]:underline [&_p+p]:mt-2">
+		<slot />
+	</div>
+</aside>

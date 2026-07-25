@@ -1,0 +1,38 @@
+---
+import { assertAffiliateUrl } from '../lib/products';
+
+interface Props {
+	href: string;
+	label?: string;
+	variant?: 'primary' | 'secondary' | 'inline';
+	class?: string;
+}
+
+const {
+	href,
+	label = 'Check current price on Amazon',
+	variant = 'primary',
+	class: className = '',
+} = Astro.props;
+
+const safeHref = assertAffiliateUrl(href);
+
+const variants = {
+	primary:
+		'inline-flex w-full items-center justify-center rounded-xl bg-emerald-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 sm:w-auto',
+	secondary:
+		'inline-flex w-full items-center justify-center rounded-xl border border-emerald-700 bg-white px-4 py-3 text-sm font-bold text-emerald-800 transition hover:bg-emerald-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 sm:w-auto',
+	inline:
+		'font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-2 transition hover:text-emerald-900 hover:decoration-emerald-600',
+};
+---
+
+<a
+	href={safeHref}
+	target="_blank"
+	rel="sponsored nofollow noopener"
+	class:list={[variants[variant], className]}
+>
+	{label}
+	{variant !== 'inline' && <span class="sr-only"> (opens in a new tab)</span>}
+</a>
