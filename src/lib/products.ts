@@ -45,3 +45,11 @@ export function assertAffiliateUrl(url: string): string {
 	}
 	return tagged;
 }
+
+/** Approximate catalog price tier — never presented as a live Amazon price. */
+export function getPriceTier(price: string): '$' | '$$' | '$$$' {
+	const amount = Number(price.replace(/[^0-9.]/g, ''));
+	if (!Number.isFinite(amount) || amount < 150) return '$';
+	if (amount < 220) return '$$';
+	return '$$$';
+}

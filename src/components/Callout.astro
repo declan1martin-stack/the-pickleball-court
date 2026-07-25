@@ -8,19 +8,22 @@ const { type = 'tip', title } = Astro.props;
 
 const styles = {
 	tip: {
-		wrap: 'border-sky-200 bg-sky-50 text-sky-950',
+		wrap: 'border-primary/20 bg-primary/5 text-ink',
 		label: 'Tip',
 		defaultTitle: 'Good to know',
+		badge: 'bg-primary text-white',
 	},
 	warning: {
-		wrap: 'border-amber-200 bg-amber-50 text-amber-950',
+		wrap: 'border-accent/30 bg-accent/5 text-ink',
 		label: 'Warning',
 		defaultTitle: 'Watch out',
+		badge: 'bg-accent text-white',
 	},
 	pick: {
-		wrap: 'border-emerald-200 bg-emerald-50 text-emerald-950',
-		label: 'Our pick',
+		wrap: 'border-transparent bg-primary-dark text-white',
+		label: 'Our Pick',
 		defaultTitle: 'Editor’s pick',
+		badge: 'bg-accent text-white',
 	},
 } as const;
 
@@ -28,10 +31,22 @@ const style = styles[type];
 const heading = title ?? style.defaultTitle;
 ---
 
-<aside class:list={['my-6 rounded-2xl border px-4 py-4 sm:px-5', style.wrap]} aria-label={style.label}>
-	<p class="text-xs font-bold uppercase tracking-wider opacity-80">{style.label}</p>
-	<p class="mt-1 text-base font-bold">{heading}</p>
-	<div class="mt-2 text-sm leading-relaxed [&_a]:font-semibold [&_a]:underline [&_p+p]:mt-2">
+<aside
+	class:list={['my-6 rounded-[var(--radius-lg)] border px-4 py-4 sm:px-5', style.wrap]}
+	aria-label={style.label}
+>
+	<span class:list={['inline-flex rounded-[var(--radius-pill)] px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider', style.badge]}>
+		{style.label}
+	</span>
+	<p class:list={['font-display mt-2 text-base font-bold', type === 'pick' ? 'text-white' : 'text-ink']}>
+		{heading}
+	</p>
+	<div
+		class:list={[
+			'mt-2 text-sm leading-relaxed [&_a]:font-semibold [&_a]:underline [&_p+p]:mt-2',
+			type === 'pick' ? 'text-white/90 [&_a]:text-accent' : 'text-ink-muted [&_a]:text-primary',
+		]}
+	>
 		<slot />
 	</div>
 </aside>

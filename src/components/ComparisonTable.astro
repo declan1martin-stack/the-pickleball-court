@@ -49,10 +49,10 @@ const fieldLabels: Record<SpecField, string> = {
 {products.length > 0 && (
 	<section class="my-8" aria-label={caption}>
 		{/* Desktop / tablet table */}
-		<div class="hidden overflow-x-auto rounded-2xl border border-zinc-200 md:block">
-			<table class="min-w-full divide-y divide-zinc-200 text-left text-sm">
+		<div class="hidden overflow-x-auto rounded-[var(--radius-lg)] border border-border md:block">
+			<table class="min-w-full divide-y divide-border text-left text-sm">
 				<caption class="sr-only">{caption}</caption>
-				<thead class="bg-zinc-900 text-white">
+				<thead class="bg-primary-dark text-white">
 					<tr>
 						<th scope="col" class="px-4 py-3 font-semibold">Product</th>
 						{fields.map((field) => (
@@ -63,14 +63,14 @@ const fieldLabels: Record<SpecField, string> = {
 						<th scope="col" class="px-4 py-3 font-semibold">Amazon</th>
 					</tr>
 				</thead>
-				<tbody class="divide-y divide-zinc-200 bg-white">
+				<tbody class="divide-y divide-border bg-surface">
 					{products.map((product) => (
 						<tr>
-							<th scope="row" class="px-4 py-4 font-bold text-zinc-900">
+							<th scope="row" class="px-4 py-4 font-bold text-ink">
 								{product.name}
 							</th>
 							{fields.map((field) => (
-								<td class="px-4 py-4 text-zinc-700">
+								<td class="px-4 py-4 text-ink-muted">
 									{field === 'priceTier' ? (
 										<span title="Approximate price tier based on catalog listing — not a live Amazon price">
 											{cellValue(product, field)}

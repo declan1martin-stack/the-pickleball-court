@@ -6,30 +6,32 @@ interface Props {
 }
 
 const {
-	name = 'ThePickleballCourt.ca Editorial Team',
+	name = 'Gear Review Team',
 	bio = 'We research pickleball paddles, court shoes, and portable nets for Canadian players — from first-time buyers to tournament regulars. Our guides prioritize court feel, fit, and practical buying advice over hype.',
-	credential = 'Canadian pickleball gear researchers · Amazon Associates publishers',
+	credential = 'Role-based editorial byline · Amazon Associates publishers',
 } = Astro.props;
+
+const initials = name
+	.split(/\s+/)
+	.slice(0, 2)
+	.map((part) => part[0])
+	.join('')
+	.toUpperCase();
 ---
 
 <section
-	class="my-10 flex flex-col gap-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 sm:flex-row sm:items-start"
+	class="my-10 flex flex-col gap-4 rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-[var(--shadow-sm)] sm:flex-row sm:items-start"
 	aria-labelledby="author-heading"
 >
 	<div
-		class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-emerald-700 text-lg font-black text-white"
+		class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary font-display text-lg font-extrabold text-white"
 		aria-hidden="true"
 	>
-		{name
-			.split(/\s+/)
-			.slice(0, 2)
-			.map((part) => part[0])
-			.join('')
-			.toUpperCase()}
+		{initials}
 	</div>
 	<div>
-		<h2 id="author-heading" class="text-lg font-bold text-zinc-900">{name}</h2>
-		<p class="mt-1 text-xs font-semibold uppercase tracking-wide text-emerald-700">{credential}</p>
-		<p class="mt-2 text-sm leading-relaxed text-zinc-600">{bio}</p>
+		<h2 id="author-heading" class="font-display text-lg font-bold text-ink">{name}</h2>
+		<p class="mt-1 text-xs font-semibold uppercase tracking-wide text-secondary">{credential}</p>
+		<p class="mt-2 text-sm leading-relaxed text-ink-muted">{bio}</p>
 	</div>
 </section>

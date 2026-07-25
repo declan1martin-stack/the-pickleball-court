@@ -8,13 +8,13 @@ const { compact = false } = Astro.props;
 
 <aside
 	class:list={[
-		'rounded-xl border border-amber-200 bg-amber-50 text-amber-950',
+		'rounded-[var(--radius-md)] border border-border bg-bg text-ink',
 		compact ? 'px-3 py-2 text-xs' : 'px-4 py-3 text-sm',
 	]}
 	aria-label="Affiliate disclosure"
 >
-	<p class:list={[compact ? 'leading-snug' : 'leading-relaxed']}>
-		<strong class="font-bold">Disclosure:</strong>
+	<p class:list={[compact ? 'leading-snug' : 'leading-relaxed', 'text-ink-muted']}>
+		<strong class="font-bold text-ink">Disclosure:</strong>
 		ThePickleballCourt.ca is a participant in the Amazon Services LLC Associates Program.
 		As an Amazon Associate we earn from qualifying purchases. Links may be affiliate links —
 		they do not change your price. Always confirm the current price and availability on Amazon.ca.

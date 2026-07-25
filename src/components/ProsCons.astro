@@ -10,23 +10,29 @@ const { pros, cons, prosTitle = 'Pros', consTitle = 'Cons' } = Astro.props;
 ---
 
 <div class="my-8 grid gap-4 md:grid-cols-2">
-	<section class="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-5" aria-labelledby="pros-heading">
-		<h3 id="pros-heading" class="text-base font-bold text-emerald-900">{prosTitle}</h3>
-		<ul class="mt-3 space-y-2 text-sm text-emerald-950">
+	<section
+		class="rounded-[var(--radius-lg)] border border-secondary/25 bg-secondary/8 p-5"
+		aria-labelledby="pros-heading"
+	>
+		<h3 id="pros-heading" class="font-display text-base font-bold text-secondary-dark">{prosTitle}</h3>
+		<ul class="mt-3 space-y-2 text-sm text-ink">
 			{pros.map((item) => (
 				<li class="flex gap-2">
-					<span class="mt-0.5 font-bold text-emerald-700" aria-hidden="true">+</span>
+					<span class="mt-0.5 font-bold text-secondary" aria-hidden="true">+</span>
 					<span>{item}</span>
 				</li>
 			))}
 		</ul>
 	</section>
-	<section class="rounded-2xl border border-rose-200 bg-rose-50/60 p-5" aria-labelledby="cons-heading">
-		<h3 id="cons-heading" class="text-base font-bold text-rose-900">{consTitle}</h3>
-		<ul class="mt-3 space-y-2 text-sm text-rose-950">
+	<section
+		class="rounded-[var(--radius-lg)] border border-accent/25 bg-accent/8 p-5"
+		aria-labelledby="cons-heading"
+	>
+		<h3 id="cons-heading" class="font-display text-base font-bold text-accent-dark">{consTitle}</h3>
+		<ul class="mt-3 space-y-2 text-sm text-ink">
 			{cons.map((item) => (
 				<li class="flex gap-2">
-					<span class="mt-0.5 font-bold text-rose-700" aria-hidden="true">−</span>
+					<span class="mt-0.5 font-bold text-accent" aria-hidden="true">−</span>
 					<span>{item}</span>
 				</li>
 			))}

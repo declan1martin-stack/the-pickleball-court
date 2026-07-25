@@ -14,19 +14,19 @@ const categories = [
 		href: '/gear/paddles',
 		title: 'Paddles',
 		blurb: 'JOOLA, Selkirk, and Six Zero paddles built for Canadian court conditions.',
-		accent: 'from-emerald-700 to-emerald-900',
+		accent: 'from-primary to-primary-dark',
 	},
 	{
 		href: '/gear/shoes',
-		title: 'Footwear',
+		title: 'Shoes',
 		blurb: 'Court-stable Skechers and ASICS shoes for hard stops and lateral cuts.',
-		accent: 'from-zinc-800 to-zinc-950',
+		accent: 'from-primary-dark to-footer',
 	},
 	{
 		href: '/gear/nets',
-		title: 'Portable Nets',
+		title: 'Nets',
 		blurb: 'Regulation portable nets for driveways, parks, and cottage courts.',
-		accent: 'from-emerald-800 to-zinc-900',
+		accent: 'from-secondary to-secondary-dark',
 	},
 ];
 
@@ -59,27 +59,21 @@ const pillars = [
 	description="Compare top pickleball paddles, court shoes, and portable nets for Canadian players. High-intent gear guides with Amazon.ca availability."
 	canonicalPath="/"
 >
-	<section class="relative overflow-hidden bg-zinc-950 text-white">
-		<div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(16,185,129,0.28),_transparent_45%),radial-gradient(circle_at_bottom_left,_rgba(15,118,110,0.2),_transparent_40%)]" />
+	<section class="relative overflow-hidden bg-primary-dark text-white">
+		<div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(46,125,91,0.35),_transparent_45%),radial-gradient(circle_at_bottom_left,_rgba(255,107,53,0.18),_transparent_40%)]" />
 		<div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
-			<p class="text-sm font-bold uppercase tracking-[0.2em] text-emerald-400">Canadian Pickleball Gear Hub</p>
-			<h1 class="mt-4 max-w-4xl text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+			<p class="font-display text-sm font-bold uppercase tracking-[0.2em] text-accent">Canadian Pickleball Gear Hub</p>
+			<h1 class="font-display mt-4 max-w-4xl text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-[48px]">
 				The Definitive Guide to Canadian Pickleball
 			</h1>
-			<p class="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-300">
+			<p class="mt-6 max-w-2xl text-lg leading-relaxed text-footer-text">
 				Original buying guides and catalog picks for paddles, footwear, and portable nets — built for Amazon.ca shoppers and real Canadian courts.
 			</p>
 			<div class="mt-10 flex flex-col gap-3 sm:flex-row">
-				<a
-					href="/guides/how-to-choose-a-pickleball-paddle"
-					class="inline-flex items-center justify-center rounded-xl bg-teal-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-teal-500"
-				>
+				<a href="/guides/how-to-choose-a-pickleball-paddle" class="btn-primary">
 					Start with the paddle guide
 				</a>
-				<a
-					href="/guides"
-					class="inline-flex items-center justify-center rounded-xl border border-zinc-600 bg-zinc-900/60 px-6 py-3 text-sm font-bold text-white transition hover:border-emerald-500 hover:text-emerald-300"
-				>
+				<a href="/guides" class="btn-secondary border-white/40 text-white hover:border-white hover:bg-white hover:text-primary">
 					Browse all guides
 				</a>
 			</div>
@@ -89,39 +83,39 @@ const pillars = [
 	<section class="section-y mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-labelledby="pillars-heading">
 		<div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
 			<div class="max-w-2xl">
-				<h2 id="pillars-heading" class="text-3xl font-black tracking-tight text-zinc-900">Pillar guides</h2>
-				<p class="mt-3 text-zinc-600">Start with the deep guides that rank for high-intent Canadian searches.</p>
+				<h2 id="pillars-heading" class="font-display text-3xl font-bold tracking-tight text-ink">Pillar guides</h2>
+				<p class="mt-3 text-ink-muted">Start with the deep guides that rank for high-intent Canadian searches.</p>
 			</div>
-			<a href="/guides" class="text-sm font-bold text-emerald-700 hover:text-emerald-800">All guides →</a>
+			<a href="/guides" class="link-brand text-sm">All guides →</a>
 		</div>
 		<div class="grid gap-5 md:grid-cols-2">
 			{pillars.map((pillar) => (
 				<a
 					href={pillar.href}
-					class="rounded-2xl border border-zinc-200 bg-white p-6 shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:border-emerald-200"
+					class="rounded-[var(--radius-lg)] border border-border bg-surface p-6 shadow-[var(--shadow-sm)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
 				>
-					<h3 class="text-xl font-black text-zinc-900">{pillar.title}</h3>
-					<p class="mt-2 text-sm leading-relaxed text-zinc-600">{pillar.blurb}</p>
+					<h3 class="font-display text-xl font-bold text-ink">{pillar.title}</h3>
+					<p class="mt-2 text-sm leading-relaxed text-ink-muted">{pillar.blurb}</p>
 				</a>
 			))}
 		</div>
 	</section>
 
-	<section class="border-y border-zinc-200 bg-white">
+	<section class="border-y border-border bg-surface">
 		<div class="section-y mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-labelledby="categories-heading">
 			<div class="mb-8 max-w-2xl">
-				<h2 id="categories-heading" class="text-3xl font-black tracking-tight text-zinc-900">Shop by Category</h2>
-				<p class="mt-3 text-zinc-600">Transactional category pages backed by our Amazon.ca product catalog.</p>
+				<h2 id="categories-heading" class="font-display text-3xl font-bold tracking-tight text-ink">Shop by Category</h2>
+				<p class="mt-3 text-ink-muted">Transactional category pages backed by our Amazon.ca product catalog.</p>
 			</div>
 			<div class="grid gap-5 md:grid-cols-3">
 				{categories.map((category) => (
 					<a
 						href={category.href}
-						class={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${category.accent} p-6 text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg`}
+						class={`group relative overflow-hidden rounded-[var(--radius-lg)] bg-gradient-to-br ${category.accent} p-6 text-white shadow-[var(--shadow-md)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-lg)]`}
 					>
-						<h3 class="text-2xl font-black">{category.title}</h3>
-						<p class="mt-3 text-sm leading-relaxed text-zinc-200">{category.blurb}</p>
-						<span class="mt-6 inline-flex text-sm font-bold text-emerald-300 transition group-hover:translate-x-1">
+						<h3 class="font-display text-2xl font-bold">{category.title}</h3>
+						<p class="mt-3 text-sm leading-relaxed text-white/85">{category.blurb}</p>
+						<span class="mt-6 inline-flex text-sm font-bold text-accent transition group-hover:translate-x-1">
 							View catalog →
 						</span>
 					</a>
@@ -133,15 +127,15 @@ const pillars = [
 	{comparisons.length > 0 && (
 		<section class="section-y mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-labelledby="comparisons-heading">
 			<div class="mb-8 max-w-2xl">
-				<h2 id="comparisons-heading" class="text-3xl font-black tracking-tight text-zinc-900">Featured comparisons</h2>
-				<p class="mt-3 text-zinc-600">High-converting brand and category matchups for players ready to choose.</p>
+				<h2 id="comparisons-heading" class="font-display text-3xl font-bold tracking-tight text-ink">Featured comparisons</h2>
+				<p class="mt-3 text-ink-muted">High-converting brand and category matchups for players ready to choose.</p>
 			</div>
 			<ul class="grid gap-5 md:grid-cols-3">
 				{comparisons.map((article) => (
 					<li>
 						<a
 							href={`/guides/${article.data.slug}`}
-							class="block h-full overflow-hidden rounded-2xl border border-zinc-200 bg-white transition hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-md"
+							class="block h-full overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
 						>
 							<img
 								src={article.data.heroImage}
@@ -153,9 +147,9 @@ const pillars = [
 								class="aspect-[16/9] w-full object-cover"
 							/>
 							<div class="p-5">
-								<p class="text-xs font-bold uppercase tracking-wider text-emerald-700">Comparison</p>
-								<h3 class="mt-2 text-lg font-bold text-zinc-900">{article.data.title}</h3>
-								<p class="mt-2 line-clamp-3 text-sm text-zinc-600">{article.data.description}</p>
+								<p class="font-display text-xs font-bold uppercase tracking-wider text-secondary">Comparison</p>
+								<h3 class="font-display mt-2 text-lg font-bold text-ink">{article.data.title}</h3>
+								<p class="mt-2 line-clamp-3 text-sm text-ink-muted">{article.data.description}</p>
 							</div>
 						</a>
 					</li>
@@ -165,13 +159,13 @@ const pillars = [
 	)}
 
 	{featuredGuides.length > 0 && (
-		<section class="border-t border-zinc-200 bg-emerald-50/40">
+		<section class="border-t border-border bg-secondary/5">
 			<div class="section-y mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-labelledby="featured-guides-heading">
-				<h2 id="featured-guides-heading" class="text-3xl font-black tracking-tight text-zinc-900">Editor’s featured reads</h2>
+				<h2 id="featured-guides-heading" class="font-display text-3xl font-bold tracking-tight text-ink">Editor’s featured reads</h2>
 				<ul class="mt-8 grid gap-4 md:grid-cols-2">
 					{featuredGuides.map((article) => (
 						<li>
-							<a href={`/guides/${article.data.slug}`} class="flex gap-4 rounded-2xl border border-emerald-100 bg-white p-4 transition hover:border-emerald-300">
+							<a href={`/guides/${article.data.slug}`} class="flex gap-4 rounded-[var(--radius-lg)] border border-border bg-surface p-4 transition hover:border-primary/30 hover:shadow-[var(--shadow-sm)]">
 								<img
 									src={article.data.heroImage}
 									alt={article.data.heroAlt}
@@ -179,11 +173,11 @@ const pillars = [
 									height="96"
 									loading="lazy"
 									decoding="async"
-									class="h-24 w-36 shrink-0 rounded-xl object-cover"
+									class="h-24 w-36 shrink-0 rounded-[var(--radius-md)] object-cover"
 								/>
 								<div>
-									<p class="text-xs font-bold uppercase tracking-wider text-emerald-700">{article.data.category}</p>
-									<h3 class="mt-1 font-bold text-zinc-900">{article.data.title}</h3>
+									<p class="font-display text-xs font-bold uppercase tracking-wider text-secondary">{article.data.category}</p>
+									<h3 class="font-display mt-1 font-bold text-ink">{article.data.title}</h3>
 								</div>
 							</a>
 						</li>
@@ -193,18 +187,16 @@ const pillars = [
 		</section>
 	)}
 
-	<section class="border-t border-zinc-200 bg-white">
+	<section class="border-t border-border bg-surface">
 		<div class="section-y mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-labelledby="featured-heading">
 			<div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
 				<div>
-					<h2 id="featured-heading" class="text-3xl font-black tracking-tight text-zinc-900">Featured Gear</h2>
-					<p class="mt-3 max-w-2xl text-zinc-600">
-						Top searched paddles from our Canadian gear catalog. Approximate listed prices — confirm on Amazon.ca.
+					<h2 id="featured-heading" class="font-display text-3xl font-bold tracking-tight text-ink">Featured Gear</h2>
+					<p class="mt-3 max-w-2xl text-ink-muted">
+						Top searched paddles from our Canadian gear catalog. Price tiers are approximate — confirm on Amazon.ca.
 					</p>
 				</div>
-				<a href="/gear/paddles" class="text-sm font-bold text-emerald-700 transition hover:text-emerald-800">
-					See all paddles →
-				</a>
+				<a href="/gear/paddles" class="link-brand text-sm">See all paddles →</a>
 			</div>
 			<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 				{featured.map((product) => (

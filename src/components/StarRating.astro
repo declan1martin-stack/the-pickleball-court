@@ -4,9 +4,10 @@ interface Props {
 	rating?: number | null;
 	max?: number;
 	label?: string;
+	reviewCount?: number | null;
 }
 
-const { rating = null, max = 5, label = 'Rating' } = Astro.props;
+const { rating = null, max = 5, label = 'Rating', reviewCount = null } = Astro.props;
 const show = typeof rating === 'number' && Number.isFinite(rating) && rating > 0;
 const clamped = show ? Math.min(Math.max(rating, 0), max) : 0;
 const filled = Math.round(clamped);
@@ -16,9 +17,12 @@ const filled = Math.round(clamped);
 	<div class="inline-flex items-center gap-2" aria-label={`${label}: ${clamped} out of ${max}`}>
 		<div class="flex gap-0.5" aria-hidden="true">
 			{Array.from({ length: max }, (_, i) => (
-				<span class:list={['text-sm', i < filled ? 'text-amber-500' : 'text-zinc-300']}>★</span>
+				<span class:list={['text-sm', i < filled ? 'text-star' : 'text-border']}>★</span>
 			))}
 		</div>
-		<span class="text-sm font-semibold text-zinc-700">{clamped.toFixed(1)}</span>
+		<span class="text-sm font-semibold text-ink-muted">{clamped.toFixed(1)}</span>
+		{typeof reviewCount === 'number' && (
+			<span class="text-xs text-ink-faint">({reviewCount})</span>
+		)}
 	</div>
 )}
