@@ -1,0 +1,49 @@
+# ThePickleballCourt.ca
+
+> Canadian pickleball gear guides and Amazon.ca product catalogs for paddles, shoes, nets, balls, bags, apparel, and accessories.
+
+Site: https://thepickleballcourt.ca/
+Affiliate disclosure: https://thepickleballcourt.ca/affiliate-disclosure
+Editorial policy: https://thepickleballcourt.ca/editorial-policy
+
+## Purpose
+
+Honest, high-intent buying guidance for Canadian players. Product data lives in a curated catalog; guides reference catalog items only. Prices are shown as approximate $ / $$ / $$$ tiers — always confirm live pricing on Amazon.ca. As an Amazon Associate we earn from qualifying purchases.
+
+## Main sections
+
+- Home: https://thepickleballcourt.ca/
+- Guides hub: https://thepickleballcourt.ca/guides/
+- Gear — paddles: https://thepickleballcourt.ca/gear/paddles/
+- Gear — shoes: https://thepickleballcourt.ca/gear/shoes/
+- Gear — nets: https://thepickleballcourt.ca/gear/nets/
+- Gear — balls: https://thepickleballcourt.ca/gear/balls/
+- Gear — bags: https://thepickleballcourt.ca/gear/bags/
+- Gear — apparel: https://thepickleballcourt.ca/gear/apparel/
+- Gear — accessories: https://thepickleballcourt.ca/gear/accessories/
+
+## Pillar guides
+
+- How to choose a paddle: https://thepickleballcourt.ca/guides/how-to-choose-a-pickleball-paddle/
+- Best paddles 2026: https://thepickleballcourt.ca/guides/best-pickleball-paddles-2026/
+- Best shoes 2026: https://thepickleballcourt.ca/guides/best-pickleball-shoes-2026/
+- Best portable nets 2026: https://thepickleballcourt.ca/guides/best-portable-pickleball-nets-2026/
+- Balls indoor vs outdoor: https://thepickleballcourt.ca/guides/pickleball-balls-buying-guide/
+- Bags by style: https://thepickleballcourt.ca/guides/pickleball-bags-buying-guide/
+- Apparel essentials: https://thepickleballcourt.ca/guides/pickleball-apparel-buying-guide/
+- Accessories (grips & tape): https://thepickleballcourt.ca/guides/pickleball-accessories-buying-guide/
+- Rules for beginners: https://thepickleballcourt.ca/guides/pickleball-rules-for-beginners/
+- Terms glossary: https://thepickleballcourt.ca/guides/pickleball-terms-glossary/
+
+## Trust & legal
+
+- About: https://thepickleballcourt.ca/about/
+- Privacy: https://thepickleballcourt.ca/privacy/
+- Terms: https://thepickleballcourt.ca/terms/
+- Contact: https://thepickleballcourt.ca/contact/
+- RSS: https://thepickleballcourt.ca/rss.xml
+- Sitemap: https://thepickleballcourt.ca/sitemap-index.xml
+
+## Notes for crawlers
+
+Content is statically generated (Astro SSG). Key pages are HTML without requiring JavaScript to read the main copy. Affiliate outbound links use rel="sponsored nofollow noopener".

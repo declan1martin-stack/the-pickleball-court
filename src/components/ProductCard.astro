@@ -1,7 +1,8 @@
 ---
 import AffiliateButton from './AffiliateButton.astro';
 import StarRating from './StarRating.astro';
-import { getPriceTier, isPriceTier, type Product } from '../lib/products';
+import { assertAffiliateUrl, getPriceTier, isPriceTier, type Product } from '../lib/products';
+import { absoluteUrl, productSchema } from '../lib/seo';
 
 interface Props {
 	product: Product;
@@ -12,9 +13,21 @@ interface Props {
 const { product, rating = null } = Astro.props;
 const tier = getPriceTier(product.price);
 const priceIsTier = isPriceTier(product.price);
+const affiliateHref = assertAffiliateUrl(product.affiliateUrl);
+const imageAbs = product.imageUrl.startsWith('http')
+	? product.imageUrl
+	: absoluteUrl(product.imageUrl);
+const schema = productSchema({
+	name: product.name,
+	description: product.description,
+	image: imageAbs,
+	brand: product.brand,
+	url: affiliateHref,
+});
 ---
 
 <article class="group flex h-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]">
+	<script type="application/ld+json" set:html={JSON.stringify(schema)} />
 	<div class="relative aspect-[4/3] overflow-hidden bg-border/40">
 		<img
 			src={product.imageUrl}

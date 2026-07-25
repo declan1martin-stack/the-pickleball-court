@@ -30,7 +30,7 @@ export function organizationSchema() {
 		url: SITE_URL,
 		logo: absoluteUrl('/favicon.svg'),
 		description:
-			'Canadian pickleball gear guides covering paddles, court shoes, and portable nets for players at every level.',
+			'Canadian pickleball gear guides covering paddles, court shoes, balls, bags, apparel, accessories, and portable nets.',
 		areaServed: 'CA',
 		email: 'hello@thepickleballcourt.ca',
 		founder: {
