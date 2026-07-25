@@ -1,11 +1,11 @@
 ---
 /**
  * GA4 + Google Search Console verification.
- * Set in Cloudflare Pages (or local .env):
+ * GA4 defaults to the production property; override via env if needed:
  *   PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
  *   PUBLIC_GOOGLE_SITE_VERIFICATION=token_from_search_console
  */
-const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID?.trim();
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID?.trim() || 'G-JWSBZJ6R4P';
 const gsc = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 ---
 
