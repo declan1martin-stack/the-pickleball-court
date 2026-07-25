@@ -32,6 +32,13 @@ export function organizationSchema() {
 		description:
 			'Canadian pickleball gear guides covering paddles, court shoes, and portable nets for players at every level.',
 		areaServed: 'CA',
+		email: 'hello@thepickleballcourt.ca',
+		founder: {
+			'@type': 'Person',
+			name: 'ThePickleballCourt.ca Editorial Team',
+			url: absoluteUrl('/about'),
+			jobTitle: 'Pickleball gear researchers',
+		},
 		sameAs: [] as string[],
 	};
 }
