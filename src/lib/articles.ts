@@ -50,14 +50,26 @@ export function getRelatedArticles(
 	return [...related, ...fallback].slice(0, limit);
 }
 
-export function categoryPath(category: ArticleEntry['data']['category']): string | null {
-	if (category === 'paddles' || category === 'shoes' || category === 'nets') {
+const GEAR_CATEGORIES = [
+	'paddles',
+	'shoes',
+	'nets',
+	'balls',
+	'bags',
+	'apparel',
+	'accessories',
+] as const;
+
+export type GearCategory = (typeof GEAR_CATEGORIES)[number];
+
+export function categoryPath(category: string): string | null {
+	if ((GEAR_CATEGORIES as readonly string[]).includes(category)) {
 		return `/gear/${category}`;
 	}
 	return '/guides';
 }
 
-export const CATEGORY_PILLARS: Record<'paddles' | 'shoes' | 'nets', { title: string; href: string }> = {
+export const CATEGORY_PILLARS: Partial<Record<GearCategory, { title: string; href: string }>> = {
 	paddles: {
 		title: 'How to Choose a Pickleball Paddle',
 		href: '/guides/how-to-choose-a-pickleball-paddle',

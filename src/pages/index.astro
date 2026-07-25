@@ -28,10 +28,34 @@ const categories = [
 		accent: 'from-primary-dark to-footer',
 	},
 	{
+		href: '/gear/balls',
+		title: 'Balls',
+		blurb: 'Outdoor X-40, indoor X-26, Fuse, and Dura Fast 40 packs for clubs and gyms.',
+		accent: 'from-secondary to-secondary-dark',
+	},
+	{
+		href: '/gear/bags',
+		title: 'Bags',
+		blurb: 'Sling bags, backpacks, and tour bags for paddles and club-night gear.',
+		accent: 'from-primary to-secondary',
+	},
+	{
 		href: '/gear/nets',
 		title: 'Nets',
 		blurb: 'Regulation portable nets for driveways, parks, and cottage courts.',
-		accent: 'from-secondary to-secondary-dark',
+		accent: 'from-secondary-dark to-primary-dark',
+	},
+	{
+		href: '/gear/apparel',
+		title: 'Apparel',
+		blurb: 'Skorts, UV arm sleeves, and court wear for outdoor Canadian sessions.',
+		accent: 'from-accent/90 to-secondary',
+	},
+	{
+		href: '/gear/accessories',
+		title: 'Accessories',
+		blurb: 'Overgrips, edge guard, and tungsten tape — small upgrades that add up.',
+		accent: 'from-footer to-primary-dark',
 	},
 ];
 
@@ -61,7 +85,7 @@ const pillars = [
 
 <Layout
 	title="Canadian Pickleball Gear Guides"
-	description="Compare top pickleball paddles, court shoes, and portable nets for Canadian players. High-intent gear guides with Amazon.ca availability."
+	description="Compare top pickleball paddles, court shoes, balls, bags, apparel, and portable nets for Canadian players. High-intent gear guides with Amazon.ca availability."
 	canonicalPath="/"
 >
 	<section class="relative overflow-hidden bg-primary-dark text-white">
@@ -72,7 +96,7 @@ const pillars = [
 				The Definitive Guide to Canadian Pickleball
 			</h1>
 			<p class="mt-6 max-w-2xl text-lg leading-relaxed text-footer-text">
-				Original buying guides and catalog picks for paddles, footwear, and portable nets — built for Amazon.ca shoppers and real Canadian courts.
+				Original buying guides and catalog picks for paddles, footwear, balls, bags, apparel, and portable nets — built for Amazon.ca shoppers and real Canadian courts.
 			</p>
 			<div class="mt-10 flex flex-col gap-3 sm:flex-row">
 				<a href="/guides/how-to-choose-a-pickleball-paddle" class="btn-primary">
@@ -112,7 +136,7 @@ const pillars = [
 				<h2 id="categories-heading" class="font-display text-3xl font-bold tracking-tight text-ink">Shop by Category</h2>
 				<p class="mt-3 text-ink-muted">Transactional category pages backed by our Amazon.ca product catalog.</p>
 			</div>
-			<div class="grid gap-5 md:grid-cols-3">
+			<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 				{categories.map((category) => (
 					<a
 						href={category.href}

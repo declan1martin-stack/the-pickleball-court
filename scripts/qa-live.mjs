@@ -29,7 +29,17 @@ async function headOk(url) {
   return get.ok || get.status === 206;
 }
 
-const pages = ['/', '/gear/paddles', '/gear/shoes', '/gear/nets', '/guides/best-pickleball-paddles-for-beginners'];
+const pages = [
+	'/',
+	'/gear/paddles',
+	'/gear/shoes',
+	'/gear/nets',
+	'/gear/balls',
+	'/gear/bags',
+	'/gear/apparel',
+	'/gear/accessories',
+	'/guides/best-pickleball-paddles-for-beginners',
+];
 
 console.log(`Live QA against ${SITE}`);
 

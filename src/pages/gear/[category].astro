@@ -9,7 +9,7 @@ import { getPriceTier } from '../../lib/products';
 const tierRank = { $: 1, $$: 2, $$$: 3 } as const;
 
 export function getStaticPaths() {
-	const categories = ['paddles', 'shoes', 'nets'] as const;
+	const categories = ['paddles', 'shoes', 'nets', 'balls', 'bags', 'apparel', 'accessories'] as const;
 	return categories.map((category) => ({
 		params: { category },
 	}));
@@ -37,6 +37,34 @@ const categoryMeta = {
 		intro:
 			'Set up a regulation court anywhere with durable portable nets designed for fast assembly, stable tension, and frequent Canadian outdoor use.',
 	},
+	balls: {
+		h1: 'Best Pickleball Balls in Canada',
+		description:
+			'Shop outdoor X-40, indoor X-26, ONIX Fuse, and Dura Fast 40 pickleballs for Canadian clubs, gyms, and driveways via Amazon.ca.',
+		intro:
+			'Pick indoor or outdoor balls by court surface — tournament favourites and practice packs sorted from $ to $$$.',
+	},
+	bags: {
+		h1: 'Best Pickleball Bags in Canada',
+		description:
+			'Compare sling bags, backpacks, and tour bags for paddles, balls, and club-night gear from JOOLA, Selkirk, and value brands on Amazon.ca.',
+		intro:
+			'Carry paddles and accessories to the court with backpacks, slings, and tour bags built for Canadian club and tournament travel.',
+	},
+	apparel: {
+		h1: 'Best Pickleball Apparel in Canada',
+		description:
+			'Shop skorts, arm sleeves, and court apparel for outdoor Canadian pickleball — UV coverage and mobility for club play.',
+		intro:
+			'Dress for outdoor sessions with skorts, UV arm sleeves, and court-ready pieces that move with you at the kitchen.',
+	},
+	accessories: {
+		h1: 'Best Pickleball Accessories in Canada',
+		description:
+			'Overgrips, edge guard tape, and tungsten weighting tape for Canadian paddles — small upgrades that improve feel and durability.',
+		intro:
+			'Refresh grips, protect edges, and fine-tune swing weight with accessories every regular player eventually needs.',
+	},
 } as const;
 
 const { category } = Astro.params;
@@ -50,7 +78,9 @@ const products = gear
 		if (tierDiff !== 0) return tierDiff;
 		return a.name.localeCompare(b.name);
 	});
-const relatedArticles = (await getArticlesByCategory(typedCategory)).slice(0, 3);
+const relatedArticles = (
+	await getArticlesByCategory(typedCategory as Parameters<typeof getArticlesByCategory>[0])
+).slice(0, 3);
 const pillar = CATEGORY_PILLARS[typedCategory];
 ---
 
@@ -68,10 +98,12 @@ const pillar = CATEGORY_PILLARS[typedCategory];
 			<h1 class="mt-3 max-w-4xl text-4xl font-black tracking-tight text-zinc-900 sm:text-5xl">{meta.h1}</h1>
 			<p class="mt-5 max-w-3xl text-lg leading-relaxed text-zinc-600">{meta.intro}</p>
 			<p class="mt-4 text-sm font-semibold text-zinc-500">{products.length} products curated for Amazon.ca shoppers</p>
-			<p class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-950">
-				Start with our pillar guide:
-				<a href={pillar.href} class="font-bold underline">{pillar.title}</a>
-			</p>
+			{pillar && (
+				<p class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-950">
+					Start with our pillar guide:
+					<a href={pillar.href} class="font-bold underline">{pillar.title}</a>
+				</p>
+			)}
 		</div>
 	</section>
 
