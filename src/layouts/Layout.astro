@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "The definitive hub for Canadian pickleball court directories, premium gear reviews, and performance equipment guides." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | ThePickleballCourt.ca</title>
+		<meta name="description" content={description} />
+		
+		<!-- Strict SEO Meta Layout -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta name="twitter:card" content="summary_large_image" />
+	</head>
+	<body class="bg-zinc-50 text-zinc-900 min-h-screen flex flex-col antialiased">
+		
+		<!-- Navigation Bar -->
+		<header class="bg-white border-b border-zinc-200 sticky top-0 z-50 backdrop-blur-md bg-white/90">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+				<a href="/" class="text-xl font-black tracking-tight text-emerald-700 hover:text-emerald-800 transition">
+					ThePickleballCourt<span class="text-zinc-400">.ca</span>
+				</a>
+				<nav class="flex items-center gap-6 text-sm font-semibold text-zinc-600">
+					<a href="/gear/paddles" class="hover:text-emerald-700 transition">Paddles</a>
+					<a href="/gear/shoes" class="hover:text-emerald-700 transition">Footwear</a>
+					<a href="/gear/nets" class="hover:text-emerald-700 transition">Nets</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Main Content Viewport -->
+		<main class="flex-grow">
+			<slot />
+		</main>
+
+		<!-- Amazon Compliance Compliant Footer -->
+		<footer class="bg-zinc-900 text-zinc-400 border-t border-zinc-800 py-12 mt-20">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+				<div class="flex flex-col sm:flex-row justify-between items-center gap-6 border-b border-zinc-800 pb-8 mb-8">
+					<p class="text-white font-bold text-lg">ThePickleballCourt.ca</p>
+					<p class="text-xs max-w-xl text-zinc-500 leading-relaxed">
+						Disclaimer: As an Amazon Associate, this website earns commissions from qualifying purchases made through our product links at no additional cost to the consumer.
+					</p>
+				</div>
+				<p class="text-xs text-zinc-600">&copy; 2026 ThePickleballCourt.ca. All rights reserved. Built for the Canadian Pickleball Community.</p>
+			</div>
+		</footer>
+
+	</body>
+</html>
