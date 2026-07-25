@@ -4,60 +4,87 @@ import '../styles/global.css';
 interface Props {
 	title: string;
 	description?: string;
+	canonicalPath?: string;
 }
 
-const { title, description = "The definitive hub for Canadian pickleball court directories, premium gear reviews, and performance equipment guides." } = Astro.props;
+const {
+	title,
+	description = 'The definitive hub for Canadian pickleball court directories, premium gear reviews, and performance equipment guides.',
+	canonicalPath = Astro.url.pathname,
+} = Astro.props;
+
+const siteUrl = 'https://thepickleballcourt.ca';
+const canonicalUrl = new URL(canonicalPath, siteUrl).href;
+const ogTitle = `${title} | ThePickleballCourt.ca`;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en-CA" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={canonicalUrl} />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title} | ThePickleballCourt.ca</title>
+		<title>{ogTitle}</title>
 		<meta name="description" content={description} />
-		
-		<!-- Strict SEO Meta Layout -->
-		<meta property="og:title" content={title} />
+		<meta name="robots" content="index,follow,max-image-preview:large" />
+		<meta name="theme-color" content="#047857" />
+
+		<!-- Open Graph -->
+		<meta property="og:site_name" content="ThePickleballCourt.ca" />
+		<meta property="og:locale" content="en_CA" />
+		<meta property="og:title" content={ogTitle} />
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+
+		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={ogTitle} />
+		<meta name="twitter:description" content={description} />
 	</head>
 	<body class="bg-zinc-50 text-zinc-900 min-h-screen flex flex-col antialiased">
-		
-		<!-- Navigation Bar -->
-		<header class="bg-white border-b border-zinc-200 sticky top-0 z-50 backdrop-blur-md bg-white/90">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-				<a href="/" class="text-xl font-black tracking-tight text-emerald-700 hover:text-emerald-800 transition">
+		<a
+			href="#main-content"
+			class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:rounded-md focus:bg-emerald-700 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+		>
+			Skip to content
+		</a>
+
+		<header class="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/90 backdrop-blur-md">
+			<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+				<a
+					href="/"
+					class="text-xl font-black tracking-tight text-emerald-700 transition hover:text-emerald-800"
+					aria-label="ThePickleballCourt.ca home"
+				>
 					ThePickleballCourt<span class="text-zinc-400">.ca</span>
 				</a>
-				<nav class="flex items-center gap-6 text-sm font-semibold text-zinc-600">
-					<a href="/gear/paddles" class="hover:text-emerald-700 transition">Paddles</a>
-					<a href="/gear/shoes" class="hover:text-emerald-700 transition">Footwear</a>
-					<a href="/gear/nets" class="hover:text-emerald-700 transition">Nets</a>
+				<nav class="flex items-center gap-4 text-sm font-semibold text-zinc-600 sm:gap-6" aria-label="Primary">
+					<a href="/gear/paddles" class="transition hover:text-emerald-700">Paddles</a>
+					<a href="/gear/shoes" class="transition hover:text-emerald-700">Footwear</a>
+					<a href="/gear/nets" class="transition hover:text-emerald-700">Nets</a>
 				</nav>
 			</div>
 		</header>
 
-		<!-- Main Content Viewport -->
-		<main class="flex-grow">
+		<main id="main-content" class="flex-grow">
 			<slot />
 		</main>
 
-		<!-- Amazon Compliance Compliant Footer -->
-		<footer class="bg-zinc-900 text-zinc-400 border-t border-zinc-800 py-12 mt-20">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-				<div class="flex flex-col sm:flex-row justify-between items-center gap-6 border-b border-zinc-800 pb-8 mb-8">
-					<p class="text-white font-bold text-lg">ThePickleballCourt.ca</p>
-					<p class="text-xs max-w-xl text-zinc-500 leading-relaxed">
+		<footer class="mt-20 border-t border-zinc-800 bg-zinc-900 py-12 text-zinc-400">
+			<div class="mx-auto max-w-7xl px-4 text-center sm:px-6 sm:text-left lg:px-8">
+				<div class="mb-8 flex flex-col items-center justify-between gap-6 border-b border-zinc-800 pb-8 sm:flex-row">
+					<p class="text-lg font-bold text-white">ThePickleballCourt.ca</p>
+					<p class="max-w-xl text-xs leading-relaxed text-zinc-500">
 						Disclaimer: As an Amazon Associate, this website earns commissions from qualifying purchases made through our product links at no additional cost to the consumer.
 					</p>
 				</div>
-				<p class="text-xs text-zinc-600">&copy; 2026 ThePickleballCourt.ca. All rights reserved. Built for the Canadian Pickleball Community.</p>
+				<p class="text-xs text-zinc-600">
+					&copy; 2026 ThePickleballCourt.ca. All rights reserved. Built for the Canadian Pickleball Community.
+				</p>
 			</div>
 		</footer>
-
 	</body>
 </html>

@@ -1,14 +1,103 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import gear from '../data/gear.json';
+
+const featured = gear.slice(0, 3);
+
+const categories = [
+	{
+		href: '/gear/paddles',
+		title: 'Paddles',
+		blurb: 'JOOLA, Selkirk, and Six Zero paddles built for Canadian court conditions.',
+		accent: 'from-emerald-700 to-emerald-900',
+	},
+	{
+		href: '/gear/shoes',
+		title: 'Footwear',
+		blurb: 'Court-stable Skechers and ASICS shoes for hard stops and lateral cuts.',
+		accent: 'from-zinc-800 to-zinc-950',
+	},
+	{
+		href: '/gear/nets',
+		title: 'Portable Nets',
+		blurb: 'Regulation portable nets for driveways, parks, and cottage courts.',
+		accent: 'from-emerald-800 to-zinc-900',
+	},
+];
 ---
 
-<Layout title="Canadian Pickleball Gear & Court Guides">
-	<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-		<h1 class="text-4xl sm:text-5xl font-black tracking-tight text-zinc-900">
-			Find the right pickleball gear for Canadian courts
-		</h1>
-		<p class="mt-4 text-lg text-zinc-600 max-w-2xl">
-			Premium paddle, footwear, and net guides built for high-intent shoppers across Canada.
-		</p>
+<Layout
+	title="The Definitive Guide to Canadian Pickleball"
+	description="Compare top pickleball paddles, court shoes, and portable nets for Canadian players. High-intent gear guides with Amazon.ca availability."
+	canonicalPath="/"
+>
+	<section class="relative overflow-hidden bg-zinc-950 text-white">
+		<div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(16,185,129,0.28),_transparent_45%)]" />
+		<div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+			<p class="text-sm font-bold uppercase tracking-[0.2em] text-emerald-400">Canadian Pickleball Gear Hub</p>
+			<h1 class="mt-4 max-w-4xl text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+				The Definitive Guide to Canadian Pickleball
+			</h1>
+			<p class="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-300">
+				High-intent product research for paddles, footwear, and portable nets — curated for players shopping Amazon.ca and competing on Canadian courts.
+			</p>
+			<div class="mt-10 flex flex-col gap-3 sm:flex-row">
+				<a
+					href="/gear/paddles"
+					class="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-emerald-500"
+				>
+					Shop Best Paddles
+				</a>
+				<a
+					href="/gear/shoes"
+					class="inline-flex items-center justify-center rounded-xl border border-zinc-600 bg-zinc-900/60 px-6 py-3 text-sm font-bold text-white transition hover:border-emerald-500 hover:text-emerald-300"
+				>
+					Browse Court Shoes
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="categories-heading">
+		<div class="mb-8 max-w-2xl">
+			<h2 id="categories-heading" class="text-3xl font-black tracking-tight text-zinc-900">Shop by Category</h2>
+			<p class="mt-3 text-zinc-600">Jump straight into transactional category pages optimized for Canadian search intent.</p>
+		</div>
+		<div class="grid gap-5 md:grid-cols-3">
+			{categories.map((category) => (
+				<a
+					href={category.href}
+					class={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${category.accent} p-6 text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg`}
+				>
+					<h3 class="text-2xl font-black">{category.title}</h3>
+					<p class="mt-3 text-sm leading-relaxed text-zinc-200">{category.blurb}</p>
+					<span class="mt-6 inline-flex text-sm font-bold text-emerald-300 transition group-hover:translate-x-1">
+						View guides →
+					</span>
+				</a>
+			))}
+		</div>
+	</section>
+
+	<section class="border-t border-zinc-200 bg-white">
+		<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="featured-heading">
+			<div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+				<div>
+					<h2 id="featured-heading" class="text-3xl font-black tracking-tight text-zinc-900">Featured Gear</h2>
+					<p class="mt-3 max-w-2xl text-zinc-600">
+						Top searched paddles and performance picks pulled live from our Canadian gear catalog.
+					</p>
+				</div>
+				<a href="/gear/paddles" class="text-sm font-bold text-emerald-700 transition hover:text-emerald-800">
+					See all paddles →
+				</a>
+			</div>
+			<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+				{featured.map((product) => (
+					<ProductCard product={product} />
+				))}
+			</div>
+		</div>
 	</section>
 </Layout>
