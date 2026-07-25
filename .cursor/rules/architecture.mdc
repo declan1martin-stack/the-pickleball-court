@@ -1,0 +1,26 @@
+---
+description: Core architecture and files that must not be broken
+alwaysApply: true
+---
+
+# Architecture — thepickleballcourt.ca
+
+- Astro affiliate site. Domain: https://thepickleballcourt.ca (`site` in `astro.config.mjs`).
+- Product source of truth: `src/data/gear.json`. Reference products by **ID only** — never duplicate product fields into articles or components.
+- Extend existing files; do not rewrite from scratch.
+
+## Keep working
+
+| Path | Role |
+|---|---|
+| `Layout.astro` | Nav, canonical/OG/Twitter, Amazon footer disclosure |
+| `ProductCard.astro` | Product display + affiliate CTA |
+| `index.astro` | Homepage |
+| `gear/[category].astro` | Paddles / shoes / nets |
+| `src/content/articles` | MDX articles (typed content collection) |
+| `src/components` | Reusable UI |
+| `src/lib/seo.ts` | SEO / JSON-LD helpers |
+
+## Protected routes
+
+`/`, `/gear/paddles`, `/gear/shoes`, `/gear/nets`, `/sitemap-index.xml`

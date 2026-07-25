@@ -1,0 +1,44 @@
+# .cursorrules — thepickleballcourt.ca
+
+Persistent rules for every Cursor session in this repo. Canonical copies also live in `.cursor/rules/*.mdc` (alwaysApply).
+
+## Project
+- Pickleball affiliate site built with **Astro**. Monetized via Amazon Associates, tag `thepickleb050-20`.
+- Live domain: https://thepickleballcourt.ca. `site` is set in `astro.config.mjs`.
+- Product source of truth: `src/data/gear.json`. Never duplicate product data elsewhere — reference products by ID.
+
+## Architecture (do not break)
+- `Layout.astro` — nav, canonical/OG/Twitter meta, Amazon disclosure footer.
+- `ProductCard.astro` — product display + nofollow CTA.
+- `index.astro` — homepage.
+- `gear/[category].astro` — paddles / shoes / nets category pages.
+- Articles live in `src/content/articles` (MDX, typed via content collection schema).
+- Reusable UI in `src/components`. SEO helpers in `src/lib/seo.ts`.
+- Extend existing files; do not rewrite from scratch. Keep existing routes working: `/`, `/gear/paddles`, `/gear/shoes`, `/gear/nets`, `/sitemap-index.xml`.
+
+## Affiliate & compliance (hard rules)
+1. Every Amazon URL MUST include `tag=thepickleb050-20`. Never emit one without it.
+2. All affiliate links: `target="_blank"` and `rel="sponsored nofollow noopener"`. Route every affiliate link through `AffiliateButton.astro`.
+3. Do NOT display prices as current/authoritative (Amazon Operating Agreement). Use "Check current price on Amazon" CTAs and price tiers ($/$$/$$$) or "as of" labeling — never a guaranteed live price.
+4. FTC + Amazon disclosure on every page with affiliate links (top-of-body `Disclosure.astro` + footer).
+5. Never fabricate prices, specs, weights, materials, ratings, or review counts. If missing, insert `{{ TODO: confirm }}` — do not guess or hallucinate.
+
+## Content standards
+- Original, genuinely useful, written for real pickleball players across all levels. No thin/spun filler, no keyword stuffing.
+- Reference only products that exist in `gear.json`.
+- Articles: clear H1, hierarchical H2/H3, fast-answer intro, comparison tables where useful, FAQ block (feeds FAQPage schema), pros/cons, ≥3 internal links + link to relevant category page.
+
+## SEO
+- Every page: unique title (≤60 chars), meta description (≤155 chars), canonical, OG + Twitter with per-page image.
+- JSON-LD required: Article on articles, Product/Review where applicable, FAQPage, BreadcrumbList, site-wide Organization.
+- Maintain internal linking and keep the sitemap complete after builds.
+
+## Quality gates
+- Run `npm run build` after every meaningful change. Never commit a red build.
+- Semantic HTML, alt text on all images, WCAG AA contrast, keyboard navigable.
+- Use Astro `<Image>` with explicit width/height to avoid layout shift; lazy-load below the fold.
+- Mobile-first. Comparison tables must degrade gracefully on small screens.
+
+## Commits
+- Small, focused commits with conventional messages (`feat:`, `fix:`, `chore:`).
+- List any `{{ TODO: confirm }}` items introduced in the PR/summary.

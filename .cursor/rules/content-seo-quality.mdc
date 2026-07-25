@@ -1,0 +1,30 @@
+---
+description: Content standards, SEO, quality gates, and commit style
+alwaysApply: true
+---
+
+# Content, SEO & quality
+
+## Content
+
+- Original, useful writing for real players (all levels). No thin/spun filler or keyword stuffing.
+- Reference only products that exist in `gear.json`.
+- Articles: clear H1, hierarchical H2/H3, fast-answer intro, comparison tables when useful, FAQ (FAQPage schema), pros/cons, ≥3 internal links + link to the relevant category page.
+
+## SEO
+
+- Every page: unique title (≤60), meta description (≤155), canonical, OG + Twitter with per-page image.
+- JSON-LD: Article on articles; Product/Review where applicable; FAQPage; BreadcrumbList; site-wide Organization.
+- Keep internal linking strong; confirm sitemap includes new routes after build.
+
+## Quality gates
+
+- Run `npm run build` after every meaningful change. Never commit a red build.
+- Semantic HTML, alt text on all images, WCAG AA contrast, keyboard navigable.
+- Prefer Astro `<Image>` with explicit width/height; lazy-load below the fold.
+- Mobile-first; comparison tables must degrade on small screens.
+
+## Commits
+
+- Small, focused conventional commits: `feat:`, `fix:`, `chore:`.
+- List any new `{{ TODO: confirm }}` items in the summary.
