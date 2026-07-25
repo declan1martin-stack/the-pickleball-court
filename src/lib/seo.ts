@@ -1,7 +1,7 @@
 export const SITE_URL = 'https://thepickleballcourt.ca';
 export const SITE_NAME = 'ThePickleballCourt.ca';
 export const DEFAULT_OG_IMAGE =
-	'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1200&q=80&auto=format&fit=crop';
+	'https://images.unsplash.com/photo-1762423570127-c36ff11b883f?w=1200&q=80&auto=format&fit=crop';
 
 export function absoluteUrl(path = '/'): string {
 	return new URL(path, SITE_URL).href;

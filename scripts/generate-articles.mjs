@@ -4,26 +4,27 @@ import path from 'node:path';
 const dir = 'src/content/articles';
 fs.mkdirSync(dir, { recursive: true });
 
+// Category defaults — must be real pickleball imagery (not tennis/badminton/running/cycling stock).
 const hero = {
 	paddles: [
-		'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1200&q=80&auto=format&fit=crop',
-		'Pickleball paddle and ball on a court',
+		'https://images.unsplash.com/photo-1762423570127-c36ff11b883f?w=1200&q=80&auto=format&fit=crop',
+		'Player holding a pickleball paddle on an outdoor court',
 	],
 	shoes: [
-		'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&q=80&auto=format&fit=crop',
-		'Court shoes on a hard outdoor surface',
+		'https://images.unsplash.com/photo-1767627042725-865125616a98?w=1200&q=80&auto=format&fit=crop',
+		'Court shoes on a blue and green outdoor hard court',
 	],
 	nets: [
-		'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=1200&q=80&auto=format&fit=crop',
-		'Outdoor court net setup ready for play',
+		'https://images.unsplash.com/photo-1779209219762-681ff11296d6?w=1200&q=80&auto=format&fit=crop',
+		'Outdoor pickleball court with a regulation-style net',
 	],
 	guides: [
-		'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1200&q=80&auto=format&fit=crop',
-		'Athletes competing on an outdoor court',
+		'https://images.unsplash.com/photo-1747027694225-cbf12dd20826?w=1200&q=80&auto=format&fit=crop',
+		'Players rallying with pickleball paddles on an outdoor court',
 	],
 	rules: [
-		'https://images.unsplash.com/photo-1461896836934-ffe607ba6851?w=1200&q=80&auto=format&fit=crop',
-		'Players warming up on a sports court',
+		'https://images.unsplash.com/photo-1761644658016-324918bc373c?w=1200&q=80&auto=format&fit=crop',
+		'Players competing with paddles and a yellow pickleball on a blue court',
 	],
 };
 

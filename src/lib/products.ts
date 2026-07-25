@@ -61,3 +61,23 @@ export function isPriceTier(price: string): boolean {
 	const trimmed = price.trim();
 	return trimmed === '$' || trimmed === '$$' || trimmed === '$$$';
 }
+
+export type ProductGender = 'mens' | 'womens' | 'unisex';
+export type ComfortTag =
+	| 'wide-fit'
+	| 'arch-support'
+	| 'plantar-fasciitis-relief'
+	| 'extra-cushioning'
+	| 'low-impact';
+
+/** Missing gender is treated as unisex so products stay visible under that filter. */
+export function getEffectiveGender(product: Product): ProductGender {
+	const gender = (product as { gender?: ProductGender }).gender;
+	if (gender === 'mens' || gender === 'womens' || gender === 'unisex') return gender;
+	return 'unisex';
+}
+
+export function getComfortTags(product: Product): ComfortTag[] {
+	const tags = (product as { comfortTags?: ComfortTag[] }).comfortTags;
+	return Array.isArray(tags) ? tags : [];
+}

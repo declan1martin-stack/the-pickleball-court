@@ -12,7 +12,9 @@
     ],
     "description": "Looking for a power paddle that still holds up on Canadian outdoor courts? The JOOLA Perseus 16mm is a top search for intermediate-to-advanced players who want drive speed, spin generation, and a forgiving sweet spot for mixed doubles.",
     "affiliateUrl": "https://www.amazon.ca/s?k=JOOLA+Perseus+16mm+pickleball+paddle&tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0C4M4X7RD.jpg"
+    "imageUrl": "/images/products/B0C4M4X7RD.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "joola-hyperion-cas-16",
@@ -27,7 +29,9 @@
     ],
     "description": "The Hyperion CAS 16 is one of Canada's most searched JOOLA paddles for players upgrading from recreational gear. Buyers choose it for spin-heavy third-shot drops and reliable control when the ball skids on outdoor acrylic courts.",
     "affiliateUrl": "https://www.amazon.ca/s?k=JOOLA+Hyperion+CAS+16+pickleball+paddle&tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0B57PQ5T1.jpg"
+    "imageUrl": "/images/products/B0B57PQ5T1.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "joola-ben-johns-hyperion-c2",
@@ -42,7 +46,9 @@
     ],
     "description": "Shoppers hunting 'best JOOLA pickleball paddle Canada' consistently land on the Ben Johns Hyperion C2. It delivers pro-inspired geometry for players who want reach, spin, and consistency across indoor gyms and outdoor community courts.",
     "affiliateUrl": "https://www.amazon.ca/s?k=JOOLA+Ben+Johns+Hyperion+C2+pickleball+paddle&tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0B57PZZ85.jpg"
+    "imageUrl": "/images/products/B0B57PZZ85.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "selkirk-vanguard-power-air-invikta",
@@ -57,7 +63,9 @@
     ],
     "description": "Selkirk's VANGUARD Power Air Invikta is a premium pick for Canadians who want maximum pop without a harsh feel. Ideal if you search for power paddles that still reset cleanly when opponents attack your feet.",
     "affiliateUrl": "https://www.amazon.ca/s?k=Selkirk+VANGUARD+Power+Air+Invikta+pickleball+paddle&tag=thepickleb050-20",
-    "imageUrl": "/images/products/selkirk-power-air-invikta.png"
+    "imageUrl": "/images/products/selkirk-power-air-invikta.png",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "selkirk-luxx-control-air-epic",
@@ -72,7 +80,9 @@
     ],
     "description": "If your game is built on placement and patience, the LUXX Control Air Epic is a high-intent Selkirk option. Canadian buyers favour it for soft-game mastery, consistent touch, and reduced mishits under pressure.",
     "affiliateUrl": "https://www.amazon.ca/s?k=Selkirk+LUXX+Control+Air+Epic+pickleball+paddle&tag=thepickleb050-20",
-    "imageUrl": "/images/products/selkirk-luxx-official.jpg"
+    "imageUrl": "/images/products/selkirk-luxx-official.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "selkirk-slk-halo-control-xl",
@@ -87,7 +97,9 @@
     ],
     "description": "The SLK Halo Control XL is a go-to upgrade paddle for recreational Canadians who want Selkirk quality without flagship pricing. Searchers looking for control, forgiveness, and everyday durability consistently shortlist this model.",
     "affiliateUrl": "https://www.amazon.ca/s?k=Selkirk+SLK+Halo+Control+XL+pickleball+paddle&tag=thepickleb050-20",
-    "imageUrl": "/images/products/selkirk-slk-halo-control-xl.jpg"
+    "imageUrl": "/images/products/selkirk-slk-halo-control-xl.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "six-zero-double-black-diamond-control",
@@ -102,7 +114,9 @@
     ],
     "description": "The Double Black Diamond Control is a cult favourite for spin-focused players shopping Amazon.ca. Expect sticky carbon feel, precise dinks, and the kind of dwell time that helps you shape third-shot drops on windy outdoor courts.",
     "affiliateUrl": "https://www.amazon.ca/s?k=Six+Zero+Double+Black+Diamond+Control+pickleball+paddle&tag=thepickleb050-20",
-    "imageUrl": "/images/products/six-zero-dbd-control.webp"
+    "imageUrl": "/images/products/six-zero-dbd-control.webp",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "six-zero-ruby-16mm",
@@ -117,7 +131,9 @@
     ],
     "description": "The Six Zero Ruby 16mm hits the sweet spot for players who want modern thermoformed power with manageable weight. A frequent Amazon Canada search for intermediate players ready to step into carbon-face performance.",
     "affiliateUrl": "https://www.amazon.ca/s?k=Six+Zero+Ruby+16mm+pickleball+paddle&tag=thepickleb050-20",
-    "imageUrl": "/images/products/six-zero-ruby.png"
+    "imageUrl": "/images/products/six-zero-ruby.png",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "skechers-viper-court-pro",
@@ -134,7 +150,13 @@
     ],
     "description": "Skechers Viper Court Pro for Canadian players who need Arch Fit support and Goodyear rubber traction for hard-court kitchen stops and lateral cuts. Skill level: intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0B5FRV59F/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0B5FRV59F.jpg"
+    "imageUrl": "/images/products/B0B5FRV59F.jpg",
+    "gender": "mens",
+    "comfortTags": [
+      "wide-fit",
+      "arch-support",
+      "extra-cushioning"
+    ]
   },
   {
     "id": "skechers-viper-court-shoe",
@@ -149,7 +171,11 @@
     ],
     "description": "The original Skechers Viper Court remains a high-intent footwear search for Canadian beginners and intermediates. Shoppers want comfort out of the box, solid side-to-side support, and a shoe purpose-built for pickleball movement patterns.",
     "affiliateUrl": "https://www.amazon.ca/s?k=Skechers+Viper+Court+pickleball+shoes&tag=thepickleb050-20",
-    "imageUrl": "/images/products/skechers-viper-court.jpg"
+    "imageUrl": "/images/products/skechers-viper-court.jpg",
+    "gender": "mens",
+    "comfortTags": [
+      "extra-cushioning"
+    ]
   },
   {
     "id": "asics-gel-dedicate-8",
@@ -164,7 +190,11 @@
     ],
     "description": "Canadian players searching for affordable ASICS pickleball footwear often choose the Gel-Dedicate 8. It delivers trusted court traction and durability for players logging multiple sessions per week without flagship pricing.",
     "affiliateUrl": "https://www.amazon.ca/s?k=ASICS+Gel-Dedicate+8+court+shoes&tag=thepickleb050-20",
-    "imageUrl": "/images/products/asics-gel-dedicate-8.jpg"
+    "imageUrl": "/images/products/asics-gel-dedicate-8.jpg",
+    "comfortTags": [
+      "extra-cushioning",
+      "low-impact"
+    ]
   },
   {
     "id": "asics-gel-resolution-9",
@@ -179,7 +209,8 @@
     ],
     "description": "The Gel-Resolution 9 is a top-tier court shoe search among serious Canadian pickleball athletes who demand lockdown support. Expect elite stability when lunging for wide dinks and explosive recovery steps after overheads.",
     "affiliateUrl": "https://www.amazon.ca/s?k=ASICS+Gel-Resolution+9+court+shoes&tag=thepickleb050-20",
-    "imageUrl": "/images/products/asics-gel-resolution-9.jpg"
+    "imageUrl": "/images/products/asics-gel-resolution-9.jpg",
+    "comfortTags": []
   },
   {
     "id": "shoe-turafo-court-unisex",
@@ -196,7 +227,12 @@
     ],
     "description": "Budget unisex court sneakers for Canadian players who want lightweight breathable shoes for pickleball, badminton, or tennis without premium pricing. Skill level: beginner.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0H1NGHQCH/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0H1NGHQCH.jpg"
+    "imageUrl": "/images/products/B0H1NGHQCH.jpg",
+    "gender": "unisex",
+    "comfortTags": [
+      "extra-cushioning",
+      "low-impact"
+    ]
   },
   {
     "id": "shoe-hiuzylqx-indoor-court",
@@ -213,7 +249,11 @@
     ],
     "description": "Value indoor court shoes for recreational pickleball and multi-sport play when you want non-slip grip and cushioning on a beginner budget. Skill level: beginner.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0F6BKQ19P/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0F6BKQ19P.jpg"
+    "imageUrl": "/images/products/B0F6BKQ19P.jpg",
+    "comfortTags": [
+      "extra-cushioning",
+      "low-impact"
+    ]
   },
   {
     "id": "shoe-asics-gel-dedicate-5",
@@ -228,7 +268,12 @@
     ],
     "description": "An older-generation ASICS court shoe still popular as a value option for Canadian club players who want GEL cushioning and TRUSSTIC stability without flagship pricing. Skill level: beginner to intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B01N3TA0FC/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B01N3TA0FC.jpg"
+    "imageUrl": "/images/products/B01N3TA0FC.jpg",
+    "gender": "mens",
+    "comfortTags": [
+      "extra-cushioning",
+      "low-impact"
+    ]
   },
   {
     "id": "shoe-kswiss-court-express-men",
@@ -244,7 +289,11 @@
     ],
     "description": "Entry-level K-Swiss pickleball shoe for weekend Canadian players who want court-specific traction and cushioning without jumping to a performance model. Skill level: beginner.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0BW14ZBQQ/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0BW14ZBQQ.jpg"
+    "imageUrl": "/images/products/B0BW14ZBQQ.jpg",
+    "gender": "mens",
+    "comfortTags": [
+      "extra-cushioning"
+    ]
   },
   {
     "id": "shoe-kswiss-hypercourt-express-2-men",
@@ -261,7 +310,11 @@
     ],
     "description": "A lighter performance court shoe for intermediate Canadian players who want durable outsole rubber and midfoot stability for tennis-to-pickleball crossover play. Skill level: intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B08VNWF2YY/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B08VNWF2YY.jpg"
+    "imageUrl": "/images/products/B08VNWF2YY.jpg",
+    "gender": "mens",
+    "comfortTags": [
+      "extra-cushioning"
+    ]
   },
   {
     "id": "shoe-fitville-amadeus-v2-men",
@@ -277,7 +330,14 @@
     ],
     "description": "Wide-fit FitVille court shoes for Canadian men who need a roomy toe box and arch support for pickleball and other racquet sports. Skill level: beginner to intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0C69JCZQC/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0C69JCZQC.jpg"
+    "imageUrl": "/images/products/B0C69JCZQC.jpg",
+    "gender": "mens",
+    "comfortTags": [
+      "wide-fit",
+      "arch-support",
+      "extra-cushioning",
+      "low-impact"
+    ]
   },
   {
     "id": "shoe-fitville-wide-men-plantar",
@@ -293,7 +353,14 @@
     ],
     "description": "Wide pickleball court shoes aimed at Canadian men dealing with plantar fasciitis or needing extra arch support and toe room. Skill level: beginner to intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B09DS6WQJ4/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B09DS6WQJ4.jpg"
+    "imageUrl": "/images/products/B09DS6WQJ4.jpg",
+    "gender": "mens",
+    "comfortTags": [
+      "wide-fit",
+      "arch-support",
+      "plantar-fasciitis-relief",
+      "extra-cushioning"
+    ]
   },
   {
     "id": "shoe-fitville-extra-wide-men",
@@ -309,7 +376,15 @@
     ],
     "description": "Extra-wide FitVille court shoes for Canadian players who want a roomy toe box, arch support, and lightweight breathability for pickleball and badminton. Skill level: beginner to intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0C91M8M1L/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0C91M8M1L.jpg"
+    "imageUrl": "/images/products/B0C91M8M1L.jpg",
+    "gender": "mens",
+    "comfortTags": [
+      "wide-fit",
+      "arch-support",
+      "plantar-fasciitis-relief",
+      "extra-cushioning",
+      "low-impact"
+    ]
   },
   {
     "id": "shoe-kswiss-court-express-women",
@@ -326,7 +401,11 @@
     ],
     "description": "Women’s entry-level K-Swiss pickleball shoe for Canadian recreational players wanting court traction and Ortholite comfort at a value tier. Skill level: beginner.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0BWFVHQNV/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0BWFVHQNV.jpg"
+    "imageUrl": "/images/products/B0BWFVHQNV.jpg",
+    "gender": "womens",
+    "comfortTags": [
+      "extra-cushioning"
+    ]
   },
   {
     "id": "shoe-kswiss-express-light-women",
@@ -343,7 +422,12 @@
     ],
     "description": "A lighter women’s K-Swiss pickleball shoe for frequent Canadian players who want a secure heel, durable DragGuard rubber, and a court-ready wide toe box. Skill level: intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B07YRZT19S/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B07YRZT19S.jpg"
+    "imageUrl": "/images/products/B07YRZT19S.jpg",
+    "gender": "womens",
+    "comfortTags": [
+      "wide-fit",
+      "extra-cushioning"
+    ]
   },
   {
     "id": "shoe-kswiss-hypercourt-express-2-women",
@@ -360,7 +444,11 @@
     ],
     "description": "Women’s Hypercourt Express 2 for Canadian players who want a stable, cushioned tennis/pickleball crossover shoe with durable AOSTA outsole rubber. Skill level: intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0841HZQN7/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0841HZQN7.jpg"
+    "imageUrl": "/images/products/B0841HZQN7.jpg",
+    "gender": "womens",
+    "comfortTags": [
+      "extra-cushioning"
+    ]
   },
   {
     "id": "shoe-skechers-viper-court-women",
@@ -377,7 +465,12 @@
     ],
     "description": "Women’s Skechers Viper Court pickleball shoes with Arch Fit support and Goodyear rubber for Canadian indoor and outdoor hard courts. Skill level: beginner to intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0DL4GRLMF/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0DL4GRLMF.jpg"
+    "imageUrl": "/images/products/B0DL4GRLMF.jpg",
+    "gender": "womens",
+    "comfortTags": [
+      "arch-support",
+      "extra-cushioning"
+    ]
   },
   {
     "id": "shoe-skechers-viper-court-rally-women",
@@ -393,7 +486,11 @@
     ],
     "description": "Skechers Viper Court Rally for Canadian women who want a lighter court shoe with Goodyear traction for pickleball and padel-style play. Skill level: beginner to intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0CPBV1ZDC/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0CPBV1ZDC.jpg"
+    "imageUrl": "/images/products/B0CPBV1ZDC.jpg",
+    "gender": "womens",
+    "comfortTags": [
+      "extra-cushioning"
+    ]
   },
   {
     "id": "shoe-fitville-wide-women",
@@ -409,7 +506,13 @@
     ],
     "description": "Extra-wide women’s FitVille pickleball shoes for Canadian players needing a roomy toe box and arch support for indoor and outdoor court sessions. Skill level: beginner to intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0DWMY6K6X/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0DWMY6K6X.jpg"
+    "imageUrl": "/images/products/B0DWMY6K6X.jpg",
+    "gender": "womens",
+    "comfortTags": [
+      "wide-fit",
+      "arch-support",
+      "extra-cushioning"
+    ]
   },
   {
     "id": "franklin-signature-portable-net",
@@ -424,7 +527,9 @@
     ],
     "description": "Building a home court in Canada? The Franklin Signature Pro portable net is a high-intent purchase for driveways, schoolyards, and community greenspaces. Shoppers want regulation height, fast setup, and durable weather-ready materials.",
     "affiliateUrl": "https://www.amazon.ca/s?k=Franklin+Signature+Pro+pickleball+net+system&tag=thepickleb050-20",
-    "imageUrl": "/images/products/franklin-portable-net.jpg"
+    "imageUrl": "/images/products/franklin-portable-net.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "onix-portable-pickleball-net",
@@ -439,7 +544,9 @@
     ],
     "description": "The ONIX portable net system is a premium choice for coaches and club organizers who need repeatable regulation setup. Canadians searching for durable portable pickleball nets shortlist ONIX for tension quality and travel-ready storage.",
     "affiliateUrl": "https://www.amazon.ca/s?k=ONIX+portable+pickleball+net+system&tag=thepickleb050-20",
-    "imageUrl": "/images/products/onix-portable-net.jpg"
+    "imageUrl": "/images/products/onix-portable-net.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "rally-portable-net-set",
@@ -454,7 +561,9 @@
     ],
     "description": "Rally's deluxe portable net is a practical Canadian cottage and backyard solution. High-intent shoppers want easy assembly, regulation dimensions, and a net that survives frequent setup between driveway sessions and park meetups.",
     "affiliateUrl": "https://www.amazon.ca/s?k=Rally+deluxe+portable+pickleball+net&tag=thepickleb050-20",
-    "imageUrl": "/images/products/rally-portable-net.jpg"
+    "imageUrl": "/images/products/rally-portable-net.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "selkirk-portable-net-system",
@@ -469,7 +578,9 @@
     ],
     "description": "For players who already trust Selkirk paddles, the brand's premium portable net completes a high-performance home setup. Searchers looking for a durable, regulation Canadian portable pickleball net choose Selkirk for long-term stability and build quality.",
     "affiliateUrl": "https://www.amazon.ca/s?k=Selkirk+portable+pickleball+net&tag=thepickleb050-20",
-    "imageUrl": "/images/products/selkirk-portable-net.jpg"
+    "imageUrl": "/images/products/selkirk-portable-net.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "joola-vision-c15",
@@ -484,7 +595,9 @@
     ],
     "description": "The JOOLA Vision C15 is a high-volume Canadian search for players leaving beginner sets. It offers modern carbon feel and enough pop to grow your game without jumping straight to flagship pricing.",
     "affiliateUrl": "https://www.amazon.ca/s?k=JOOLA+Vision+C15+pickleball+paddle&tag=thepickleb050-20",
-    "imageUrl": "/images/products/B09VCV2XWK.jpg"
+    "imageUrl": "/images/products/B09VCV2XWK.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-franklin-activator-wood",
@@ -501,7 +614,9 @@
     ],
     "description": "Absolute beginners and driveway/rec players wanting the cheapest way to start. Skill level: beginner.",
     "affiliateUrl": "https://www.amazon.ca/dp/B07VVMR1YY/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B07VVMR1YY.jpg"
+    "imageUrl": "/images/products/B07VVMR1YY.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-lstecice-set4",
@@ -518,7 +633,9 @@
     ],
     "description": "Families or groups outfitting everyone from one kit. Skill level: beginner.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0B1DBPPMN/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0B1DBPPMN.jpg"
+    "imageUrl": "/images/products/B0B1DBPPMN.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-pepkuball-fiberglass-single",
@@ -534,7 +651,9 @@
     ],
     "description": "Beginner wanting one cheap paddle rather than a set. Skill level: beginner.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0F294Z2WV/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0F294Z2WV.jpg"
+    "imageUrl": "/images/products/B0F294Z2WV.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-niupipo-fiberglass",
@@ -551,7 +670,9 @@
     ],
     "description": "Beginner upgrading from wood to a proven budget brand. Skill level: beginner.",
     "affiliateUrl": "https://www.amazon.ca/dp/B08FX2TJC2/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B08FX2TJC2.jpg"
+    "imageUrl": "/images/products/B08FX2TJC2.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-wilson-profile-team",
@@ -567,7 +688,9 @@
     ],
     "description": "Recreational players wanting a trusted-brand all-arounder. Skill level: beginner.",
     "affiliateUrl": "https://www.amazon.ca/dp/B07QBD4YQ1/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B07QBD4YQ1.jpg"
+    "imageUrl": "/images/products/B07QBD4YQ1.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-babolat-xplr",
@@ -584,7 +707,9 @@
     ],
     "description": "Beginners wanting a light, forgiving paddle from a known tennis brand. Skill level: beginner.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0CCSYF9RP/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0CCSYF9RP.jpg"
+    "imageUrl": "/images/products/B0CCSYF9RP.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-roycelong-t700-carbon",
@@ -601,7 +726,9 @@
     ],
     "description": "Improver wanting a first raw-carbon paddle on a budget. Skill level: intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0DZB9HP4D/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0DZB9HP4D.jpg"
+    "imageUrl": "/images/products/B0DZB9HP4D.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-onix-z5-graphite",
@@ -618,7 +745,9 @@
     ],
     "description": "Control-first players; a long-standing classic for beginner to advanced. Skill level: intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B07HPF84ZF/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B07HPF84ZF.jpg"
+    "imageUrl": "/images/products/B07HPF84ZF.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-head-radical-elite",
@@ -635,7 +764,9 @@
     ],
     "description": "Newer intermediate wanting a forgiving, powerful paddle. Skill level: intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0CTFX27YG/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0CTFX27YG.jpg"
+    "imageUrl": "/images/products/B0CTFX27YG.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-head-radical-pro-2024",
@@ -652,7 +783,9 @@
     ],
     "description": "Versatile all-court player wanting spin plus balanced power. Skill level: intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0CTFYK6CV/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0CTFYK6CV.jpg"
+    "imageUrl": "/images/products/B0CTFYK6CV.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-head-radical-tour-xl",
@@ -669,7 +802,9 @@
     ],
     "description": "Advanced players wanting reach and power in an elongated shape. Skill level: advanced.",
     "affiliateUrl": "https://www.amazon.ca/dp/B07HDHXRLB/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B07HDHXRLB.jpg"
+    "imageUrl": "/images/products/B07HDHXRLB.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-head-radical-tour-gr",
@@ -686,7 +821,9 @@
     ],
     "description": "Advanced players wanting power with added stability and control. Skill level: advanced.",
     "affiliateUrl": "https://www.amazon.ca/dp/B08B117C5H/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B08B117C5H.jpg"
+    "imageUrl": "/images/products/B08B117C5H.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-vatic-pro-prism-flash",
@@ -703,7 +840,9 @@
     ],
     "description": "Control-oriented players wanting premium carbon feel at a value price. Skill level: advanced.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0BYMGYVTR/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0BYMGYVTR.jpg"
+    "imageUrl": "/images/products/B0BYMGYVTR.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-vatic-pro-flash",
@@ -720,7 +859,9 @@
     ],
     "description": "Aggressive players wanting power and spin at a value price. Skill level: advanced.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0BNJVFQ4W/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0BNJVFQ4W.jpg"
+    "imageUrl": "/images/products/B0BNJVFQ4W.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-pickleball-inc-venom",
@@ -737,7 +878,9 @@
     ],
     "description": "Improvers wanting extra put-away power. Skill level: intermediate.",
     "affiliateUrl": "https://www.amazon.ca/dp/B00CLV1654/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B00CLV1654.jpg"
+    "imageUrl": "/images/products/B00CLV1654.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-babolat-rbel",
@@ -754,7 +897,9 @@
     ],
     "description": "Performance players wanting fast hands and heavy spin. Skill level: advanced.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0CCSVMZYM/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0CCSVMZYM.jpg"
+    "imageUrl": "/images/products/B0CCSVMZYM.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-franklin-signature-pro-13mm",
@@ -771,7 +916,9 @@
     ],
     "description": "Competitive players wanting a spin/power tournament paddle. Skill level: advanced.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0B8LP6XY1/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0B8LP6XY1.jpg"
+    "imageUrl": "/images/products/B0B8LP6XY1.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-joola-hyperion-cas",
@@ -788,7 +935,9 @@
     ],
     "description": "Advanced/competitive players wanting a genuine spin+power tournament paddle. Skill level: pro.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0B57PQ5T1/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0B57PQ5T1.jpg"
+    "imageUrl": "/images/products/B0B57PQ5T1.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-joola-perseus-charged",
@@ -805,7 +954,9 @@
     ],
     "description": "Aggressive pros wanting power with a connected feel. Skill level: pro.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0C4M4X7RD/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0C4M4X7RD.jpg"
+    "imageUrl": "/images/products/B0C4M4X7RD.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "paddle-joola-pro-iv",
@@ -822,7 +973,9 @@
     ],
     "description": "Tournament players wanting the latest raw-carbon Perseus Pro IV platform. Skill level: pro.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0DQ5XXPML/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0DQ5XXPML.jpg"
+    "imageUrl": "/images/products/B0DQ5XXPML.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "ball-franklin-x40-outdoor-12",
@@ -839,7 +992,9 @@
     ],
     "description": "Outdoor X-40 balls — the Canadian club and tournament standard. Skill level: all.",
     "affiliateUrl": "https://www.amazon.ca/dp/B06XTW1BND/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B06XTW1BND.jpg"
+    "imageUrl": "/images/products/B06XTW1BND.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "ball-onix-fuse-g2-3pack",
@@ -856,7 +1011,9 @@
     ],
     "description": "Durable outdoor Fuse G2 balls for hard courts. Skill level: all.",
     "affiliateUrl": "https://www.amazon.ca/dp/B07MJM78B7/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B07MJM78B7.jpg"
+    "imageUrl": "/images/products/B07MJM78B7.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "ball-franklin-x26-indoor",
@@ -873,7 +1030,9 @@
     ],
     "description": "Indoor gym balls for Canadian community centres. Skill level: all.",
     "affiliateUrl": "https://www.amazon.ca/dp/B07Q23Q17V/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B07Q23Q17V.jpg"
+    "imageUrl": "/images/products/B07Q23Q17V.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "ball-dura-fast-40",
@@ -890,7 +1049,9 @@
     ],
     "description": "Tournament-style outdoor Fast 40 balls. Skill level: intermediate+",
     "affiliateUrl": "https://www.amazon.ca/dp/B01M7RZ95A/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B01M7RZ95A.jpg"
+    "imageUrl": "/images/products/B01M7RZ95A.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "bag-joola-tour-elite",
@@ -907,7 +1068,9 @@
     ],
     "description": "Premium JOOLA tour bag for paddles and gear. Skill level: intermediate+",
     "affiliateUrl": "https://www.amazon.ca/dp/B0DBV8NHXZ/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0DBV8NHXZ.jpg"
+    "imageUrl": "/images/products/B0DBV8NHXZ.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "bag-selkirk-team",
@@ -924,7 +1087,9 @@
     ],
     "description": "Medium Selkirk backpack for paddles, balls, and club-night gear. Skill level: all.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0CH1YPWCC/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0CH1YPWCC.jpg"
+    "imageUrl": "/images/products/B0CH1YPWCC.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "bag-mangrove-sling",
@@ -941,7 +1106,9 @@
     ],
     "description": "Value sling bag with fence hook for recreational play. Skill level: beginner.",
     "affiliateUrl": "https://www.amazon.ca/dp/B08FWXX2BW/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B08FWXX2BW.jpg"
+    "imageUrl": "/images/products/B08FWXX2BW.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "acc-franklin-overgrip",
@@ -958,7 +1125,9 @@
     ],
     "description": "Replace worn grips for better tack on humid Canadian courts. Skill level: all.",
     "affiliateUrl": "https://www.amazon.ca/dp/B07XJBJXBL/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B07XJBJXBL.jpg"
+    "imageUrl": "/images/products/B07XJBJXBL.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "acc-tourna-mega-tac",
@@ -975,7 +1144,9 @@
     ],
     "description": "Extra-tacky Tourna overgrip popular with tennis converts. Skill level: all.",
     "affiliateUrl": "https://www.amazon.ca/dp/B00EM2WSW0/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B00EM2WSW0.jpg"
+    "imageUrl": "/images/products/B00EM2WSW0.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "acc-edge-guard",
@@ -992,7 +1163,9 @@
     ],
     "description": "Protect paddle edges from scrapes and court dings. Skill level: all.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0DT7CFJFL/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0DT7CFJFL.jpg"
+    "imageUrl": "/images/products/B0DT7CFJFL.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "acc-tungsten-tape",
@@ -1009,7 +1182,9 @@
     ],
     "description": "Add swing weight with Canadian-made tungsten tape. Skill level: intermediate+",
     "affiliateUrl": "https://www.amazon.ca/dp/B0FS7Z9R7K/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0FS7Z9R7K.jpg"
+    "imageUrl": "/images/products/B0FS7Z9R7K.jpg",
+    "gender": "unisex",
+    "comfortTags": []
   },
   {
     "id": "apparel-arm-sleeves",
@@ -1026,7 +1201,8 @@
     ],
     "description": "UV-protective compression sleeves for outdoor Canadian courts. Skill level: all.",
     "affiliateUrl": "https://www.amazon.ca/dp/B0CM6PQWPH/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B0CM6PQWPH.jpg"
+    "imageUrl": "/images/products/B0CM6PQWPH.jpg",
+    "comfortTags": []
   },
   {
     "id": "apparel-athletic-skort",
@@ -1043,6 +1219,8 @@
     ],
     "description": "Court skort with built-in shorts for women’s club play. Skill level: all.",
     "affiliateUrl": "https://www.amazon.ca/dp/B07P9J4SV4/?tag=thepickleb050-20",
-    "imageUrl": "/images/products/B07P9J4SV4.jpg"
+    "imageUrl": "/images/products/B07P9J4SV4.jpg",
+    "gender": "womens",
+    "comfortTags": []
   }
 ]

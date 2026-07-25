@@ -1,0 +1,169 @@
+---
+interface Props {
+	showGender?: boolean;
+	showComfort?: boolean;
+}
+
+const { showGender = false, showComfort = false } = Astro.props;
+if (!showGender && !showComfort) return;
+
+const genderOptions = [
+	{ value: 'all', label: 'All' },
+	{ value: 'mens', label: "Men's" },
+	{ value: 'womens', label: "Women's" },
+	{ value: 'unisex', label: 'Unisex' },
+] as const;
+
+const comfortOptions = [
+	{ value: 'wide-fit', label: 'Wide Fit' },
+	{ value: 'arch-support', label: 'Arch Support' },
+	{ value: 'extra-cushioning', label: 'Extra Cushioning' },
+	{ value: 'low-impact', label: 'Low-Impact' },
+] as const;
+---
+
+<div
+	id="gear-filters"
+	class="mb-8 rounded-2xl border border-zinc-200 bg-white p-5 sm:p-6"
+	data-show-gender={showGender ? 'true' : 'false'}
+	data-show-comfort={showComfort ? 'true' : 'false'}
+>
+	<div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+		{showGender && (
+			<div>
+				<p class="text-sm font-bold uppercase tracking-[0.14em] text-zinc-500">Gender</p>
+				<div class="mt-3 flex flex-wrap gap-2" role="group" aria-label="Filter by gender">
+					{genderOptions.map((option) => (
+						<button
+							type="button"
+							class="gear-gender-filter rounded-full px-4 py-2 text-sm font-semibold transition bg-white text-zinc-700 ring-1 ring-zinc-200 hover:ring-emerald-300 aria-[pressed=true]:bg-emerald-700 aria-[pressed=true]:text-white aria-[pressed=true]:ring-emerald-700"
+							data-gender={option.value}
+							aria-pressed={option.value === 'all' ? 'true' : 'false'}
+						>
+							{option.label}
+						</button>
+					))}
+				</div>
+			</div>
+		)}
+
+		{showComfort && (
+			<div>
+				<p class="text-sm font-bold uppercase tracking-[0.14em] text-zinc-500">Comfort &amp; Support</p>
+				<p class="mt-1 max-w-md text-sm text-zinc-500">
+					Filter by documented fit and cushioning features — not age-based claims.
+				</p>
+				<div class="mt-3 flex flex-wrap gap-2" role="group" aria-label="Filter by comfort and support">
+					{comfortOptions.map((option) => (
+						<button
+							type="button"
+							class="gear-comfort-filter rounded-full px-4 py-2 text-sm font-semibold transition bg-white text-zinc-700 ring-1 ring-zinc-200 hover:ring-emerald-300 aria-[pressed=true]:bg-emerald-700 aria-[pressed=true]:text-white aria-[pressed=true]:ring-emerald-700"
+							data-comfort={option.value}
+							aria-pressed="false"
+						>
+							{option.label}
+						</button>
+					))}
+				</div>
+			</div>
+		)}
+	</div>
+
+	<p id="gear-filter-count" class="mt-5 text-sm font-semibold text-zinc-500" aria-live="polite"></p>
+</div>
+
+<script>
+	const root = document.getElementById('gear-filters');
+	const grid = document.getElementById('gear-product-grid');
+	const empty = document.getElementById('gear-filter-empty');
+	const countEl = document.getElementById('gear-filter-count');
+	if (!root || !grid) {
+		/* no-op when filters are not on this page */
+	} else {
+		const cards = Array.from(grid.querySelectorAll<HTMLElement>('[data-product-card]'));
+		const genderButtons = Array.from(root.querySelectorAll<HTMLButtonElement>('.gear-gender-filter'));
+		const comfortButtons = Array.from(root.querySelectorAll<HTMLButtonElement>('.gear-comfort-filter'));
+		const showGender = root.dataset.showGender === 'true';
+		const showComfort = root.dataset.showComfort === 'true';
+
+		let selectedGender = 'all';
+		const selectedComfort = new Set<string>();
+
+		function applyFilters() {
+			let visible = 0;
+			cards.forEach((card) => {
+				const gender = card.dataset.gender || 'unisex';
+				const comfort = (card.dataset.comfort || '').split(/\s+/).filter(Boolean);
+				const genderOk = !showGender || selectedGender === 'all' || gender === selectedGender;
+				const comfortOk =
+					!showComfort ||
+					selectedComfort.size === 0 ||
+					[...selectedComfort].every((tag) => comfort.includes(tag));
+				const match = genderOk && comfortOk;
+				card.classList.toggle('hidden', !match);
+				if (match) visible += 1;
+			});
+
+			empty?.classList.toggle('hidden', visible > 0);
+			if (countEl) {
+				const total = cards.length;
+				countEl.textContent =
+					visible === total
+						? `Showing all ${total} products (sorted $ → $$$)`
+						: `Showing ${visible} of ${total} products (sorted $ → $$$)`;
+			}
+
+			const url = new URL(window.location.href);
+			if (!showGender || selectedGender === 'all') url.searchParams.delete('gender');
+			else url.searchParams.set('gender', selectedGender);
+
+			if (!showComfort || selectedComfort.size === 0) url.searchParams.delete('comfort');
+			else url.searchParams.set('comfort', [...selectedComfort].join(','));
+
+			history.replaceState({}, '', url);
+		}
+
+		genderButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				selectedGender = button.dataset.gender || 'all';
+				genderButtons.forEach((b) => {
+					b.setAttribute('aria-pressed', b.dataset.gender === selectedGender ? 'true' : 'false');
+				});
+				applyFilters();
+			});
+		});
+
+		comfortButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				const tag = button.dataset.comfort;
+				if (!tag) return;
+				if (selectedComfort.has(tag)) selectedComfort.delete(tag);
+				else selectedComfort.add(tag);
+				button.setAttribute('aria-pressed', selectedComfort.has(tag) ? 'true' : 'false');
+				applyFilters();
+			});
+		});
+
+		const params = new URLSearchParams(window.location.search);
+		const initialGender = params.get('gender');
+		if (showGender && initialGender && ['mens', 'womens', 'unisex'].includes(initialGender)) {
+			selectedGender = initialGender;
+			genderButtons.forEach((b) => {
+				b.setAttribute('aria-pressed', b.dataset.gender === selectedGender ? 'true' : 'false');
+			});
+		}
+		const initialComfort = params.get('comfort');
+		if (showComfort && initialComfort) {
+			initialComfort.split(',').forEach((tag) => {
+				const trimmed = tag.trim();
+				if (!trimmed) return;
+				selectedComfort.add(trimmed);
+				comfortButtons.forEach((b) => {
+					if (b.dataset.comfort === trimmed) b.setAttribute('aria-pressed', 'true');
+				});
+			});
+		}
+
+		applyFilters();
+	}
+</script>

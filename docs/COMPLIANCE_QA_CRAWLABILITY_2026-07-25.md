@@ -116,30 +116,13 @@ Built successfully (38 HTML content routes + verification file). New hubs and gu
 
 ### LLM / AI crawler access
 
-#### `robots.txt` (repo `public/robots.txt`)
+#### `robots.txt` (repo `public/robots.txt`) — decided 2026-07-25
 
-```
-User-agent: *
-Allow: /
-Sitemap: https://thepickleballcourt.ca/sitemap-index.xml
-```
+- **Allow:** GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, `*`
+- **Disallow:** Amazonbot, Bytespider, CCBot, meta-externalagent
+- Sitemap: `https://thepickleballcourt.ca/sitemap-index.xml`
 
-#### Live `robots.txt` (Cloudflare-managed overlay)
-
-Live response also injects Cloudflare managed blocks, including:
-
-- `Amazonbot` Disallow
-- `Applebot-Extended` Disallow
-- `Bytespider` Disallow
-- `CCBot` Disallow
-- `ClaudeBot` Disallow
-- `Google-Extended` Disallow
-- `GPTBot` Disallow
-- `meta-externalagent` Disallow
-
-Plus Content-Signal: `search=yes, ai-train=no, use=reference`.
-
-**Human decision needed:** keep Cloudflare’s AI-training blocks (current), or allow selected AI crawlers (e.g. GPTBot / ClaudeBot / PerplexityBot) for citation/discovery. **No allow/block rules were changed in this pass.**
+**Deploy check:** Cloudflare may still inject managed AI-crawler Disallows on the live edge. After deploy, confirm `https://thepickleballcourt.ca/robots.txt` matches the repo and turn off conflicting Cloudflare AI-scraper / managed robots rules if GPTBot/ClaudeBot still show Disallow.
 
 #### `llms.txt`
 
@@ -173,7 +156,7 @@ Astro static build — guide and gear copy is in HTML. Affiliate click analytics
 
 ## Needs human decision
 
-1. **AI crawlers:** keep Cloudflare blocks vs allow GPTBot / ClaudeBot / PerplexityBot / Google-Extended.
+1. ~~**AI crawlers:**~~ **Decided** — allow GPTBot / ClaudeBot / Google-Extended / Applebot-Extended; block Amazonbot / Bytespider / CCBot / meta-externalagent (see `public/robots.txt`). Still verify Cloudflare edge doesn’t override after deploy.
 2. **Catalog count:** replace Baddle with another amazon.ca apparel SKU to return to 65, or accept apparel=2 / total=64.
 3. **Optional hygiene:** convert 16 legacy Amazon **search** URLs to stable `/dp/` ASINs; add “Skill level:” lines to 16 older descriptions.
 4. **Content debt:** several older MDX guides still contain repeated “Extra practical notes for Canadian players” boilerplate blocks — cleanup recommended separately.

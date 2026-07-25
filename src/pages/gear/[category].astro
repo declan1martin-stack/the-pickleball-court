@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import GearFilters from '../../components/GearFilters.astro';
 import gear from '../../data/gear.json';
 import { getArticlesByCategory, CATEGORY_PILLARS } from '../../lib/articles';
 import { getPriceTier } from '../../lib/products';
@@ -26,9 +27,9 @@ const categoryMeta = {
 	shoes: {
 		h1: 'Best Pickleball Shoes in Canada',
 		description:
-			'Shop court-ready Skechers and ASICS pickleball shoes for Canadian hard courts. Compare traction, lateral support, and comfort for competitive and recreational play.',
+			'Shop court-ready Skechers and ASICS pickleball shoes for Canadian hard courts. Filter by gender and Comfort & Support features like wide fit, arch support, and cushioning.',
 		intro:
-			'Upgrade from running shoes to court-specific footwear built for lateral cuts, kitchen stops, and long Canadian outdoor sessions.',
+			'Upgrade from running shoes to court-specific footwear built for lateral cuts, kitchen stops, and long Canadian outdoor sessions. Use Gender and Comfort & Support filters to narrow by fit needs — sorted from $ to $$$.',
 	},
 	nets: {
 		h1: 'Best Portable Pickleball Nets in Canada',
@@ -54,9 +55,9 @@ const categoryMeta = {
 	apparel: {
 		h1: 'Best Pickleball Apparel in Canada',
 		description:
-			'Shop skorts, arm sleeves, and court apparel for outdoor Canadian pickleball — UV coverage and mobility for club play.',
+			'Shop skorts, arm sleeves, and court apparel for outdoor Canadian pickleball. Filter by gender and Comfort & Support when those attributes are documented.',
 		intro:
-			'Dress for outdoor sessions with skorts, UV arm sleeves, and court-ready pieces that move with you at the kitchen.',
+			'Dress for outdoor sessions with skorts, UV arm sleeves, and court-ready pieces that move with you at the kitchen. Filter by Gender or Comfort & Support — products stay sorted from $ to $$$.',
 	},
 	accessories: {
 		h1: 'Best Pickleball Accessories in Canada',
@@ -82,6 +83,7 @@ const relatedArticles = (
 	await getArticlesByCategory(typedCategory as Parameters<typeof getArticlesByCategory>[0])
 ).slice(0, 3);
 const pillar = CATEGORY_PILLARS[typedCategory];
+const showGearFilters = typedCategory === 'shoes' || typedCategory === 'apparel';
 ---
 
 <Layout title={meta.h1} description={meta.description} canonicalPath={`/gear/${typedCategory}`}>
@@ -108,8 +110,9 @@ const pillar = CATEGORY_PILLARS[typedCategory];
 	</section>
 
 	<section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+		{showGearFilters && <GearFilters showGender showComfort />}
 		{products.length > 0 ? (
-			<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+			<div id="gear-product-grid" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 				{products.map((product) => (
 					<ProductCard product={product} />
 				))}
@@ -119,6 +122,12 @@ const pillar = CATEGORY_PILLARS[typedCategory];
 				No products found in this category yet.
 			</p>
 		)}
+		<p
+			id="gear-filter-empty"
+			class="mt-6 hidden rounded-2xl border border-dashed border-zinc-300 bg-white p-8 text-center text-zinc-600"
+		>
+			No products match these filters. Clear a Comfort &amp; Support option or switch Gender back to All.
+		</p>
 	</section>
 
 	{relatedArticles.length > 0 && (
