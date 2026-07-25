@@ -1,1 +1,64 @@
 @import "tailwindcss";
+
+@theme {
+	--color-court-50: #f0fdf7;
+	--color-court-100: #dcfce9;
+	--color-court-500: #10b981;
+	--color-court-600: #059669;
+	--color-court-700: #047857;
+	--color-court-800: #065f46;
+	--color-court-900: #064e3b;
+	--color-ink-950: #09090b;
+	--color-ink-900: #18181b;
+	--color-ink-700: #3f3f46;
+	--color-ink-600: #52525b;
+	--color-ink-500: #71717a;
+	--color-surface: #fafafa;
+	--color-cta: #0f766e;
+	--color-cta-hover: #0d9488;
+	--font-sans: "Segoe UI", ui-sans-serif, system-ui, -apple-system, sans-serif;
+	--measure: 70ch;
+	--space-section: clamp(3.5rem, 6vw, 5.5rem);
+	--radius-card: 1rem;
+	--shadow-card: 0 10px 30px -18px rgb(0 0 0 / 0.35);
+}
+
+:root {
+	color-scheme: light;
+	--hh-bg: var(--color-surface);
+	--hh-ink: var(--color-ink-900);
+	--hh-muted: var(--color-ink-600);
+	--hh-accent: var(--color-court-700);
+	--hh-accent-soft: var(--color-court-50);
+	--hh-cta: var(--color-cta);
+	--hh-cta-hover: var(--color-cta-hover);
+	--hh-measure: var(--measure);
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--font-sans);
+	background: var(--hh-bg);
+	color: var(--hh-ink);
+	text-rendering: optimizeLegibility;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.prose-article {
+	max-width: var(--hh-measure);
+}
+
+.prose-article :where(h2, h3) {
+	scroll-margin-top: 6rem;
+}
+
+.section-y {
+	padding-block: var(--space-section);
+}
