@@ -81,7 +81,7 @@ const fieldLabels: Record<SpecField, string> = {
 								</td>
 							))}
 							<td class="px-4 py-4">
-								<AffiliateButton href={product.affiliateUrl} variant="secondary" label="Check price" />
+								<AffiliateButton href={product.affiliateUrl} productId={product.id} variant="secondary" label="Check price" />
 							</td>
 						</tr>
 					))}
@@ -106,7 +106,7 @@ const fieldLabels: Record<SpecField, string> = {
 						))}
 					</dl>
 					<div class="mt-4">
-						<AffiliateButton href={product.affiliateUrl} label="Check current price on Amazon" />
+						<AffiliateButton href={product.affiliateUrl} productId={product.id} label="Check current price on Amazon" />
 					</div>
 				</li>
 			))}

@@ -6,6 +6,8 @@ interface Props {
 	label?: string;
 	variant?: 'primary' | 'secondary' | 'inline';
 	class?: string;
+	/** Optional product id for GA4 affiliate_click events */
+	productId?: string;
 }
 
 const {
@@ -13,6 +15,7 @@ const {
 	label = 'Check current price on Amazon',
 	variant = 'primary',
 	class: className = '',
+	productId,
 } = Astro.props;
 
 const safeHref = assertAffiliateUrl(href);
@@ -28,6 +31,8 @@ const variants = {
 	href={safeHref}
 	target="_blank"
 	rel="sponsored nofollow noopener"
+	data-affiliate="amazon"
+	data-product-id={productId}
 	class:list={[variants[variant], className]}
 >
 	{label}

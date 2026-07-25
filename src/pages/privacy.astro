@@ -14,19 +14,23 @@ import TrustPageLayout from '../layouts/TrustPageLayout.astro';
 	</p>
 	<h2>Information we collect</h2>
 	<ul>
-		<li>Standard server/CDN logs (IP address, user agent, pages requested) via our hosting provider</li>
-		<li>Optional analytics, if enabled — {'{{ TODO: confirm }}'} analytics vendor and retention period</li>
+		<li>Standard server/CDN logs (IP address, user agent, pages requested) via our hosting provider (Cloudflare Pages)</li>
+		<li>
+			Optional Google Analytics 4 (GA4) when enabled — page views, approximate location/device, and outbound
+			affiliate click events (product id + Amazon link). IP anonymization is enabled in our GA4 config.
+		</li>
 		<li>Information you voluntarily send via email or a contact form</li>
 	</ul>
 	<h2>Cookies</h2>
 	<p>
-		We may use essential cookies required to operate the site. Affiliate links may cause Amazon to set cookies under
-		Amazon’s own policies when you visit Amazon.ca.
+		We may use essential cookies required to operate the site. When GA4 is enabled, Google may set analytics cookies
+		under Google’s policies. Affiliate links may cause Amazon to set cookies under Amazon’s own policies when you
+		visit Amazon.ca.
 	</p>
 	<h2>How we use information</h2>
 	<p>
-		To operate and improve the site, understand aggregate traffic, respond to messages, and comply with law.
-		We do not sell personal information. {'{{ TODO: confirm }}'}
+		To operate and improve the site, understand aggregate traffic and which guides/products drive Amazon clicks,
+		respond to messages, and comply with law. We do not sell personal information. {'{{ TODO: confirm }}'}
 	</p>
 	<h2>Contact</h2>
 	<p>

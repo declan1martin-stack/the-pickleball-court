@@ -4,6 +4,7 @@ import path from 'node:path';
 const dist = 'dist';
 const tag = 'thepickleb050-20';
 const failures = [];
+const gear = JSON.parse(fs.readFileSync('src/data/gear.json', 'utf8'));
 
 function walk(dir) {
 	for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -23,15 +24,30 @@ function checkHtml(file) {
 	}
 	const affiliateAnchors = [...html.matchAll(/<a\b[^>]*href="https?:\/\/[^"]*amazon\.[^"]*"[^>]*>/gi)];
 	for (const [anchor] of affiliateAnchors) {
-		if (!/rel="[^"]*sponsored[^"]*nofollow[^"]*noopener[^"]*"/.test(anchor) &&
-			!(/rel="[^"]*sponsored/.test(anchor) && /nofollow/.test(anchor) && /noopener/.test(anchor))) {
-			// Allow any order of the three tokens inside rel=
-			const rel = anchor.match(/rel="([^"]*)"/)?.[1] ?? '';
-			const ok = rel.includes('sponsored') && rel.includes('nofollow') && rel.includes('noopener');
-			if (!ok) failures.push(`${file}: Amazon anchor missing required rel → ${anchor.slice(0, 180)}`);
-		}
+		const rel = anchor.match(/rel="([^"]*)"/)?.[1] ?? '';
+		const ok = rel.includes('sponsored') && rel.includes('nofollow') && rel.includes('noopener');
+		if (!ok) failures.push(`${file}: Amazon anchor missing required rel → ${anchor.slice(0, 180)}`);
 		if (!/target="_blank"/.test(anchor)) {
 			failures.push(`${file}: Amazon anchor missing target=_blank`);
+		}
+	}
+}
+
+function checkCatalog() {
+	for (const product of gear) {
+		if (!product.affiliateUrl?.includes(`tag=${tag}`)) {
+			failures.push(`gear.json:${product.id}: affiliateUrl missing tag=${tag}`);
+		}
+		if (!product.imageUrl?.startsWith('/images/products/')) {
+			failures.push(`gear.json:${product.id}: imageUrl is not a local /images/products/ path → ${product.imageUrl}`);
+			continue;
+		}
+		const filePath = path.join('public', product.imageUrl);
+		if (!fs.existsSync(filePath)) {
+			failures.push(`gear.json:${product.id}: missing image file ${filePath}`);
+		}
+		if (product.todo) {
+			failures.push(`gear.json:${product.id}: unresolved todo → ${product.todo}`);
 		}
 	}
 }
@@ -41,6 +57,7 @@ if (!fs.existsSync(dist)) {
 	process.exit(1);
 }
 
+checkCatalog();
 walk(dist);
 
 if (failures.length) {
@@ -48,4 +65,6 @@ if (failures.length) {
 	process.exit(1);
 }
 
-console.log(`QA OK — Amazon links use tag=${tag} with sponsored/nofollow/noopener + target=_blank`);
+console.log(
+	`QA OK — ${gear.length} products: Amazon tag=${tag}, local images present, HTML anchors use sponsored/nofollow/noopener + target=_blank`,
+);

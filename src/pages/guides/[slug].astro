@@ -134,7 +134,7 @@ const crumbs = [
 											: `Approx. listed: ${product.price} — confirm on Amazon.ca`}
 									</p>
 								</div>
-								<AffiliateButton href={product.affiliateUrl} variant="secondary" label="Check current price on Amazon" />
+								<AffiliateButton href={product.affiliateUrl} productId={product.id} variant="secondary" label="Check current price on Amazon" />
 							</li>
 						))}
 					</ul>

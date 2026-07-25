@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
 import {
 	SITE_URL,
 	DEFAULT_OG_IMAGE,
@@ -85,6 +86,8 @@ const schemas = [
 		{schemas.map((schema) => (
 			<script type="application/ld+json" set:html={JSON.stringify(schema)} />
 		))}
+
+		<Analytics />
 	</head>
 	<body class="min-h-screen flex flex-col bg-bg text-ink antialiased">
 		<a
