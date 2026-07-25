@@ -82,4 +82,20 @@ export const CATEGORY_PILLARS: Partial<Record<GearCategory, { title: string; hre
 		title: 'Best Portable Pickleball Nets (2026)',
 		href: '/guides/best-portable-pickleball-nets-2026',
 	},
+	balls: {
+		title: 'Best Pickleball Balls: Indoor vs Outdoor',
+		href: '/guides/pickleball-balls-buying-guide',
+	},
+	bags: {
+		title: 'Best Pickleball Bags: Backpacks, Slings & Tour Bags',
+		href: '/guides/pickleball-bags-buying-guide',
+	},
+	apparel: {
+		title: 'Pickleball Apparel Essentials',
+		href: '/guides/pickleball-apparel-buying-guide',
+	},
+	accessories: {
+		title: 'Pickleball Accessories That Matter',
+		href: '/guides/pickleball-accessories-buying-guide',
+	},
 };

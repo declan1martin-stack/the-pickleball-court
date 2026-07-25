@@ -4,12 +4,23 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getAllArticles } from '../../lib/articles';
 
 const allArticles = await getAllArticles();
-const categories = ['all', 'paddles', 'shoes', 'nets', 'guides', 'rules'] as const;
+const categories = [
+	'all',
+	'paddles',
+	'shoes',
+	'nets',
+	'balls',
+	'bags',
+	'apparel',
+	'accessories',
+	'guides',
+	'rules',
+] as const;
 ---
 
 <Layout
 	title="Pickleball Guides & Buying Advice"
-	description="In-depth Canadian pickleball buying guides, comparisons, and rules explainers for paddles, shoes, and portable nets."
+	description="In-depth Canadian pickleball buying guides, comparisons, and rules explainers for paddles, shoes, balls, bags, apparel, accessories, and portable nets."
 	canonicalPath="/guides"
 >
 	<section class="border-b border-zinc-200 bg-white">
