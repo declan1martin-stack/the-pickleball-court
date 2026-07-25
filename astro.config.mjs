@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://YOURDOMAIN.com',
+  site: 'https://thepickleballcourt.ca',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]
