@@ -60,6 +60,11 @@ function rewriteForUs(body) {
 
 export async function onRequest(context) {
 	const requestUrl = new URL(context.request.url);
+	// Let /go/ca and /go/us redirect handlers run untouched.
+	if (requestUrl.pathname.startsWith('/go/')) {
+		return context.next();
+	}
+
 	const response = await context.next();
 
 	if (!shouldRewrite(requestUrl.hostname)) {

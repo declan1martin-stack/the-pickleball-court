@@ -25,6 +25,15 @@ const tld = SITE_REGION === 'us' ? '.com' : '.ca';
 					{link.label}
 				</a>
 			))}
+			<button
+				type="button"
+				data-open-region-gate
+				class="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] border border-border bg-bg px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-ink transition hover:border-primary hover:text-primary"
+				aria-haspopup="dialog"
+			>
+				<span class="text-ink-faint" aria-hidden="true">Shop</span>
+				<span data-region-label>{SITE_REGION === 'us' ? 'United States' : 'Canada'}</span>
+			</button>
 			<a
 				href="/guides/best-pickleball-paddles-2026"
 				class="btn-primary px-4 py-2 text-sm shadow-sm"
@@ -63,6 +72,18 @@ const tld = SITE_REGION === 'us' ? '.com' : '.ca';
 					</a>
 				</li>
 			))}
+			<li>
+				<button
+					type="button"
+					data-open-region-gate
+					class="flex w-full items-center justify-between rounded-[var(--radius-md)] px-3 py-3 text-left text-base font-semibold text-ink hover:bg-bg hover:text-primary"
+				>
+					<span>Shop country</span>
+					<span class="text-sm font-bold text-ink-muted" data-region-label>
+						{SITE_REGION === 'us' ? 'United States' : 'Canada'}
+					</span>
+				</button>
+			</li>
 			<li class="pt-2">
 				<a href="/guides/best-pickleball-paddles-2026" class="btn-primary w-full">Best Picks</a>
 			</li>
