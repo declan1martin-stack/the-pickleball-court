@@ -49,6 +49,8 @@ function rewriteForUs(body) {
 		.replaceAll('Amazon.ca', 'Amazon.com')
 		.replaceAll('Amazon.comand', 'Amazon.com and')
 		.replaceAll('>.ca</span>', '>.com</span>')
+		.replaceAll('>.ca<', '>.com<')
+		.replaceAll('Pickleball Court.ca', 'Pickleball Court.com')
 		.replaceAll('content="en_CA"', 'content="en_US"')
 		.replaceAll('lang="en-CA"', 'lang="en-US"')
 		.replaceAll('"inLanguage":"en-CA"', '"inLanguage":"en-US"')
