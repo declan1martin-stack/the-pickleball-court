@@ -2,7 +2,12 @@
  * Spot-check the LIVE site for key pages, affiliate tags, and product image HTTP 200s.
  */
 const SITE = process.env.LIVE_SITE || 'https://thepickleballcourt.ca';
-const tag = 'thepickleb050-20';
+const region =
+	process.env.PUBLIC_SITE_REGION?.toString().trim().toLowerCase() === 'us' ||
+	SITE.includes('uspickleballcourt.com')
+		? 'us'
+		: 'ca';
+const tag = region === 'us' ? 'uspickleball-20' : 'thepickleb050-20';
 const failures = [];
 
 async function fetchText(url) {

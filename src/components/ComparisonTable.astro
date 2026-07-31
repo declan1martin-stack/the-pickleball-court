@@ -1,6 +1,7 @@
 ---
 import AffiliateButton from './AffiliateButton.astro';
 import { getProductsByIds, type Product } from '../lib/products';
+import { AMAZON_LABEL } from '../lib/site';
 
 type SpecField = 'brand' | 'category' | 'priceTier' | 'featureHighlight';
 
@@ -88,7 +89,7 @@ const fieldLabels: Record<SpecField, string> = {
 				</tbody>
 			</table>
 			<p class="border-t border-zinc-200 bg-zinc-50 px-4 py-2 text-xs text-zinc-500">
-				Price tiers ($, $$, $$$) are approximate catalog bands, not live Amazon prices. Always confirm the current price on Amazon.ca.
+				Price tiers ($, $$, $$$) are approximate catalog bands, not live Amazon prices. Always confirm the current price on {AMAZON_LABEL}.
 			</p>
 		</div>
 

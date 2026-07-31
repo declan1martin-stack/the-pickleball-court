@@ -1,36 +1,52 @@
 ---
 import TrustPageLayout from '../layouts/TrustPageLayout.astro';
+import { AMAZON_LABEL, MARKET_LABEL, SITE_EMAIL, SITE_NAME } from '../lib/site';
 ---
 
 <TrustPageLayout
-	title="About ThePickleballCourt.ca"
-	description="Why we research Canadian pickleball gear — and who these guides are for."
+	title={`About ${SITE_NAME}`}
+	description={`How we research ${MARKET_LABEL} pickleball gear — catalog-backed guides, ${AMAZON_LABEL} availability, and clear buying advice.`}
 	canonicalPath="/about"
 >
 	<p>
-		ThePickleballCourt.ca exists because buying pickleball gear online is noisy. Spec sheets contradict each other,
-		“best of” lists blur into each other, and Canadian shoppers often need Amazon.ca availability — not a U.S.-only
-		wishlist.
+		{SITE_NAME} exists because buying pickleball gear online is noisy. Spec sheets contradict each other,
+		“best of” lists blur into each other, and {MARKET_LABEL} shoppers often need {AMAZON_LABEL} availability.
 	</p>
 	<h2>Our mission</h2>
 	<p>
 		We publish practical, original guides for everyone who plays: beginners buying a first paddle, intermediates
-		chasing spin, seniors protecting their joints, and tournament players refining their setup.
+		chasing spin, players protecting their joints, and competitive players refining their setup.
 	</p>
 	<h2>How we research</h2>
 	<ul>
 		<li>We map products to real buying jobs (control, power, wide feet, portable courts).</li>
-		<li>We only feature products that exist in our curated catalog with live Amazon.ca affiliate links.</li>
+		<li>We only feature products that exist in our curated catalog with live {AMAZON_LABEL} affiliate links.</li>
 		<li>We prioritize clarity over hype — including when a cheaper option is the smarter buy.</li>
+		<li>
+			We cross-check rules and court dimensions against
+			<a href="https://usapickleball.org/" rel="noopener noreferrer">USA Pickleball</a>
+			resources when a guide depends on regulation standards.
+		</li>
+		<li>
+			When we can’t verify a claim from the manufacturer listing or our catalog notes, we say so instead of
+			inventing “tested” language.
+		</li>
 	</ul>
+	<h2>Who writes this</h2>
+	<p>
+		Guides are published under the {SITE_NAME} Editorial Team byline while we expand named contributor
+		bios. Editorial standards live in our
+		<a href="/editorial-policy">editorial policy</a>.
+	</p>
 	<h2>Independence</h2>
 	<p>
 		Product links may earn us a commission through Amazon Associates. That never changes what we recommend or the
 		price you pay. Read our
-		<a href="/editorial-policy">editorial policy</a> and
 		<a href="/affiliate-disclosure">affiliate disclosure</a> for the full picture.
 	</p>
 	<p>
-		Questions? <a href="/contact">Contact us</a>.
+		Questions or corrections? Email
+		<a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>
+		or use the <a href="/contact">contact page</a>.
 	</p>
 </TrustPageLayout>

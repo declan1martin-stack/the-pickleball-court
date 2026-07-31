@@ -5,7 +5,8 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import GearFilters from '../../components/GearFilters.astro';
 import gear from '../../data/gear.json';
 import { getArticlesByCategory, CATEGORY_PILLARS } from '../../lib/articles';
-import { getPriceTier } from '../../lib/products';
+import { assertAffiliateUrl, getPriceTier } from '../../lib/products';
+import { absoluteUrl, itemListSchema } from '../../lib/seo';
 
 const tierRank = { $: 1, $$: 2, $$$: 3 } as const;
 
@@ -84,9 +85,30 @@ const relatedArticles = (
 ).slice(0, 3);
 const pillar = CATEGORY_PILLARS[typedCategory];
 const showGearFilters = typedCategory === 'shoes' || typedCategory === 'apparel';
+const categoryOgImage = products[0]?.imageUrl
+	? products[0].imageUrl.startsWith('http')
+		? products[0].imageUrl
+		: absoluteUrl(products[0].imageUrl)
+	: undefined;
+const itemList = itemListSchema({
+	name: meta.h1,
+	description: meta.description,
+	path: `/gear/${typedCategory}`,
+	items: products.map((product, index) => ({
+		name: product.name,
+		url: assertAffiliateUrl(product.affiliateUrl),
+		position: index + 1,
+	})),
+});
 ---
 
-<Layout title={meta.h1} description={meta.description} canonicalPath={`/gear/${typedCategory}`}>
+<Layout
+	title={meta.h1}
+	description={meta.description}
+	canonicalPath={`/gear/${typedCategory}`}
+	ogImage={categoryOgImage}
+	jsonLd={itemList}
+>
 	<section class="border-b border-zinc-200 bg-white">
 		<div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
 			<Breadcrumbs

@@ -1,4 +1,6 @@
 ---
+import { AMAZON_LABEL, SITE_NAME } from '../lib/site';
+
 interface Props {
 	compact?: boolean;
 }
@@ -15,8 +17,8 @@ const { compact = false } = Astro.props;
 >
 	<p class:list={[compact ? 'leading-snug' : 'leading-relaxed', 'text-ink-muted']}>
 		<strong class="font-bold text-ink">Disclosure:</strong>
-		ThePickleballCourt.ca is a participant in the Amazon Services LLC Associates Program.
+		{SITE_NAME} is a participant in the Amazon Services LLC Associates Program.
 		As an Amazon Associate we earn from qualifying purchases. Links may be affiliate links —
-		they do not change your price. Always confirm the current price and availability on Amazon.ca.
+		they do not change your price. Always confirm the current price and availability on {AMAZON_LABEL}.
 	</p>
 </aside>

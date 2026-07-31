@@ -8,10 +8,16 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:ca": "PUBLIC_SITE_REGION=ca astro build",
+    "build:us": "PUBLIC_SITE_REGION=us astro build",
     "preview": "astro preview",
     "astro": "astro",
     "qa:affiliate": "node scripts/qa-affiliate.mjs",
-    "qa:live": "node scripts/qa-live.mjs"
+    "qa:affiliate:ca": "PUBLIC_SITE_REGION=ca node scripts/qa-affiliate.mjs",
+    "qa:affiliate:us": "PUBLIC_SITE_REGION=us node scripts/qa-affiliate.mjs",
+    "qa:live": "node scripts/qa-live.mjs",
+    "qa:live:ca": "LIVE_SITE=https://thepickleballcourt.ca PUBLIC_SITE_REGION=ca node scripts/qa-live.mjs",
+    "qa:live:us": "LIVE_SITE=https://uspickleballcourt.com PUBLIC_SITE_REGION=us node scripts/qa-live.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.3",

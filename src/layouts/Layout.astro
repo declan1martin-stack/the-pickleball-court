@@ -9,7 +9,9 @@ import {
 	clampMetaDescription,
 	formatPageTitle,
 	organizationSchema,
+	websiteSchema,
 } from '../lib/seo';
+import { OG_LOCALE, SITE_NAME, site } from '../lib/site';
 
 interface Props {
 	title: string;
@@ -40,18 +42,19 @@ const imageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, SITE_UR
 
 const schemas = [
 	organizationSchema(),
-	...(Array.isArray(jsonLd) ? jsonLd : [jsonLd]),
+	websiteSchema(),
+	...(Array.isArray(jsonLd) ? jsonLd : [jsonLd]).filter(Boolean),
 ];
 ---
 
 <!doctype html>
-<html lang="en-CA" class="scroll-smooth">
+<html lang={site.inLanguage} class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="canonical" href={canonicalUrl} />
-		<link rel="alternate" type="application/rss+xml" title="ThePickleballCourt.ca Guides" href="/rss.xml" />
+		<link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} Guides`} href="/rss.xml" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -64,8 +67,8 @@ const schemas = [
 		<meta name="robots" content="index,follow,max-image-preview:large" />
 		<meta name="theme-color" content="#1C4E80" />
 
-		<meta property="og:site_name" content="ThePickleballCourt.ca" />
-		<meta property="og:locale" content="en_CA" />
+		<meta property="og:site_name" content={SITE_NAME} />
+		<meta property="og:locale" content={OG_LOCALE} />
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={metaDescription} />
 		<meta property="og:type" content={ogType} />

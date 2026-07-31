@@ -1,4 +1,6 @@
 ---
+import { MARKET_LABEL, SITE_NAME } from '../lib/site';
+
 interface Props {
 	name?: string;
 	bio?: string;
@@ -6,9 +8,9 @@ interface Props {
 }
 
 const {
-	name = 'Gear Review Team',
-	bio = 'We research pickleball paddles, court shoes, and portable nets for Canadian players — from first-time buyers to tournament regulars. Our guides prioritize court feel, fit, and practical buying advice over hype.',
-	credential = 'Role-based editorial byline · Amazon Associates publishers',
+	name = `${SITE_NAME} Editorial Team`,
+	bio = `We research pickleball paddles, court shoes, and portable nets for ${MARKET_LABEL} players — from first-time buyers to tournament regulars. Our guides prioritize court feel, fit, and practical buying advice over hype. See /about for how we research.`,
+	credential = 'Editorial byline · Amazon Associates publishers',
 } = Astro.props;
 
 const initials = name

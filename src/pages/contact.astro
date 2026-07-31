@@ -1,20 +1,20 @@
 ---
 import TrustPageLayout from '../layouts/TrustPageLayout.astro';
+import { MARKET_LABEL, SITE_EMAIL, SITE_NAME } from '../lib/site';
 ---
 
 <TrustPageLayout
 	title="Contact"
-	description="Get in touch with ThePickleballCourt.ca editorial team."
+	description={`Email ${SITE_NAME} with corrections, guide requests, or partnership questions.`}
 	canonicalPath="/contact"
 >
 	<p>
-		Have a correction, partnership question, or guide request? We read every message related to Canadian pickleball
+		Have a correction, partnership question, or guide request? We read every message related to {MARKET_LABEL} pickleball
 		gear content.
 	</p>
 	<h2>Email</h2>
 	<p>
-		{'{{ TODO: confirm }}'} — replace with your public contact email. Placeholder:
-		<a href="mailto:hello@thepickleballcourt.ca">hello@thepickleballcourt.ca</a>
+		<a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>
 	</p>
 	<h2>What to include</h2>
 	<ul>
@@ -22,7 +22,8 @@ import TrustPageLayout from '../layouts/TrustPageLayout.astro';
 		<li>What needs updating (broken link, outdated advice, missing product)</li>
 		<li>Whether you’re a player, coach, retailer, or brand</li>
 	</ul>
-	<p class="rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm">
-		Form placeholder: {'{{ TODO: confirm }}'} — add a form provider (Formspree, Cloudflare Workers, etc.) when ready.
+	<p>
+		We aim to reply within a few business days. For Amazon order issues, contact Amazon Support directly — we can’t
+		change Amazon fulfillment or pricing.
 	</p>
 </TrustPageLayout>

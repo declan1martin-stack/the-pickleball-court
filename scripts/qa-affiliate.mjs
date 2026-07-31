@@ -2,7 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const dist = 'dist';
-const tag = 'thepickleb050-20';
+const region = (process.env.PUBLIC_SITE_REGION || 'ca').toString().trim().toLowerCase() === 'us' ? 'us' : 'ca';
+const tag = region === 'us' ? 'uspickleball-20' : 'thepickleb050-20';
+const amazonHost = region === 'us' ? 'amazon.com' : 'amazon.ca';
+const catalogTag = 'thepickleb050-20'; // gear.json source of truth stays CA; build rewrites at runtime
 const failures = [];
 const gear = JSON.parse(fs.readFileSync('src/data/gear.json', 'utf8'));
 
@@ -17,10 +20,34 @@ function walk(dir) {
 function checkHtml(file) {
 	const html = fs.readFileSync(file, 'utf8');
 	const amazonHrefs = [...html.matchAll(/href="(https?:\/\/[^"]*amazon\.[^"]*)"/gi)].map((m) => m[1]);
+	const wrongHost = region === 'us' ? 'amazon.ca' : 'amazon.com';
+	const wrongTag = region === 'us' ? 'thepickleb050-20' : 'uspickleball-20';
 	for (const href of amazonHrefs) {
 		if (!href.includes(`tag=${tag}`)) {
 			failures.push(`${file}: Amazon URL missing tag → ${href}`);
 		}
+		if (!href.includes(amazonHost)) {
+			failures.push(`${file}: Amazon URL wrong marketplace (want ${amazonHost}) → ${href}`);
+		}
+		if (href.includes(wrongHost)) {
+			failures.push(`${file}: cross-region leak (${wrongHost}) → ${href}`);
+		}
+		if (href.includes(wrongTag)) {
+			failures.push(`${file}: cross-region tag leak (${wrongTag}) → ${href}`);
+		}
+	}
+	if (region === 'us') {
+		if (html.includes('thepickleballcourt.ca') && !file.includes('node_modules')) {
+			// Allow only if somehow referencing the other brand intentionally — flag canonical/site leaks
+			if (/canonical[^>]+thepickleballcourt\.ca|og:site_name[^>]+ThePickleballCourt\.ca/i.test(html)) {
+				failures.push(`${file}: US build still has CA canonical/site_name`);
+			}
+		}
+		if (html.includes(`tag=${wrongTag}`)) {
+			failures.push(`${file}: US HTML contains CA Associates tag`);
+		}
+	} else if (html.includes(`tag=${wrongTag}`)) {
+		failures.push(`${file}: CA HTML contains US Associates tag`);
 	}
 	const affiliateAnchors = [...html.matchAll(/<a\b[^>]*href="https?:\/\/[^"]*amazon\.[^"]*"[^>]*>/gi)];
 	for (const [anchor] of affiliateAnchors) {
@@ -35,8 +62,8 @@ function checkHtml(file) {
 
 function checkCatalog() {
 	for (const product of gear) {
-		if (!product.affiliateUrl?.includes(`tag=${tag}`)) {
-			failures.push(`gear.json:${product.id}: affiliateUrl missing tag=${tag}`);
+		if (!product.affiliateUrl?.includes(`tag=${catalogTag}`)) {
+			failures.push(`gear.json:${product.id}: affiliateUrl missing tag=${catalogTag}`);
 		}
 		if (!product.imageUrl?.startsWith('/images/products/')) {
 			failures.push(`gear.json:${product.id}: imageUrl is not a local /images/products/ path → ${product.imageUrl}`);
@@ -66,5 +93,5 @@ if (failures.length) {
 }
 
 console.log(
-	`QA OK — ${gear.length} products: Amazon tag=${tag}, local images present, HTML anchors use sponsored/nofollow/noopener + target=_blank`,
+	`QA OK — region=${region} ${gear.length} products: HTML Amazon tag=${tag} host=${amazonHost}, local images present, anchors use sponsored/nofollow/noopener + target=_blank`,
 );

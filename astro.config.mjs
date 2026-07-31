@@ -5,9 +5,14 @@ import tailwindcss from '@tailwindcss/vite';
 
 import mdx from '@astrojs/mdx';
 
+const region = (process.env.PUBLIC_SITE_REGION ?? 'ca').toString().trim().toLowerCase();
+const site =
+	process.env.PUBLIC_SITE_URL?.trim() ||
+	(region === 'us' ? 'https://uspickleballcourt.com' : 'https://thepickleballcourt.ca');
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://thepickleballcourt.ca',
+  site,
   integrations: [sitemap(), mdx()],
   vite: {
     plugins: [tailwindcss()]

@@ -1,5 +1,12 @@
-export const SITE_URL = 'https://thepickleballcourt.ca';
-export const SITE_NAME = 'ThePickleballCourt.ca';
+import {
+	PRICE_CURRENCY,
+	SITE_EMAIL,
+	SITE_NAME,
+	SITE_URL,
+	site,
+} from './site';
+
+export { SITE_NAME, SITE_URL };
 export const DEFAULT_OG_IMAGE =
 	'https://images.unsplash.com/photo-1762423570127-c36ff11b883f?w=1200&q=80&auto=format&fit=crop';
 
@@ -29,17 +36,55 @@ export function organizationSchema() {
 		name: SITE_NAME,
 		url: SITE_URL,
 		logo: absoluteUrl('/favicon.svg'),
-		description:
-			'Canadian pickleball gear guides covering paddles, court shoes, balls, bags, apparel, accessories, and portable nets.',
-		areaServed: 'CA',
-		email: 'hello@thepickleballcourt.ca',
+		description: `${site.marketLabel} pickleball gear guides covering paddles, court shoes, balls, bags, apparel, accessories, and portable nets.`,
+		areaServed: site.areaServed,
+		email: SITE_EMAIL,
 		founder: {
 			'@type': 'Person',
-			name: 'ThePickleballCourt.ca Editorial Team',
+			name: `${SITE_NAME} Editorial Team`,
 			url: absoluteUrl('/about'),
 			jobTitle: 'Pickleball gear researchers',
 		},
+		// Add real social profile URLs here once accounts exist.
 		sameAs: [] as string[],
+	};
+}
+
+export function websiteSchema() {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: SITE_NAME,
+		url: SITE_URL,
+		description: `${site.marketLabel} pickleball gear guides and ${site.amazonLabel} product catalogs for paddles, shoes, nets, balls, bags, apparel, and accessories.`,
+		inLanguage: site.inLanguage,
+		publisher: {
+			'@type': 'Organization',
+			name: SITE_NAME,
+			url: SITE_URL,
+		},
+	};
+}
+
+export function itemListSchema(input: {
+	name: string;
+	description: string;
+	path: string;
+	items: { name: string; url: string; position: number }[];
+}) {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'ItemList',
+		name: input.name,
+		description: input.description,
+		url: absoluteUrl(input.path),
+		numberOfItems: input.items.length,
+		itemListElement: input.items.map((item) => ({
+			'@type': 'ListItem',
+			position: item.position,
+			name: item.name,
+			url: item.url,
+		})),
 	};
 }
 
@@ -110,7 +155,7 @@ export function productSchema(input: {
 			'@type': 'Offer',
 			url: input.url,
 			availability: 'https://schema.org/InStock',
-			priceCurrency: 'CAD',
+			priceCurrency: PRICE_CURRENCY,
 			// Intentionally omit price — Amazon forbids presenting non-API prices as live.
 		},
 	};
