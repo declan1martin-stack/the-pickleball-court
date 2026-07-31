@@ -156,7 +156,7 @@ export function productSchema(input: {
 			url: input.url,
 			availability: 'https://schema.org/InStock',
 			priceCurrency: PRICE_CURRENCY,
-			// Intentionally omit price — Amazon forbids presenting non-API prices as live.
+			// Intentionally omit price — do not present non-API catalog prices as live retail prices.
 		},
 	};
 }

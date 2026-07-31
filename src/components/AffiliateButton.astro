@@ -12,7 +12,7 @@ interface Props {
 
 const {
 	href,
-	label = 'Check current price on Amazon',
+	label = 'Check current price',
 	variant = 'primary',
 	class: className = '',
 	productId,
@@ -31,7 +31,7 @@ const variants = {
 	href={safeHref}
 	target="_blank"
 	rel="sponsored nofollow noopener"
-	data-affiliate="amazon"
+	data-affiliate="retail"
 	data-product-id={productId}
 	class:list={[variants[variant], className]}
 >

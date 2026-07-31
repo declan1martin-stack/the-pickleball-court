@@ -43,7 +43,7 @@ const gsc = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 			document.addEventListener(
 				'click',
 				(event) => {
-					const link = event.target?.closest?.('a[data-affiliate="amazon"]');
+					const link = event.target?.closest?.('a[data-affiliate="retail"]');
 					if (!link || typeof window.gtag !== 'function') return;
 					window.gtag('event', 'affiliate_click', {
 						event_category: 'affiliate',

@@ -1,7 +1,7 @@
 /**
  * Host-based marketplace rewrite for the shared Pages project.
  *
- * - thepickleballcourt.ca → serve build as-is (Amazon.ca + thepickleb050-20)
+ * - thepickleballcourt.ca → serve build as-is (amazon.ca + thepickleb050-20)
  * - uspickleballcourt.com → rewrite product/affiliate/canonical strings to US
  *
  * Idempotent: a US-region build (PUBLIC_SITE_REGION=us) already contains US
@@ -46,8 +46,8 @@ function rewriteForUs(body) {
 		.replaceAll('http://thepickleballcourt.ca', 'https://uspickleballcourt.com')
 		.replaceAll('ThePickleballCourt.ca', 'USPickleballCourt.com')
 		.replaceAll('hello@thepickleballcourt.ca', 'hello@uspickleballcourt.com')
-		.replaceAll('Amazon.ca', 'Amazon.com')
-		.replaceAll('Amazon.comand', 'Amazon.com and')
+		.replaceAll('the Canada store', 'the US store')
+		.replaceAll('Canadian store · Canada product links', 'US store · US product links')
 		.replaceAll('>.ca</span>', '>.com</span>')
 		.replaceAll('>.ca<', '>.com<')
 		.replaceAll('Pickleball Court.ca', 'Pickleball Court.com')

@@ -23,7 +23,7 @@ export function getProductsByCategory(category: ProductCategory): Product[] {
 	return products.filter((product) => product.category === category);
 }
 
-/** Normalize Amazon links to this build's marketplace host + Associates tag. */
+/** Normalize marketplace affiliate links to this build's host + Associates tag. */
 export function withAffiliateTag(url: string): string {
 	try {
 		const parsed = new URL(url);
@@ -55,7 +55,7 @@ export function assertAffiliateUrl(url: string): string {
 export type PriceTier = '$' | '$$' | '$$$' | '$$$$' | '$$$$$';
 
 /**
- * Approximate catalog price tiers (never live Amazon prices):
+ * Approximate catalog price tiers (never live store prices):
  * $ ≤ $50 · $$ ≤ $75 · $$$ ≤ $100 · $$$$ ≤ $150 · $$$$$ > $150
  */
 export function getPriceTier(price: string): PriceTier {

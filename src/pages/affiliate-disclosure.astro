@@ -6,19 +6,18 @@ import { AFFILIATE_TAG, AMAZON_LABEL, SITE_NAME } from '../lib/site';
 
 <TrustPageLayout
 	title="Affiliate Disclosure"
-	description={`Full FTC and Amazon Associates disclosure for ${SITE_NAME}.`}
+	description={`Full FTC and affiliate disclosure for ${SITE_NAME}.`}
 	canonicalPath="/affiliate-disclosure"
 >
 	<Disclosure />
-	<h2>Amazon Associates</h2>
+	<h2>Affiliate links</h2>
 	<p>
-		{SITE_NAME} is a participant in the Amazon Services LLC Associates Program, an affiliate advertising
-		program designed to provide a means for sites to earn advertising fees by advertising and linking to{' '}
-		{AMAZON_LABEL} and affiliated sites.
+		{SITE_NAME} participates in affiliate advertising programs designed to provide a means for sites to earn
+		advertising fees by advertising and linking to {AMAZON_LABEL} and affiliated sites.
 	</p>
 	<p>
-		When you click an Amazon link on this site and complete a qualifying purchase, we may earn a commission at no
-		additional cost to you. Our Amazon Associates tag is <code>{AFFILIATE_TAG}</code>.
+		When you click a product link on this site and complete a qualifying purchase, we may earn a commission at no
+		additional cost to you. Our affiliate tracking tag is <code>{AFFILIATE_TAG}</code>.
 	</p>
 	<h2>FTC disclosure</h2>
 	<p>
@@ -28,7 +27,7 @@ import { AFFILIATE_TAG, AMAZON_LABEL, SITE_NAME } from '../lib/site';
 	</p>
 	<h2>Pricing note</h2>
 	<p>
-		Any prices shown on this site are approximate catalog references only and may be outdated. Amazon’s price and
-		availability information is authoritative. Use “Check current price on Amazon” links before buying.
+		Any prices shown on this site are approximate catalog references only and may be outdated. The retailer’s price
+		and availability information is authoritative. Use “Check current price” links before buying.
 	</p>
 </TrustPageLayout>

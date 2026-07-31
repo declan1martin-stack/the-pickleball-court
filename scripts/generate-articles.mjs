@@ -70,7 +70,7 @@ const articles = [
 			{ q: 'Is a more expensive paddle always better?', a: 'No. A forgiving control paddle often helps new players more than a stiff power frame designed for advanced drivers.' },
 			{ q: 'Should I buy fiberglass or carbon fiber first?', a: 'Accessible entry carbon or fiberglass-feeling paddles are fine to start. Raw carbon shines once you can consistently generate brush contact.' },
 			{ q: 'What grip size do I need?', a: 'Choose a grip that lets your fingers wrap comfortably without straining. Many players start mid-size and add an overgrip.' },
-			{ q: 'Where should Canadians buy paddles?', a: 'Amazon.ca is convenient for shipping and returns. Always confirm the current price and seller before checkout.' },
+			{ q: 'Where should Canadians buy paddles?', a: 'the store is convenient for shipping and returns. Always confirm the current price and seller before checkout.' },
 		],
 		body: `If you are staring at a wall of paddles and feeling lost, you are not alone. Choosing a pickleball paddle is less about chasing a pro setup and more about matching the paddle to how you actually play.
 
@@ -105,7 +105,7 @@ Widebody shapes enlarge the sweet spot. Elongated shapes add reach for singles a
 
 ## Recommended starting points from our catalog
 
-These are catalog references, not live checkout prices. Always confirm on Amazon.ca.
+These are catalog references, not live checkout prices. Always confirm on the store.
 
 - **Budget-friendly entry:** JOOLA Vision C15
 - **Control-first value:** Selkirk SLK Halo Control XL
@@ -116,7 +116,7 @@ These are catalog references, not live checkout prices. Always confirm on Amazon
 
 <ProsCons
   pros={["Clearer contact once weight and grip fit","Faster improvement with a matching sweet spot","Less arm fatigue across club nights"]}
-  cons={["Buying pure power too early wrecks consistency","Marketing buzzwords are not automatic upgrades","Amazon listings change — verify the exact model"]}
+  cons={["Buying pure power too early wrecks consistency","Marketing buzzwords are not automatic upgrades","Retail listings change — verify the exact model"]}
 />
 
 ## Common beginner mistakes
@@ -125,7 +125,7 @@ Copying a pro paddle, ignoring shoes, and chasing spin before clean contact are 
 
 ## Demo plan for online buyers
 
-Shortlist two or three paddles in the same weight class, check Amazon.ca return windows, then play three sessions: soft game, driving night, and tired-legs night. Keep the paddle that stays comfortable when you are late to the ball.
+Shortlist two or three paddles in the same weight class, check the store return windows, then play three sessions: soft game, driving night, and tired-legs night. Keep the paddle that stays comfortable when you are late to the ball.
 
 ## Next reads
 
@@ -160,7 +160,7 @@ Pair a forgiving paddle (Halo Control XL or Vision C15) with real court shoes. G
 			{ q: 'Best value paddle in our catalog?', a: 'JOOLA Vision C15 and Selkirk SLK Halo Control XL are strong value starting points before flagship pricing.' },
 			{ q: 'Do I need a thermoformed paddle?', a: 'Not at first. Construction buzzwords matter less than weight fit and consistent contact.' },
 			{ q: 'Which paddle for mixed doubles?', a: 'Balanced 16mm frames like Hyperion C2 or Ruby-class paddles suit most mixed doubles patterns.' },
-			{ q: 'Are listed prices live Amazon prices?', a: 'No. They are approximate catalog references. Always check the current price on Amazon.ca.' },
+			{ q: 'Are listed prices live retail prices?', a: 'No. They are approximate catalog references. always check the current price on the store.' },
 		],
 		body: `"Best paddle" lists fail when they crown one winner for everyone. This 2026 guide organizes picks by player job using only products in our [paddle catalog](/gear/paddles).
 
@@ -189,7 +189,7 @@ Perseus and Power Air Invikta serve aggressive players with early preparation. I
 Hyperion C2 remains a high-intent Canadian search because it blends reach, feedback, and a usable sweet spot for mixed club nights.
 
 <ProsCons
-  pros={["Shortlist by playing style","Value and flagship options","Tied to Amazon.ca availability"]}
+  pros={["Shortlist by playing style","Value and flagship options","Tied to the store availability"]}
   cons={["No universal number one","Models and listings change","Approximate catalog prices only"]}
 />
 
@@ -197,7 +197,7 @@ Hyperion C2 remains a high-intent Canadian search because it blends reach, feedb
 We mapped catalog features to court jobs and avoided inventing lab numbers we do not have. Pair any upgrade with [court shoes](/guides/best-pickleball-shoes-2026) and compare brands in [JOOLA vs Selkirk vs Six Zero](/guides/joola-vs-selkirk-vs-six-zero).
 
 <Callout type="warning" title="Price reminder">
-Never treat on-site prices as checkout truth. Use Check current price on Amazon on every product.
+Never treat on-site prices as checkout truth. Use Check current price on every product.
 </Callout>
 `,
 	},
@@ -221,7 +221,7 @@ const rest = [
 			['Skechers or ASICS for beginners?', 'Skechers Viper Court models are popular comfort-first court shoes; ASICS Gel-Dedicate offers familiar court stability at a friendlier tier.'],
 			['What shoe helps bad knees?', 'Look for cushioning plus lateral support — and consider our plantar fasciitis / bad knees guide. Shoes help; they are not medical treatment.'],
 			['Do I need pickleball-specific shoes?', 'Court shoes (tennis/pickleball) with gum or court rubber outsoles are the real requirement.'],
-			['Are prices live?', 'No. Confirm current price on Amazon.ca.'],
+			['Are prices live?', 'No. confirm current price on the store.'],
 		]),
 		links: ['/guides/skechers-vs-asics-pickleball', '/guides/best-pickleball-shoes-for-wide-feet', '/guides/best-pickleball-shoes-for-plantar-fasciitis', '/gear/shoes'],
 		compare: ['skechers-viper-court-pro', 'skechers-viper-court-shoe', 'asics-gel-dedicate-8', 'asics-gel-resolution-9'],
@@ -244,7 +244,7 @@ const rest = [
 			['Best net for a driveway?', 'Franklin and Rally systems are popular for quick home setups; prioritize stability in wind and easy teardown.'],
 			['Do portable nets work for tournaments?', 'Some premium systems are training/tournament adjacent, but always check event equipment rules.'],
 			['How important is the carrying case?', 'If you move the net weekly, a wheeled or well-padded case saves frustration and frame dings.'],
-			['Are prices live?', 'No. Check current price on Amazon.ca.'],
+			['Are prices live?', 'No. Check current price.ca.'],
 		]),
 		links: ['/guides/franklin-vs-onix-vs-rally-vs-selkirk-nets', '/guides/pickleball-court-dimensions', '/gear/nets'],
 		compare: ['franklin-signature-portable-net', 'onix-portable-pickleball-net', 'rally-portable-net-set', 'selkirk-portable-net-system'],
@@ -268,7 +268,7 @@ const rest = [
 			['Who should buy Six Zero?', 'Players who want raw carbon spin feel and are willing to learn brush technique.'],
 			['Best brand for beginners?', 'Selkirk SLK Halo Control XL and JOOLA Vision C15 are approachable catalog starting points.'],
 			['Do brands play the same across models?', 'No. Model geometry matters more than logo.'],
-			['Where to compare prices?', 'Use Amazon.ca links in our [paddle hub](/gear/paddles) and confirm current pricing.'],
+			['Where to compare prices?', 'Use store links in our [paddle hub](/gear/paddles) and confirm current pricing.'],
 		]),
 		links: ['/guides/best-pickleball-paddles-2026', '/guides/how-to-choose-a-pickleball-paddle', '/gear/paddles'],
 		compare: ['joola-hyperion-cas-16', 'selkirk-luxx-control-air-epic', 'six-zero-double-black-diamond-control'],
@@ -291,7 +291,7 @@ const rest = [
 			['Are ASICS better for ankle support?', 'Gel-Resolution especially targets aggressive lateral lockdown. Fit is personal — try heel hold first.'],
 			['Which is better for wide feet?', 'See our wide-feet guide; many players report different lasts across brands. Fit beats logo.'],
 			['Can either replace a medical insert?', 'No. Shoes complement, not replace, clinician advice for injuries.'],
-			['Where to buy in Canada?', 'Amazon.ca links in our [shoe hub](/gear/shoes).'],
+			['Where to buy in Canada?', 'store links in our [shoe hub](/gear/shoes).'],
 		]),
 		links: ['/guides/best-pickleball-shoes-2026', '/guides/best-pickleball-shoes-for-wide-feet', '/gear/shoes'],
 		compare: ['skechers-viper-court-pro', 'asics-gel-resolution-9', 'asics-gel-dedicate-8', 'skechers-viper-court-shoe'],
@@ -313,7 +313,7 @@ const rest = [
 			['Which net feels most premium?', 'ONIX and Selkirk systems target players wanting higher-end tension and build.'],
 			['Will wind tip portable nets?', 'Lighter frames can shift in prairie or coastal wind — stake or weight thoughtfully and never leave unattended in storms.'],
 			['Do I need boundary lines too?', 'For practice, chalk or temporary lines help. See court dimensions guide.'],
-			['Prices live?', 'No — confirm on Amazon.ca.'],
+			['Prices live?', 'No — confirm on the store.'],
 		]),
 		links: ['/guides/best-portable-pickleball-nets-2026', '/guides/pickleball-court-dimensions', '/gear/nets'],
 		compare: ['franklin-signature-portable-net', 'onix-portable-pickleball-net', 'rally-portable-net-set', 'selkirk-portable-net-system'],
@@ -439,7 +439,7 @@ const rest = [
 		tags: ['shoes', 'wide-feet', 'fit'],
 		faq: faq5([
 			['Do Skechers fit wide?', 'Many players find Skechers court models roomier, but lasts vary by size. {{ TODO: confirm }} official wide-width availability by SKU.'],
-			['Do ASICS offer wide court shoes?', '{{ TODO: confirm }} current wide-width ASICS court SKUs on Amazon.ca for your size.'],
+			['Do ASICS offer wide court shoes?', '{{ TODO: confirm }} current wide-width ASICS court SKUs on the store for your size.'],
 			['Should I size up instead of wide?', 'Sometimes length helps, but width issues need width — sizing up can cause heel slip.'],
 			['Socks matter?', 'Yes. Thin performance socks beat thick cotton for hot spots.'],
 			['Prices live?', 'No.'],
@@ -598,12 +598,12 @@ function expand(a) {
 	const compareJsx = `<ComparisonTable productIds={${JSON.stringify(a.compare)}} />`;
 	const pros = `<ProsCons
   pros={["Practical, audience-specific advice","Tied to real catalog products","Internal links to keep researching"]}
-  cons={["Not a substitute for hands-on demo","Amazon availability changes","Approximate catalog prices only"]}
+  cons={["Not a substitute for hands-on demo","Retail availability changes","Approximate catalog prices only"]}
 />`;
 	const body = `${intro}
 
 <Callout type="tip" title="Affiliate note">
-As an Amazon Associate we may earn from qualifying purchases. Prices shown on site are approximate catalog references — always check the current price on Amazon.ca.
+Affiliate links may earn us a commission from qualifying purchases. Prices shown on site are approximate catalog references — always check the current price on the store.
 </Callout>
 
 ${sectionMd}
@@ -617,7 +617,7 @@ ${pros}
 ${linkMd}
 
 <Callout type="pick" title="Next step">
-Shortlist two options, confirm fit/feel priorities, then use Check current price on Amazon before you buy.
+Shortlist two options, confirm fit/feel priorities, then use Check current price before you buy.
 </Callout>
 `;
 	return { ...a, body };

@@ -53,7 +53,7 @@ const fieldLabels: Record<SpecField, string> = {
 								{fieldLabels[field]}
 							</th>
 						))}
-						<th scope="col" class="px-4 py-3 font-semibold">Amazon</th>
+						<th scope="col" class="px-4 py-3 font-semibold">Store</th>
 					</tr>
 				</thead>
 				<tbody class="divide-y divide-border bg-surface">
@@ -65,7 +65,7 @@ const fieldLabels: Record<SpecField, string> = {
 							{fields.map((field) => (
 								<td class="px-4 py-4 text-ink-muted">
 									{field === 'priceTier' ? (
-										<span title="Approximate price tier based on catalog listing — not a live Amazon price">
+										<span title="Approximate price tier based on catalog listing — not a live store price">
 											{cellValue(product, field)}
 										</span>
 									) : (
@@ -81,7 +81,7 @@ const fieldLabels: Record<SpecField, string> = {
 				</tbody>
 			</table>
 			<p class="border-t border-zinc-200 bg-zinc-50 px-4 py-2 text-xs text-zinc-500">
-				Price tiers ($–$$$$$) are approximate catalog bands ($≤50, $$≤75, $$$≤100, $$$$≤150, $$$$$ above $150), not live Amazon prices. Always confirm the current price on {AMAZON_LABEL}.
+				Price tiers ($–$$$$$) are approximate catalog bands ($≤50, $$≤75, $$$≤100, $$$$≤150, $$$$$ above $150), not live store prices. Always confirm the current price on {AMAZON_LABEL}.
 			</p>
 		</div>
 
@@ -99,7 +99,7 @@ const fieldLabels: Record<SpecField, string> = {
 						))}
 					</dl>
 					<div class="mt-4">
-						<AffiliateButton href={product.affiliateUrl} productId={product.id} label="Check current price on Amazon" />
+						<AffiliateButton href={product.affiliateUrl} productId={product.id} label="Check current price" />
 					</div>
 				</li>
 			))}
