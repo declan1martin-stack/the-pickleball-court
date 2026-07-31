@@ -9,10 +9,11 @@ import {
 	DEFAULT_OG_IMAGE,
 	clampMetaDescription,
 	formatPageTitle,
+	hreflangAlternates,
 	organizationSchema,
 	websiteSchema,
 } from '../lib/seo';
-import { OG_LOCALE, SITE_NAME, site } from '../lib/site';
+import { MARKET_LABEL, MARKET_PLAYERS, OG_LOCALE, SITE_NAME, site } from '../lib/site';
 
 interface Props {
 	title: string;
@@ -27,7 +28,7 @@ interface Props {
 
 const {
 	title,
-	description = 'The definitive hub for Canadian pickleball court directories, premium gear reviews, and performance equipment guides.',
+	description = `The definitive hub for ${MARKET_LABEL} pickleball court directories, premium gear reviews, and performance equipment guides for ${MARKET_PLAYERS}.`,
 	canonicalPath = Astro.url.pathname,
 	ogImage = DEFAULT_OG_IMAGE,
 	ogType = 'website',
@@ -40,6 +41,7 @@ const canonicalUrl = new URL(canonicalPath, SITE_URL).href;
 const pageTitle = formatPageTitle(title);
 const metaDescription = clampMetaDescription(description);
 const imageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, SITE_URL).href;
+const alternates = hreflangAlternates(canonicalPath);
 
 const schemas = [
 	organizationSchema(),
@@ -55,6 +57,9 @@ const schemas = [
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="canonical" href={canonicalUrl} />
+		<link rel="alternate" hreflang="en-CA" href={alternates.ca} />
+		<link rel="alternate" hreflang="en-US" href={alternates.us} />
+		<link rel="alternate" hreflang="x-default" href={alternates.xDefault} />
 		<link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} Guides`} href="/rss.xml" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

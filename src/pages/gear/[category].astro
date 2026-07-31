@@ -3,10 +3,12 @@ import Layout from '../../layouts/Layout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import GearFilters from '../../components/GearFilters.astro';
+import Disclosure from '../../components/Disclosure.astro';
 import gear from '../../data/gear.json';
 import { getArticlesByCategory, CATEGORY_PILLARS } from '../../lib/articles';
 import { assertAffiliateUrl, getPriceTier, PRICE_TIER_RANK } from '../../lib/products';
 import { absoluteUrl, itemListSchema } from '../../lib/seo';
+import { MARKET_COUNTRY, MARKET_LABEL, MARKET_PLAYERS } from '../../lib/site';
 
 export function getStaticPaths() {
 	const categories = ['paddles', 'shoes', 'nets', 'balls', 'bags', 'apparel', 'accessories'] as const;
@@ -17,51 +19,42 @@ export function getStaticPaths() {
 
 const categoryMeta = {
 	paddles: {
-		h1: 'Best Pickleball Paddles in Canada',
-		description:
-			'Compare top JOOLA, Selkirk, and Six Zero pickleball paddles popular with Canadian players. Find power, control, and spin options with current store availability.',
+		h1: `Best Pickleball Paddles in ${MARKET_COUNTRY}`,
+		description: `Compare top JOOLA, Selkirk, and Six Zero pickleball paddles popular with ${MARKET_PLAYERS}. Find power, control, and spin options with current store availability.`,
 		intro:
 			'Browse beginner-friendly value paddles through intermediate and tournament frames — sorted from $ to $$$$$ so budget and flagship options are easy to compare.',
 	},
 	shoes: {
-		h1: 'Best Pickleball Shoes in Canada',
-		description:
-			'Shop court-ready Skechers and ASICS pickleball shoes for Canadian hard courts. Filter by gender and Comfort & Support features like wide fit, arch support, and cushioning.',
-		intro:
-			'Upgrade from running shoes to court-specific footwear built for lateral cuts, kitchen stops, and long Canadian outdoor sessions. Use Gender and Comfort & Support filters to narrow by fit needs — sorted from $ to $$$$$.',
+		h1: `Best Pickleball Shoes in ${MARKET_COUNTRY}`,
+		description: `Shop court-ready Skechers and ASICS pickleball shoes for ${MARKET_LABEL} hard courts. Filter by gender and Comfort & Support features like wide fit, arch support, and cushioning.`,
+		intro: `Upgrade from running shoes to court-specific footwear built for lateral cuts, kitchen stops, and long ${MARKET_LABEL} outdoor sessions. Use Gender and Comfort & Support filters to narrow by fit needs — sorted from $ to $$$$$.`,
 	},
 	nets: {
-		h1: 'Best Portable Pickleball Nets in Canada',
-		description:
-			'Find premium portable pickleball nets for Canadian driveways, parks, and cottage courts. Compare regulation systems from Franklin, ONIX, Rally, and Selkirk.',
-		intro:
-			'Set up a regulation court anywhere with durable portable nets designed for fast assembly, stable tension, and frequent Canadian outdoor use.',
+		h1: `Best Portable Pickleball Nets in ${MARKET_COUNTRY}`,
+		description: `Find premium portable pickleball nets for ${MARKET_LABEL} driveways, parks, and cottage courts. Compare regulation systems from Franklin, ONIX, Rally, and Selkirk.`,
+		intro: `Set up a regulation court anywhere with durable portable nets designed for fast assembly, stable tension, and frequent ${MARKET_LABEL} outdoor use.`,
 	},
 	balls: {
-		h1: 'Best Pickleball Balls in Canada',
-		description:
-			'Shop outdoor X-40, indoor X-26, ONIX Fuse, and Dura Fast 40 pickleballs for Canadian clubs, gyms, and driveways.',
+		h1: `Best Pickleball Balls in ${MARKET_COUNTRY}`,
+		description: `Shop outdoor X-40, indoor X-26, ONIX Fuse, and Dura Fast 40 pickleballs for ${MARKET_LABEL} clubs, gyms, and driveways.`,
 		intro:
 			'Pick indoor or outdoor balls by court surface — tournament favourites and practice packs sorted from $ to $$$$$.',
 	},
 	bags: {
-		h1: 'Best Pickleball Bags in Canada',
+		h1: `Best Pickleball Bags in ${MARKET_COUNTRY}`,
 		description:
 			'Compare sling bags, backpacks, and tour bags for paddles, balls, and club-night gear from JOOLA, Selkirk, and value brands.',
-		intro:
-			'Carry paddles and accessories to the court with backpacks, slings, and tour bags built for Canadian club and tournament travel.',
+		intro: `Carry paddles and accessories to the court with backpacks, slings, and tour bags built for ${MARKET_LABEL} club and tournament travel.`,
 	},
 	apparel: {
-		h1: 'Best Pickleball Apparel in Canada',
-		description:
-			'Shop skorts, arm sleeves, and court apparel for outdoor Canadian pickleball. Filter by gender and Comfort & Support when those attributes are documented.',
+		h1: `Best Pickleball Apparel in ${MARKET_COUNTRY}`,
+		description: `Shop skorts, arm sleeves, and court apparel for outdoor ${MARKET_LABEL} pickleball. Filter by gender and Comfort & Support when those attributes are documented.`,
 		intro:
 			'Dress for outdoor sessions with skorts, UV arm sleeves, and court-ready pieces that move with you at the kitchen. Filter by Gender or Comfort & Support — products stay sorted from $ to $$$$$.',
 	},
 	accessories: {
-		h1: 'Best Pickleball Accessories in Canada',
-		description:
-			'Overgrips, edge guard tape, and tungsten weighting tape for Canadian paddles — small upgrades that improve feel and durability.',
+		h1: `Best Pickleball Accessories in ${MARKET_COUNTRY}`,
+		description: `Overgrips, edge guard tape, and tungsten weighting tape for ${MARKET_LABEL} paddles — small upgrades that improve feel and durability.`,
 		intro:
 			'Refresh grips, protect edges, and fine-tune swing weight with accessories every regular player eventually needs.',
 	},
@@ -112,14 +105,19 @@ const itemList = itemListSchema({
 			<Breadcrumbs
 				items={[
 					{ label: 'Home', href: '/' },
-					{ label: 'Gear', href: '/guides' },
+					{ label: 'Gear' },
 					{ label: typedCategory },
 				]}
 			/>
-			<p class="text-sm font-bold uppercase tracking-[0.18em] text-emerald-700">Canadian Gear Guide</p>
+			<p class="text-sm font-bold uppercase tracking-[0.18em] text-emerald-700">{MARKET_LABEL} Gear Guide</p>
 			<h1 class="mt-3 max-w-4xl text-4xl font-black tracking-tight text-zinc-900 sm:text-5xl">{meta.h1}</h1>
 			<p class="mt-5 max-w-3xl text-lg leading-relaxed text-zinc-600">{meta.intro}</p>
-			<p class="mt-4 text-sm font-semibold text-zinc-500">{products.length} products curated for Canadian shoppers</p>
+			<p class="mt-4 text-sm font-semibold text-zinc-500">
+				{products.length} products curated for {MARKET_LABEL} shoppers
+			</p>
+			<div class="mt-5 max-w-3xl">
+				<Disclosure compact />
+			</div>
 			{pillar && (
 				<p class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-950">
 					Start with our pillar guide:
@@ -134,7 +132,10 @@ const itemList = itemListSchema({
 		{products.length > 0 ? (
 			<div id="gear-product-grid" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 				{products.map((product) => (
-					<ProductCard product={product} />
+					<article>
+						<h2 class="sr-only">{product.name}</h2>
+						<ProductCard product={product} />
+					</article>
 				))}
 			</div>
 		) : (

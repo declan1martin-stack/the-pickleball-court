@@ -10,9 +10,17 @@ type SiteConfig = {
 	currency: 'CAD' | 'USD';
 	ogLocale: string;
 	inLanguage: string;
+	hreflang: string;
 	areaServed: string;
 	email: string;
+	/** Adjective: "Canadian" | "US" */
 	marketLabel: string;
+	/** Noun phrase: "Canada" | "the US" */
+	marketCountry: string;
+	/** People label: "Canadian players" | "US players" */
+	marketPlayers: string;
+	alternateSiteUrl: string;
+	alternateHreflang: string;
 };
 
 const SITES: Record<SiteRegion, SiteConfig> = {
@@ -26,9 +34,14 @@ const SITES: Record<SiteRegion, SiteConfig> = {
 		currency: 'CAD',
 		ogLocale: 'en_CA',
 		inLanguage: 'en-CA',
+		hreflang: 'en-CA',
 		areaServed: 'CA',
 		email: 'hello@thepickleballcourt.ca',
 		marketLabel: 'Canadian',
+		marketCountry: 'Canada',
+		marketPlayers: 'Canadian players',
+		alternateSiteUrl: 'https://uspickleballcourt.com',
+		alternateHreflang: 'en-US',
 	},
 	us: {
 		region: 'us',
@@ -40,9 +53,14 @@ const SITES: Record<SiteRegion, SiteConfig> = {
 		currency: 'USD',
 		ogLocale: 'en_US',
 		inLanguage: 'en-US',
+		hreflang: 'en-US',
 		areaServed: 'US',
 		email: 'hello@uspickleballcourt.com',
 		marketLabel: 'US',
+		marketCountry: 'the US',
+		marketPlayers: 'US players',
+		alternateSiteUrl: 'https://thepickleballcourt.ca',
+		alternateHreflang: 'en-CA',
 	},
 };
 
@@ -63,3 +81,15 @@ export const PRICE_CURRENCY = site.currency;
 export const OG_LOCALE = site.ogLocale;
 export const SITE_EMAIL = site.email;
 export const MARKET_LABEL = site.marketLabel;
+export const MARKET_COUNTRY = site.marketCountry;
+export const MARKET_PLAYERS = site.marketPlayers;
+export const ALTERNATE_SITE_URL = site.alternateSiteUrl;
+export const HREFLANG = site.hreflang;
+export const ALTERNATE_HREFLANG = site.alternateHreflang;
+
+/** Display catalog price using this site's currency code. */
+export function formatCatalogPrice(price: string): string {
+	return price
+		.replace(/\bCAD\b/g, PRICE_CURRENCY)
+		.replace(/\bUSD\b/g, PRICE_CURRENCY);
+}

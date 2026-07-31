@@ -19,14 +19,37 @@ export function clampMetaDescription(description: string, max = 155): string {
 	return `${description.slice(0, max - 1).trimEnd()}…`;
 }
 
-/** Prefer a unique title ≤60 chars; append brand only when it fits. */
+function softTrimTitle(value: string, max: number): string {
+	if (value.length <= max) return value;
+	const slice = value.slice(0, Math.max(1, max - 1));
+	const lastSpace = slice.lastIndexOf(' ');
+	const base = lastSpace > Math.floor(max * 0.6) ? slice.slice(0, lastSpace) : slice;
+	return `${base.trimEnd()}…`;
+}
+
+/** Prefer a unique title ≤60 chars; append brand only when it fits. Never mid-word slice. */
 export function formatPageTitle(title: string, max = 60): string {
 	const trimmed = title.trim();
-	if (trimmed.length >= max) return trimmed.slice(0, max);
 	const suffix = ` | ${SITE_NAME}`;
-	if (trimmed.includes(SITE_NAME)) return trimmed;
+	if (trimmed.includes(SITE_NAME)) return softTrimTitle(trimmed, max);
 	if (trimmed.length + suffix.length <= max) return `${trimmed}${suffix}`;
-	return trimmed;
+	if (trimmed.length <= max) return trimmed;
+	return softTrimTitle(trimmed, max);
+}
+
+/** Absolute URLs for CA / US alternates of the same path. */
+export function hreflangAlternates(pathname: string): {
+	ca: string;
+	us: string;
+	xDefault: string;
+} {
+	const path = pathname.startsWith('/') ? pathname : `/${pathname}`;
+	const normalized = path === '/' ? '/' : path.replace(/\/$/, '') || '/';
+	return {
+		ca: `https://thepickleballcourt.ca${normalized === '/' ? '/' : normalized}`,
+		us: `https://uspickleballcourt.com${normalized === '/' ? '/' : normalized}`,
+		xDefault: `https://thepickleballcourt.ca${normalized === '/' ? '/' : normalized}`,
+	};
 }
 
 export function organizationSchema() {

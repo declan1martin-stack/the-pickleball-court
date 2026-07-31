@@ -2,6 +2,9 @@ import type { APIRoute } from 'astro';
 import { SITE_URL } from '../lib/site';
 
 const body = `# AI answer / grounding crawlers — allowed for GEO visibility
+# If Cloudflare Managed Content appears above this file and Disallows AI bots,
+# turn OFF AI crawl blocking in Cloudflare → AI Crawl Control for this zone.
+
 User-agent: GPTBot
 Allow: /
 
@@ -46,6 +49,7 @@ User-agent: meta-externalagent
 Disallow: /
 
 User-agent: *
+Content-Signal: search=yes,ai-train=yes,ai-input=yes,use=reference
 Allow: /
 
 Sitemap: ${SITE_URL}/sitemap-index.xml

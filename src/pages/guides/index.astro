@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getAllArticles } from '../../lib/articles';
+import { MARKET_LABEL, MARKET_PLAYERS } from '../../lib/site';
 
 const allArticles = await getAllArticles();
 const categories = [
@@ -20,7 +21,7 @@ const categories = [
 
 <Layout
 	title="Pickleball Guides & Buying Advice"
-	description="In-depth Canadian pickleball buying guides, comparisons, and rules explainers for paddles, shoes, balls, bags, apparel, accessories, and portable nets."
+	description={`In-depth ${MARKET_LABEL} pickleball buying guides, comparisons, and rules explainers for paddles, shoes, balls, bags, apparel, accessories, and portable nets.`}
 	canonicalPath="/guides"
 >
 	<section class="border-b border-zinc-200 bg-white">
@@ -28,7 +29,7 @@ const categories = [
 			<Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Guides' }]} />
 			<h1 class="text-4xl font-black tracking-tight text-zinc-900 sm:text-5xl">Pickleball Guides</h1>
 			<p class="mt-4 max-w-3xl text-lg text-zinc-600">
-				Practical buying advice and rules explainers for Canadian players — from first paddle to tournament prep.
+				Practical buying advice and rules explainers for {MARKET_PLAYERS} — from first paddle to tournament prep.
 			</p>
 		</div>
 	</section>

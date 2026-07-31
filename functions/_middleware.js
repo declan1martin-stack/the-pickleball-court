@@ -1,11 +1,10 @@
 /**
- * Host-based marketplace rewrite for the shared Pages project.
+ * Host-based marketplace + market-copy rewrite for the shared Pages project.
  *
- * - thepickleballcourt.ca → serve build as-is (amazon.ca + thepickleb050-20)
- * - uspickleballcourt.com → rewrite product/affiliate/canonical strings to US
+ * - thepickleballcourt.ca → serve build as-is
+ * - uspickleballcourt.com → rewrite affiliate hosts/tags, currency labels, and CA→US copy
  *
- * Idempotent: a US-region build (PUBLIC_SITE_REGION=us) already contains US
- * strings, so these replacements are no-ops.
+ * Idempotent with a US-region build (PUBLIC_SITE_REGION=us).
  */
 
 const US_HOSTS = new Set(['uspickleballcourt.com', 'www.uspickleballcourt.com']);
@@ -33,7 +32,8 @@ function isRewritable(contentType = '', pathname = '') {
 }
 
 function rewriteForUs(body) {
-	return body
+	let next = body
+		// Affiliate / host identity
 		.replaceAll('https://www.amazon.ca', 'https://www.amazon.com')
 		.replaceAll('http://www.amazon.ca', 'https://www.amazon.com')
 		.replaceAll('https://amazon.ca', 'https://www.amazon.com')
@@ -47,22 +47,155 @@ function rewriteForUs(body) {
 		.replaceAll('ThePickleballCourt.ca', 'USPickleballCourt.com')
 		.replaceAll('hello@thepickleballcourt.ca', 'hello@uspickleballcourt.com')
 		.replaceAll('the Canada store', 'the US store')
-		.replaceAll('Canadian store · Canada product links', 'US store · US product links')
 		.replaceAll('>.ca</span>', '>.com</span>')
 		.replaceAll('>.ca<', '>.com<')
 		.replaceAll('Pickleball Court.ca', 'Pickleball Court.com')
+		// Locale / schema
 		.replaceAll('content="en_CA"', 'content="en_US"')
-		.replaceAll('lang="en-CA"', 'lang="en-US"')
+		// Use "html lang=" — never replace bare lang="en-CA" (matches inside hreflang="en-CA").
+		.replaceAll('html lang="en-CA"', 'html lang="en-US"')
 		.replaceAll('"inLanguage":"en-CA"', '"inLanguage":"en-US"')
 		.replaceAll('"areaServed":"CA"', '"areaServed":"US"')
-		.replaceAll('"priceCurrency":"CAD"', '"priceCurrency":"USD"');
+		.replaceAll('"priceCurrency":"CAD"', '"priceCurrency":"USD"')
+		// Currency labels in visible copy (keep $ amounts; swap code only)
+		.replaceAll(' CAD', ' USD')
+		.replaceAll('>CAD<', '>USD<')
+		// High-signal page titles / H1s
+		.replaceAll('Canadian Pickleball Gear Guides', 'US Pickleball Gear Guides')
+		.replaceAll('Canadian Pickleball Gear Hub', 'US Pickleball Gear Hub')
+		.replaceAll('Definitive Guide to Canadian Pickleball', 'Definitive Guide to US Pickleball')
+		.replaceAll('Canadian Gear Guide', 'US Gear Guide')
+		.replaceAll('Best Pickleball Paddles in Canada', 'Best Pickleball Paddles in the US')
+		.replaceAll('Best Pickleball Shoes in Canada', 'Best Pickleball Shoes in the US')
+		.replaceAll('Best Portable Pickleball Nets in Canada', 'Best Portable Pickleball Nets in the US')
+		.replaceAll('Best Pickleball Balls in Canada', 'Best Pickleball Balls in the US')
+		.replaceAll('Best Pickleball Bags in Canada', 'Best Pickleball Bags in the US')
+		.replaceAll('Best Pickleball Apparel in Canada', 'Best Pickleball Apparel in the US')
+		.replaceAll('Best Pickleball Accessories in Canada', 'Best Pickleball Accessories in the US')
+		.replaceAll('In-depth Canadian pickleball', 'In-depth US pickleball')
+		// Market phrasing (ordered from specific → general)
+		.replaceAll('Where should Canadians', 'Where should US players')
+		.replaceAll('Canadians buy', 'US players buy')
+		.replaceAll('Canadian players', 'US players')
+		.replaceAll('Canadian shoppers', 'US shoppers')
+		.replaceAll('Canadian outdoor', 'US outdoor')
+		.replaceAll('Canadian hard courts', 'US hard courts')
+		.replaceAll('Canadian courts', 'US courts')
+		.replaceAll('Canadian gym', 'US gym')
+		.replaceAll('Canadian club', 'US club')
+		.replaceAll('Canadian tournament', 'US tournament')
+		.replaceAll('Canadian search', 'US search')
+		.replaceAll('Canadian searches', 'US searches')
+		.replaceAll('Canadian pickleball', 'US pickleball')
+		.replaceAll('Canadian Pickleball', 'US Pickleball')
+		.replaceAll('Canadian community', 'US community')
+		.replaceAll('Canadian Gear', 'US Gear')
+		.replaceAll('Canadian court', 'US court')
+		.replaceAll('for Canadian ', 'for US ')
+		.replaceAll('with Canadian ', 'with US ')
+		.replaceAll('and Canadian ', 'and US ')
+		.replaceAll('real Canadian ', 'real US ')
+		.replaceAll('curated for Canadian ', 'curated for US ')
+		.replaceAll('popular with Canadian ', 'popular with US ')
+		.replaceAll('Built for the Canadian ', 'Built for the US ')
+		.replaceAll('Built for Canadian ', 'Built for US ')
+		.replaceAll(' in Canada', ' in the US')
+		.replaceAll('Canada availability', 'US availability')
+		.replaceAll('Canada shoppers', 'US shoppers')
+		.replaceAll('on Canada', 'on the US')
+		.replaceAll('Where to buy in Canada', 'Where to buy in the US')
+		.replaceAll('Canadians who', 'US players who')
+		.replaceAll('Canadians', 'US players')
+		// Catch-all adjective after specific phrases (do not blanket-replace bare "Canada"
+		// — RegionGate keeps a Canada choice label).
+		.replaceAll('Canadian ', 'US ');
+
+	// Host rewrite also rewrites hreflang hrefs — restore CA + x-default alternates.
+	next = next
+		.replace(
+			/(<link rel="alternate" hreflang="en-CA" href=")https:\/\/(www\.)?uspickleballcourt\.com/g,
+			'$1https://thepickleballcourt.ca',
+		)
+		.replace(
+			/(<link rel="alternate" hreflang="x-default" href=")https:\/\/(www\.)?uspickleballcourt\.com/g,
+			'$1https://thepickleballcourt.ca',
+		);
+
+	return next;
 }
 
 export async function onRequest(context) {
 	const requestUrl = new URL(context.request.url);
-	// Let /go/ca and /go/us redirect handlers run untouched.
+
+	// Let /go/* redirect handlers run untouched.
 	if (requestUrl.pathname.startsWith('/go/')) {
 		return context.next();
+	}
+
+	// Serve AI-open robots for US even when Cloudflare Managed prepends blocks:
+	// return our own body with Allow rules first for major AI crawlers.
+	if (requestUrl.pathname === '/robots.txt' && shouldRewrite(requestUrl.hostname)) {
+		const siteUrl = 'https://uspickleballcourt.com';
+		const body = `# AI answer / grounding crawlers — allowed for GEO visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# Bulk scrapers we still block
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: *
+Content-Signal: search=yes,ai-train=yes,ai-input=yes,use=reference
+Allow: /
+
+Sitemap: ${siteUrl}/sitemap-index.xml
+Sitemap: ${siteUrl}/sitemap.xml
+`;
+		return new Response(body, {
+			status: 200,
+			headers: {
+				'content-type': 'text/plain; charset=utf-8',
+				// Discourage CF from injecting managed AI blocks into this response when possible.
+				'cache-control': 'public, max-age=300',
+				'x-robots-source': 'pages-function',
+			},
+		});
 	}
 
 	const response = await context.next();
