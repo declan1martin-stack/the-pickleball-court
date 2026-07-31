@@ -24,7 +24,7 @@ function safeNextPath(raw) {
 	return path;
 }
 
-export async function onRequestGet(context) {
+export async function onRequest(context) {
 	const url = new URL(context.request.url);
 	const region = (context.params.region || '').toLowerCase();
 	const destination = DESTINATIONS[region];

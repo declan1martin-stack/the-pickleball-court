@@ -4,6 +4,9 @@
  * GA4 defaults to the production property; override via env if needed:
  *   PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
  *   PUBLIC_GOOGLE_SITE_VERIFICATION=token_from_search_console
+ *
+ * Both CA and US hostnames share this property. Runtime `site_region`
+ * (ca|us) is attached to page views and events so you can filter in GA4.
  */
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID?.trim() || 'G-JWSBZJ6R4P';
 const gsc = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
@@ -20,8 +23,22 @@ const gsc = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 				dataLayer.push(arguments);
 			}
 			window.gtag = gtag;
+
+			function siteRegion() {
+				const host = window.location.hostname.replace(/^www\./, '').toLowerCase();
+				if (host === 'uspickleballcourt.com') return 'us';
+				if (host === 'thepickleballcourt.ca') return 'ca';
+				const q = new URLSearchParams(window.location.search).get('region');
+				return q === 'us' ? 'us' : 'ca';
+			}
+
+			const region = siteRegion();
 			gtag('js', new Date());
-			gtag('config', gaId, { anonymize_ip: true });
+			gtag('set', 'user_properties', { site_region: region });
+			gtag('config', gaId, {
+				anonymize_ip: true,
+				site_region: region,
+			});
 
 			document.addEventListener(
 				'click',
@@ -33,6 +50,7 @@ const gsc = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 						event_label: link.dataset.productId || link.href,
 						product_id: link.dataset.productId || undefined,
 						link_url: link.href,
+						site_region: siteRegion(),
 						transport_type: 'beacon',
 					});
 				},
