@@ -5,10 +5,8 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import GearFilters from '../../components/GearFilters.astro';
 import gear from '../../data/gear.json';
 import { getArticlesByCategory, CATEGORY_PILLARS } from '../../lib/articles';
-import { assertAffiliateUrl, getPriceTier } from '../../lib/products';
+import { assertAffiliateUrl, getPriceTier, PRICE_TIER_RANK } from '../../lib/products';
 import { absoluteUrl, itemListSchema } from '../../lib/seo';
-
-const tierRank = { $: 1, $$: 2, $$$: 3 } as const;
 
 export function getStaticPaths() {
 	const categories = ['paddles', 'shoes', 'nets', 'balls', 'bags', 'apparel', 'accessories'] as const;
@@ -23,14 +21,14 @@ const categoryMeta = {
 		description:
 			'Compare top JOOLA, Selkirk, and Six Zero pickleball paddles popular with Canadian players. Find power, control, and spin options with Amazon.ca availability.',
 		intro:
-			'Browse beginner-friendly value paddles through intermediate and tournament frames — sorted from $ to $$$ so budget and flagship options are easy to compare.',
+			'Browse beginner-friendly value paddles through intermediate and tournament frames — sorted from $ to $$$$$ so budget and flagship options are easy to compare.',
 	},
 	shoes: {
 		h1: 'Best Pickleball Shoes in Canada',
 		description:
 			'Shop court-ready Skechers and ASICS pickleball shoes for Canadian hard courts. Filter by gender and Comfort & Support features like wide fit, arch support, and cushioning.',
 		intro:
-			'Upgrade from running shoes to court-specific footwear built for lateral cuts, kitchen stops, and long Canadian outdoor sessions. Use Gender and Comfort & Support filters to narrow by fit needs — sorted from $ to $$$.',
+			'Upgrade from running shoes to court-specific footwear built for lateral cuts, kitchen stops, and long Canadian outdoor sessions. Use Gender and Comfort & Support filters to narrow by fit needs — sorted from $ to $$$$$.',
 	},
 	nets: {
 		h1: 'Best Portable Pickleball Nets in Canada',
@@ -44,7 +42,7 @@ const categoryMeta = {
 		description:
 			'Shop outdoor X-40, indoor X-26, ONIX Fuse, and Dura Fast 40 pickleballs for Canadian clubs, gyms, and driveways via Amazon.ca.',
 		intro:
-			'Pick indoor or outdoor balls by court surface — tournament favourites and practice packs sorted from $ to $$$.',
+			'Pick indoor or outdoor balls by court surface — tournament favourites and practice packs sorted from $ to $$$$$.',
 	},
 	bags: {
 		h1: 'Best Pickleball Bags in Canada',
@@ -58,7 +56,7 @@ const categoryMeta = {
 		description:
 			'Shop skorts, arm sleeves, and court apparel for outdoor Canadian pickleball. Filter by gender and Comfort & Support when those attributes are documented.',
 		intro:
-			'Dress for outdoor sessions with skorts, UV arm sleeves, and court-ready pieces that move with you at the kitchen. Filter by Gender or Comfort & Support — products stay sorted from $ to $$$.',
+			'Dress for outdoor sessions with skorts, UV arm sleeves, and court-ready pieces that move with you at the kitchen. Filter by Gender or Comfort & Support — products stay sorted from $ to $$$$$.',
 	},
 	accessories: {
 		h1: 'Best Pickleball Accessories in Canada',
@@ -76,7 +74,7 @@ const products = gear
 	.filter((item) => item.category === typedCategory)
 	.slice()
 	.sort((a, b) => {
-		const tierDiff = tierRank[getPriceTier(a.price)] - tierRank[getPriceTier(b.price)];
+		const tierDiff = PRICE_TIER_RANK[getPriceTier(a.price)] - PRICE_TIER_RANK[getPriceTier(b.price)];
 		if (tierDiff !== 0) return tierDiff;
 		return a.name.localeCompare(b.name);
 	});

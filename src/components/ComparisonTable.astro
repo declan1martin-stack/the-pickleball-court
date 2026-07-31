@@ -1,6 +1,6 @@
 ---
 import AffiliateButton from './AffiliateButton.astro';
-import { getProductsByIds, type Product } from '../lib/products';
+import { getPriceTier, getProductsByIds, type Product } from '../lib/products';
 import { AMAZON_LABEL } from '../lib/site';
 
 type SpecField = 'brand' | 'category' | 'priceTier' | 'featureHighlight';
@@ -16,14 +16,6 @@ const { productIds, fields = ['brand', 'priceTier', 'featureHighlight'], caption
 
 const products = getProductsByIds(productIds);
 
-function priceTier(price: string): string {
-	const amount = Number(price.replace(/[^0-9.]/g, ''));
-	if (!Number.isFinite(amount)) return '{{ TODO: confirm }}';
-	if (amount < 150) return '$';
-	if (amount < 220) return '$$';
-	return '$$$';
-}
-
 function cellValue(product: Product, field: SpecField): string {
 	switch (field) {
 		case 'brand':
@@ -31,7 +23,7 @@ function cellValue(product: Product, field: SpecField): string {
 		case 'category':
 			return product.category;
 		case 'priceTier':
-			return priceTier(product.price);
+			return getPriceTier(product.price);
 		case 'featureHighlight':
 			return product.features[0] ?? '—';
 		default:
@@ -89,7 +81,7 @@ const fieldLabels: Record<SpecField, string> = {
 				</tbody>
 			</table>
 			<p class="border-t border-zinc-200 bg-zinc-50 px-4 py-2 text-xs text-zinc-500">
-				Price tiers ($, $$, $$$) are approximate catalog bands, not live Amazon prices. Always confirm the current price on {AMAZON_LABEL}.
+				Price tiers ($–$$$$$) are approximate catalog bands ($≤50, $$≤75, $$$≤100, $$$$≤150, $$$$$ above $150), not live Amazon prices. Always confirm the current price on {AMAZON_LABEL}.
 			</p>
 		</div>
 

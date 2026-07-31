@@ -136,11 +136,232 @@
     "comfortTags": []
   },
   {
+    "id": "joola-perseus-3s",
+    "name": "JOOLA Ben Johns Perseus 3S Pickleball Paddle",
+    "category": "paddles",
+    "brand": "JOOLA",
+    "price": "$328.30 CAD",
+    "features": [
+      "3S Propulsion Core tuned for power drives with usable dwell on drops",
+      "Charged / raw carbon surface for spin-heavy third shots",
+      "Elongated Perseus shape favoured by aggressive all-court players"
+    ],
+    "description": "One of Amazon’s top-selling premium paddles — Ben Johns’ Perseus 3S shape for players who want modern power, spin, and tournament-ready consistency on indoor and outdoor courts.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0DC6ZNCS2?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0DC6ZNCS2.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "joola-scorpeus-3s",
+    "name": "JOOLA Scorpeus 3S Pickleball Paddle",
+    "category": "paddles",
+    "brand": "JOOLA",
+    "price": "$249.00 CAD",
+    "features": [
+      "Wide-body 3S shape with a larger sweet spot for blocks and counters",
+      "Raw carbon face built for bite on roll volleys and topspin drives",
+      "UPA-A certified JOOLA performance paddle for club and tournament play"
+    ],
+    "description": "Choose the Scorpeus 3S when you want JOOLA’s modern carbon tech in a more forgiving wide-body shape — a strong fit for doubles players who live at the kitchen.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0DC7139F9?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0DC7139F9.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "joola-agassi-graf",
+    "name": "JOOLA Agassi Graf Pickleball Paddle",
+    "category": "paddles",
+    "brand": "JOOLA",
+    "price": "$324.32 CAD",
+    "features": [
+      "Agassi-inspired shape with an extended upper sweet spot for placement",
+      "Textured carbon face for spin with Tech Flex Power weighting",
+      "USAP and UPA-A certified for sanctioned play"
+    ],
+    "description": "A precision-first JOOLA frame for players who shape points with depth and angles. The Graf geometry helps keep off-centre contact playable when you stretch wide at the kitchen.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0DQ61RSQT?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0DQ61RSQT.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-crbn-power",
+    "name": "CRBN Power Series Pickleball Paddle",
+    "category": "paddles",
+    "brand": "CRBN",
+    "price": "$320.00 CAD",
+    "features": [
+      "Foam-injected edges that expand the effective sweet spot",
+      "Carbon fiber face trusted by competitive power players",
+      "High-demand US brand now stocked for Canadian Amazon shoppers"
+    ],
+    "description": "CRBN is one of the most searched performance brands in the US paddle market. The Power Series suits aggressive drivers who still need a stable platform for resets and speed-ups.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0C889ZMSV?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0C889ZMSV.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-holbrook-mav-pro-2",
+    "name": "Holbrook Mav Pro 2.0 Pickleball Paddle",
+    "category": "paddles",
+    "brand": "Holbrook",
+    "price": "$228.80 CAD",
+    "features": [
+      "T700 3K raw carbon face with enhanced grit for spin",
+      "16mm dual-reactive polypropylene honeycomb core",
+      "Comfort grip tuned for longer sessions without hot spots"
+    ],
+    "description": "Holbrook’s best-known pro-series paddle — a power/control hybrid for intermediates stepping into thermoformed carbon without jumping to flagship JOOLA pricing.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0D19LC18M?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0D19LC18M.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-holbrook-aero",
+    "name": "Holbrook Aero Series Edgeless Pickleball Paddle",
+    "category": "paddles",
+    "brand": "Holbrook",
+    "price": "$251.67 CAD",
+    "features": [
+      "Edgeless T700 carbon construction for a clean swing path",
+      "Foam polypropylene core with corner weighting for a wider sweet spot",
+      "USAPA-approved Aero series for fast hands at the kitchen"
+    ],
+    "description": "An edgeless Holbrook option for players chasing hand speed and a modern foam-core feel. Strong pick if you want carbon performance with a lighter, more maneuverable profile.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0DJPT2C2R?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0DJPT2C2R.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-volair-mach-2",
+    "name": "Volair Mach 2 Pickleball Paddle",
+    "category": "paddles",
+    "brand": "Volair",
+    "price": "$259.95 CAD",
+    "features": [
+      "Wide 8.125\" face that boosts forgiveness on off-centre hits",
+      "Toray T700 carbon surface for spin and control",
+      "USAPA approved with 14mm and 16mm options on the listing"
+    ],
+    "description": "Volair’s Mach 2 widens the hitting surface for players who want confidence on blocks and counters. A tournament-legal carbon paddle popular with control-minded intermediates.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0CJH9KJK5?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0CJH9KJK5.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-piknix-pro",
+    "name": "Pickln Piknix Pro Thermoformed Pickleball Paddle",
+    "category": "paddles",
+    "brand": "Pickln",
+    "price": "$$$$",
+    "features": [
+      "T700 Toray raw carbon unibody thermoformed build",
+      "Foam-injected edge walls aimed at a CRBN-style sweet spot",
+      "USAPA approved 16mm control/power hybrid for value shoppers"
+    ],
+    "description": "A value thermoformed carbon paddle often compared to premium foam-edge frames. Good upgrade path when you want raw-carbon spin without flagship pricing.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0CKBF4F34?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0CKBF4F34.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-selkirk-slk-neo-set",
+    "name": "Selkirk SLK Neo Pickleball Paddle Set of 2",
+    "category": "paddles",
+    "brand": "Selkirk",
+    "price": "$112.27 CAD",
+    "features": [
+      "Two graphite/fiberglass paddles plus outdoor balls in one kit",
+      "Beginner-friendly sweet spot and cushioned grips",
+      "One of Selkirk’s highest-volume Amazon starter bundles"
+    ],
+    "description": "The go-to Selkirk starter set for couples, families, or first-time players who want a trusted brand instead of a no-name wood kit.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0BXV33GYM?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0BXV33GYM.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-selkirk-slk-helix-pro",
+    "name": "Selkirk SLK Helix Pro Pickleball Paddle",
+    "category": "paddles",
+    "brand": "Selkirk",
+    "price": "$59.99 CAD",
+    "features": [
+      "Carbon + fiberglass hybrid face for easy power",
+      "Thermoformed core with a large sweet spot for newer players",
+      "Approachable SLK price for first carbon-adjacent upgrades"
+    ],
+    "description": "A beginner-to-improver Selkirk paddle that adds modern construction without premium pricing — ideal after wood or basic fiberglass sets.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0CSF4CFT2?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0CSF4CFT2.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-selkirk-slk-latitude",
+    "name": "Selkirk SLK Latitude 13mm Pickleball Paddle",
+    "category": "paddles",
+    "brand": "Selkirk",
+    "price": "$98.99 CAD",
+    "features": [
+      "13mm SX4 polymer core for lighter, poppier swings",
+      "Graphite SpinFlex face for control-minded developing players",
+      "USAPA-ready SLK performance under flagship Selkirk pricing"
+    ],
+    "description": "A lightweight Selkirk option for players building consistency. The 13mm Latitude suits quick hands and easier swing speed than thicker control frames.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0D9PMYT82?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0D9PMYT82.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-selkirk-slk-nexus",
+    "name": "Selkirk SLK Nexus Pickleball Paddle",
+    "category": "paddles",
+    "brand": "Selkirk",
+    "price": "$89.99 CAD",
+    "features": [
+      "SpinFlex graphite surface with a forgiving sweet spot",
+      "Vibration-dampening feel for longer recreational sessions",
+      "All-level SLK frame for club nights and mixed doubles"
+    ],
+    "description": "An accessible Selkirk paddle for recreational players who want brand-name consistency and spin texture without stepping into Halo or VANGUARD pricing.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0CXDJ23V6?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0CXDJ23V6.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-selkirk-slk-prime-max",
+    "name": "Selkirk SLK Prime Max Pickleball Paddle Bundle",
+    "category": "paddles",
+    "brand": "Selkirk",
+    "price": "$138.02 CAD",
+    "features": [
+      "Prime Max shape with a larger face for easier contact",
+      "Graphite/fiberglass hybrid construction for balanced play",
+      "Bundle value for players outfitting a full starter kit"
+    ],
+    "description": "A Selkirk bundle built around the forgiving Prime Max shape — useful when you want a step up from Neo with more reach and a bigger hitting surface.",
+    "affiliateUrl": "https://www.amazon.ca/dp/B0D3LWJL1G?tag=thepickleb050-20",
+    "imageUrl": "/images/products/B0D3LWJL1G.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
     "id": "skechers-viper-court-pro",
     "name": "Viper Court Pro Men's Pickleball Shoes",
     "category": "shoes",
     "brand": "Skechers",
-    "price": "$$",
+    "price": "$$$$",
     "features": [
       "SKECHERS PICKLEBALL SHOES: workout in supportive comfort with Skechers Pickleball Pro court shoes (pickleball shoes men); featuring Goodyear",
       "MEDIUM (D) AND EXTRA WIDE FIT (4E): these tennis shoes feature a relaxed fit with an adjustable lace-up front (top of shoe) for a comfortabl",
@@ -260,7 +481,7 @@
     "name": "Gel-Dedicate 5 Men's Tennis Shoe",
     "category": "shoes",
     "brand": "ASICS",
-    "price": "$",
+    "price": "$$$",
     "features": [
       "SOLID RUBBER OUTSOLE: Provides enhanced durability and traction.",
       "TRUSSTIC SYSTEM TECHNOLOGY: Reduces the weight of the sole unit while retaining the structural integrity of the shoe.",
@@ -280,7 +501,7 @@
     "name": "Court Express Men's Pickleball Shoe",
     "category": "shoes",
     "brand": "K-Swiss",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "PLAYER LEVEL: Designed for the entry level, part-time, weekend player. For frequent players, we recommend the Express Light Pickleball Shoe.",
       "K-EVA: Special formula EVA to provide maximized cushioning and enhance durability of the midsole",
@@ -300,7 +521,7 @@
     "name": "Hypercourt Express 2 Men's Tennis Shoe",
     "category": "shoes",
     "brand": "K-Swiss",
-    "price": "$$",
+    "price": "$$$$",
     "features": [
       "AOSTA 7.0 RUBBER COMPOUND: High-density outsole provides unsurpassed durability from heel-to-toe",
       "180 PSC: A 180 degree thermal plastic Plantar Support Chassis that enhances mid-foot stability",
@@ -321,7 +542,7 @@
     "name": "Amadeus V2 Wide Pickleball / Tennis Shoes (Men)",
     "category": "shoes",
     "brand": "FitVille",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "TORSION-RESISTANT & NON-SLIP OUTSOLES: Upgraded Outsoles with improved performance provide you solid gripping and motion stability. The Dual",
       "SHOCK ABSORPTION MIDSOLES: EVA mid-soles act as shock absorbers and reduces impact from intense motion while providing maximum comfort and c",
@@ -344,7 +565,7 @@
     "name": "Wide Width Men’s Pickleball Shoes (Arch Support)",
     "category": "shoes",
     "brand": "FitVille",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "NEW DESIGN: Casual tennis shoes, simple and straightforward , full coverage of functional attributes required for sports, suitable for daily",
       "UPPER: Fashionable mesh and super soft microfiber upper. Anti-odor technology and breathable material keep your feet clean and cool.",
@@ -367,7 +588,7 @@
     "name": "Extra Wide Men’s Pickleball Court Shoes",
     "category": "shoes",
     "brand": "FitVille",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "【Slip Resistant and Cushioned Soles】Our shoes come equipped with high rebound technology, providing a responsive and cushioned feel with eve",
       "【Torsion Resistant】Anti-torsion TPU rubber acts as shock absorbers and enhance agility, allowing you to play your best on the tennis, pickle",
@@ -391,7 +612,7 @@
     "name": "Court Express Women's Pickleball Shoe",
     "category": "shoes",
     "brand": "K-Swiss",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "PLAYER LEVEL: Designed for the entry level, part-time, weekend player. For frequent players, we recommend the Express Light Pickleball Shoe.",
       "K-EVA: Special formula EVA to provide maximized cushioning and enhance durability of the midsole",
@@ -412,7 +633,7 @@
     "name": "Express Light Women's Pickleball Shoe",
     "category": "shoes",
     "brand": "K-Swiss",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "FIT: Built for Court Sports: K-Swiss Women’s pickleball shoes have a wide toe box that suits the flexibility needed for pickleball, Heels st",
       "ALL-COURT OUTSOLE: Special EVA in pickleball shoes gives max cushioning, boosting midsole durability. OrthoLite foam's unique open-cell stru",
@@ -434,7 +655,7 @@
     "name": "Hypercourt Express 2 Women's Tennis Shoe",
     "category": "shoes",
     "brand": "K-Swiss",
-    "price": "$$",
+    "price": "$$$$",
     "features": [
       "AOSTA 7.0 RUBBER COMPOUND: High-density outsole provides unsurpassed durability from heel-to-toe",
       "180 PSC: A 180 degree thermal plastic Plantar Support Chassis that enhances mid-foot stability",
@@ -455,7 +676,7 @@
     "name": "Viper Court Women's Pickleball Shoes",
     "category": "shoes",
     "brand": "Skechers",
-    "price": "$$",
+    "price": "$$$$",
     "features": [
       "SKECHERS PICKLEBALL SHOES: workout in supportive comfort with Skechers Pickleball court shoes (pickleball shoes for women); featuring Goodye",
       "RELAXED FIT: these tennis shoes feature a relaxed fit with an adjustable lace-up front (top of shoe) for a comfortable workout; breathable a",
@@ -477,7 +698,7 @@
     "name": "Viper Court Rally Women's Court Shoes",
     "category": "shoes",
     "brand": "Skechers",
-    "price": "$$",
+    "price": "$$$$",
     "features": [
       "Lightweight Move Foam cushioned insole for added comfort",
       "Goodyear Gold compound outsole delivers enhanced traction, stability and durability",
@@ -497,7 +718,7 @@
     "name": "Wide Women's Pickleball Court Shoes",
     "category": "shoes",
     "brand": "FitVille",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "Extra-wide fit with roomy toe box",
       "Arch support for racquet-sport movement",
@@ -697,7 +918,7 @@
     "name": "XPLR Pickleball Paddle",
     "category": "paddles",
     "brand": "Babolat",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "Fiberglass composite skin",
       "Polypropylene honeycomb core",
@@ -754,7 +975,7 @@
     "name": "Radical Elite Pickleball Paddle",
     "category": "paddles",
     "brand": "HEAD",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "Fiberglass hitting surface",
       "OTC honeycomb polymer core",
@@ -773,7 +994,7 @@
     "name": "Radical Pro (2024) Pickleball Paddle",
     "category": "paddles",
     "brand": "HEAD",
-    "price": "$$",
+    "price": "$$$$",
     "features": [
       "Composite/fiberglass surface with SpinOn for spin",
       "15mm control-oriented core",
@@ -792,7 +1013,7 @@
     "name": "Radical Tour XL Pickleball Paddle",
     "category": "paddles",
     "brand": "HEAD",
-    "price": "$$",
+    "price": "$$$$",
     "features": [
       "Carbon graphite hitting surface",
       "OTC core",
@@ -811,7 +1032,7 @@
     "name": "Radical Tour GR Pickleball Paddle",
     "category": "paddles",
     "brand": "HEAD",
-    "price": "$$",
+    "price": "$$$$",
     "features": [
       "Graphite hitting surface",
       "Control Stabilizer Technology (CST)",
@@ -830,7 +1051,7 @@
     "name": "Prism Flash 16mm Pickleball Paddle",
     "category": "paddles",
     "brand": "Vatic Pro",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "T700 raw carbon face",
       "16mm poly core",
@@ -849,7 +1070,7 @@
     "name": "Flash 16mm Pickleball Paddle",
     "category": "paddles",
     "brand": "Vatic Pro",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "T700 heat-textured raw carbon for spin",
       "16mm poly core",
@@ -887,7 +1108,7 @@
     "name": "RBEL Pickleball Paddle",
     "category": "paddles",
     "brand": "Babolat",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "Graphite skin face",
       "RPM Max Grit (max USAPA texture) for spin",
@@ -906,7 +1127,7 @@
     "name": "Signature Series Pro 13mm Pickleball Paddle",
     "category": "paddles",
     "brand": "Franklin Sports",
-    "price": "$$$",
+    "price": "$$$$",
     "features": [
       "MaxGrit fiberglass surface for spin",
       "13mm polypropylene core",
@@ -925,7 +1146,7 @@
     "name": "Pro IV Perseus Pickleball Paddle",
     "category": "paddles",
     "brand": "JOOLA",
-    "price": "$$$",
+    "price": "$$$$$",
     "features": [
       "Raw carbon fiber surface",
       "Tech Flex Power frame",
@@ -1020,7 +1241,7 @@
     "name": "Tour Elite Pickleball Bag",
     "category": "bags",
     "brand": "JOOLA",
-    "price": "$$$",
+    "price": "$$$$",
     "features": [
       "ARTWORK BY ROMERO BRITTO: Known as one of the most famous, successful and celebrated living visual artists in the globe,",
       "DESIGNATED POCKETS FOR 4 PADDLES: Comfortably holds 2 pickleball rackets in each of the 2 specific compartments includin",
@@ -1039,7 +1260,7 @@
     "name": "Selkirk Team Backpack",
     "category": "bags",
     "brand": "Selkirk",
-    "price": "$$",
+    "price": "$$$",
     "features": [
       "ULTRA-CONVENIENT PICKLEBALL BAG - The Selkirk Backpack features a smaller and more versatile design for when you want to",
       "HIGH-QUALITY +V11 MAX POLYFIBER MATERIAL – Made from Selkirk’s durable and protective +V11 Max Polyfiber, this lightweig",
@@ -1171,7 +1392,7 @@
     "name": "Women’s Athletic Skort",
     "category": "apparel",
     "brand": "Jack Smith",
-    "price": "$$",
+    "price": "$",
     "features": [
       "Elastic waist with drawstring",
       "Mesh fabric Shorts inside",

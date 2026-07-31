@@ -1,6 +1,6 @@
 ---
 import AffiliateButton from './AffiliateButton.astro';
-import { getProductById, isPriceTier } from '../lib/products';
+import { getPriceTier, getProductById, isPriceTier } from '../lib/products';
 import { AMAZON_LABEL } from '../lib/site';
 
 interface Props {
@@ -12,8 +12,8 @@ const { productId, eyebrow = 'Top pick' } = Astro.props;
 const product = getProductById(productId);
 const priceLabel = product
 	? isPriceTier(product.price)
-		? `Approximate price tier ${product.price}`
-		: `Approximate listed price (not live): ${product.price}`
+		? `Approximate price tier ${getPriceTier(product.price)}`
+		: `Approximate listed price (not live): ${product.price} (${getPriceTier(product.price)})`
 	: '';
 ---
 

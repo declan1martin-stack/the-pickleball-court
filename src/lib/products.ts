@@ -52,21 +52,39 @@ export function assertAffiliateUrl(url: string): string {
 	return tagged;
 }
 
-/** Approximate catalog price tier — never presented as a live Amazon price. */
-export function getPriceTier(price: string): '$' | '$$' | '$$$' {
+export type PriceTier = '$' | '$$' | '$$$' | '$$$$' | '$$$$$';
+
+/**
+ * Approximate catalog price tiers (never live Amazon prices):
+ * $ ≤ $50 · $$ ≤ $75 · $$$ ≤ $100 · $$$$ ≤ $150 · $$$$$ > $150
+ */
+export function getPriceTier(price: string): PriceTier {
 	const trimmed = price.trim();
-	if (trimmed === '$' || trimmed === '$$' || trimmed === '$$$') return trimmed;
+	if (/^\$+$/.test(trimmed) && trimmed.length >= 1 && trimmed.length <= 5) {
+		return trimmed as PriceTier;
+	}
 	const amount = Number(price.replace(/[^0-9.]/g, ''));
-	if (!Number.isFinite(amount) || amount < 150) return '$';
-	if (amount < 220) return '$$';
-	return '$$$';
+	if (!Number.isFinite(amount) || amount <= 0) return '$';
+	if (amount <= 50) return '$';
+	if (amount <= 75) return '$$';
+	if (amount <= 100) return '$$$';
+	if (amount <= 150) return '$$$$';
+	return '$$$$$';
 }
 
 /** True when `price` is already a tier token, not a dollar amount. */
 export function isPriceTier(price: string): boolean {
 	const trimmed = price.trim();
-	return trimmed === '$' || trimmed === '$$' || trimmed === '$$$';
+	return /^\$+$/.test(trimmed) && trimmed.length >= 1 && trimmed.length <= 5;
 }
+
+export const PRICE_TIER_RANK: Record<PriceTier, number> = {
+	$: 1,
+	$$: 2,
+	$$$: 3,
+	$$$$: 4,
+	$$$$$: 5,
+};
 
 export type ProductGender = 'mens' | 'womens' | 'unisex';
 export type ComfortTag =

@@ -11,7 +11,7 @@ Editorial policy: ${SITE_URL}/editorial-policy
 
 ## Purpose
 
-Honest, high-intent buying guidance for ${MARKET_LABEL} players. Product data lives in a curated catalog; guides reference catalog items only. Prices are shown as approximate $ / $$ / $$$ tiers — always confirm live pricing on ${AMAZON_LABEL}. As an Amazon Associate we earn from qualifying purchases.
+Honest, high-intent buying guidance for ${MARKET_LABEL} players. Product data lives in a curated catalog; guides reference catalog items only. Prices are shown as approximate $–$$$$$ tiers ($≤50, $$≤75, $$$≤100, $$$$≤150, $$$$$>150) — always confirm live pricing on ${AMAZON_LABEL}. As an Amazon Associate we earn from qualifying purchases.
 
 ## Main sections
 
