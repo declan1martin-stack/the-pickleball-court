@@ -1,4 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-label="Declan Martin">
-  <rect width="160" height="160" rx="80" fill="#1C4E80"/>
-  <text x="80" y="96" text-anchor="middle" font-family="Georgia, serif" font-size="54" font-weight="700" fill="#ffffff">DM</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-label="Deco">
+  <defs>
+    <linearGradient id="bg" x1="40" y1="20" x2="280" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1C4E80"/>
+      <stop offset="55%" stop-color="#163E66"/>
+      <stop offset="100%" stop-color="#0F2A45"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="60" y1="40" x2="260" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2E7D5B"/>
+      <stop offset="100%" stop-color="#FF6B35"/>
+    </linearGradient>
+  </defs>
+  <circle cx="160" cy="160" r="160" fill="url(#bg)"/>
+  <circle cx="160" cy="160" r="148" fill="none" stroke="url(#ring)" stroke-width="6" opacity="0.9"/>
+  <circle cx="160" cy="160" r="118" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="2"/>
+  <text x="160" y="178" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="#ffffff" letter-spacing="1">Deco</text>
 </svg>
