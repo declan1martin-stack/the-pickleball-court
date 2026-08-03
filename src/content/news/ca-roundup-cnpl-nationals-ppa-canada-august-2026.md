@@ -1,38 +1,32 @@
 ---
-title: "Canada pickleball roundup: CNPL playoff race, Nationals, PPA Vancouver"
+title: "Canadian Pickleball Roundup: A CNPL Blockbuster Trade and the Road to Nationals"
 date: 2026-08-03
-summary: "CNPL’s Central Split looms after a blockbuster Lions–Smash trade, Pickleball Canada’s Toronto Nationals and Provincial Team Competition are on deck, and PPA Canada Vancouver arrives mid-August."
-tags: ["roundup", "cnpl", "pickleball-canada", "ppa-canada", "canada"]
+summary: "The Montreal Lions shipped their captain to the London Smash in a headline CNPL trade, the C4 playoff race tightened heading into the Central Split, and Canada's biggest amateur event of the year is now weeks away in Toronto. Here's the week in Canadian pickleball."
+tags: ["CNPL", "Pickleball Canada", "pro pickleball", "news roundup", "Canada"]
 type: "roundup"
 markets: ["ca"]
-sourceUrl: "https://cnpl.ca/news/toronto-united-take-the-metropolitan-split-as-united-and-rapids-clinch-playoff-spots"
+sourceUrl: "https://cnpl.ca/news/lions-send-captain-ernesto-fajardo-to-london-smash-in-blockbuster-trade-for-xavier-richard"
 author: "declan-martin"
 ---
 
-Canadian pro and amateur calendars are stacking up for mid-to-late August. Between the domestic league stretch run, Nationals in the GTA, and PPA Canada’s Vancouver stop, here is the week’s Canada-relevant picture.
+It was a busy week for competitive pickleball north of the border, with a franchise-altering trade in the Canadian National Pickleball League and the countdown to Nationals officially on. Here is what Canadian players and fans should know.
 
-## CNPL: trade deadline drama into Central Split
+## Lions trade their captain in a CNPL blockbuster
 
-On **July 28**, the **Montreal Lions** traded captain **Ernesto Fajardo** to the **London Smash** for **Xavier Richard**. Fajardo — a two-time CNPL champion and JOOLA-sponsored Canadian pro — now debuts in Smash colours almost immediately: London hosts the **Central Split on August 8–9**.
+The biggest domestic story of the week came out of the CNPL, where the Montreal Lions sent captain Ernesto Fajardo to the London Smash in a blockbuster deal that brings Xavier Richard the other way. Trading a team captain mid-season is rare in any league, and the timing raised eyebrows: the move lands just ahead of the upcoming Central Split, giving both clubs a reshaped lineup right before a pivotal event. For the Smash, adding an experienced captain signals a push up the standings; for the Lions, betting on Richard is a clear statement about the direction of their roster.
 
-That follows the Metropolitan Split in Newmarket, where **Toronto United** took the weekend 4–1 and joined **Grand River Rapids** as the first teams to **clinch 2026 playoff berths** (both sitting 16–6 in published standings). With six of eight Premier teams making the postseason, the remaining berths are tightening for clubs such as York Yeti and Detroit-Windsor Drive.
+## The C4 playoff picture is taking shape
 
-Championship weekend is already booked: **September 25–27** at **The Club at Northfield in Waterloo**, co-hosted by the Rapids.
+The trade arrives with the fourth CNPL season, branded C4, entering its decisive stretch. Toronto United have been the team to beat, having taken the recent Metropolitan Split at Grandview Pickleball Club in Newmarket, Ontario, and clinching a playoff berth alongside the Grand River Rapids. With multiple splits still to be contested, roster moves like the Fajardo–Richard swap could reshuffle the seeding order before the postseason. The league has also confirmed that the C4 Championship will be hosted at The Club at Northfield in Waterloo, giving the season a defined finish line.
 
-## Pickleball Canada Nationals + Provincial Team Competition
+## Nationals loom large in Toronto
 
-The **2026 IG Wealth Management National Championships presented by HearingLife** run **August 24–30** at **Pickleplex Social Club** (Downsview and Vaughan) in the Greater Toronto Area — up to roughly 1,000 participants across an expanded week.
+On the amateur and high-performance side, the marquee date is fast approaching: the 2026 IG Wealth Management National Championships presented by HearingLife run August 24–30, hosted by Pickleplex at its Downsview and Vaughan locations in the Greater Toronto Area. Pickleball Canada has confirmed the return of the Provincial Team Competition as part of the week, with Team Newfoundland & Labrador set to debut as the seventh province to enter the event. Results from Nationals and the PTC will also feed into selections for Pickleball Canada's High Performance Program.
 
-**Thursday, August 27** brings the second **Provincial Team Competition (PTC)** at Pickleplex Downsview. Returning sides include British Columbia, Alberta, Saskatchewan, Manitoba, Ontario, and Quebec, with **Newfoundland & Labrador** making its PTC debut. Open-category results at Nationals also feed Pickleball Canada’s high-performance / development selection pathways announced for the week.
+## Canadian talent on the global stage
 
-For players still registering or volunteering, Pickleball Canada’s Nationals pages remain the authoritative source for category schedules and livestream notes.
+The international picture is brightening for Canadian players, too. Major League Pickleball's newly announced Nations Cup — October 30 to November 1 in Texas — is expected to feature a Team Canada among the regional squads, building on the Canadian roster that competed at MLP's mid-season tournament in Grand Rapids earlier this summer. The CNPL, meanwhile, continues to lean into its "global" positioning for C4, importing top-rated international doubles talent to raise the level of domestic play.
 
-## PPA Canada: Vancouver 250 next
+## The takeaway
 
-On the international points calendar, **PPA Canada 250 Vancouver** is set for **August 19–23** at **The Nest Sports** in Delta, B.C. (Junior 500 presented by Luzz Pickleball runs alongside). A **Vancouver 125** follows in September on the PPA Tour Canada board, with later stops listed for Ottawa and Toronto.
-
-Canadian fans following both CNPL and PPA Canada get a rare compressed window: league split (Aug 8–9), PPA Vancouver (Aug 19–23), then Nationals (Aug 24–30).
-
-## Gear angle for Canadian shoppers
-
-National Championship weeks and PPA Canada events push retail traffic toward mid and premium paddles — especially foam-core and thermoformed frames marketed for power. Stay disciplined: [paddles under $100](/guides/pickleball-paddles-under-100) still cover most recreational upgrades, and catalog prices on this site are approximate **CAD** references. Confirm the live Canada-store listing, return window, and exact SKU before you chase a pro-week trend.
+For a market still building its professional footprint, this was a genuinely eventful week: a captain-for-captain trade that will echo through the standings, a playoff race with real stakes, and the country's biggest tournament of the year now just weeks out. If you play in Ontario, Nationals week in the GTA is the one to circle.
