@@ -8,6 +8,13 @@ interface Props {
 	class?: string;
 	/** Optional product id for GA4 affiliate_click events */
 	productId?: string;
+	/**
+	 * amazon → normalize host/tag for this region.
+	 * partner → leave href as-is (Selkirk AvantLink / Pickleball Superstore / etc.).
+	 */
+	network?: 'amazon' | 'partner';
+	/** Partner id for analytics (selkirk, pickleball-superstore, amazon). */
+	partner?: string;
 }
 
 const {
@@ -16,9 +23,11 @@ const {
 	variant = 'primary',
 	class: className = '',
 	productId,
+	network = 'amazon',
+	partner = network === 'amazon' ? 'amazon' : 'partner',
 } = Astro.props;
 
-const safeHref = assertAffiliateUrl(href);
+const safeHref = network === 'amazon' ? assertAffiliateUrl(href) : href;
 
 const variants = {
 	primary: 'btn-primary w-full sm:w-auto',
@@ -32,6 +41,7 @@ const variants = {
 	target="_blank"
 	rel="sponsored nofollow noopener"
 	data-affiliate="retail"
+	data-affiliate-partner={partner}
 	data-product-id={productId}
 	class:list={[variants[variant], className]}
 >

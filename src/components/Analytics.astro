@@ -49,6 +49,7 @@ const gsc = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 						event_category: 'affiliate',
 						event_label: link.dataset.productId || link.href,
 						product_id: link.dataset.productId || undefined,
+						affiliate_partner: link.dataset.affiliatePartner || 'amazon',
 						link_url: link.href,
 						site_region: siteRegion(),
 						transport_type: 'beacon',

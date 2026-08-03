@@ -1,7 +1,10 @@
 ---
 import TrustPageLayout from '../layouts/TrustPageLayout.astro';
 import Disclosure from '../components/Disclosure.astro';
+import { partnersConfigured, PARTNER_LABELS } from '../lib/partners';
 import { AFFILIATE_TAG, AMAZON_LABEL, SITE_NAME } from '../lib/site';
+
+const { selkirkTracked, pickleballSuperstoreTracked } = partnersConfigured();
 ---
 
 <TrustPageLayout
@@ -13,11 +16,32 @@ import { AFFILIATE_TAG, AMAZON_LABEL, SITE_NAME } from '../lib/site';
 	<h2>Affiliate links</h2>
 	<p>
 		{SITE_NAME} participates in affiliate advertising programs designed to provide a means for sites to earn
-		advertising fees by advertising and linking to {AMAZON_LABEL} and affiliated sites.
+		advertising fees by advertising and linking to retail partners, including {AMAZON_LABEL},{' '}
+		{PARTNER_LABELS.selkirk}, and {PARTNER_LABELS.pickleballSuperstore}.
 	</p>
+	<ul>
+		<li>
+			<strong>{AMAZON_LABEL}:</strong> product links may use our Associates tracking tag
+			<code>{AFFILIATE_TAG}</code>.
+		</li>
+		<li>
+			<strong>{PARTNER_LABELS.selkirk}:</strong> Selkirk product cards may include a secondary “Shop at Selkirk”
+			link
+			{selkirkTracked
+				? ' tracked through the AvantLink affiliate network.'
+				: ' (tracking activates after AvantLink approval — set PUBLIC_AVANTLINK_WEBSITE_ID and PUBLIC_AVANTLINK_SELKIRK_MERCHANT_ID).'}
+		</li>
+		<li>
+			<strong>{PARTNER_LABELS.pickleballSuperstore}:</strong> product cards may include a secondary “Shop
+			Pickleball Superstore” link
+			{pickleballSuperstoreTracked
+				? ' using our SuperAffiliate code.'
+				: ' (tracking activates after SuperAffiliate enrollment — set PUBLIC_PICKLEBALL_SUPERSTORE_CODE).'}
+		</li>
+	</ul>
 	<p>
 		When you click a product link on this site and complete a qualifying purchase, we may earn a commission at no
-		additional cost to you. Our affiliate tracking tag is <code>{AFFILIATE_TAG}</code>.
+		additional cost to you. Retailer choice does not change the price you pay solely because you used our link.
 	</p>
 	<h2>FTC disclosure</h2>
 	<p>
@@ -28,6 +52,6 @@ import { AFFILIATE_TAG, AMAZON_LABEL, SITE_NAME } from '../lib/site';
 	<h2>Pricing note</h2>
 	<p>
 		Any prices shown on this site are approximate catalog references only and may be outdated. The retailer’s price
-		and availability information is authoritative. Use “Check current price” links before buying.
+		and availability information is authoritative. Use “Check current price” or partner shop links before buying.
 	</p>
 </TrustPageLayout>

@@ -1161,6 +1161,97 @@
     "comfortTags": []
   },
   {
+    "id": "paddle-joola-essentials-performance",
+    "name": "JOOLA Essentials Performance Pickleball Paddle",
+    "category": "paddles",
+    "brand": "JOOLA",
+    "price": "$",
+    "features": [
+      "Reinforced fiberglass surface",
+      "Response Polypropylene Honeycomb core",
+      "12mm core with White Ridge Grip",
+      "USAPA approved"
+    ],
+    "description": "Beginners who want a recognized brand step-up from a generic fiberglass set. Skill level: beginner. TODO: price-check before publishing — directional ~$40-45 bracket from review/search snippets, not a live scrape.",
+    "affiliateUrl": "https://www.amazon.com/dp/B09VCTQRQB?tag=uspickleball-20",
+    "imageUrl": "/images/products/B09VCTQRQB.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-franklin-mcgrath-signature",
+    "name": "Franklin Sports Christine McGrath Signature Pickleball Paddle (16mm)",
+    "category": "paddles",
+    "brand": "Franklin Sports",
+    "price": "$",
+    "features": [
+      "MaxGrit textured surface for spin",
+      "Polypropylene core with fiberglass surface layer",
+      "Pro-player signature design",
+      "USAPA approved"
+    ],
+    "description": "Rec/intermediate players who trust Franklin for their next paddle. Skill level: intermediate. TODO: price-check before publishing — bracket estimated from Franklin signature-line pricing, not scraped live.",
+    "affiliateUrl": "https://www.amazon.com/dp/B0BLV6N7Y9?tag=uspickleball-20",
+    "imageUrl": "/images/products/B0BLV6N7Y9.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-diadem-icon-performance",
+    "name": "Diadem ICON Performance Pickleball Paddle",
+    "category": "paddles",
+    "brand": "Diadem",
+    "price": "$",
+    "features": [
+      "Japanese carbon fiber face",
+      "Spin RP polyurethane coating",
+      "8mm PP honeycomb core",
+      "Available in Lite (7.7oz) or Mid (8.0oz)"
+    ],
+    "description": "Improving players who want carbon fiber feel without flagship pricing. Skill level: intermediate.",
+    "affiliateUrl": "https://www.amazon.com/dp/B098TNZSXH?tag=uspickleball-20",
+    "imageUrl": "/images/products/B098TNZSXH.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-gamma-quantum-5",
+    "name": "GAMMA Quantum Series 5.0 Pickleball Paddle (Micron/Neutron/Voltage/Atomic)",
+    "category": "paddles",
+    "brand": "GAMMA",
+    "price": "$",
+    "features": [
+      "Graphite hitting surface",
+      "Polypropylene core",
+      "Honeycomb grip",
+      "Multiple style/weight variants on one listing"
+    ],
+    "description": "Players who want a known US brand (GAMMA) mid-tier option. Skill level: intermediate. Price-check 2026-07-31: current deal on Micron ~$20, but Amazon Typical/list ~$45 and sibling variants Neutron/Voltage ~$38–$40 — kept at $ tier.",
+    "affiliateUrl": "https://www.amazon.com/dp/B0BTZ8VTB4?tag=uspickleball-20",
+    "imageUrl": "/images/products/B0BTZ8VTB4.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
+    "id": "paddle-selkirk-slk-latitude-original",
+    "name": "Selkirk Sport SLK Latitude Pickleball Paddle",
+    "category": "paddles",
+    "brand": "Selkirk",
+    "price": "$$",
+    "features": [
+      "Graphi-Flex graphite face",
+      "SpinFlex+ surface texture",
+      "SX4 polymer honeycomb core",
+      "13mm core",
+      "Lightweight 7.6-8.0oz"
+    ],
+    "description": "Beginners wanting a real Selkirk at an entry price — the original Latitude listing, not the pricier Latitude 13mm/bundle SKUs. Skill level: beginner. TODO: price-check — confirm ASIN B093K14229 loads the original Latitude (~$69), not Latitude 2.0.",
+    "affiliateUrl": "https://www.amazon.com/dp/B093K14229?tag=uspickleball-20",
+    "imageUrl": "/images/products/B093K14229.jpg",
+    "gender": "unisex",
+    "comfortTags": []
+  },
+  {
     "id": "ball-franklin-x40-outdoor-12",
     "name": "X-40 Outdoor Pickleballs (12-Pack)",
     "category": "balls",

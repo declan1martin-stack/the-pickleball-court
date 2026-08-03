@@ -5,7 +5,8 @@ const dist = 'dist';
 const region = (process.env.PUBLIC_SITE_REGION || 'ca').toString().trim().toLowerCase() === 'us' ? 'us' : 'ca';
 const tag = region === 'us' ? 'uspickleball-20' : 'thepickleb050-20';
 const amazonHost = region === 'us' ? 'amazon.com' : 'amazon.ca';
-const catalogTag = 'thepickleb050-20'; // gear.json source of truth stays CA; build rewrites at runtime
+// Catalog may store CA or US Associates URLs; build-time withAffiliateTag / edge middleware normalize per host.
+const catalogTags = ['thepickleb050-20', 'uspickleball-20'];
 const failures = [];
 const gear = JSON.parse(fs.readFileSync('src/data/gear.json', 'utf8'));
 
@@ -49,21 +50,44 @@ function checkHtml(file) {
 	} else if (html.includes(`tag=${wrongTag}`)) {
 		failures.push(`${file}: CA HTML contains US Associates tag`);
 	}
-	const affiliateAnchors = [...html.matchAll(/<a\b[^>]*href="https?:\/\/[^"]*amazon\.[^"]*"[^>]*>/gi)];
+	const affiliateAnchors = [
+		...html.matchAll(/<a\b[^>]*data-affiliate="retail"[^>]*>/gi),
+		...html.matchAll(/<a\b[^>]*href="https?:\/\/[^"]*amazon\.[^"]*"[^>]*>/gi),
+	];
+	const seen = new Set();
 	for (const [anchor] of affiliateAnchors) {
+		if (seen.has(anchor)) continue;
+		seen.add(anchor);
 		const rel = anchor.match(/rel="([^"]*)"/)?.[1] ?? '';
 		const ok = rel.includes('sponsored') && rel.includes('nofollow') && rel.includes('noopener');
-		if (!ok) failures.push(`${file}: Amazon anchor missing required rel → ${anchor.slice(0, 180)}`);
+		if (!ok) failures.push(`${file}: affiliate anchor missing required rel → ${anchor.slice(0, 180)}`);
 		if (!/target="_blank"/.test(anchor)) {
-			failures.push(`${file}: Amazon anchor missing target=_blank`);
+			failures.push(`${file}: affiliate anchor missing target=_blank`);
+		}
+	}
+
+	// Partner CTAs should exist on gear cards (PBS on all; Selkirk on Selkirk brand cards).
+	if (file.includes(`${path.sep}gear${path.sep}`) && file.endsWith(`${path.sep}index.html`)) {
+		if (!html.includes('Shop Pickleball Superstore')) {
+			failures.push(`${file}: missing Pickleball Superstore partner CTA`);
+		}
+		if (file.includes(`${path.sep}paddles${path.sep}`) && !html.includes('Shop at Selkirk')) {
+			failures.push(`${file}: missing Selkirk partner CTA on paddles page`);
 		}
 	}
 }
 
 function checkCatalog() {
 	for (const product of gear) {
-		if (!product.affiliateUrl?.includes(`tag=${catalogTag}`)) {
-			failures.push(`gear.json:${product.id}: affiliateUrl missing tag=${catalogTag}`);
+		const url = product.affiliateUrl || '';
+		const hasTag = catalogTags.some((t) => url.includes(`tag=${t}`));
+		if (!hasTag) {
+			failures.push(
+				`gear.json:${product.id}: affiliateUrl missing Associates tag (want one of ${catalogTags.join(', ')})`,
+			);
+		}
+		if (!/amazon\.(ca|com)/i.test(url)) {
+			failures.push(`gear.json:${product.id}: affiliateUrl is not an amazon.ca/com URL → ${url}`);
 		}
 		if (!product.imageUrl?.startsWith('/images/products/')) {
 			failures.push(`gear.json:${product.id}: imageUrl is not a local /images/products/ path → ${product.imageUrl}`);

@@ -1,4 +1,5 @@
 ---
+import { PARTNER_LABELS } from '../lib/partners';
 import { AMAZON_LABEL, SITE_NAME } from '../lib/site';
 
 interface Props {
@@ -17,7 +18,8 @@ const { compact = false } = Astro.props;
 >
 	<p class:list={[compact ? 'leading-snug' : 'leading-relaxed', 'text-ink-muted']}>
 		<strong class="font-bold text-ink">Disclosure:</strong>
-		{SITE_NAME} uses affiliate links. We may earn a commission from qualifying purchases at no extra cost to you.
-		Always confirm the current price and availability on {AMAZON_LABEL}.
+		{SITE_NAME} uses affiliate links for {AMAZON_LABEL}, {PARTNER_LABELS.selkirk}, and{' '}
+		{PARTNER_LABELS.pickleballSuperstore}. We may earn a commission from qualifying purchases at no extra cost to
+		you. Always confirm the current price and availability on the retailer you choose.
 	</p>
 </aside>
