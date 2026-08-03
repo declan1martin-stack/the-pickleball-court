@@ -50,6 +50,12 @@ function rewriteForUs(body) {
 		.replaceAll('>.ca</span>', '>.com</span>')
 		.replaceAll('>.ca<', '>.com<')
 		.replaceAll('Pickleball Court.ca', 'Pickleball Court.com')
+		// Brand lockups / wordmark (CA build → US host)
+		.replaceAll('/brand/pc-logo-ca-white.svg', '/brand/pc-logo-us-white.svg')
+		.replaceAll('/brand/pc-logo-ca.svg', '/brand/pc-logo-us.svg')
+		.replaceAll('alt="The Pickleball Court"', 'alt="US Pickleball Court"')
+		.replaceAll('The Pickleball Court home', 'US Pickleball Court home')
+		.replaceAll('site-logo__kicker">THE</span>', 'site-logo__kicker">US</span>')
 		// Locale / schema
 		.replaceAll('content="en_CA"', 'content="en_US"')
 		// Use "html lang=" — never replace bare lang="en-CA" (matches inside hreflang="en-CA").

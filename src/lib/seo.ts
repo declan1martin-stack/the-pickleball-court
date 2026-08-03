@@ -13,8 +13,7 @@ import {
 } from './site';
 
 export { SITE_NAME, SITE_URL };
-export const DEFAULT_OG_IMAGE =
-	'https://images.unsplash.com/photo-1762423570127-c36ff11b883f?w=1200&q=80&auto=format&fit=crop';
+export const DEFAULT_OG_IMAGE = '/og-default.png';
 
 export function absoluteUrl(path = '/'): string {
 	return new URL(path, SITE_URL).href;

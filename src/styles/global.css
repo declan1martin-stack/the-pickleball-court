@@ -186,3 +186,31 @@ button:focus-visible {
 	color: var(--color-accent);
 	text-decoration: underline;
 }
+
+/* Brand mark + HTML wordmark (header / light surfaces) */
+.site-logo {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	text-decoration: none;
+}
+
+.site-logo__text {
+	display: flex;
+	flex-direction: column;
+	line-height: 1;
+	font-family: var(--font-display);
+}
+
+.site-logo__kicker {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.18em;
+	color: #059669;
+}
+
+.site-logo__name {
+	font-size: 20px;
+	font-weight: 700;
+	color: #27272a;
+}

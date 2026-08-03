@@ -1,0 +1,22 @@
+---
+import mark from '../assets/brand/pc-mark.svg';
+import { SITE_REGION } from '../lib/site';
+
+interface Props {
+	/** Light surfaces (header). Dark footer uses the white lockup SVG instead. */
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+const isUs = SITE_REGION === 'us';
+const kicker = isUs ? 'US' : 'THE';
+const ariaLabel = isUs ? 'US Pickleball Court home' : 'The Pickleball Court home';
+---
+
+<a href="/" class:list={['site-logo', className]} aria-label={ariaLabel}>
+	<img src={mark.src} width="34" height="46" alt="" decoding="async" />
+	<span class="site-logo__text">
+		<span class="site-logo__kicker">{kicker}</span>
+		<span class="site-logo__name">Pickleball Court</span>
+	</span>
+</a>

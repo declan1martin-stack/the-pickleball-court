@@ -1,13 +1,25 @@
 ---
 import { PARTNER_LABELS } from '../lib/partners';
-import { AMAZON_LABEL, MARKET_LABEL, SITE_EMAIL, SITE_NAME } from '../lib/site';
+import { AMAZON_LABEL, MARKET_LABEL, SITE_EMAIL, SITE_NAME, SITE_REGION } from '../lib/site';
+
+const footerLogo =
+	SITE_REGION === 'us' ? '/brand/pc-logo-us-white.svg' : '/brand/pc-logo-ca-white.svg';
+const footerAlt = SITE_REGION === 'us' ? 'US Pickleball Court' : 'The Pickleball Court';
 ---
 
 <footer class="mt-20 bg-footer py-12 text-footer-text">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-10 border-b border-white/10 pb-10 md:grid-cols-2 lg:grid-cols-4">
 			<div>
-				<p class="font-display text-lg font-bold text-white">The Pickleball Court</p>
+				<a href="/" class="inline-block">
+					<img
+						src={footerLogo}
+						width="180"
+						height="51"
+						alt={footerAlt}
+						decoding="async"
+					/>
+				</a>
 				<p class="mt-3 max-w-xs text-sm leading-relaxed text-footer-text/80">
 					Knowledgeable, honest gear guides for {MARKET_LABEL} pickleball — paddles, shoes, balls, bags, apparel, and nets.
 				</p>

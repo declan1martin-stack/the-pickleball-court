@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 96" role="img" aria-label="US Pickleball Court">
+  <g transform="translate(8,14) scale(0.52)">
+    <path d="M30,114 V22 H56 a27,27 0 0 1 0,54 H30" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="58" cy="47" r="8" fill="#ffffff"/>
+  </g>
+  <text x="76" y="44" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3" fill="#6ee7b7">US</text>
+  <text x="76" y="72" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff">Pickleball Court</text>
+</svg>
