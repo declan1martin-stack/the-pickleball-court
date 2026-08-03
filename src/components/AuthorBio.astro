@@ -1,39 +1,20 @@
 ---
-import { MARKET_LABEL, SITE_NAME } from '../lib/site';
+/**
+ * @deprecated Prefer AuthorBox with a resolved Author record.
+ * Kept as a thin wrapper for any remaining call sites.
+ */
+import AuthorBox from './AuthorBox.astro';
+import { DEFAULT_AUTHOR_ID, resolveAuthor } from '../data/authors';
 
 interface Props {
+	/** Author id from src/data/authors.json (preferred). */
+	authorId?: string;
+	/** @deprecated Legacy display-name prop — resolved via authors.json when possible. */
 	name?: string;
-	bio?: string;
-	credential?: string;
 }
 
-const {
-	name = `${SITE_NAME} Editorial Team`,
-	bio = `We research pickleball paddles, court shoes, and portable nets for ${MARKET_LABEL} players — from first-time buyers to tournament regulars. Our guides prioritize court feel, fit, and practical buying advice over hype. See /about for how we research.`,
-	credential = 'Editorial byline · affiliate publishers',
-} = Astro.props;
-
-const initials = name
-	.split(/\s+/)
-	.slice(0, 2)
-	.map((part) => part[0])
-	.join('')
-	.toUpperCase();
+const { authorId = DEFAULT_AUTHOR_ID, name } = Astro.props;
+const author = resolveAuthor(authorId || name || DEFAULT_AUTHOR_ID);
 ---
 
-<section
-	class="my-10 flex flex-col gap-4 rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-[var(--shadow-sm)] sm:flex-row sm:items-start"
-	aria-labelledby="author-heading"
->
-	<div
-		class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary font-display text-lg font-extrabold text-white"
-		aria-hidden="true"
-	>
-		{initials}
-	</div>
-	<div>
-		<h2 id="author-heading" class="font-display text-lg font-bold text-ink">{name}</h2>
-		<p class="mt-1 text-xs font-semibold uppercase tracking-wide text-secondary">{credential}</p>
-		<p class="mt-2 text-sm leading-relaxed text-ink-muted">{bio}</p>
-	</div>
-</section>
+<AuthorBox author={author} />

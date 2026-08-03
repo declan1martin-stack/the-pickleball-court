@@ -5,7 +5,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Disclosure from '../../components/Disclosure.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import FAQ from '../../components/FAQ.astro';
-import AuthorBio from '../../components/AuthorBio.astro';
+import AuthorBox from '../../components/AuthorBox.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
 import ProductSpotlight from '../../components/ProductSpotlight.astro';
 import AffiliateButton from '../../components/AffiliateButton.astro';
@@ -17,8 +17,9 @@ import {
 	getRelatedArticles,
 	categoryPath,
 } from '../../lib/articles';
-import { articleSchema } from '../../lib/seo';
+import { absoluteUrl, articleSchema } from '../../lib/seo';
 import { getProductById, isPriceTier } from '../../lib/products';
+import { authorPath, resolveAuthor } from '../../data/authors';
 
 export async function getStaticPaths() {
 	const articles = await getCollection('articles');
@@ -34,6 +35,7 @@ const allArticles = await getAllArticles();
 const related = getRelatedArticles(allArticles, article, 3);
 const categoryHref = categoryPath(article.data.category);
 const path = `/guides/${article.data.slug}`;
+const author = resolveAuthor(article.data.author);
 const mdxComponents = {
 	AffiliateButton,
 	ComparisonTable,
@@ -68,7 +70,8 @@ const crumbs = [
 		description: article.data.description,
 		path,
 		image: article.data.heroImage,
-		author: article.data.author,
+		author: author.name,
+		authorUrl: absoluteUrl(authorPath(author.id)),
 		publishDate: article.data.publishDate,
 		updatedDate: article.data.updatedDate,
 	})}
@@ -84,7 +87,7 @@ const crumbs = [
 			</h1>
 			<p class="mt-4 max-w-3xl text-lg text-zinc-600">{article.data.description}</p>
 			<p class="mt-4 text-sm text-zinc-500">
-				By {article.data.author}
+				By <a href={authorPath(author.id)} class="font-semibold text-emerald-700 underline">{author.name}</a>
 				<span aria-hidden="true"> · </span>
 				Published {article.data.publishDate.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}
 				<span aria-hidden="true"> · </span>
@@ -152,7 +155,7 @@ const crumbs = [
 			)}
 
 			<FAQ items={article.data.faq} />
-			<AuthorBio name={article.data.author} />
+			<AuthorBox author={author} />
 			<RelatedArticles
 				articles={related.map((item) => ({
 					slug: item.data.slug,

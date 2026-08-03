@@ -38,7 +38,7 @@ description: ${JSON.stringify(o.description)}
 slug: ${JSON.stringify(o.slug)}
 category: ${o.category}
 type: ${o.type}
-author: "ThePickleballCourt.ca Editorial Team"
+author: "declan-martin"
 publishDate: 2026-07-01
 updatedDate: 2026-07-25
 heroImage: ${JSON.stringify(hero[o.category][0])}

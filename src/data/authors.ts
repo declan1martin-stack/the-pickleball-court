@@ -1,13 +1,42 @@
-import { MARKET_LABEL, SITE_NAME, SITE_URL } from '../lib/site';
+import authorsData from './authors.json';
 
-export const authors = {
-	editorial: {
-		'@type': 'Person' as const,
-		name: `${SITE_NAME} Editorial Team`,
-		jobTitle: 'Pickleball gear researchers',
-		description: `${MARKET_LABEL} pickleball gear researchers focused on paddles, court shoes, and portable nets for players at every level.`,
-		url: `${SITE_URL}/about`,
-	},
+export type Author = {
+	id: string;
+	name: string;
+	role: string;
+	bio: string;
+	avatar: string;
 };
 
-export type AuthorKey = keyof typeof authors;
+export const DEFAULT_AUTHOR_ID = 'declan-martin';
+
+const authors = authorsData as Author[];
+
+export function getAllAuthors(): Author[] {
+	return authors;
+}
+
+export function getAuthor(id: string): Author | undefined {
+	return authors.find((author) => author.id === id);
+}
+
+export function requireAuthor(id: string): Author {
+	const author = getAuthor(id);
+	if (!author) {
+		throw new Error(`Unknown author id "${id}". Add them to src/data/authors.json.`);
+	}
+	return author;
+}
+
+/** Resolve a frontmatter author id (or legacy display name) to an Author record. */
+export function resolveAuthor(authorRef: string): Author {
+	const byId = getAuthor(authorRef);
+	if (byId) return byId;
+	const byName = authors.find((author) => author.name === authorRef);
+	if (byName) return byName;
+	return requireAuthor(DEFAULT_AUTHOR_ID);
+}
+
+export function authorPath(id: string): string {
+	return `/authors/${id}`;
+}

@@ -2,6 +2,7 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import gear from '../data/gear.json';
+import { DEFAULT_AUTHOR_ID, getAuthor } from '../data/authors';
 
 /** Valid product IDs from gear.json — articles reference products by ID only. */
 const productIds = new Set(gear.map((product) => product.id));
@@ -11,9 +12,19 @@ const faqSchema = z.object({
 	answer: z.string(),
 });
 
+const authorIdSchema = z.string().superRefine((id, ctx) => {
+	if (!getAuthor(id)) {
+		ctx.addIssue({
+			code: 'custom',
+			message: `Unknown author id "${id}". Add them to src/data/authors.json.`,
+		});
+	}
+});
+
 /**
  * Articles content collection.
  * Product data lives only in gear.json — relatedProducts stores IDs, never duplicated fields.
+ * `author` is an id from src/data/authors.json.
  */
 export const articles = defineCollection({
 	loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
@@ -33,7 +44,7 @@ export const articles = defineCollection({
 			'rules',
 		]),
 		type: z.enum(['buying-guide', 'comparison', 'review', 'how-to', 'informational']),
-		author: z.string(),
+		author: authorIdSchema.default(DEFAULT_AUTHOR_ID),
 		publishDate: z.coerce.date(),
 		updatedDate: z.coerce.date(),
 		heroImage: z.string(),
@@ -54,4 +65,17 @@ export const articles = defineCollection({
 	}),
 });
 
-export const collections = { articles };
+/** Short industry updates — frequent, lightweight content velocity signal. */
+export const news = defineCollection({
+	loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/news' }),
+	schema: z.object({
+		title: z.string(),
+		date: z.coerce.date(),
+		summary: z.string().min(40),
+		tags: z.array(z.string()).default([]),
+		sourceUrl: z.string().url().optional(),
+		author: authorIdSchema.default(DEFAULT_AUTHOR_ID),
+	}),
+});
+
+export const collections = { articles, news };

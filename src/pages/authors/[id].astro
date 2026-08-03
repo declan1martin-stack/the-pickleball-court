@@ -1,0 +1,111 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AuthorBox from '../../components/AuthorBox.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getAllAuthors, type Author } from '../../data/authors';
+import { getAllArticles } from '../../lib/articles';
+import { formatNewsDate, getAllNews, newsPath } from '../../lib/news';
+import { clampMetaDescription, personSchema } from '../../lib/seo';
+
+export function getStaticPaths() {
+	return getAllAuthors().map((author) => ({
+		params: { id: author.id },
+		props: { author },
+	}));
+}
+
+interface Props {
+	author: Author;
+}
+
+const { author } = Astro.props;
+const articles = (await getAllArticles()).filter((entry) => entry.data.author === author.id);
+const news = (await getAllNews()).filter((entry) => entry.data.author === author.id);
+const path = `/authors/${author.id}`;
+const description = clampMetaDescription(
+	`${author.name} — ${author.role}. ${author.bio}`,
+);
+---
+
+<Layout
+	title={`${author.name} — ${author.role}`}
+	description={description}
+	canonicalPath={path}
+	ogImage={author.avatar}
+	jsonLd={personSchema(author)}
+>
+	<section class="border-b border-border bg-surface">
+		<div class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
+			<Breadcrumbs
+				items={[
+					{ label: 'Home', href: '/' },
+					{ label: 'Authors' },
+					{ label: author.name },
+				]}
+			/>
+			<AuthorBox author={author} class="mt-6" />
+		</div>
+	</section>
+
+	<div class="mx-auto max-w-3xl space-y-12 px-4 py-12 sm:px-6 lg:px-8">
+		<section aria-labelledby="author-guides-heading">
+			<h2 id="author-guides-heading" class="font-display text-2xl font-bold tracking-tight text-ink">
+				Guides by {author.name}
+			</h2>
+			{articles.length === 0 ? (
+				<p class="mt-4 text-sm text-ink-muted">No guides published under this byline yet.</p>
+			) : (
+				<ul class="mt-6 space-y-4">
+					{articles.map((article) => (
+						<li class="rounded-[var(--radius-lg)] border border-border bg-surface p-5">
+							<p class="font-display text-xs font-bold uppercase tracking-wider text-secondary">
+								{article.data.category} · {article.data.type.replace('-', ' ')}
+							</p>
+							<a
+								href={`/guides/${article.data.slug}`}
+								class="mt-2 block font-display text-lg font-bold text-ink hover:text-primary"
+							>
+								{article.data.title}
+							</a>
+							<p class="mt-2 text-sm leading-relaxed text-ink-muted">{article.data.description}</p>
+							<p class="mt-3 text-xs text-ink-faint">
+								Updated{' '}
+								{article.data.updatedDate.toLocaleDateString('en-CA', {
+									year: 'numeric',
+									month: 'long',
+									day: 'numeric',
+								})}
+							</p>
+						</li>
+					))}
+				</ul>
+			)}
+		</section>
+
+		<section aria-labelledby="author-news-heading">
+			<h2 id="author-news-heading" class="font-display text-2xl font-bold tracking-tight text-ink">
+				News & updates
+			</h2>
+			{news.length === 0 ? (
+				<p class="mt-4 text-sm text-ink-muted">No news updates yet.</p>
+			) : (
+				<ul class="mt-6 space-y-4">
+					{news.map((entry) => (
+						<li class="rounded-[var(--radius-lg)] border border-border bg-surface p-5">
+							<p class="text-xs font-semibold uppercase tracking-wide text-secondary">
+								{formatNewsDate(entry.data.date)}
+							</p>
+							<a
+								href={newsPath(entry)}
+								class="mt-2 block font-display text-lg font-bold text-ink hover:text-primary"
+							>
+								{entry.data.title}
+							</a>
+							<p class="mt-2 text-sm leading-relaxed text-ink-muted">{entry.data.summary}</p>
+						</li>
+					))}
+				</ul>
+			)}
+		</section>
+	</div>
+</Layout>

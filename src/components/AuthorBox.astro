@@ -1,0 +1,43 @@
+---
+import { authorPath, type Author } from '../data/authors';
+
+interface Props {
+	author: Author;
+	/** Show the full bio paragraph (article footers / author pages). */
+	showBio?: boolean;
+	class?: string;
+}
+
+const { author, showBio = true, class: className = '' } = Astro.props;
+const profileHref = authorPath(author.id);
+---
+
+<section
+	class:list={[
+		'my-10 flex flex-col gap-4 rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-[var(--shadow-sm)] sm:flex-row sm:items-start',
+		className,
+	]}
+	aria-labelledby={`author-${author.id}-heading`}
+>
+	<a href={profileHref} class="shrink-0" aria-label={`${author.name} profile`}>
+		<img
+			src={author.avatar}
+			alt=""
+			width="56"
+			height="56"
+			class="h-14 w-14 rounded-full object-cover ring-2 ring-border"
+			loading="lazy"
+			decoding="async"
+		/>
+	</a>
+	<div class="min-w-0">
+		<h2 id={`author-${author.id}-heading`} class="font-display text-lg font-bold text-ink">
+			<a href={profileHref} class="hover:text-primary">{author.name}</a>
+		</h2>
+		<p class="mt-1 text-xs font-semibold uppercase tracking-wide text-secondary">{author.role}</p>
+		{showBio && <p class="mt-2 text-sm leading-relaxed text-ink-muted">{author.bio}</p>}
+		<p class="mt-3 text-sm font-semibold">
+			<a href={profileHref} class="link-brand">More from {author.name} →</a>
+		</p>
+	</div>
+</section>

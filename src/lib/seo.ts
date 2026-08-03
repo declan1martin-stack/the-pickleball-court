@@ -1,4 +1,10 @@
 import {
+	authorPath,
+	DEFAULT_AUTHOR_ID,
+	getAuthor,
+	type Author,
+} from '../data/authors';
+import {
 	PRICE_CURRENCY,
 	SITE_EMAIL,
 	SITE_NAME,
@@ -53,6 +59,7 @@ export function hreflangAlternates(pathname: string): {
 }
 
 export function organizationSchema() {
+	const founder = getAuthor(DEFAULT_AUTHOR_ID);
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'Organization',
@@ -62,12 +69,14 @@ export function organizationSchema() {
 		description: `${site.marketLabel} pickleball gear guides covering paddles, court shoes, balls, bags, apparel, accessories, and portable nets.`,
 		areaServed: site.areaServed,
 		email: SITE_EMAIL,
-		founder: {
-			'@type': 'Person',
-			name: `${SITE_NAME} Editorial Team`,
-			url: absoluteUrl('/about'),
-			jobTitle: 'Pickleball gear researchers',
-		},
+		founder: founder
+			? {
+					'@type': 'Person',
+					name: founder.name,
+					url: absoluteUrl(authorPath(founder.id)),
+					jobTitle: founder.role,
+				}
+			: undefined,
 		// Add real social profile URLs here once accounts exist.
 		sameAs: [] as string[],
 	};
@@ -86,6 +95,18 @@ export function websiteSchema() {
 			name: SITE_NAME,
 			url: SITE_URL,
 		},
+	};
+}
+
+export function personSchema(author: Author) {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'Person',
+		name: author.name,
+		jobTitle: author.role,
+		description: author.bio,
+		url: absoluteUrl(authorPath(author.id)),
+		image: absoluteUrl(author.avatar),
 	};
 }
 
@@ -130,6 +151,7 @@ export function articleSchema(input: {
 	path: string;
 	image: string;
 	author: string;
+	authorUrl?: string;
 	publishDate: Date | string;
 	updatedDate: Date | string;
 }) {
@@ -142,6 +164,7 @@ export function articleSchema(input: {
 		author: {
 			'@type': 'Person',
 			name: input.author,
+			...(input.authorUrl ? { url: input.authorUrl } : {}),
 		},
 		publisher: {
 			'@type': 'Organization',
