@@ -20,16 +20,19 @@ const tld = SITE_REGION === 'us' ? '.com' : '.ca';
 			The Pickleball Court<span class="text-ink-faint">{tld}</span>
 		</a>
 
-		<nav class="hidden items-center gap-6 text-sm font-semibold text-ink-muted lg:flex" aria-label="Primary">
+		<nav
+			class="hidden min-w-0 flex-1 items-center justify-end gap-4 overflow-x-auto text-sm font-semibold text-ink-muted lg:flex xl:gap-6"
+			aria-label="Primary"
+		>
 			{links.map((link) => (
-				<a href={link.href} class="transition hover:text-primary">
+				<a href={link.href} class="shrink-0 transition hover:text-primary">
 					{link.label}
 				</a>
 			))}
 			<button
 				type="button"
 				data-open-region-gate
-				class="inline-flex items-center gap-1.5 rounded-[var(--radius-pill)] border border-border bg-bg px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-ink transition hover:border-primary hover:text-primary"
+				class="inline-flex shrink-0 items-center gap-1.5 rounded-[var(--radius-pill)] border border-border bg-bg px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-ink transition hover:border-primary hover:text-primary"
 				aria-haspopup="dialog"
 			>
 				<span class="text-ink-faint" aria-hidden="true">Shop</span>
@@ -37,7 +40,7 @@ const tld = SITE_REGION === 'us' ? '.com' : '.ca';
 			</button>
 			<a
 				href="/guides/best-pickleball-paddles-2026"
-				class="btn-primary px-4 py-2 text-sm shadow-sm"
+				class="btn-primary shrink-0 px-4 py-2 text-sm shadow-sm"
 			>
 				Best Picks
 			</a>
