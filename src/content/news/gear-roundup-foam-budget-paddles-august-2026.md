@@ -1,0 +1,44 @@
+---
+title: "Gear roundup: Onix Theory foam under $100, Jelly Bean 2, value foam wave"
+date: 2026-08-03
+summary: "Onix launched the Theory foam-core paddle as a sub-$100 play, 11SIX24 teased Jelly Bean 2 for late August, and budget foam continues to redefine what recreational buyers should expect from mid-tier specs."
+tags: ["roundup", "paddles", "foam-core", "onix", "budget", "gear"]
+type: "roundup"
+markets: ["ca", "us"]
+sourceUrl: "https://www.outdoorsportswire.com/onix-pickleball-launches-theory-paddle-for-power-control-balance/"
+author: "declan-martin"
+---
+
+While pro tours filled the first week of August, paddle brands kept pushing **foam cores down the price ladder**. That matters more for most club shoppers than any single playoff scoreline. Here is the cross-market gear news worth tracking.
+
+## Onix Theory: foam-core positioning under $100
+
+On **July 31**, **Onix Pickleball** introduced the **Theory**, a foam **Cyro Core** paddle with a raw carbon face, elongated shape, and **14mm / 16mm** thickness options. Brand materials pitch it as a power–control–spin balance paddle with an oversized base for forgiveness — and, critically, as foam construction aimed at a **sub-$100** retail band that used to be reserved for polymer honeycomb frames.
+
+Availability notes point to Onix’s own site plus U.S. big-box sports retailers (Dick’s, Scheels). Canadian shoppers should treat those channel lists as U.S.-centric until local listings and CAD pricing appear; always confirm the live store page and return policy.
+
+For context on what “full-foam” and multi-density marketing usually mean — and what they do **not** guarantee — see our [foam cores explainer](/guides/pickleball-paddle-foam-cores-explained).
+
+## 11SIX24 Jelly Bean 2: August 21 return
+
+On **July 30**, reporting from The Dink detailed **11SIX24’s Jelly Bean 2**, slated for **August 21**. Expected details:
+
+- Four shapes (Hurache-X, Vapor, Ultré, Pegasus)
+- 16mm builds, UPA-A approval called out in coverage
+- Softer/denser foam feel vs. the brand’s Power 2 line (more dwell, less raw pop)
+- Retail target around **$169.99** USD in early reporting
+
+That sits above true entry fiberglass but squarely in the “serious recreational / improver” band many players graduate into after a first season. Cross-check against our [under-$100 paddle guide](/guides/pickleball-paddles-under-100) and [skill tiers](/guides/how-we-define-skill-tiers) before assuming you need the newest foam SKU.
+
+## Why the budget foam wave matters
+
+Foam used to be a flagship talking point. This week’s Theory launch and Jelly Bean 2 tease show brands racing to own **accessible foam** before holiday and fall league buying. Shoppers should still:
+
+1. Name the job (forgiveness vs. spin vs. plow-through).
+2. Ignore density slogans without weight, shape, and thickness.
+3. Prefer return-friendly sellers when feel is the pitch.
+4. Remember catalog prices on this site are approximate — CAD on the Canada host, USD labeling on the U.S. host via our market rewrite — never live checkout prices.
+
+## Quiet industry backdrop
+
+Broader IP and premium-foam stories (JOOLA’s spring patent actions; earlier Selkirk OMNI ReactCore messaging) remain the structural backdrop, but they are not new this week. The actionable news for buyers right now is simpler: **foam is no longer only a $250+ conversation**. Shortlist two paddles max, demo if you can, and buy for the week you actually play — not the paddle bag you saw on FS1.

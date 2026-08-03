@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { SITE_REGION, type SiteRegion } from './site';
 
 export type NewsEntry = CollectionEntry<'news'>;
 
@@ -7,6 +8,19 @@ export const NEWS_PAGE_SIZE = 20;
 export async function getAllNews(): Promise<NewsEntry[]> {
 	const entries = await getCollection('news');
 	return entries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+}
+
+/**
+ * Optional market filter for dual-region builds.
+ * Shared CA+middleware deploys should keep using getAllNews() so both hosts
+ * receive every entry (middleware cannot swap which cards are in the HTML).
+ */
+export async function getNewsForMarket(region: SiteRegion = SITE_REGION): Promise<NewsEntry[]> {
+	const entries = await getAllNews();
+	return entries.filter((entry) => {
+		const markets = entry.data.markets ?? (['ca', 'us'] as const);
+		return markets.includes(region);
+	});
 }
 
 export async function getLatestNews(limit = 3): Promise<NewsEntry[]> {
