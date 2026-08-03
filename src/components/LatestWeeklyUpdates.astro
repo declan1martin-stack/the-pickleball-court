@@ -1,0 +1,91 @@
+---
+import { formatNewsDate, getAllNews, newsPath } from '../lib/news';
+
+const news = await getAllNews();
+/** Prefer the newest roundup as the lead; fall back to newest update. */
+const lead = news.find((entry) => entry.data.type === 'roundup') ?? news[0];
+const more = lead
+	? news.filter((entry) => entry.id !== lead.id).slice(0, 2)
+	: [];
+---
+
+{lead && (
+	<section class="border-b border-border bg-bg" aria-labelledby="latest-weekly-updates-heading">
+		<div class="section-y mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+				<div class="max-w-2xl">
+					<h2
+						id="latest-weekly-updates-heading"
+						class="font-display text-3xl font-bold tracking-tight text-ink"
+					>
+						Latest weekly updates
+					</h2>
+					<p class="mt-3 text-ink-muted">
+						Pro tours, Canadian leagues, and paddle launches — dated notes for shoppers who want context before they buy.
+					</p>
+				</div>
+				<a href="/news" class="link-brand shrink-0 text-sm">View all news →</a>
+			</div>
+
+			<div class="grid gap-5 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+				<article class="rounded-[var(--radius-lg)] border border-border bg-surface p-6 shadow-[var(--shadow-sm)] sm:p-8">
+					<p class="font-display text-xs font-bold uppercase tracking-wider text-secondary">
+						{lead.data.type === 'roundup' ? 'Roundup' : 'Update'}
+						<span aria-hidden="true"> · </span>
+						<time datetime={lead.data.date.toISOString()}>
+							{formatNewsDate(lead.data.date, {
+								year: 'numeric',
+								month: 'short',
+								day: 'numeric',
+							})}
+						</time>
+					</p>
+					<a
+						href={newsPath(lead)}
+						class="mt-3 block font-display text-2xl font-extrabold tracking-tight text-ink hover:text-primary sm:text-3xl"
+					>
+						{lead.data.title}
+					</a>
+					<p class="mt-3 text-base leading-relaxed text-ink-muted">{lead.data.summary}</p>
+					<a href={newsPath(lead)} class="link-brand mt-5 inline-flex text-sm font-semibold">
+						Read this week’s update →
+					</a>
+				</article>
+
+				{more.length > 0 && (
+					<div>
+						<p class="font-display text-xs font-bold uppercase tracking-wider text-secondary">
+							More weekly updates
+						</p>
+						<ul class="mt-3 grid gap-4">
+							{more.map((entry) => (
+								<li class="rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-[var(--shadow-sm)]">
+									<p class="font-display text-xs font-bold uppercase tracking-wider text-secondary">
+										{entry.data.type === 'roundup' ? 'Roundup' : 'Update'}
+										<span aria-hidden="true"> · </span>
+										<time datetime={entry.data.date.toISOString()}>
+											{formatNewsDate(entry.data.date, {
+												year: 'numeric',
+												month: 'short',
+												day: 'numeric',
+											})}
+										</time>
+									</p>
+									<a
+										href={newsPath(entry)}
+										class="mt-2 block font-display text-base font-bold text-ink hover:text-primary"
+									>
+										{entry.data.title}
+									</a>
+									<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-muted">
+										{entry.data.summary}
+									</p>
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
+			</div>
+		</div>
+	</section>
+)}
