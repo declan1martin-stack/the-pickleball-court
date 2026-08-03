@@ -36,6 +36,41 @@ export function newsPath(entry: NewsEntry): string {
 	return `/news/${newsSlug(entry)}`;
 }
 
+/** Prefer shared tags / same type, then newest — exclude current entry. */
+export function getRelatedNews(
+	entries: NewsEntry[],
+	current: NewsEntry,
+	limit = 3,
+): NewsEntry[] {
+	const tagSet = new Set(current.data.tags.map((tag) => tag.toLowerCase()));
+	const currentSlug = newsSlug(current);
+	const scored = entries
+		.filter((entry) => newsSlug(entry) !== currentSlug)
+		.map((entry) => {
+			const sharedTags = entry.data.tags.filter((tag) => tagSet.has(tag.toLowerCase())).length;
+			const sameType = entry.data.type === current.data.type ? 2 : 0;
+			const roundupBoost = entry.data.type === 'roundup' ? 1 : 0;
+			return {
+				entry,
+				score: sharedTags * 3 + sameType + roundupBoost,
+			};
+		})
+		.sort(
+			(a, b) =>
+				b.score - a.score || b.entry.data.date.valueOf() - a.entry.data.date.valueOf(),
+		);
+
+	const related = scored.filter((item) => item.score > 0).map((item) => item.entry);
+	if (related.length >= limit) return related.slice(0, limit);
+
+	const fallback = entries.filter(
+		(entry) =>
+			newsSlug(entry) !== currentSlug &&
+			!related.some((item) => newsSlug(item) === newsSlug(entry)),
+	);
+	return [...related, ...fallback].slice(0, limit);
+}
+
 /** Format news dates in UTC so calendar days match frontmatter. */
 export function formatNewsDate(
 	date: Date,

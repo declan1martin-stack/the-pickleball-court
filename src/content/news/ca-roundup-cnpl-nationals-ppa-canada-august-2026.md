@@ -30,3 +30,9 @@ The international picture is brightening for Canadian players, too. Major League
 ## The takeaway
 
 For a market still building its professional footprint, this was a genuinely eventful week: a captain-for-captain trade that will echo through the standings, a playoff race with real stakes, and the country's biggest tournament of the year now just weeks out. If you play in Ontario, Nationals week in the GTA is the one to circle.
+
+## Keep reading
+
+- [US pro roundup: MLP playoffs & PPA calendar](/news/us-roundup-mlp-playoffs-ppa-august-2026)
+- [Gear roundup: budget foam paddles this week](/news/gear-roundup-foam-budget-paddles-august-2026)
+- [Paddles under $100](/guides/pickleball-paddles-under-100) · [How to choose a paddle](/guides/how-to-choose-a-pickleball-paddle) · [All news](/news)

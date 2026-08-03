@@ -42,3 +42,9 @@ Foam used to be a flagship talking point. This week’s Theory launch and Jelly 
 ## Quiet industry backdrop
 
 Broader IP and premium-foam stories (JOOLA’s spring patent actions; earlier Selkirk OMNI ReactCore messaging) remain the structural backdrop, but they are not new this week. The actionable news for buyers right now is simpler: **foam is no longer only a $250+ conversation**. Shortlist two paddles max, demo if you can, and buy for the week you actually play — not the paddle bag you saw on FS1.
+
+## Keep reading
+
+- [US pro roundup: MLP playoffs](/news/us-roundup-mlp-playoffs-ppa-august-2026)
+- [Canada roundup: CNPL & Nationals](/news/ca-roundup-cnpl-nationals-ppa-canada-august-2026)
+- [Foam cores explained](/guides/pickleball-paddle-foam-cores-explained) · [Paddles under $100](/guides/pickleball-paddles-under-100) · [Carbon vs fiberglass](/guides/carbon-fiber-vs-fiberglass-paddles) · [All news](/news)

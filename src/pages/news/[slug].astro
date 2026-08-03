@@ -3,8 +3,16 @@ import { render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
+import RelatedNews from '../../components/RelatedNews.astro';
 import { resolveAuthor, authorPath } from '../../data/authors';
-import { formatNewsDate, getAllNews, newsPath, newsSlug, type NewsEntry } from '../../lib/news';
+import {
+	formatNewsDate,
+	getAllNews,
+	getRelatedNews,
+	newsPath,
+	newsSlug,
+	type NewsEntry,
+} from '../../lib/news';
 import { absoluteUrl, articleSchema, clampMetaDescription } from '../../lib/seo';
 
 export async function getStaticPaths() {
@@ -24,6 +32,9 @@ const { Content } = await render(entry);
 const author = resolveAuthor(entry.data.author);
 const path = newsPath(entry);
 const description = clampMetaDescription(entry.data.summary);
+const allNews = await getAllNews();
+const relatedNews = getRelatedNews(allNews, entry, 3);
+const isRoundup = entry.data.type === 'roundup';
 ---
 
 <Layout
@@ -92,6 +103,45 @@ const description = clampMetaDescription(entry.data.summary);
 				))}
 			</ul>
 		)}
+
+		{isRoundup && (
+			<section class="mt-10 rounded-[var(--radius-lg)] border border-border bg-bg p-5" aria-labelledby="roundup-guides-heading">
+				<h2 id="roundup-guides-heading" class="font-display text-lg font-bold text-ink">
+					Shop the guides behind this week’s news
+				</h2>
+				<ul class="mt-3 space-y-2 text-sm text-ink-muted">
+					<li>
+						<a href="/guides/pickleball-paddles-under-100" class="font-semibold text-primary underline">
+							Paddles under $100
+						</a>
+						{' '}— budget / value buying window
+					</li>
+					<li>
+						<a href="/guides/pickleball-paddle-foam-cores-explained" class="font-semibold text-primary underline">
+							Foam cores explained
+						</a>
+						{' '}— decode full-foam and density marketing
+					</li>
+					<li>
+						<a href="/guides/how-we-define-skill-tiers" class="font-semibold text-primary underline">
+							Skill tiers
+						</a>
+						{' '}— match gear to how you actually play
+					</li>
+					<li>
+						<a href="/guides/how-to-choose-a-pickleball-paddle" class="font-semibold text-primary underline">
+							How to choose a paddle
+						</a>
+						{' '}— full buying pillar
+					</li>
+				</ul>
+			</section>
+		)}
+
+		<RelatedNews
+			entries={relatedNews}
+			heading={isRoundup ? 'More weekly updates' : 'More updates'}
+		/>
 
 		<p class="mt-8 text-sm font-semibold">
 			<a href="/news" class="link-brand">← All news updates</a>

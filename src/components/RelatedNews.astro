@@ -1,0 +1,46 @@
+---
+import { formatNewsDate, newsPath, type NewsEntry } from '../lib/news';
+
+interface Props {
+	entries: NewsEntry[];
+	heading?: string;
+}
+
+const { entries, heading = 'More updates' } = Astro.props;
+const items = entries.slice(0, 3);
+---
+
+{items.length > 0 && (
+	<section class="my-10" aria-labelledby="related-news-heading">
+		<div class="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+			<h2 id="related-news-heading" class="font-display text-2xl font-bold tracking-tight text-ink">
+				{heading}
+			</h2>
+			<a href="/news" class="link-brand text-sm">All news →</a>
+		</div>
+		<ul class="grid gap-4 md:grid-cols-3">
+			{items.map((entry) => (
+				<li class="rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-[var(--shadow-sm)]">
+					<p class="font-display text-xs font-bold uppercase tracking-wider text-secondary">
+						{entry.data.type === 'roundup' ? 'Roundup' : 'Update'}
+						<span aria-hidden="true"> · </span>
+						<time datetime={entry.data.date.toISOString()}>
+							{formatNewsDate(entry.data.date, {
+								year: 'numeric',
+								month: 'short',
+								day: 'numeric',
+							})}
+						</time>
+					</p>
+					<a
+						href={newsPath(entry)}
+						class="mt-2 block font-display text-base font-bold text-ink hover:text-primary"
+					>
+						{entry.data.title}
+					</a>
+					<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-muted">{entry.data.summary}</p>
+				</li>
+			))}
+		</ul>
+	</section>
+)}

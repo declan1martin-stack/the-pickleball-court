@@ -38,3 +38,9 @@ The marquee U.S. destination remains the **Veolia Pickleball National Championsh
 ## Why this matters for gear shoppers
 
 Playoff windows drive demo demand and short-term paddle swaps. If you are buying for the fall club season, treat pro foam/power narratives as **spec context**, not automatic upgrades — our [foam-core explainer](/guides/pickleball-paddle-foam-cores-explained) and [skill-tier guide](/guides/how-we-define-skill-tiers) stay the buying filter. Watch the Dallas and Newport Beach weeks for which constructions stay in winners’ bags, then confirm live U.S. store pricing before you copy a setup.
+
+## Keep reading
+
+- [Canada roundup: CNPL trade & Nationals](/news/ca-roundup-cnpl-nationals-ppa-canada-august-2026)
+- [Gear roundup: Onix Theory, Jelly Bean 2 & budget foam](/news/gear-roundup-foam-budget-paddles-august-2026)
+- [Best paddles 2026](/guides/best-pickleball-paddles-2026) · [Paddles under $100](/guides/pickleball-paddles-under-100) · [All news](/news)

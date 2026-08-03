@@ -22,9 +22,13 @@ const entries = allNews.slice(start, start + NEWS_PAGE_SIZE);
 			<Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'News' }]} />
 			<h1 class="mt-4 font-display text-4xl font-extrabold tracking-tight text-ink">News & updates</h1>
 			<p class="mt-3 max-w-2xl text-ink-muted">
-				Short, dated notes on paddle launches, sponsor moves, and brand news that affect what
+				Short, dated notes and weekly roundups — pro tours, Canadian leagues, and paddle launches — that affect what
 				{MARKET_LABEL} shoppers see in stores. For deeper buying advice, browse our
-				<a href="/guides" class="font-semibold text-primary underline">guides</a>.
+				<a href="/guides" class="font-semibold text-primary underline">guides</a>
+				{' '}(start with
+				<a href="/guides/pickleball-paddles-under-100" class="font-semibold text-primary underline">paddles under $100</a>
+				{' '}or
+				<a href="/guides/pickleball-paddle-foam-cores-explained" class="font-semibold text-primary underline">foam cores explained</a>).
 			</p>
 			<p class="mt-3 text-sm">
 				<a href="/news/feed.xml" class="link-brand">RSS feed →</a>
