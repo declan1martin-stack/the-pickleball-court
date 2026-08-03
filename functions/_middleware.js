@@ -132,6 +132,45 @@ export async function onRequest(context) {
 		return context.next();
 	}
 
+	// Temporary AvantLink publisher verification (remove after approval).
+	// Served from the Worker so it never falls through to the HTML app shell.
+	if (
+		requestUrl.pathname === '/avantlink_confirmation.txt' ||
+		requestUrl.pathname === '/avantlink-verify/avantlink_confirmation.txt'
+	) {
+		return new Response('dc9d43f54427baacc0c00206e5841dd5324fa232\n', {
+			status: 200,
+			headers: {
+				'content-type': 'text/plain; charset=utf-8',
+				'cache-control': 'no-store',
+			},
+		});
+	}
+	if (
+		requestUrl.pathname === '/avantlink-verify' ||
+		requestUrl.pathname === '/avantlink-verify.html'
+	) {
+		const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>AvantLink website verification</title>
+<script type="text/javascript" src="http://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=dc9d43f54427baacc0c00206e5841dd5324fa232"></script>
+</head>
+<body>
+<p>AvantLink verification for USPickleballCourt.com</p>
+</body>
+</html>
+`;
+		return new Response(html, {
+			status: 200,
+			headers: {
+				'content-type': 'text/html; charset=utf-8',
+				'cache-control': 'no-store',
+			},
+		});
+	}
+
 	// Serve AI-open robots for US even when Cloudflare Managed prepends blocks:
 	// return our own body with Allow rules first for major AI crawlers.
 	if (requestUrl.pathname === '/robots.txt' && shouldRewrite(requestUrl.hostname)) {
