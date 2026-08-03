@@ -138,7 +138,14 @@ export async function onRequest(context) {
 		requestUrl.pathname === '/avantlink_confirmation.txt' ||
 		requestUrl.pathname === '/avantlink-verify/avantlink_confirmation.txt'
 	) {
-		return new Response('dc9d43f54427baacc0c00206e5841dd5324fa232\n', {
+		const confirmation = `<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<Process>Application-Confirmation</Process>
+	<Version>1.0</Version>
+	<Mode>Verify-File</Mode>
+	<Authentication>dc9d43f54427baacc0c00206e5841dd5324fa232</Authentication>
+</root>`;
+		return new Response(confirmation, {
 			status: 200,
 			headers: {
 				'content-type': 'text/plain; charset=utf-8',
