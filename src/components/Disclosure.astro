@@ -4,9 +4,11 @@ import { AMAZON_LABEL, SITE_NAME } from '../lib/site';
 
 interface Props {
 	compact?: boolean;
+	/** When true, skip the verbatim Associates sentence (e.g. already shown above on /affiliate-disclosure). */
+	omitAmazonSentence?: boolean;
 }
 
-const { compact = false } = Astro.props;
+const { compact = false, omitAmazonSentence = false } = Astro.props;
 ---
 
 <aside
@@ -16,10 +18,18 @@ const { compact = false } = Astro.props;
 	]}
 	aria-label="Affiliate disclosure"
 >
-	<p class:list={[compact ? 'leading-snug' : 'leading-relaxed', 'font-medium text-ink']}>
-		As an Amazon Associate I earn from qualifying purchases.
-	</p>
-	<p class:list={[compact ? 'mt-1.5 leading-snug' : 'mt-2 leading-relaxed', 'text-ink-muted']}>
+	{!omitAmazonSentence && (
+		<p class:list={[compact ? 'leading-snug' : 'leading-relaxed', 'font-medium text-ink']}>
+			As an Amazon Associate I earn from qualifying purchases.
+		</p>
+	)}
+	<p
+		class:list={[
+			compact ? 'leading-snug' : 'leading-relaxed',
+			'text-ink-muted',
+			!omitAmazonSentence && (compact ? 'mt-1.5' : 'mt-2'),
+		]}
+	>
 		<strong class="font-bold text-ink">Disclosure:</strong>
 		{SITE_NAME} uses affiliate links for {AMAZON_LABEL}, {PARTNER_LABELS.selkirk}, and{' '}
 		{PARTNER_LABELS.pickleballSuperstore}. We may earn a commission from qualifying purchases at no extra cost to
