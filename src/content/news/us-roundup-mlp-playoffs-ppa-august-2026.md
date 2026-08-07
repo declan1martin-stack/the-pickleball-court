@@ -1,46 +1,36 @@
 ---
-title: "US pickleball roundup: MLP playoffs locked, PPA calendar heats up"
+title: "This Week in US Pickleball: Nationals on the Horizon, Foam-Core Paddles Keep Winning"
 date: 2026-08-03
-summary: "New Jersey clinched the MLP regular-season title in Orlando, the 12-team playoff field is set, and U.S. PPA Challenger stops plus the Veolia National Championships headline the next month of pro pickleball."
-tags: ["roundup", "mlp", "ppa-tour", "united-states", "playoffs"]
+summary: "A look at the biggest US pickleball storylines this week — the Veolia National Championships coming to North Carolina, why foam-core paddles keep showing up on the winner's podium, and the sponsor move still shaping the pro tour."
+tags: ["weekly-roundup", "ppa-tour", "gear", "sponsorships"]
 type: "roundup"
 markets: ["us"]
-sourceUrl: "https://pickleball.com/news/new-jersey-avenges-mid-season-tournament-loss-beats-st-louis-to-secure-top-playoff-seed"
+heroImage: "https://images.unsplash.com/photo-1747027694225-cbf12dd20826?w=1200&q=80&auto=format&fit=crop"
+heroAlt: "Players competing in a pickleball match on an outdoor court"
+heroCredit: "Photo: Venti Views / Unsplash (Unsplash License, free to use)"
 author: "declan-martin"
 ---
 
-The first week of August closed the Major League Pickleball regular season and opened a clear runway into the sport’s busiest U.S. stretch of the summer. Here is what U.S. fans and shoppers should know.
+## Nationals is coming to Cary
 
-## New Jersey takes the MLP No. 1 seed
+The PPA Tour's Veolia Pickleball National Championships run August 31 – September 6 at Cary Tennis Park in Cary, North Carolina. It's one of the biggest stops on the calendar, carrying 2,000 ranking points, and it kicks off a stacked late-summer stretch that runs straight through the Pickleball World Championships in November. If you're watching the pro rankings shift this month, this is the event to keep an eye on.
 
-On Zipfizz Super Sunday at Amway MLP Orlando (August 2), the **New Jersey 5s** beat the **St. Louis Shock** 3–1 to lock the regular-season title and the top playoff seed. The result flipped a mid-season storyline: St. Louis had swept New Jersey 3–0 in the Mid-Season Tournament final only three weeks earlier.
+## Foam-core paddles are still the story of 2026
 
-New Jersey’s late-season trade for Federico Staksrud paid off immediately. After men’s doubles went to St. Louis, Anna Leigh Waters and Noe Khlif won a tense mixed battle 15–13, and Jorja Johnson/Staksrud closed mixed 11–2 to seal the series. With the No. 1 seed, New Jersey earns a first-round bye, opponent selection rights in later rounds, and “home” pairing advantages through the early playoff bracket.
+A lot of this year's gear conversation has centered on full-foam paddle construction, and the results keep backing it up. Engage's second full-foam model, the X2, launched with a new "Quad Density" foam core earlier this year — and pro player Eric Oncins switched to it and climbed into the top 10 in both men's and mixed doubles on the PPA Tour. That's a useful signal for recreational players too: foam-core paddles aren't just a marketing trend, they're showing up in real competitive results. If you're trying to figure out what "full-foam" and "Quad Density" actually mean for your game, our [foam cores explainer](/guides/pickleball-paddle-foam-cores-explained) breaks it down without the hype.
 
-## Full 12-team playoff field
+## The Waters-to-Franklin deal is still the biggest sponsor move of the year
 
-Season standings points put the postseason field as: New Jersey, St. Louis, Los Angeles Mad Drops, Columbus Sliders, Brooklyn, Dallas Flash, Palm Beach Royals, Texas Ranchers, Atlanta Bouncers, SoCal Hard Eights, Las Vegas Night Owls, and Chicago Slice (who clawed into the final spot with back-to-back DreamBreaker wins).
+Anna Leigh Waters, the sport's most dominant player, ended her long run with Paddletek and signed with Franklin Pickleball earlier this year — a deal that's expected to shape Franklin's paddle line going forward. It remains one of the largest athlete-brand moves pickleball has seen, and it's worth watching how Franklin builds around her heading into the fall tour stretch.
 
-**Playoff geography for U.S. fans:**
+## What to watch next week
 
-- **Aug 7–9 — Dallas:** Opening round (seeds 5–12)
-- **Aug 14–16 — Newport Beach, CA:** Quarterfinals
-- **Aug 21–23 — Central Park, New York:** Semifinals and Finals
+With Nationals three weeks out, expect roster announcements, seeding previews, and probably a few more paddle updates timed to the event. We'll have it covered here.
 
-Coverage continues on Pickleballtv / FS1 windows as published by the league.
-
-## PPA Tour: Challengers now, Nationals next
-
-On the individual tour side, the **Wisconsin PPA Challenger** (Lake Hallie, July 31–August 2) wrapped the Challenger calendar’s latest stop. Next domestic Challengers on the published board include **Seattle** (August 14–16) and **Atlanta** (August 28–30).
-
-The marquee U.S. destination remains the **Veolia Pickleball National Championships**, scheduled to open **August 31** (Cary, N.C. on circulating schedule listings) as a high-point Slam-class event before the fall Cup stretch. International PPA stops continue in parallel (Asia and Australia this month), but ranking points still feed the unified global table U.S. pros chase week to week.
-
-## Why this matters for gear shoppers
-
-Playoff windows drive demo demand and short-term paddle swaps. If you are buying for the fall club season, treat pro foam/power narratives as **spec context**, not automatic upgrades — our [foam-core explainer](/guides/pickleball-paddle-foam-cores-explained) and [skill-tier guide](/guides/how-we-define-skill-tiers) stay the buying filter. Watch the Dallas and Newport Beach weeks for which constructions stay in winners’ bags, then confirm live U.S. store pricing before you copy a setup.
+*Shopping for a paddle before the fall season? Start with our [paddle buying guide](/guides/how-to-choose-a-pickleball-paddle) or browse [paddles under $100](/guides/pickleball-paddles-under-100) if you're not ready for flagship pricing yet.*
 
 ## Keep reading
 
-- [Canada roundup: CNPL trade & Nationals](/news/ca-roundup-cnpl-nationals-ppa-canada-august-2026)
-- [Gear roundup: Onix Theory, Jelly Bean 2 & budget foam](/news/gear-roundup-foam-budget-paddles-august-2026)
-- [Best paddles 2026](/guides/best-pickleball-paddles-2026) · [Paddles under $100](/guides/pickleball-paddles-under-100) · [All news](/news)
+- [Canada weekly roundup: Nationals & participation](/news/ca-roundup-cnpl-nationals-ppa-canada-august-2026)
+- [Gear roundup: budget foam paddles this week](/news/gear-roundup-foam-budget-paddles-august-2026)
+- [All news](/news)

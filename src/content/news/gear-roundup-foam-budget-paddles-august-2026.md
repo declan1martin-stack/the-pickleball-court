@@ -5,6 +5,9 @@ summary: "Onix launched the Theory foam-core paddle as a sub-$100 play, 11SIX24 
 tags: ["roundup", "paddles", "foam-core", "onix", "budget", "gear"]
 type: "roundup"
 markets: ["ca", "us"]
+heroImage: "https://images.unsplash.com/photo-1756477558468-b3e485757470?w=1200&q=80&auto=format&fit=crop"
+heroAlt: "Player swinging a pickleball paddle mid-rally on an outdoor court"
+heroCredit: "Photo: Unsplash (Unsplash License, free to use)"
 sourceUrl: "https://www.outdoorsportswire.com/onix-pickleball-launches-theory-paddle-for-power-control-balance/"
 author: "declan-martin"
 ---
@@ -45,6 +48,6 @@ Broader IP and premium-foam stories (JOOLA’s spring patent actions; earlier Se
 
 ## Keep reading
 
-- [US pro roundup: MLP playoffs](/news/us-roundup-mlp-playoffs-ppa-august-2026)
-- [Canada roundup: CNPL & Nationals](/news/ca-roundup-cnpl-nationals-ppa-canada-august-2026)
+- [US weekly roundup: Nationals & foam-core paddles](/news/us-roundup-mlp-playoffs-ppa-august-2026)
+- [Canada weekly roundup: Nationals & participation](/news/ca-roundup-cnpl-nationals-ppa-canada-august-2026)
 - [Foam cores explained](/guides/pickleball-paddle-foam-cores-explained) · [Paddles under $100](/guides/pickleball-paddles-under-100) · [Carbon vs fiberglass](/guides/carbon-fiber-vs-fiberglass-paddles) · [All news](/news)

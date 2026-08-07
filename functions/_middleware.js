@@ -40,10 +40,13 @@ function rewriteForUs(body) {
 		.replaceAll('http://amazon.ca', 'https://www.amazon.com')
 		.replaceAll('tag=thepickleb050-20', 'tag=uspickleball-20')
 		.replaceAll('thepickleb050-20', 'uspickleball-20')
-		.replaceAll('https://www.thepickleballcourt.ca', 'https://www.uspickleballcourt.com')
-		.replaceAll('http://www.thepickleballcourt.ca', 'https://www.uspickleballcourt.com')
+		// Always rewrite to apex US host (www is redirected separately).
+		.replaceAll('https://www.thepickleballcourt.ca', 'https://uspickleballcourt.com')
+		.replaceAll('http://www.thepickleballcourt.ca', 'https://uspickleballcourt.com')
 		.replaceAll('https://thepickleballcourt.ca', 'https://uspickleballcourt.com')
 		.replaceAll('http://thepickleballcourt.ca', 'https://uspickleballcourt.com')
+		.replaceAll('https://www.uspickleballcourt.com', 'https://uspickleballcourt.com')
+		.replaceAll('http://www.uspickleballcourt.com', 'https://uspickleballcourt.com')
 		.replaceAll('ThePickleballCourt.ca', 'USPickleballCourt.com')
 		.replaceAll('hello@thepickleballcourt.ca', 'hello@uspickleballcourt.com')
 		.replaceAll('the Canada store', 'the US store')
@@ -132,6 +135,28 @@ function rewriteForUs(body) {
 
 export async function onRequest(context) {
 	const requestUrl = new URL(context.request.url);
+	const host = (requestUrl.hostname || '').toLowerCase();
+
+	// Canonical host: apex only (www duplicates dilute crawl signals).
+	if (host === 'www.thepickleballcourt.ca' || host === 'www.uspickleballcourt.com') {
+		const apex =
+			host === 'www.uspickleballcourt.com'
+				? 'https://uspickleballcourt.com'
+				: 'https://thepickleballcourt.ca';
+		return Response.redirect(`${apex}${requestUrl.pathname}${requestUrl.search}`, 301);
+	}
+
+	// GSC HTML-file verification must stay on the exact `.html` URL (no 308 strip).
+	const gscFile = requestUrl.pathname.match(/^\/(google[a-z0-9]+)\.html$/i);
+	if (gscFile) {
+		return new Response(`google-site-verification: ${gscFile[1].toLowerCase()}.html\n`, {
+			status: 200,
+			headers: {
+				'content-type': 'text/html; charset=utf-8',
+				'cache-control': 'public, max-age=300',
+			},
+		});
+	}
 
 	// Let /go/* redirect handlers run untouched.
 	if (requestUrl.pathname.startsWith('/go/')) {

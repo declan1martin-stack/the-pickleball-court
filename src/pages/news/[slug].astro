@@ -35,6 +35,9 @@ const description = clampMetaDescription(entry.data.summary);
 const allNews = await getAllNews();
 const relatedNews = getRelatedNews(allNews, entry, 3);
 const isRoundup = entry.data.type === 'roundup';
+const heroImage = entry.data.heroImage;
+const heroAlt = entry.data.heroAlt ?? entry.data.title;
+const ogImage = heroImage ?? '/favicon.svg';
 ---
 
 <Layout
@@ -42,13 +45,14 @@ const isRoundup = entry.data.type === 'roundup';
 	description={description}
 	canonicalPath={path}
 	ogType="article"
+	ogImage={ogImage}
 	publishDate={entry.data.date}
 	updatedDate={entry.data.date}
 	jsonLd={articleSchema({
 		title: entry.data.title,
 		description: entry.data.summary,
 		path,
-		image: absoluteUrl('/favicon.svg'),
+		image: absoluteUrl(ogImage),
 		author: author.name,
 		authorUrl: absoluteUrl(authorPath(author.id)),
 		publishDate: entry.data.date,
@@ -76,6 +80,22 @@ const isRoundup = entry.data.type === 'roundup';
 			<p class="mt-4 text-sm text-ink-faint">
 				By <a href={authorPath(author.id)} class="font-semibold text-primary underline">{author.name}</a>
 			</p>
+			{heroImage && (
+				<figure class="mt-8">
+					<img
+						src={heroImage}
+						alt={heroAlt}
+						width="1200"
+						height="630"
+						fetchpriority="high"
+						decoding="async"
+						class="aspect-[21/9] w-full rounded-[var(--radius-lg)] object-cover object-[center_35%]"
+					/>
+					{entry.data.heroCredit && (
+						<figcaption class="mt-2 text-xs text-ink-faint">{entry.data.heroCredit}</figcaption>
+					)}
+				</figure>
+			)}
 		</div>
 	</article>
 

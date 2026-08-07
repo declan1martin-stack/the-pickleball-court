@@ -20,25 +20,40 @@ const items = entries.slice(0, 3);
 		</div>
 		<ul class="grid gap-4 md:grid-cols-3">
 			{items.map((entry) => (
-				<li class="rounded-[var(--radius-lg)] border border-border bg-surface p-5 shadow-[var(--shadow-sm)]">
-					<p class="font-display text-xs font-bold uppercase tracking-wider text-secondary">
-						{entry.data.type === 'roundup' ? 'Roundup' : 'Update'}
-						<span aria-hidden="true"> · </span>
-						<time datetime={entry.data.date.toISOString()}>
-							{formatNewsDate(entry.data.date, {
-								year: 'numeric',
-								month: 'short',
-								day: 'numeric',
-							})}
-						</time>
-					</p>
-					<a
-						href={newsPath(entry)}
-						class="mt-2 block font-display text-base font-bold text-ink hover:text-primary"
-					>
-						{entry.data.title}
-					</a>
-					<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-muted">{entry.data.summary}</p>
+				<li class="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)]">
+					{entry.data.heroImage && (
+						<a href={newsPath(entry)} tabindex="-1" aria-hidden="true">
+							<img
+								src={entry.data.heroImage}
+								alt={entry.data.heroAlt ?? ''}
+								width="640"
+								height="360"
+								loading="lazy"
+								decoding="async"
+								class="aspect-[16/9] w-full object-cover"
+							/>
+						</a>
+					)}
+					<div class="p-5">
+						<p class="font-display text-xs font-bold uppercase tracking-wider text-secondary">
+							{entry.data.type === 'roundup' ? 'Roundup' : 'Update'}
+							<span aria-hidden="true"> · </span>
+							<time datetime={entry.data.date.toISOString()}>
+								{formatNewsDate(entry.data.date, {
+									year: 'numeric',
+									month: 'short',
+									day: 'numeric',
+								})}
+							</time>
+						</p>
+						<a
+							href={newsPath(entry)}
+							class="mt-2 block font-display text-base font-bold text-ink hover:text-primary"
+						>
+							{entry.data.title}
+						</a>
+						<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-muted">{entry.data.summary}</p>
+					</div>
 				</li>
 			))}
 		</ul>

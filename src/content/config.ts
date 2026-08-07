@@ -80,6 +80,11 @@ export const news = defineCollection({
 		 * Direct URLs still build for every entry. Default: both markets.
 		 */
 		markets: z.array(z.enum(['ca', 'us'])).default(['ca', 'us']),
+		/** Same field names as articles — Unsplash/Pexels/Pixabay hotlinks today. */
+		heroImage: z.string().optional(),
+		heroAlt: z.string().optional(),
+		/** Optional attribution line (good practice; not legally required for Unsplash). */
+		heroCredit: z.string().optional(),
 		sourceUrl: z.string().url().optional(),
 		author: authorIdSchema.default(DEFAULT_AUTHOR_ID),
 	}),

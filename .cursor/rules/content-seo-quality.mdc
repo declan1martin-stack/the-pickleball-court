@@ -10,6 +10,7 @@ alwaysApply: true
 - Original, useful writing for real players (all levels). No thin/spun filler or keyword stuffing.
 - Reference only products that exist in `gear.json`.
 - Articles: clear H1, hierarchical H2/H3, fast-answer intro, comparison tables when useful, FAQ (FAQPage schema), pros/cons, ≥3 internal links + link to the relevant category page.
+- Hero images (guides + news): use **`heroImage` + `heroAlt`** (optional `heroCredit`). Source only from **Unsplash, Pexels, or Pixabay** — free commercial use. Never reuse random search results from news sites, blogs, or brand marketing pages (usually not licensed for a monetized affiliate site). Prefer free (non–Unsplash+) photos. Guides/news currently hotlink CDN URLs; self-hosting under `/public/images/` is a future CWV improvement, not a blocker.
 
 ## SEO
 

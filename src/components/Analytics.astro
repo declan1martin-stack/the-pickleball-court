@@ -33,11 +33,15 @@ const gsc = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 			}
 
 			const region = siteRegion();
+			const hostname = window.location.hostname.replace(/^www\./, '').toLowerCase();
 			gtag('js', new Date());
 			gtag('set', 'user_properties', { site_region: region });
 			gtag('config', gaId, {
 				anonymize_ip: true,
+				send_page_view: true,
+				// Custom dims: register site_region + hostname in GA4 Admin → Custom definitions
 				site_region: region,
+				site_hostname: hostname,
 			});
 
 			document.addEventListener(

@@ -4,13 +4,7 @@ import {
 	getAuthor,
 	type Author,
 } from '../data/authors';
-import {
-	PRICE_CURRENCY,
-	SITE_EMAIL,
-	SITE_NAME,
-	SITE_URL,
-	site,
-} from './site';
+import { SITE_EMAIL, SITE_NAME, SITE_URL, site } from './site';
 
 export { SITE_NAME, SITE_URL };
 export const DEFAULT_OG_IMAGE = '/og-default.png';
@@ -186,6 +180,8 @@ export function productSchema(input: {
 	brand: string;
 	url: string;
 }) {
+	// No Offer block: affiliate catalogs must not invent live prices/availability.
+	// Incomplete Offer (currency + InStock, no price) triggers GSC Product/Merchant errors.
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'Product',
@@ -196,13 +192,7 @@ export function productSchema(input: {
 			'@type': 'Brand',
 			name: input.brand,
 		},
-		offers: {
-			'@type': 'Offer',
-			url: input.url,
-			availability: 'https://schema.org/InStock',
-			priceCurrency: PRICE_CURRENCY,
-			// Intentionally omit price — do not present non-API catalog prices as live retail prices.
-		},
+		url: input.url,
 	};
 }
 

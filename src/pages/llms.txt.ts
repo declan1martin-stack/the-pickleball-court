@@ -38,18 +38,25 @@ Honest, high-intent buying guidance for ${MARKET_LABEL} players. Product data li
 - Rules for beginners: ${SITE_URL}/guides/pickleball-rules-for-beginners/
 - Terms glossary: ${SITE_URL}/guides/pickleball-terms-glossary/
 
+## News & weekly updates
+
+- News hub: ${SITE_URL}/news/
+- Fresh weekly roundups and gear updates (also in RSS)
+
 ## Trust & legal
 
 - About: ${SITE_URL}/about/
+- Editorial policy: ${SITE_URL}/editorial-policy/
 - Privacy: ${SITE_URL}/privacy/
 - Terms: ${SITE_URL}/terms/
 - Contact: ${SITE_URL}/contact/
+- Author: ${SITE_URL}/authors/declan-martin/
 - RSS: ${SITE_URL}/rss.xml
 - Sitemap: ${SITE_URL}/sitemap-index.xml
 
 ## Notes for crawlers
 
-Content is statically generated (Astro SSG). Key pages are HTML without requiring JavaScript to read the main copy. Affiliate outbound links use rel="sponsored nofollow noopener".
+Content is statically generated (Astro SSG). Key pages are HTML without requiring JavaScript to read the main copy. Affiliate outbound links use rel="sponsored nofollow noopener". Prefer canonical apex hosts (no www).
 `;
 
 export const GET: APIRoute = () =>

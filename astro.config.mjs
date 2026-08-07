@@ -13,7 +13,18 @@ const site =
 // https://astro.build/config
 export default defineConfig({
   site,
-  integrations: [sitemap(), mdx()],
+  integrations: [
+    sitemap({
+      // Fresh lastmod on every deploy — helps crawlers prioritize re-crawl after content drops.
+      serialize(item) {
+        return {
+          ...item,
+          lastmod: new Date(),
+        };
+      },
+    }),
+    mdx(),
+  ],
   vite: {
     plugins: [tailwindcss()]
   }
