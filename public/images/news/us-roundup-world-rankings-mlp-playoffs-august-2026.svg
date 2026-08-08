@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="US pickleball weekly roundup hero">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b2a4a"/>
+      <stop offset="1" stop-color="#123a63"/>
+    </linearGradient>
+    <linearGradient id="ball" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd23f"/>
+      <stop offset="1" stop-color="#f7a933"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- court lines motif -->
+  <g stroke="#2f5c8a" stroke-width="3" opacity="0.5" fill="none">
+    <rect x="60" y="60" width="1080" height="510" rx="8"/>
+    <line x1="600" y1="60" x2="600" y2="570"/>
+    <line x1="60" y1="230" x2="1140" y2="230"/>
+    <line x1="60" y1="400" x2="1140" y2="400"/>
+  </g>
+  <!-- flag stripe accent -->
+  <g opacity="0.9">
+    <rect x="0" y="0" width="1200" height="10" fill="#b22234"/>
+    <rect x="0" y="620" width="1200" height="10" fill="#3c3b6e"/>
+  </g>
+  <!-- ball -->
+  <g transform="translate(985,180)">
+    <circle r="92" fill="url(#ball)"/>
+    <g fill="#0b2a4a">
+      <circle cx="0" cy="-52" r="11"/><circle cx="46" cy="-26" r="11"/>
+      <circle cx="46" cy="26" r="11"/><circle cx="0" cy="52" r="11"/>
+      <circle cx="-46" cy="26" r="11"/><circle cx="-46" cy="-26" r="11"/>
+      <circle cx="0" cy="0" r="11"/>
+    </g>
+  </g>
+  <!-- eyebrow -->
+  <text x="70" y="150" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#ffd23f" letter-spacing="4">U.S. WEEKLY ROUNDUP</text>
+  <text x="70" y="185" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#9cc2e6">Aug 1 – 8, 2026</text>
+  <!-- headline -->
+  <text x="70" y="300" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="800" fill="#ffffff">PPA Goes Global,</text>
+  <text x="70" y="378" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="800" fill="#ffffff">MLP Playoffs Heat Up</text>
+  <!-- subhead chips -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">
+    <rect x="70" y="440" width="360" height="54" rx="27" fill="#1d4e86"/>
+    <text x="95" y="476" fill="#ffffff">World Pickleball Rankings</text>
+    <rect x="450" y="440" width="250" height="54" rx="27" fill="#1d4e86"/>
+    <text x="475" y="476" fill="#ffffff">PPA Tour Europe</text>
+    <rect x="720" y="440" width="230" height="54" rx="27" fill="#b22234"/>
+    <text x="745" y="476" fill="#ffffff">MLP Dallas</text>
+  </g>
+  <text x="70" y="545" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#9cc2e6">uspickleballcourt.com</text>
+</svg>
