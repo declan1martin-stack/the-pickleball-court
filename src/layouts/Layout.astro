@@ -10,6 +10,7 @@ import {
 	clampMetaDescription,
 	formatPageTitle,
 	hreflangAlternates,
+	normalizePath,
 	organizationSchema,
 	websiteSchema,
 } from '../lib/seo';
@@ -37,11 +38,15 @@ const {
 	jsonLd = [],
 } = Astro.props;
 
-const canonicalUrl = new URL(canonicalPath, SITE_URL).href;
+const normalizedPath = normalizePath(canonicalPath);
+const canonicalUrl =
+	normalizedPath === '/'
+		? SITE_URL.replace(/\/$/, '')
+		: new URL(normalizedPath, SITE_URL).href;
 const pageTitle = formatPageTitle(title);
 const metaDescription = clampMetaDescription(description);
 const imageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, SITE_URL).href;
-const alternates = hreflangAlternates(canonicalPath);
+const alternates = hreflangAlternates(normalizedPath);
 
 const schemas = [
 	organizationSchema(),

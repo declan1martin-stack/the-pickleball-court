@@ -1,2 +1,5 @@
 # Cloudflare Pages redirects
 /sitemap.xml    /sitemap-index.xml    301
+
+# trailingSlash: never — strip trailing slashes (except site root)
+/*/             /:splat               301!

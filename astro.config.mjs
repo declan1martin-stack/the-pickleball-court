@@ -11,8 +11,14 @@ const site =
 	(region === 'us' ? 'https://uspickleballcourt.com' : 'https://thepickleballcourt.ca');
 
 // https://astro.build/config
+// trailingSlash: 'never' + build.format: 'file' keep sitemap, canonicals, and Cloudflare Pages
+// hosting aligned (directory/index.html builds otherwise force a trailing slash on CF Pages).
 export default defineConfig({
   site,
+  trailingSlash: 'never',
+  build: {
+    format: 'file',
+  },
   integrations: [
     sitemap({
       // Fresh lastmod on every deploy — helps crawlers prioritize re-crawl after content drops.

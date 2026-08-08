@@ -9,8 +9,18 @@ import { SITE_EMAIL, SITE_NAME, SITE_URL, site } from './site';
 export { SITE_NAME, SITE_URL };
 export const DEFAULT_OG_IMAGE = '/og-default.png';
 
+/** Strip trailing slashes except for the site root (`/`). Matches `trailingSlash: 'never'`. */
+export function normalizePath(pathname: string): string {
+	const path = pathname.startsWith('/') ? pathname : `/${pathname}`;
+	if (path === '/') return '/';
+	return path.replace(/\/+$/, '') || '/';
+}
+
 export function absoluteUrl(path = '/'): string {
-	return new URL(path, SITE_URL).href;
+	const normalized = normalizePath(path);
+	// Match @astrojs/sitemap + trailingSlash:'never' (root loc has no trailing slash).
+	if (normalized === '/') return SITE_URL.replace(/\/$/, '');
+	return new URL(normalized, SITE_URL).href;
 }
 
 export function clampMetaDescription(description: string, max = 155): string {
@@ -42,12 +52,17 @@ export function hreflangAlternates(pathname: string): {
 	us: string;
 	xDefault: string;
 } {
-	const path = pathname.startsWith('/') ? pathname : `/${pathname}`;
-	const normalized = path === '/' ? '/' : path.replace(/\/$/, '') || '/';
+	const normalized = normalizePath(pathname);
+	// Root matches sitemap/canonical (no trailing slash); other paths never use one.
+	const caRoot = 'https://thepickleballcourt.ca';
+	const usRoot = 'https://uspickleballcourt.com';
+	if (normalized === '/') {
+		return { ca: caRoot, us: usRoot, xDefault: caRoot };
+	}
 	return {
-		ca: `https://thepickleballcourt.ca${normalized === '/' ? '/' : normalized}`,
-		us: `https://uspickleballcourt.com${normalized === '/' ? '/' : normalized}`,
-		xDefault: `https://thepickleballcourt.ca${normalized === '/' ? '/' : normalized}`,
+		ca: `${caRoot}${normalized}`,
+		us: `${usRoot}${normalized}`,
+		xDefault: `${caRoot}${normalized}`,
 	};
 }
 
