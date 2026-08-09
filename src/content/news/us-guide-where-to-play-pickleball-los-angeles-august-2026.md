@@ -1,31 +1,35 @@
 ---
 title: "Where to Play Pickleball in Los Angeles Right Now"
 date: 2026-08-09
-summary: "From free lighted courts in West Hollywood to dedicated indoor clubs downtown, here's a practical guide to LA's best public and private spots to play."
+summary: "Six verified LA spots to play pickleball, from free lighted public courts to dedicated clubs, with addresses, court counts, and links to each venue's own site."
 tags: ["guide", "los-angeles", "where-to-play", "courts"]
 type: "update"
 markets: ["us"]
 heroImage: "https://images.unsplash.com/photo-1580763850690-44fd66eb2863?w=1200&q=80&auto=format&fit=crop"
 heroAlt: "An empty pickleball court with a white net on a green surface"
 heroCredit: "Photo: Frankie Lopez / Unsplash (Unsplash License, free to use)"
-sourceUrl: "https://www.thedinkspot.com/blog/best-pickleball-courts-los-angeles"
+sourceUrl: "https://recreation.parks.lacity.gov/pickleball"
 author: "deco"
 ---
 
-Los Angeles has turned into one of the best cities in the country to actually go play, whether you want free public courts or a paid membership with lessons and leagues attached. Here's where locals and visitors are lining up to play right now.
+Los Angeles now has enough dedicated pickleball infrastructure that "where do I play" has a real answer no matter which part of the city you're in. We checked each venue's own site or governing city page rather than relying on a single list, so addresses, court counts, and access rules below are pulled straight from the source. Here are six spots worth knowing.
 
-## Free public courts
+## Free and low-cost public courts
 
-If you just want to show up and play, West Hollywood Park is a reliable option, with six lighted courts open from 7 a.m. to 9 p.m., which makes it one of the more flexible free options in the city for evening games. Brentwood Park has four courts dedicated specifically to pickleball rather than shared tennis lines, and Creekside Park offers free play on recently resurfaced courts with permanent nets and lines, which matters more than people expect since faded tape and sagging nets are a common complaint at older shared courts.
+[West Hollywood Park](https://www.weho.org/community/recreation-services/pickleball), at 647 N San Vicente Blvd, has six lighted, multi-use pickleball courts. The park itself is open daily from 7 a.m. to 9 p.m. for direct access, and the city runs online reservations for the courts from 8 a.m. to 9 p.m. through its Tennacity booking system, which is worth doing in advance if you want a guaranteed slot on weekend evenings.
 
-For a more scenic option, Griffith Park has outdoor courts open to the public, and if you're out in the Valley, the recreation centers in Encino, Chatsworth, Tarzana, and Woodland Hills all run hybrid pickleball-and-tennis courts that are worth checking for open play windows.
+Out in the Valley, the [Balboa Sports Complex](https://recreation.parks.lacity.gov/reccenter/balboa-sports-complex) in Encino, at 17015 Burbank Blvd, has three free, lighted outdoor pickleball courts run by LA's Department of Recreation and Parks. There's no reservation system here: it's first-come, first-served, with restrooms and water on site, which makes it a solid backup if West Hollywood is booked out.
 
-## Private clubs and dedicated facilities
+If you're in Santa Monica, the city's primary pickleball site is [Memorial Park](https://www.santamonica.gov/programs/pickleball) at 1401 Olympic Blvd, where sixteen pickleball courts are laid out on four shared tennis courts. Santa Monica runs its own reservation system through the city site linked above, so check current rules before you go since they've changed the booking process more than once in recent years.
 
-If you're willing to pay for a better experience, the options step up quickly. Scholl Canyon Golf & Tennis Club has six dedicated pickleball courts that are free to play for members ranging from beginners to experienced tournament players. The LA Tennis Club offers dedicated pickleball courts alongside its tennis facilities, with organized events and coaching for people trying to move up in skill level quickly.
+## Dedicated clubs
 
-For pure social scene, Ballers L.A. in Downtown LA is frequently cited as the top overall experience in the city, combining competitive play with a genuine hangout atmosphere. If you'd rather play near the water, Hermosa Beach's courts are hard to beat for the setting alone. There's also a dedicated pickleball facility in Santa Monica running lessons, open play sessions, and competitive leagues for people who want structure rather than pickup games, and PowerPlay Pickleball offers a premium indoor experience if you're willing to pay more to guarantee court time regardless of weather.
+The [Griffith Park Pickleball Center](https://lapickleclub.com/), at 3401 Riverside Dr, is run by LA Pickle Club, which describes itself as the first operator recognized by the City of Los Angeles specifically for pickleball inside city parks. LA Pickle Club also runs a second location in Westchester at 7000 W Manchester Ave, so if Griffith Park is inconvenient, that's a legitimate second option from the same operator.
+
+For a bigger, newer build, [Ballers Los Angeles](https://www.ballers-us.com/location/losangeles) opened inside the former Macy's building at The Bloc, 750 W 7th St in Downtown LA, with 17 dedicated pickleball courts alongside padel courts and golf simulators. It's the largest single pickleball buildout in the city center and leans into a social-club atmosphere rather than a straightforward rec facility.
+
+If you're near the coast, Hermosa Beach's [Kelly Courts](https://www.hermosabeach.gov/Home/Components/FacilityDirectory/FacilityDirectory/125/237) on Valley Drive, next to Clark Field, has two pickleball courts run through the city's Community Resources Department. Worth knowing before you drive down: reserved play requires a Pickleball Membership Program membership limited to Hermosa Beach residents, though free-play access may still be available depending on posted hours, so it's worth calling (310) 318-0280 to confirm before you go.
 
 ## How to pick
 
-The honest answer for most players is to start with a free public court near you to get a feel for the local scene, then graduate to a paid club once you know what kind of experience you're looking for, whether that's competitive leagues, casual social play, or simply guaranteed indoor court time. LA's pickleball infrastructure has grown fast enough that almost every part of the city now has a legitimate option within a short drive, which wasn't true even a couple of years ago. Bring your own paddle if you have one, but most of the private clubs listed here offer rentals if you're just getting started.
+Start with a free public option close to you, whether that's West Hollywood, Balboa, or Memorial Park, to get a read on the local skill level and crowd. If you want guaranteed court time regardless of weather or a more built-out social scene, Griffith Park Pickleball Center and Ballers L.A. are the two dedicated club options worth a membership inquiry. And if you're coastal-adjacent, just confirm Hermosa Beach's access rules before making the trip, since it's more restricted than the other courts on this list.

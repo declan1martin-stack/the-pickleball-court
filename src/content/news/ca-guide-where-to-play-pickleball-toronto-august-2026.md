@@ -1,31 +1,33 @@
 ---
 title: "Where to Play Pickleball in Toronto Right Now"
 date: 2026-08-09
-summary: "From free courts at Trinity Bellwoods to year-round indoor clubs like The Jar and Fairgrounds Leaside, here's a practical guide to playing pickleball across the GTA."
+summary: "Six verified Toronto and GTA spots to play pickleball, from free public parks to year-round indoor clubs, with addresses, court counts, and links to each venue's own site."
 tags: ["guide", "toronto", "where-to-play", "courts"]
 type: "update"
 markets: ["ca"]
 heroImage: "https://images.unsplash.com/photo-1778180883807-19962eda4d99?w=1200&q=80&auto=format&fit=crop"
 heroAlt: "Aerial view of illuminated pickleball courts at a modern sports facility"
 heroCredit: "Photo: Brian Zajac / Unsplash (Unsplash License, free to use)"
-sourceUrl: "https://www.apollopickleball.ca/blogs/canadian-courts/where-to-play-pickleball-in-toronto-2026-25-best-indoor-outdoor-courts"
+sourceUrl: "https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/pickleball-court-listings/"
 author: "deco"
 ---
 
-Toronto has quietly become one of the fastest-growing pickleball cities in the country, with well over a hundred venues across the GTA and an estimated 200,000-plus active players. Here's where to actually go, whether you want free outdoor courts or a year-round indoor membership.
+Toronto's pickleball scene has grown fast enough that picking a court now means choosing between dozens of legitimate options rather than hunting for repainted tennis lines. We went to each venue's own site or the City of Toronto's own listings rather than a single aggregator, so the details below, addresses, court counts, and access rules, are pulled from the source. Here are six spots worth knowing across the city and the wider GTA.
 
 ## Free public outdoor courts
 
-Trinity Bellwoods is one of the most popular spots in the city, with four outdoor courts and the kind of steady walk-up crowd that makes it easy to find a game. Ramsden Park has the most courts of any free public site at eight, making it a better bet if Trinity Bellwoods is full, and Withrow Park rounds out the trio of courts most local players mention first. All three operate on a walk-in basis, so there's no booking required, though that also means peak evening and weekend windows can mean a wait.
+[Trinity Bellwoods Park](https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/pickleball-court-listings/), at 790 Queen St W, has four free outdoor courts with permanent lines, lights, and restrooms nearby, though you'll want to bring your own net since the city doesn't always keep one strung. It's consistently one of the busiest walk-up spots in the city, so evenings and weekends can mean a wait.
 
-## Premium indoor clubs
+[Ramsden Park](https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/pickleball-court-listings/), at 1020 Yonge St, has eight outdoor courts, the most of any free public site in the downtown core, making it a good backup if Trinity Bellwoods is full. Both parks appear on the City of Toronto's own pickleball court listings page linked above, which is the most reliable place to check current court counts and any seasonal closures before you go, since the city has been actively expanding court access and funding in recent seasons.
 
-Given how much of the year Toronto spends in cold or wet weather, the city's indoor club scene has grown just as fast as its outdoor courts. Fairgrounds Leaside leads on sheer size with 13 indoor courts, while The Jar Pickleball Club offers 12 courts and leans into community-based, all-levels open play rather than a strictly competitive atmosphere. The Dill Pickleball Club is smaller at five courts but is frequently mentioned for its programming and coaching. For something a little different, ORC in the west end runs six outdoor and six indoor courts for members, giving you a single membership that covers both seasons.
+## Indoor clubs
 
-## The bigger picture
+For year-round play regardless of weather, [The Jar Pickleball Club](https://www.thejarpickleball.com/) at 900 Caledonia Rd (at Caledonia and Glencairn) runs twelve indoor courts on Picklemaster acrylic surfaces, the same surface used by USA Pickleball, and is open daily from 9 a.m. to 10 p.m. It offers both membership plans and drop-in access for people who don't want a long-term commitment.
 
-Toronto's numbers are genuinely striking for a sport that barely existed locally a decade ago: more than 156 venues and 445 courts across the GTA, with 77 indoor facilities accounting for 266 of those courts, built specifically with Toronto winters in mind. That indoor infrastructure is a big part of why the city has been able to sustain year-round leagues and clubs rather than a purely seasonal outdoor scene.
+[Fairgrounds Public Racket Club](https://www.visitfairgrounds.com/locations/leaside) in Leaside, at 849 Eglinton Ave E, is the larger build in the city with fourteen indoor hard courts, plus a pro shop and on-site food and drink. It's membership-based and runs long hours, 7 a.m. to 11 p.m. Monday through Friday and Sunday, 7 a.m. to 10 p.m. on Saturday, which makes it one of the more flexible indoor options if your schedule doesn't fit a typical 9-to-5.
 
-## How to pick a spot
+If you're willing to head into the western GTA, the [Ontario Racquet Club](https://www.ontarioracquetclub.com/badminton-and-pickleball) in Mississauga, at 884 Southdown Rd, runs twelve total courts split evenly between six indoor and six outdoor, giving members a single facility that covers both seasons. It's a private membership club, so factor in the drive and the membership requirement before treating it as a casual option.
 
-If you're new to the city or just getting into the sport, start with one of the free outdoor parks to meet other local players and get a read on the skill level in your neighborhood, then look at an indoor membership once the weather turns or you want more structured play. Most of the indoor clubs listed here require advance booking, so it's worth checking each club's app or website before you show up, while the outdoor public courts remain first-come, first-served.
+## How to pick
+
+If you're new to pickleball in Toronto, start at Trinity Bellwoods or Ramsden Park to meet other local players for free and get a feel for the skill level in your area. Once the weather turns, or if you want guaranteed court time and better surfaces, The Jar and Fairgrounds Leaside are the two indoor clubs worth a membership inquiry, with the Ontario Racquet Club as a further-out option if you're already out toward Mississauga. Check the City of Toronto's pickleball listings page for the most current information on public courts, since availability and booking rules have shifted more than once as the city keeps expanding access.
