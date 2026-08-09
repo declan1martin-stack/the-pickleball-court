@@ -30,6 +30,7 @@ const CA_ONLY_NEWS = new Set([
 	'/news/ca-roundup-cnpl-central-split-august-2026',
 	'/news/ca-roundup-cnpl-nationals-ppa-canada-august-2026',
 	'/news/ca-results-cnpl-central-split-armaan-jiwa-mawji-august-2026',
+	'/news/ca-feature-cnpl-biggest-markets-toronto-montreal-vancouver-august-2026',
 ]);
 
 const US_ONLY_NEWS = new Set([
