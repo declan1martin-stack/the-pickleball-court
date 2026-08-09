@@ -38,6 +38,8 @@ const isRoundup = entry.data.type === 'roundup';
 const heroImage = entry.data.heroImage;
 const heroAlt = entry.data.heroAlt ?? entry.data.title;
 const ogImage = heroImage ?? '/og-default.png';
+const markets = entry.data.markets ?? (['ca', 'us'] as const);
+const sharedAcrossMarkets = markets.includes('ca') && markets.includes('us');
 ---
 
 <Layout
@@ -48,6 +50,7 @@ const ogImage = heroImage ?? '/og-default.png';
 	ogImage={ogImage}
 	publishDate={entry.data.date}
 	updatedDate={entry.data.date}
+	hreflang={sharedAcrossMarkets}
 	jsonLd={articleSchema({
 		title: entry.data.title,
 		description: entry.data.summary,

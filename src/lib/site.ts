@@ -65,7 +65,7 @@ const SITES: Record<SiteRegion, SiteConfig> = {
 };
 
 function resolveRegion(): SiteRegion {
-	// US-primary after CA→US consolidation (zone redirect on .ca).
+	// Dual deploys: PUBLIC_SITE_REGION=ca|us (Pages projects build:ca / build:us).
 	const raw = (import.meta.env.PUBLIC_SITE_REGION ?? 'us').toString().trim().toLowerCase();
 	return raw === 'ca' ? 'ca' : 'us';
 }

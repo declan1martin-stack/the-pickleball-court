@@ -10,7 +10,7 @@ export async function getAllNews(): Promise<NewsEntry[]> {
 	return entries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 
-/** Market-filtered news for the active SITE_REGION (US-primary after consolidation). */
+/** Market-filtered news for the active SITE_REGION (ca or us build). */
 export async function getNewsForMarket(region: SiteRegion = SITE_REGION): Promise<NewsEntry[]> {
 	const entries = await getAllNews();
 	return entries.filter((entry) => {

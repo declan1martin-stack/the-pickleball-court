@@ -18,7 +18,9 @@
     "qa:live": "node scripts/qa-live.mjs",
     "qa:live:ca": "LIVE_SITE=https://thepickleballcourt.ca PUBLIC_SITE_REGION=ca node scripts/qa-live.mjs",
     "qa:live:us": "LIVE_SITE=https://uspickleballcourt.com PUBLIC_SITE_REGION=us node scripts/qa-live.mjs",
-    "ping:indexnow": "PUBLIC_SITE_REGION=us node scripts/ping-indexnow.mjs --host=uspickleballcourt.com"
+    "ping:indexnow": "node scripts/ping-indexnow.mjs --both",
+    "ping:indexnow:us": "PUBLIC_SITE_REGION=us node scripts/ping-indexnow.mjs --host=uspickleballcourt.com",
+    "ping:indexnow:ca": "PUBLIC_SITE_REGION=ca node scripts/ping-indexnow.mjs --host=thepickleballcourt.ca"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.3",

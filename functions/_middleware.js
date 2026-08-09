@@ -1,30 +1,57 @@
 /**
- * Slim Cloudflare Pages middleware for the US-primary build.
+ * Slim Cloudflare Pages middleware for dual-region deploys.
  *
- * CA→US consolidation is handled by a zone-level Redirect Rule on
- * thepickleballcourt.ca — this function does NOT rewrite HTML bodies.
+ * Each host is built separately (`build:ca` / `build:us`). This function does
+ * NOT rewrite HTML bodies.
  *
  * Responsibilities:
  * - www → apex 301
  * - Google Search Console HTML verification stubs
  * - Temporary AvantLink publisher verification files
+ * - Market-only news 404s on the wrong host (stale edge / wrong build)
  * - /robots.txt served from the Function so Managed AI blocks cannot prepend Disallow
  */
 
-const APEX_HOST = 'uspickleballcourt.com';
-const SITE_URL = `https://${APEX_HOST}`;
+const HOSTS = {
+	us: {
+		apex: 'uspickleballcourt.com',
+		www: 'www.uspickleballcourt.com',
+		siteUrl: 'https://uspickleballcourt.com',
+	},
+	ca: {
+		apex: 'thepickleballcourt.ca',
+		www: 'www.thepickleballcourt.ca',
+		siteUrl: 'https://thepickleballcourt.ca',
+	},
+};
+
+/** News built only for the opposite market — keep off this host's index. */
+const CA_ONLY_NEWS = new Set([
+	'/news/ca-roundup-cnpl-central-split-august-2026',
+	'/news/ca-roundup-cnpl-nationals-ppa-canada-august-2026',
+	'/news/ca-results-cnpl-central-split-armaan-jiwa-mawji-august-2026',
+]);
+
+const US_ONLY_NEWS = new Set([
+	'/news/us-roundup-mlp-playoffs-ppa-august-2026',
+	'/news/us-roundup-world-rankings-mlp-playoffs-august-2026',
+	'/news/us-results-mlp-dallas-playoffs-cailyn-campbell-august-2026',
+]);
+
+function resolveHost(hostname) {
+	const host = (hostname || '').toLowerCase();
+	if (host === HOSTS.us.apex || host === HOSTS.us.www) return { region: 'us', ...HOSTS.us, host };
+	if (host === HOSTS.ca.apex || host === HOSTS.ca.www) return { region: 'ca', ...HOSTS.ca, host };
+	return null;
+}
 
 export async function onRequest(context) {
 	const requestUrl = new URL(context.request.url);
-	const host = (requestUrl.hostname || '').toLowerCase();
+	const resolved = resolveHost(requestUrl.hostname);
 
 	// Canonical host: apex only (www duplicates dilute crawl signals).
-	if (host === 'www.uspickleballcourt.com' || host === 'www.thepickleballcourt.ca') {
-		const apex =
-			host === 'www.thepickleballcourt.ca'
-				? 'https://thepickleballcourt.ca'
-				: SITE_URL;
-		return Response.redirect(`${apex}${requestUrl.pathname}${requestUrl.search}`, 301);
+	if (resolved && resolved.host === resolved.www) {
+		return Response.redirect(`${resolved.siteUrl}${requestUrl.pathname}${requestUrl.search}`, 301);
 	}
 
 	// GSC HTML-file verification must stay on the exact `.html` URL (no 308 strip).
@@ -44,22 +71,31 @@ export async function onRequest(context) {
 		return context.next();
 	}
 
-	// Canada-only news must not remain indexable on the US host after consolidation.
-	// (Also defeats stale edge responses for removed pretty-URLs.)
-	const caOnlyNews = new Set([
-		'/news/ca-roundup-cnpl-central-split-august-2026',
-		'/news/ca-roundup-cnpl-nationals-ppa-canada-august-2026',
-	]);
 	const barePath = requestUrl.pathname.replace(/\/+$/, '') || '/';
-	if (caOnlyNews.has(barePath) || caOnlyNews.has(barePath.replace(/\.html$/i, ''))) {
-		return new Response('Not Found', {
-			status: 404,
-			headers: {
-				'content-type': 'text/plain; charset=utf-8',
-				'cache-control': 'no-store',
-				'x-robots-tag': 'noindex',
-			},
-		});
+	const pathNoHtml = barePath.replace(/\.html$/i, '');
+	if (resolved?.region === 'us') {
+		if (CA_ONLY_NEWS.has(barePath) || CA_ONLY_NEWS.has(pathNoHtml)) {
+			return new Response('Not Found', {
+				status: 404,
+				headers: {
+					'content-type': 'text/plain; charset=utf-8',
+					'cache-control': 'no-store',
+					'x-robots-tag': 'noindex',
+				},
+			});
+		}
+	}
+	if (resolved?.region === 'ca') {
+		if (US_ONLY_NEWS.has(barePath) || US_ONLY_NEWS.has(pathNoHtml)) {
+			return new Response('Not Found', {
+				status: 404,
+				headers: {
+					'content-type': 'text/plain; charset=utf-8',
+					'cache-control': 'no-store',
+					'x-robots-tag': 'noindex',
+				},
+			});
+		}
 	}
 
 	// Temporary AvantLink publisher verification (remove after approval).
@@ -108,6 +144,7 @@ export async function onRequest(context) {
 
 	// Serve robots.txt from the Function so Cloudflare Managed AI blocks cannot prepend Disallow.
 	if (requestUrl.pathname === '/robots.txt') {
+		const siteUrl = resolved?.siteUrl || HOSTS.us.siteUrl;
 		const body = `# AI answer / grounding crawlers — allowed for GEO visibility
 User-agent: GPTBot
 Allow: /
@@ -155,7 +192,7 @@ Disallow: /
 User-agent: *
 Allow: /
 
-Sitemap: ${SITE_URL}/sitemap-index.xml
+Sitemap: ${siteUrl}/sitemap-index.xml
 `;
 		return new Response(body, {
 			status: 200,

@@ -26,6 +26,23 @@ export function absoluteUrl(path = '/'): string {
 	return new URL(normalized, SITE_URL).href;
 }
 
+const CA_ROOT = 'https://thepickleballcourt.ca';
+const US_ROOT = 'https://uspickleballcourt.com';
+
+/**
+ * Reciprocal en-CA / en-US / x-default (CA) for shared paths.
+ * Only emit when both hosts return 200 for the same path.
+ */
+export function hreflangAlternates(path = '/'): { hreflang: string; href: string }[] {
+	const normalized = normalizePath(path);
+	const suffix = normalized === '/' ? '' : normalized;
+	return [
+		{ hreflang: 'en-CA', href: `${CA_ROOT}${suffix}` },
+		{ hreflang: 'en-US', href: `${US_ROOT}${suffix}` },
+		{ hreflang: 'x-default', href: `${CA_ROOT}${suffix}` },
+	];
+}
+
 export function clampMetaDescription(description: string, max = 155): string {
 	if (description.length <= max) return description;
 	return `${description.slice(0, max - 1).trimEnd()}…`;

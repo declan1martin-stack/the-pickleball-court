@@ -1,7 +1,9 @@
-# Consolidation Report — CA → US (Section 4)
+# Consolidation Report — CA → US (Section 4) — SUPERSEDED
 
 **Date:** 2026-08-08  
-**Decision:** `uspickleballcourt.com` is the indexable host. `thepickleballcourt.ca` is a 301 redirect layer via a **zone-level Cloudflare Redirect Rule** (not `public/_redirects`).
+**Superseded:** 2026-08-09 — dual CA + US restored. Zone consolidation 301s disabled; GSC Change of Address cancelled. See [docs/GSC_CHANGE_OF_ADDRESS.md](docs/GSC_CHANGE_OF_ADDRESS.md).
+
+**Original decision (historical):** `uspickleballcourt.com` is the indexable host. `thepickleballcourt.ca` is a 301 redirect layer via a **zone-level Cloudflare Redirect Rule** (not `public/_redirects`).
 
 ---
 

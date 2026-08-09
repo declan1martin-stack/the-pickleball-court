@@ -3,24 +3,28 @@ description: Core architecture and files that must not be broken
 alwaysApply: true
 ---
 
-# Architecture — thepickleballcourt.ca
+# Architecture — dual CA + US
 
-- Astro affiliate site. Domain: https://uspickleballcourt.com (`site` in `astro.config.mjs`). `.ca` 301s to `.com`.
+- Astro affiliate site. Two indexable hosts from one repo:
+  - `https://thepickleballcourt.ca` — Cloudflare Pages `the-pickleball-court-ca`, `npm run build:ca`
+  - `https://uspickleballcourt.com` — Cloudflare Pages `the-pickleball-court`, `npm run build:us`
+- `site` / affiliate tag / Amazon host come from `PUBLIC_SITE_REGION` via `src/lib/site.ts`.
 - Product source of truth: `src/data/gear.json`. Reference products by **ID only** — never duplicate product fields into articles or components.
 - Extend existing files; do not rewrite from scratch.
+- Do **not** reintroduce HTML body rewrite middleware (`rewriteForUs`).
 
 ## Keep working
 
 | Path | Role |
 |---|---|
-| `Layout.astro` | Nav, canonical/OG/Twitter, Amazon footer disclosure |
+| `Layout.astro` | Nav, canonical/OG/Twitter/hreflang, Amazon footer disclosure |
 | `ProductCard.astro` | Product display + affiliate CTA |
 | `index.astro` | Homepage |
 | `gear/[category].astro` | Paddles / shoes / nets |
 | `src/content/articles` | MDX articles (typed content collection) |
 | `src/components` | Reusable UI |
-| `src/lib/seo.ts` | SEO / JSON-LD helpers |
+| `src/lib/seo.ts` | SEO / JSON-LD / hreflang helpers |
 
 ## Protected routes
 
-`/`, `/gear/paddles`, `/gear/shoes`, `/gear/nets`, `/sitemap-index.xml`
+`/`, `/gear/paddles`, `/gear/shoes`, `/gear/nets`, `/sitemap-index.xml` on **both** hosts.

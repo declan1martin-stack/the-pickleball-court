@@ -8,6 +8,7 @@ import {
 	DEFAULT_OG_IMAGE,
 	clampMetaDescription,
 	formatPageTitle,
+	hreflangAlternates,
 	normalizePath,
 	organizationSchema,
 	websiteSchema,
@@ -25,6 +26,11 @@ interface Props {
 	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 	/** When true, emit noindex (e.g. soft utility pages). Default indexable. */
 	noindex?: boolean;
+	/**
+	 * When false, skip reciprocal hreflang (market-only news that 404s on the other host).
+	 * Default true for shared paths that exist on both CA and US.
+	 */
+	hreflang?: boolean;
 }
 
 const {
@@ -37,6 +43,7 @@ const {
 	updatedDate,
 	jsonLd = [],
 	noindex = false,
+	hreflang = true,
 } = Astro.props;
 
 const normalizedPath = normalizePath(canonicalPath);
@@ -75,8 +82,13 @@ const graph = {
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="canonical" href={canonicalUrl} />
+		{hreflang &&
+			hreflangAlternates(normalizedPath).map(({ hreflang: lang, href }) => (
+				<link rel="alternate" hreflang={lang} href={href} />
+			))}
 		<link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} Guides`} href="/rss.xml" />
 		<link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} News`} href="/news/feed.xml" />
+		<meta property="og:locale:alternate" content={site.region === 'us' ? 'en_CA' : 'en_US'} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 		<meta name="description" content={metaDescription} />

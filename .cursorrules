@@ -1,10 +1,12 @@
-# .cursorrules — uspickleballcourt.com
+# .cursorrules — dual CA + US (thepickleballcourt.ca / uspickleballcourt.com)
 
 Persistent rules for every Cursor session in this repo. Canonical copies also live in `.cursor/rules/*.mdc` (alwaysApply).
 
 ## Project
-- Pickleball affiliate site built with **Astro**. Monetized via Amazon Associates, tag `uspickleball-20` (US-primary).
-- Live domain: https://uspickleballcourt.com. `thepickleballcourt.ca` 301s there. `site` is set in `astro.config.mjs`.
+- Pickleball affiliate site built with **Astro**. Two indexable hosts from one repo:
+  - Canada: https://thepickleballcourt.ca — `PUBLIC_SITE_REGION=ca`, tag `thepickleb050-20` (amazon.ca)
+  - US: https://uspickleballcourt.com — `PUBLIC_SITE_REGION=us`, tag `uspickleball-20` (amazon.com)
+- Cloudflare Pages: `the-pickleball-court-ca` (`build:ca`) and `the-pickleball-court` (`build:us`).
 - Product source of truth: `src/data/gear.json`. Never duplicate product data elsewhere — reference products by ID.
 
 ## Architecture (do not break)
