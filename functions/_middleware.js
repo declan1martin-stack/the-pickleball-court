@@ -44,6 +44,24 @@ export async function onRequest(context) {
 		return context.next();
 	}
 
+	// Canada-only news must not remain indexable on the US host after consolidation.
+	// (Also defeats stale edge responses for removed pretty-URLs.)
+	const caOnlyNews = new Set([
+		'/news/ca-roundup-cnpl-central-split-august-2026',
+		'/news/ca-roundup-cnpl-nationals-ppa-canada-august-2026',
+	]);
+	const barePath = requestUrl.pathname.replace(/\/+$/, '') || '/';
+	if (caOnlyNews.has(barePath) || caOnlyNews.has(barePath.replace(/\.html$/i, ''))) {
+		return new Response('Not Found', {
+			status: 404,
+			headers: {
+				'content-type': 'text/plain; charset=utf-8',
+				'cache-control': 'no-store',
+				'x-robots-tag': 'noindex',
+			},
+		});
+	}
+
 	// Temporary AvantLink publisher verification (remove after approval).
 	if (
 		requestUrl.pathname === '/avantlink_confirmation.txt' ||
