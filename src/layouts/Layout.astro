@@ -3,13 +3,11 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
-import RegionGate from '../components/RegionGate.astro';
 import {
 	SITE_URL,
 	DEFAULT_OG_IMAGE,
 	clampMetaDescription,
 	formatPageTitle,
-	hreflangAlternates,
 	normalizePath,
 	organizationSchema,
 	websiteSchema,
@@ -25,6 +23,8 @@ interface Props {
 	publishDate?: Date | string;
 	updatedDate?: Date | string;
 	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+	/** When true, emit noindex (e.g. soft utility pages). Default indexable. */
+	noindex?: boolean;
 }
 
 const {
@@ -36,6 +36,7 @@ const {
 	publishDate,
 	updatedDate,
 	jsonLd = [],
+	noindex = false,
 } = Astro.props;
 
 const normalizedPath = normalizePath(canonicalPath);
@@ -46,13 +47,23 @@ const canonicalUrl =
 const pageTitle = formatPageTitle(title);
 const metaDescription = clampMetaDescription(description);
 const imageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, SITE_URL).href;
-const alternates = hreflangAlternates(normalizedPath);
 
-const schemas = [
-	organizationSchema(),
-	websiteSchema(),
-	...(Array.isArray(jsonLd) ? jsonLd : [jsonLd]).filter(Boolean),
-];
+const org = organizationSchema();
+const web = websiteSchema();
+const pageSchemas = (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).filter(Boolean);
+
+/** Single @graph so Organization / WebSite / page entities share stable @ids. */
+const graph = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		org,
+		web,
+		...pageSchemas.map((schema) => {
+			const { '@context': _ctx, ...rest } = schema as Record<string, unknown>;
+			return rest;
+		}),
+	],
+};
 ---
 
 <!doctype html>
@@ -64,21 +75,16 @@ const schemas = [
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="canonical" href={canonicalUrl} />
-		<link rel="alternate" hreflang="en-CA" href={alternates.ca} />
-		<link rel="alternate" hreflang="en-US" href={alternates.us} />
-		<link rel="alternate" hreflang="x-default" href={alternates.xDefault} />
 		<link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} Guides`} href="/rss.xml" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Source+Code+Pro:wght@400;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-			rel="stylesheet"
-		/>
+		<link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} News`} href="/news/feed.xml" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 		<meta name="description" content={metaDescription} />
-		<meta name="robots" content="index,follow,max-image-preview:large" />
-		<meta name="theme-color" content="#059669" />
+		<meta
+			name="robots"
+			content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'}
+		/>
+		<meta name="theme-color" content="#047857" />
 
 		<meta property="og:site_name" content={SITE_NAME} />
 		<meta property="og:locale" content={OG_LOCALE} />
@@ -99,18 +105,9 @@ const schemas = [
 		<meta name="twitter:description" content={metaDescription} />
 		<meta name="twitter:image" content={imageUrl} />
 
-		{schemas.map((schema) => (
-			<script type="application/ld+json" set:html={JSON.stringify(schema)} />
-		))}
+		<script type="application/ld+json" set:html={JSON.stringify(graph)} />
 
 		<Analytics />
-		{/* Temporary: AvantLink publisher website verification — remove after approval */}
-		<script
-			is:inline
-			data-cfasync="false"
-			type="text/javascript"
-			src="http://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=dc9d43f54427baacc0c00206e5841dd5324fa232"
-		></script>
 	</head>
 	<body class="min-h-screen flex flex-col bg-bg text-ink antialiased">
 		<a
@@ -127,6 +124,5 @@ const schemas = [
 		</main>
 
 		<Footer />
-		<RegionGate />
 	</body>
 </html>

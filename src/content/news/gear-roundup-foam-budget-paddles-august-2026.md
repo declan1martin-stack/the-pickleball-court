@@ -1,5 +1,5 @@
 ---
-title: "Gear roundup: Onix Theory foam under $100, Jelly Bean 2, value foam wave"
+title: "Gear Roundup: Onix Theory Foam Under $100"
 date: 2026-08-03
 summary: "Onix launched the Theory foam-core paddle as a sub-$100 play, 11SIX24 teased Jelly Bean 2 for late August, and budget foam continues to redefine what recreational buyers should expect from mid-tier specs."
 tags: ["roundup", "paddles", "foam-core", "onix", "budget", "gear"]

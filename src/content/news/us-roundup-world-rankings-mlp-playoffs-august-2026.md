@@ -1,5 +1,5 @@
 ---
-title: "This Week in US Pickleball: PPA Goes Global as the MLP Playoffs Begin"
+title: "US Pickleball: PPA Goes Global, MLP Playoffs Begin"
 date: 2026-08-08
 summary: "The PPA Tour unveiled a worldwide ranking system and launched PPA Tour Europe, while the MLP Playoffs opened in Dallas with a stacked Round 1 field."
 tags: ["weekly-roundup", "ppa-tour", "mlp", "rankings"]
@@ -7,6 +7,7 @@ type: "roundup"
 markets: ["us"]
 heroImage: "/images/news/us-roundup-world-rankings-mlp-playoffs-august-2026.svg"
 heroAlt: "Graphic hero reading PPA goes global and MLP playoffs heat up, US pickleball roundup for August 1 to 8, 2026"
+sourceUrl: "https://www.ppatour.com/world-pickleball-rankings-be-the-best/"
 author: "declan-martin"
 ---
 

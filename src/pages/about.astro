@@ -1,6 +1,6 @@
 ---
 import TrustPageLayout from '../layouts/TrustPageLayout.astro';
-import { AMAZON_LABEL, MARKET_LABEL, SITE_EMAIL, SITE_NAME } from '../lib/site';
+import { AMAZON_LABEL, MARKET_LABEL, MARKET_PLAYERS, SITE_EMAIL, SITE_NAME } from '../lib/site';
 ---
 
 <TrustPageLayout
@@ -10,17 +10,39 @@ import { AMAZON_LABEL, MARKET_LABEL, SITE_EMAIL, SITE_NAME } from '../lib/site';
 >
 	<p>
 		{SITE_NAME} exists because buying pickleball gear online is noisy. Spec sheets contradict each other,
-		“best of” lists blur into each other, and {MARKET_LABEL} shoppers often need {AMAZON_LABEL} availability.
+		“best of” lists blur into each other, and {MARKET_PLAYERS} often need clear {AMAZON_LABEL} availability
+		without guessing whether a paddle, shoe, or net is even the right tool for the job.
 	</p>
-	<h2>Our mission</h2>
 	<p>
 		We publish practical, original guides for everyone who plays: beginners buying a first paddle, intermediates
-		chasing spin, players protecting their joints, and competitive players refining their setup.
+		chasing spin, players protecting their joints, seniors prioritizing comfort, and competitive players refining
+		a tournament bag. The goal is simple — help you spend once, on the right category of gear, with honest
+		language about what we know and what we do not.
 	</p>
-	<h2>How we research</h2>
+
+	<h2>How the site works</h2>
+	<p>
+		Every product we feature in buying guides must exist in our curated catalog
+		(<code>gear.json</code>). Articles reference products by ID; they do not invent parallel product databases
+		with conflicting weights, materials, or links. That keeps affiliate URLs, images, and approximate price tiers
+		in one place — and makes it obvious when something is missing.
+	</p>
+	<p>
+		Guides live under <a href="/guides/how-to-choose-a-pickleball-paddle">/guides</a>, category pages under
+		<a href="/gear/paddles">/gear</a>, and timely industry notes under <a href="/news">/news</a>. Category pages
+		(paddles, shoes, nets) are the shopping surfaces; long-form guides explain <em>why</em> a shortlist fits a
+		playing job. News posts summarize brand and tour developments with dated, attributed language — not invented
+		quotes or unverified stats.
+	</p>
+
+	<h2>What our reviews are (and are not)</h2>
+	<p>
+		We write <strong>catalog-backed buying advice</strong>: we map products to real jobs (control, power, wide feet,
+		portable courts), compare construction patterns that manufacturers publicly claim, and say who a pick is for.
+		We do <strong>not</strong> pretend to run an independent lab, publish fabricated swing-weight numbers, invent
+		star ratings, or claim “tested for 200 hours on court” credentials we do not have.
+	</p>
 	<ul>
-		<li>We map products to real buying jobs (control, power, wide feet, portable courts).</li>
-		<li>We only feature products that exist in our curated catalog with live {AMAZON_LABEL} affiliate links.</li>
 		<li>We prioritize clarity over hype — including when a cheaper option is the smarter buy.</li>
 		<li>
 			We cross-check rules and court dimensions against
@@ -28,21 +50,43 @@ import { AMAZON_LABEL, MARKET_LABEL, SITE_EMAIL, SITE_NAME } from '../lib/site';
 			resources when a guide depends on regulation standards.
 		</li>
 		<li>
-			When we can’t verify a claim from the manufacturer listing or our catalog notes, we say so instead of
-			inventing “tested” language.
+			When we cannot verify a claim from the manufacturer listing or our catalog notes, we mark it
+			(<code>{'{{ TODO: confirm }}'}</code>) or omit it instead of guessing.
+		</li>
+		<li>
+			Approximate price tiers ($, $$, $$$) and “as of” context may appear for orientation. They are never live
+			store prices. Always confirm current pricing and availability on {AMAZON_LABEL}.
 		</li>
 	</ul>
+
 	<h2>Who writes this</h2>
 	<p>
 		Guides and news updates are written and edited by
-		<a href="/authors/declan-martin">Deco</a>, founder of {SITE_NAME}. Editorial standards live
-		in our <a href="/editorial-policy">editorial policy</a>.
+		<a href="/authors/declan-martin">Declan Martin (Deco)</a>, founder of {SITE_NAME}. Declan builds
+		catalog-backed comparisons for paddles, court shoes, balls, bags, apparel, accessories, and portable nets for
+		{MARKET_LABEL} shoppers. His focus is clear product criteria, practical buying frameworks, and honest
+		disclosures — not hype, and not invented on-court credentials.
 	</p>
-	<h2>Independence</h2>
 	<p>
-		Product links may earn us a commission through affiliate programs. That never changes what we recommend or the
-		price you pay. Read our
-		<a href="/affiliate-disclosure">affiliate disclosure</a> for the full picture.
+		If you want the full standards document — research process, correction policy, update cadence, and how
+		affiliate relationships are walled off from rankings — read the
+		<a href="/editorial-policy">editorial policy</a>. For commission and FTC language on every affiliate page, see
+		the <a href="/affiliate-disclosure">affiliate disclosure</a>.
+	</p>
+
+	<h2>Independence and money</h2>
+	<p>
+		Product links may earn a commission through affiliate programs (primarily {AMAZON_LABEL}, plus optional brand
+		or specialty retailers when configured). That never changes what we recommend or the price you pay. Rankings
+		and shortlists are driven by playing job and catalog fit, not by which partner pays the highest rate. We do
+		not accept payment for placements in editorial lists.
+	</p>
+
+	<h2>What we hope you get from us</h2>
+	<p>
+		A quieter decision. Fewer impulse buys driven by tour logos. A paddle, shoe, or net that matches how you
+		actually play — beginner, improver, or tournament weekend warrior. When something on the site is wrong or
+		outdated, tell us. Corrections and meaningful guide updates are part of the job, not an afterthought.
 	</p>
 	<p>
 		Questions or corrections? Email

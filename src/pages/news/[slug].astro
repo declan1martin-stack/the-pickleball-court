@@ -7,7 +7,7 @@ import RelatedNews from '../../components/RelatedNews.astro';
 import { resolveAuthor, authorPath } from '../../data/authors';
 import {
 	formatNewsDate,
-	getAllNews,
+	getNewsForMarket,
 	getRelatedNews,
 	newsPath,
 	newsSlug,
@@ -16,7 +16,7 @@ import {
 import { absoluteUrl, articleSchema, clampMetaDescription } from '../../lib/seo';
 
 export async function getStaticPaths() {
-	const entries = await getAllNews();
+	const entries = await getNewsForMarket();
 	return entries.map((entry) => ({
 		params: { slug: newsSlug(entry) },
 		props: { entry },
@@ -32,12 +32,12 @@ const { Content } = await render(entry);
 const author = resolveAuthor(entry.data.author);
 const path = newsPath(entry);
 const description = clampMetaDescription(entry.data.summary);
-const allNews = await getAllNews();
+const allNews = await getNewsForMarket();
 const relatedNews = getRelatedNews(allNews, entry, 3);
 const isRoundup = entry.data.type === 'roundup';
 const heroImage = entry.data.heroImage;
 const heroAlt = entry.data.heroAlt ?? entry.data.title;
-const ogImage = heroImage ?? '/favicon.svg';
+const ogImage = heroImage ?? '/og-default.png';
 ---
 
 <Layout
@@ -57,6 +57,7 @@ const ogImage = heroImage ?? '/favicon.svg';
 		authorUrl: absoluteUrl(authorPath(author.id)),
 		publishDate: entry.data.date,
 		updatedDate: entry.data.date,
+		type: 'NewsArticle',
 	})}
 >
 	<article class="border-b border-border bg-surface">

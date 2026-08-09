@@ -11,15 +11,16 @@ export async function GET(context) {
 	return rss({
 		title: `${SITE_NAME} Guides`,
 		description:
-			'Canadian pickleball buying guides, comparisons, and rules explainers for paddles, shoes, and portable nets.',
+			'US pickleball buying guides, comparisons, and rules explainers for paddles, shoes, and portable nets.',
 		site: context.site ?? SITE_URL,
+		trailingSlash: false,
 		items: sorted.map((article) => ({
 			title: article.data.title,
 			description: article.data.description,
 			pubDate: article.data.publishDate,
-			link: `/guides/${article.data.slug}/`,
+			link: `/guides/${article.data.slug}`,
 			categories: [article.data.category, article.data.type, ...article.data.tags],
 		})),
-		customData: `<language>en-ca</language>`,
+		customData: `<language>en-us</language>`,
 	});
 }

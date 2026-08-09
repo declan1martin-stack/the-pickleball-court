@@ -1,5 +1,5 @@
 ---
-title: "This Week in US Pickleball: Nationals on the Horizon, Foam-Core Paddles Keep Winning"
+title: "US Pickleball: Nationals Ahead, Foam Paddles Win"
 date: 2026-08-03
 summary: "A look at the biggest US pickleball storylines this week — the Veolia National Championships coming to North Carolina, why foam-core paddles keep showing up on the winner's podium, and the sponsor move still shaping the pro tour."
 tags: ["weekly-roundup", "ppa-tour", "gear", "sponsorships"]
@@ -8,6 +8,7 @@ markets: ["us"]
 heroImage: "https://images.unsplash.com/photo-1747027694225-cbf12dd20826?w=1200&q=80&auto=format&fit=crop"
 heroAlt: "Players competing in a pickleball match on an outdoor court"
 heroCredit: "Photo: Venti Views / Unsplash (Unsplash License, free to use)"
+sourceUrl: "https://majorleaguepickleball.co/news/mlp-playoffs-dallas-presented-by-eisneramper-matchups-schedule/"
 author: "declan-martin"
 ---
 

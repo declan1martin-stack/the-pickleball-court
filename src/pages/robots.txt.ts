@@ -49,11 +49,9 @@ User-agent: meta-externalagent
 Disallow: /
 
 User-agent: *
-Content-Signal: search=yes,ai-train=yes,ai-input=yes,use=reference
 Allow: /
 
 Sitemap: ${SITE_URL}/sitemap-index.xml
-Sitemap: ${SITE_URL}/sitemap.xml
 `;
 
 export const GET: APIRoute = () =>

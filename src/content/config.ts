@@ -31,6 +31,8 @@ export const articles = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
+		/** Direct answer for the Quick answer box — unique facts, not a meta description. */
+		quickAnswer: z.string().min(40).max(400),
 		slug: z.string(),
 		category: z.enum([
 			'paddles',

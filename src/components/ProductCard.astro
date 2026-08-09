@@ -6,12 +6,12 @@ import {
 	getComfortTags,
 	getEffectiveGender,
 	getPriceTier,
-	isPriceTier,
 	type Product,
 } from '../lib/products';
 import { getPartnerOffers } from '../lib/partners';
 import { absoluteUrl, productSchema } from '../lib/seo';
-import { AMAZON_LABEL, formatCatalogPrice } from '../lib/site';
+import { AMAZON_LABEL } from '../lib/site';
+import { DEFAULT_AUTHOR_ID, getAuthor } from '../data/authors';
 
 interface Props {
 	product: Product;
@@ -21,17 +21,27 @@ interface Props {
 
 const { product, rating = null } = Astro.props;
 const tier = getPriceTier(product.price);
-const priceIsTier = isPriceTier(product.price);
 const affiliateHref = assertAffiliateUrl(product.affiliateUrl);
 const imageAbs = product.imageUrl.startsWith('http')
 	? product.imageUrl
 	: absoluteUrl(product.imageUrl);
+/** On-site product URL for schema — never the affiliate tracking URL. */
+const onSiteUrl = absoluteUrl(`/gear/${product.category}#${product.id}`);
+const author = getAuthor(DEFAULT_AUTHOR_ID);
 const schema = productSchema({
 	name: product.name,
 	description: product.description,
 	image: imageAbs,
 	brand: product.brand,
-	url: affiliateHref,
+	url: onSiteUrl,
+	review: author
+		? {
+				author: author.name,
+				reviewBody: product.description,
+				datePublished: '2026-01-01',
+				...(typeof rating === 'number' ? { ratingValue: rating } : {}),
+			}
+		: undefined,
 });
 const gender = getEffectiveGender(product);
 const comfortTags = getComfortTags(product);
@@ -42,6 +52,7 @@ const imageAlt = product.name.toLowerCase().startsWith(product.brand.toLowerCase
 ---
 
 <article
+	id={product.id}
 	data-product-card
 	data-gender={gender}
 	data-comfort={comfortTags.join(' ')}
@@ -73,9 +84,7 @@ const imageAlt = product.name.toLowerCase().startsWith(product.brand.toLowerCase
 			</span>
 		</div>
 		<p class="mt-2 text-xs text-ink-faint">
-			{priceIsTier
-				? `Approximate price tier — confirm current price on ${AMAZON_LABEL}`
-				: `Approx. listed ${formatCatalogPrice(product.price)} — confirm current price on ${AMAZON_LABEL}`}
+			Approximate price tier — confirm current price on {AMAZON_LABEL}
 		</p>
 		<p class="mt-3 line-clamp-3 text-sm leading-relaxed text-ink-muted">{product.description}</p>
 
@@ -90,7 +99,7 @@ const imageAlt = product.name.toLowerCase().startsWith(product.brand.toLowerCase
 
 		<div class="mt-auto flex flex-col gap-2 pt-6">
 			<AffiliateButton
-				href={product.affiliateUrl}
+				href={affiliateHref}
 				productId={product.id}
 				partner="amazon"
 				class="w-full sm:w-full"

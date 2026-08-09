@@ -9,6 +9,9 @@ import { SITE_EMAIL, SITE_NAME, SITE_URL, site } from './site';
 export { SITE_NAME, SITE_URL };
 export const DEFAULT_OG_IMAGE = '/og-default.png';
 
+const ORG_ID = `${SITE_URL.replace(/\/$/, '')}/#organization`;
+const WEBSITE_ID = `${SITE_URL.replace(/\/$/, '')}/#website`;
+
 /** Strip trailing slashes except for the site root (`/`). Matches `trailingSlash: 'never'`. */
 export function normalizePath(pathname: string): string {
 	const path = pathname.startsWith('/') ? pathname : `/${pathname}`;
@@ -28,93 +31,81 @@ export function clampMetaDescription(description: string, max = 155): string {
 	return `${description.slice(0, max - 1).trimEnd()}…`;
 }
 
-function softTrimTitle(value: string, max: number): string {
-	if (value.length <= max) return value;
-	const slice = value.slice(0, Math.max(1, max - 1));
-	const lastSpace = slice.lastIndexOf(' ');
-	const base = lastSpace > Math.floor(max * 0.6) ? slice.slice(0, lastSpace) : slice;
-	return `${base.trimEnd()}…`;
-}
-
-/** Prefer a unique title ≤60 chars; append brand only when it fits. Never mid-word slice. */
+/**
+ * Prefer a unique title ≤60 chars; append brand only when it fits.
+ * Does not mid-sentence truncate — if over max, return the title as authored
+ * (search engines will clip in SERPs; authors should keep titles short).
+ */
 export function formatPageTitle(title: string, max = 60): string {
 	const trimmed = title.trim();
 	const suffix = ` | ${SITE_NAME}`;
-	if (trimmed.includes(SITE_NAME)) return softTrimTitle(trimmed, max);
+	if (trimmed.includes(SITE_NAME)) return trimmed;
 	if (trimmed.length + suffix.length <= max) return `${trimmed}${suffix}`;
-	if (trimmed.length <= max) return trimmed;
-	return softTrimTitle(trimmed, max);
-}
-
-/** Absolute URLs for CA / US alternates of the same path. */
-export function hreflangAlternates(pathname: string): {
-	ca: string;
-	us: string;
-	xDefault: string;
-} {
-	const normalized = normalizePath(pathname);
-	// Root matches sitemap/canonical (no trailing slash); other paths never use one.
-	const caRoot = 'https://thepickleballcourt.ca';
-	const usRoot = 'https://uspickleballcourt.com';
-	if (normalized === '/') {
-		return { ca: caRoot, us: usRoot, xDefault: caRoot };
-	}
-	return {
-		ca: `${caRoot}${normalized}`,
-		us: `${usRoot}${normalized}`,
-		xDefault: `${caRoot}${normalized}`,
-	};
+	return trimmed;
 }
 
 export function organizationSchema() {
 	const founder = getAuthor(DEFAULT_AUTHOR_ID);
+	const founderUrl = founder ? absoluteUrl(authorPath(founder.id)) : undefined;
 	return {
-		'@context': 'https://schema.org',
 		'@type': 'Organization',
-		name: SITE_NAME,
-		url: SITE_URL,
-		logo: absoluteUrl('/favicon.svg'),
+		'@id': ORG_ID,
+		name: site.region === 'us' ? 'US Pickleball Court' : 'The Pickleball Court',
+		alternateName: SITE_NAME,
+		url: SITE_URL.replace(/\/$/, ''),
+		logo: {
+			'@type': 'ImageObject',
+			url: absoluteUrl('/og-default.png'),
+			width: 1200,
+			height: 630,
+		},
 		description: `${site.marketLabel} pickleball gear guides covering paddles, court shoes, balls, bags, apparel, accessories, and portable nets.`,
 		areaServed: site.areaServed,
 		email: SITE_EMAIL,
+		publishingPrinciples: absoluteUrl('/editorial-policy'),
+		knowsAbout: [
+			'pickleball paddles',
+			'pickleball shoes',
+			'pickleball nets',
+			'pickleball balls',
+			'pickleball gear',
+		],
 		founder: founder
 			? {
 					'@type': 'Person',
+					'@id': `${founderUrl}#person`,
 					name: founder.name,
-					url: absoluteUrl(authorPath(founder.id)),
+					url: founderUrl,
 					jobTitle: founder.role,
 				}
 			: undefined,
-		// Add real social profile URLs here once accounts exist.
-		sameAs: [] as string[],
 	};
 }
 
 export function websiteSchema() {
 	return {
-		'@context': 'https://schema.org',
 		'@type': 'WebSite',
+		'@id': WEBSITE_ID,
 		name: SITE_NAME,
-		url: SITE_URL,
+		url: SITE_URL.replace(/\/$/, ''),
 		description: `${site.marketLabel} pickleball gear guides and ${site.amazonLabel} product catalogs for paddles, shoes, nets, balls, bags, apparel, and accessories.`,
 		inLanguage: site.inLanguage,
-		publisher: {
-			'@type': 'Organization',
-			name: SITE_NAME,
-			url: SITE_URL,
-		},
+		publisher: { '@id': ORG_ID },
 	};
 }
 
 export function personSchema(author: Author) {
+	const url = absoluteUrl(authorPath(author.id));
 	return {
-		'@context': 'https://schema.org',
 		'@type': 'Person',
+		'@id': `${url}#person`,
 		name: author.name,
+		alternateName: author.id === 'declan-martin' ? 'Deco' : undefined,
 		jobTitle: author.role,
 		description: author.bio,
-		url: absoluteUrl(authorPath(author.id)),
+		url,
 		image: absoluteUrl(author.avatar),
+		worksFor: { '@id': ORG_ID },
 	};
 }
 
@@ -125,7 +116,6 @@ export function itemListSchema(input: {
 	items: { name: string; url: string; position: number }[];
 }) {
 	return {
-		'@context': 'https://schema.org',
 		'@type': 'ItemList',
 		name: input.name,
 		description: input.description,
@@ -142,7 +132,6 @@ export function itemListSchema(input: {
 
 export function breadcrumbSchema(items: { name: string; path?: string }[]) {
 	return {
-		'@context': 'https://schema.org',
 		'@type': 'BreadcrumbList',
 		itemListElement: items.map((item, index) => ({
 			'@type': 'ListItem',
@@ -161,30 +150,39 @@ export function articleSchema(input: {
 	author: string;
 	authorUrl?: string;
 	publishDate: Date | string;
-	updatedDate: Date | string;
+	updatedDate?: Date | string;
+	/** Use NewsArticle for news posts. */
+	type?: 'Article' | 'NewsArticle';
+	inLanguage?: string;
 }) {
+	const pageUrl = absoluteUrl(input.path);
+	const datePublished = new Date(input.publishDate).toISOString();
+	const dateModified = input.updatedDate
+		? new Date(input.updatedDate).toISOString()
+		: datePublished;
 	return {
-		'@context': 'https://schema.org',
-		'@type': 'Article',
+		'@type': input.type ?? 'Article',
+		'@id': `${pageUrl}#article`,
 		headline: input.title,
 		description: input.description,
+		url: pageUrl,
 		image: [input.image],
+		inLanguage: input.inLanguage ?? site.inLanguage,
+		isPartOf: { '@id': WEBSITE_ID },
 		author: {
 			'@type': 'Person',
 			name: input.author,
-			...(input.authorUrl ? { url: input.authorUrl } : {}),
+			...(input.authorUrl
+				? { '@id': `${input.authorUrl}#person`, url: input.authorUrl }
+				: {}),
 		},
-		publisher: {
-			'@type': 'Organization',
-			name: SITE_NAME,
-			logo: {
-				'@type': 'ImageObject',
-				url: absoluteUrl('/favicon.svg'),
-			},
+		publisher: { '@id': ORG_ID },
+		datePublished,
+		dateModified,
+		mainEntityOfPage: {
+			'@type': 'WebPage',
+			'@id': pageUrl,
 		},
-		datePublished: new Date(input.publishDate).toISOString(),
-		dateModified: new Date(input.updatedDate).toISOString(),
-		mainEntityOfPage: absoluteUrl(input.path),
 	};
 }
 
@@ -194,11 +192,15 @@ export function productSchema(input: {
 	image: string;
 	brand: string;
 	url: string;
+	review?: {
+		author: string;
+		reviewBody: string;
+		datePublished: Date | string;
+		ratingValue?: number;
+	};
 }) {
 	// No Offer block: affiliate catalogs must not invent live prices/availability.
-	// Incomplete Offer (currency + InStock, no price) triggers GSC Product/Merchant errors.
 	return {
-		'@context': 'https://schema.org',
 		'@type': 'Product',
 		name: input.name,
 		description: input.description,
@@ -208,6 +210,28 @@ export function productSchema(input: {
 			name: input.brand,
 		},
 		url: input.url,
+		...(input.review
+			? {
+					review: {
+						'@type': 'Review',
+						author: {
+							'@type': 'Person',
+							name: input.review.author,
+						},
+						reviewBody: input.review.reviewBody,
+						datePublished: new Date(input.review.datePublished).toISOString(),
+						...(typeof input.review.ratingValue === 'number'
+							? {
+									reviewRating: {
+										'@type': 'Rating',
+										ratingValue: input.review.ratingValue,
+										bestRating: 5,
+									},
+								}
+							: {}),
+					},
+				}
+			: {}),
 	};
 }
 
@@ -219,7 +243,6 @@ export function reviewSchema(input: {
 	ratingValue?: number;
 }) {
 	return {
-		'@context': 'https://schema.org',
 		'@type': 'Review',
 		itemReviewed: {
 			'@type': 'Product',
@@ -245,7 +268,6 @@ export function reviewSchema(input: {
 
 export function faqPageSchema(items: { question: string; answer: string }[]) {
 	return {
-		'@context': 'https://schema.org',
 		'@type': 'FAQPage',
 		mainEntity: items.map((item) => ({
 			'@type': 'Question',

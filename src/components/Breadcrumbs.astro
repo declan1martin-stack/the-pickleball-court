@@ -1,5 +1,5 @@
 ---
-import { SITE_URL } from '../lib/site';
+import { absoluteUrl } from '../lib/seo';
 
 interface Crumb {
 	label: string;
@@ -13,13 +13,12 @@ interface Props {
 const { items } = Astro.props;
 
 const jsonLd = {
-	'@context': 'https://schema.org',
 	'@type': 'BreadcrumbList',
 	itemListElement: items.map((item, index) => ({
 		'@type': 'ListItem',
 		position: index + 1,
 		name: item.label,
-		...(item.href ? { item: new URL(item.href, SITE_URL).href } : {}),
+		...(item.href ? { item: absoluteUrl(item.href) } : {}),
 	})),
 };
 ---

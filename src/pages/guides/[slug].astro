@@ -18,7 +18,7 @@ import {
 	categoryPath,
 } from '../../lib/articles';
 import { absoluteUrl, articleSchema } from '../../lib/seo';
-import { getProductById, isPriceTier } from '../../lib/products';
+import { getProductById, getPriceTier } from '../../lib/products';
 import { authorPath, resolveAuthor } from '../../data/authors';
 
 export async function getStaticPaths() {
@@ -107,10 +107,10 @@ const crumbs = [
 		<div class="min-w-0">
 			<Disclosure />
 
-			{/* Answer-first summary for AI/snippet extraction — uses the page description as the direct takeaway. */}
+			{/* Answer-first summary for AI/snippet extraction — concrete takeaway, not the meta description. */}
 			<div class="mt-6 max-w-[70ch] rounded-2xl border border-emerald-200 bg-emerald-50/70 px-5 py-4">
 				<p class="text-xs font-bold uppercase tracking-[0.14em] text-emerald-800">Quick answer</p>
-				<p class="mt-2 text-base leading-relaxed text-emerald-950">{article.data.description}</p>
+				<p class="mt-2 text-base leading-relaxed text-emerald-950">{article.data.quickAnswer}</p>
 			</div>
 
 			{categoryHref && (
@@ -138,9 +138,7 @@ const crumbs = [
 								<div>
 									<p class="font-bold text-zinc-900">{product.name}</p>
 									<p class="text-xs text-zinc-500">
-										{isPriceTier(product.price)
-											? `Approx. price tier ${product.price} — confirm current store price`
-											: `Approx. listed: ${product.price} — confirm current store price`}
+										Approx. price tier {getPriceTier(product.price)} — confirm current store price
 									</p>
 								</div>
 								<AffiliateButton href={product.affiliateUrl} productId={product.id} variant="secondary" label="Check current price" />

@@ -1,35 +1,102 @@
 ---
 import TrustPageLayout from '../layouts/TrustPageLayout.astro';
-import { AMAZON_LABEL, MARKET_LABEL } from '../lib/site';
+import { AMAZON_LABEL, MARKET_LABEL, SITE_EMAIL, SITE_NAME } from '../lib/site';
 ---
 
 <TrustPageLayout
 	title="Editorial Policy"
-	description="How we evaluate pickleball products and keep recommendations independent."
+	description={`How ${SITE_NAME} researches pickleball gear, sources product data, and keeps recommendations independent.`}
 	canonicalPath="/editorial-policy"
 >
+	<p>
+		This page is the working standard for how we research, write, and update content on {SITE_NAME}. It exists so
+		readers know what “recommended” means here — and what it does not.
+	</p>
+
 	<h2>What we cover</h2>
 	<p>
-		We focus on paddles, court shoes, and portable nets that {MARKET_LABEL} players actually search for and can buy via
-		{AMAZON_LABEL}. Guides are written for beginners through advanced tournament players, including seniors and players
-		with specific fit needs.
+		We focus on paddles, court shoes, and portable nets that {MARKET_LABEL} players actually search for and can buy
+		via {AMAZON_LABEL}, plus supporting categories (balls, bags, apparel, accessories) when they help a complete
+		setup. Guides are written for beginners through advanced tournament players, including seniors and players with
+		specific fit needs such as wide feet or plantar fasciitis.
 	</p>
-	<h2>How we evaluate gear</h2>
-	<ul>
-		<li><strong>Playing job:</strong> control, power, spin, comfort, portability, joint protection.</li>
-		<li><strong>Catalog integrity:</strong> products referenced in articles must exist in our gear database.</li>
-		<li><strong>Honesty about gaps:</strong> if a spec or claim isn’t confirmed, we mark it instead of inventing it.</li>
-		<li><strong>Audience fit:</strong> a “best” pick is always best <em>for someone</em> — we say who.</li>
-	</ul>
-	<h2>Independence stance</h2>
 	<p>
-		Affiliate relationships do not dictate rankings. We do not accept payment for placements in editorial lists.
-		Approximate catalog prices may appear for context; they are never presented as live store prices. Always
-		confirm current pricing and availability on {AMAZON_LABEL}.
+		News posts cover brand launches, sponsorship moves, and tour-adjacent gear context. News is dated and attributed
+		(“the brands say,” “industry coverage reported”) and is not a substitute for a full buying guide.
 	</p>
+
+	<h2>Research process</h2>
+	<ul>
+		<li>
+			<strong>Playing job first:</strong> we start from the problem (control at the kitchen, lateral shoe support,
+			a portable net for driveway play) rather than a brand press release.
+		</li>
+		<li>
+			<strong>Public sources:</strong> manufacturer listings, official rules bodies (for regulation topics), and
+			reputable industry reporting. We summarize claims; we do not invent quotes, lab results, or review counts.
+		</li>
+		<li>
+			<strong>Catalog integrity:</strong> products referenced in articles must exist in our gear database
+			(<code>gear.json</code>) with a stable product ID. Articles pull display data from that catalog — they do
+			not duplicate conflicting specs.
+		</li>
+		<li>
+			<strong>Honesty about gaps:</strong> if a weight, material, approval status, or other claim is not confirmed,
+			we mark it or leave it out. We do not fabricate “tested” language.
+		</li>
+		<li>
+			<strong>Audience fit:</strong> a “best” pick is always best <em>for someone</em> — we say who, and when a
+			cheaper or older model is the smarter buy.
+		</li>
+	</ul>
+
+	<h2>Product IDs and the catalog</h2>
+	<p>
+		<code>src/data/gear.json</code> is the product source of truth. Components such as product cards and comparison
+		tables resolve products by ID. If a product is not in the catalog, we do not invent an affiliate URL or paste
+		raw Amazon links into article prose. New products get added to the catalog first, then referenced from guides.
+	</p>
+
+	<h2>Prices, ratings, and what we will not claim</h2>
+	<p>
+		We use approximate catalog price tiers ($, $$, $$$) or clearly labeled “as of / approximate” context when
+		useful. We do <strong>not</strong> present those figures as live, authoritative store prices. Amazon and other
+		retailers change pricing and availability constantly — always confirm on {AMAZON_LABEL} before buying.
+	</p>
+	<p>
+		We do not invent star ratings, review counts, swing weights, or independent durability scores. Affiliate
+		compliance and FTC expectations also mean we avoid “guaranteed lowest price” style language. See the
+		<a href="/affiliate-disclosure">affiliate disclosure</a> for commission details.
+	</p>
+
+	<h2>Affiliate independence</h2>
+	<p>
+		Affiliate relationships do not dictate rankings or shortlist membership. We do not accept payment for placements
+		in editorial lists. Commission rates are not a ranking input. Secondary retailer links (when configured) are
+		optional paths to the same product category — they do not change editorial conclusions.
+	</p>
+
+	<h2>Update cadence</h2>
+	<p>
+		Evergreen guides are reviewed when a material catalog change lands (new flagship models, discontinued SKUs,
+		meaningful construction shifts) or when rules/context that a guide depends on changes. We display last-updated
+		dates on articles when available. News posts are point-in-time; we may add follow-ups rather than silently
+		rewriting history when a story develops.
+	</p>
+
 	<h2>Corrections</h2>
 	<p>
-		If something is wrong, email us via the <a href="/contact">contact page</a>. We update guides when products,
-		rules context, or buying advice meaningfully change — and we display last-updated dates on articles.
+		If something is wrong — a mismatched product ID, an outdated model generation, a broken claim, or unclear
+		affiliate labeling — email
+		<a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>
+		or use the <a href="/contact">contact page</a>. We correct factual errors promptly and note meaningful
+		substantive updates in the article's updated date when the change affects buying advice.
+	</p>
+
+	<h2>Who is accountable</h2>
+	<p>
+		Editorial standards are owned by
+		<a href="/authors/declan-martin">Declan Martin (Deco)</a>, founder and editor. The broader site mission and
+		limits of our claims are summarized on the <a href="/about">about page</a>.
 	</p>
 </TrustPageLayout>

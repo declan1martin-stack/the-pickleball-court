@@ -10,11 +10,7 @@ export async function getAllNews(): Promise<NewsEntry[]> {
 	return entries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 
-/**
- * Optional market filter for dual-region builds.
- * Shared CA+middleware deploys should keep using getAllNews() so both hosts
- * receive every entry (middleware cannot swap which cards are in the HTML).
- */
+/** Market-filtered news for the active SITE_REGION (US-primary after consolidation). */
 export async function getNewsForMarket(region: SiteRegion = SITE_REGION): Promise<NewsEntry[]> {
 	const entries = await getAllNews();
 	return entries.filter((entry) => {
@@ -24,7 +20,7 @@ export async function getNewsForMarket(region: SiteRegion = SITE_REGION): Promis
 }
 
 export async function getLatestNews(limit = 3): Promise<NewsEntry[]> {
-	const entries = await getAllNews();
+	const entries = await getNewsForMarket();
 	return entries.slice(0, limit);
 }
 

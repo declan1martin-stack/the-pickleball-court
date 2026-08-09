@@ -1,5 +1,5 @@
 ---
-title: "This Week in Canadian Pickleball: CNPL Lands in London, a Big August Ahead"
+title: "Canadian Pickleball: CNPL Lands in London"
 date: 2026-08-08
 summary: "The CNPL's Central Split hits London this weekend, with the PPA's Vancouver stop and the national championship both on the horizon as participation keeps climbing."
 tags: ["weekly-roundup", "cnpl", "ppa-tour", "pickleball-canada"]
@@ -7,6 +7,7 @@ type: "roundup"
 markets: ["ca"]
 heroImage: "/images/news/ca-roundup-cnpl-central-split-august-2026.svg"
 heroAlt: "Graphic hero reading CNPL lands in London and a big Canadian August takes shape, Canada pickleball roundup for August 1 to 8, 2026"
+sourceUrl: "https://pickleballcanada.org/tournaments/pickleball-canada-national-championships/"
 author: "declan-martin"
 ---
 

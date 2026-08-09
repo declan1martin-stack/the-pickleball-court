@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_NAME } from '../lib/site';
+---
+
+<Layout
+	title={`Page not found | ${SITE_NAME}`}
+	description="That page does not exist. Browse US pickleball gear guides, news, and product catalogs instead."
+	canonicalPath="/404"
+	noindex
+>
+	<section class="border-b border-border bg-surface">
+		<div class="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">
+			<p class="font-display text-xs font-bold uppercase tracking-[0.18em] text-secondary">404</p>
+			<h1 class="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+				Page not found
+			</h1>
+			<p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-muted">
+				The link may be outdated or mistyped. Try one of these starting points:
+			</p>
+			<ul class="mt-8 space-y-3 text-base font-semibold">
+				<li><a href="/" class="link-brand">Home →</a></li>
+				<li><a href="/guides" class="link-brand">Guides →</a></li>
+				<li><a href="/gear/paddles" class="link-brand">Paddles catalog →</a></li>
+				<li><a href="/news" class="link-brand">News & weekly updates →</a></li>
+			</ul>
+		</div>
+	</section>
+</Layout>

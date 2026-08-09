@@ -1,10 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { formatNewsDate, getAllNews, NEWS_PAGE_SIZE, newsPath, newsSlug } from '../../lib/news';
+import { formatNewsDate, getNewsForMarket, NEWS_PAGE_SIZE, newsPath, newsSlug } from '../../lib/news';
 import { MARKET_LABEL, SITE_NAME } from '../../lib/site';
 
-const allNews = await getAllNews();
+const allNews = await getNewsForMarket();
 const totalPages = Math.max(1, Math.ceil(allNews.length / NEWS_PAGE_SIZE));
 const pageParam = Number(Astro.url.searchParams.get('page') || '1');
 const page = Number.isFinite(pageParam) && pageParam >= 1 ? Math.min(pageParam, totalPages) : 1;
@@ -22,7 +22,7 @@ const entries = allNews.slice(start, start + NEWS_PAGE_SIZE);
 			<Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'News' }]} />
 			<h1 class="mt-4 font-display text-4xl font-extrabold tracking-tight text-ink">News & updates</h1>
 			<p class="mt-3 max-w-2xl text-ink-muted">
-				Short, dated notes and weekly roundups — pro tours, Canadian leagues, and paddle launches — that affect what
+				Short, dated notes and weekly roundups — pro tours, league news, and paddle launches — that affect what{' '}
 				{MARKET_LABEL} shoppers see in stores. For deeper buying advice, browse our
 				<a href="/guides" class="font-semibold text-primary underline">guides</a>
 				{' '}(start with
@@ -36,17 +36,15 @@ const entries = allNews.slice(start, start + NEWS_PAGE_SIZE);
 		</div>
 	</section>
 
-	<div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8" data-news-index>
+	<div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
 		<ul class="space-y-6">
 			{entries.map((entry) => {
 				const slug = newsSlug(entry);
 				const href = newsPath(entry);
-				const markets = (entry.data.markets ?? ['ca', 'us']).join(' ');
 				return (
 					<li
 						id={slug}
 						class="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)]"
-						data-news-markets={markets}
 					>
 						{entry.data.heroImage && (
 							<a href={href} tabindex="-1" aria-hidden="true">
@@ -107,23 +105,4 @@ const entries = allNews.slice(start, start + NEWS_PAGE_SIZE);
 			</nav>
 		)}
 	</div>
-	<script is:inline>
-		(function () {
-			const root = document.querySelector('[data-news-index]');
-			if (!root) return;
-			const host = window.location.hostname.replace(/^www\./, '').toLowerCase();
-			const region =
-				host === 'uspickleballcourt.com'
-					? 'us'
-					: host === 'thepickleballcourt.ca'
-						? 'ca'
-						: new URLSearchParams(window.location.search).get('region') === 'us'
-							? 'us'
-							: 'ca';
-			root.querySelectorAll('[data-news-markets]').forEach((el) => {
-				const markets = (el.getAttribute('data-news-markets') || 'ca us').split(/\s+/);
-				if (!markets.includes(region)) el.remove();
-			});
-		})();
-	</script>
 </Layout>

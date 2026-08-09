@@ -1,16 +1,17 @@
 ---
 import TrustPageLayout from '../layouts/TrustPageLayout.astro';
+import { SITE_NAME } from '../lib/site';
 ---
 
 <TrustPageLayout
 	title="Terms of Use"
-	description="Terms that govern use of ThePickleballCourt.ca."
+	description={`Terms that govern use of ${SITE_NAME}.`}
 	canonicalPath="/terms"
 >
 	<p><strong>Last updated:</strong> July 25, 2026</p>
 	<p>
-		By using ThePickleballCourt.ca, you agree to these terms. {'{{ TODO: confirm }}'} — have counsel review jurisdiction,
-		liability, and governing-law clauses for Canada before relying on this boilerplate.
+		By using {SITE_NAME}, you agree to these terms. {'{{ TODO: confirm }}'} — have counsel review jurisdiction,
+		liability, and governing-law clauses for the US before relying on this boilerplate.
 	</p>
 	<h2>Informational purpose</h2>
 	<p>
@@ -24,7 +25,7 @@ import TrustPageLayout from '../layouts/TrustPageLayout.astro';
 	</p>
 	<h2>Intellectual property</h2>
 	<p>
-		Site design, original writing, and branding are owned by ThePickleballCourt.ca unless otherwise noted. Product
+		Site design, original writing, and branding are owned by {SITE_NAME} unless otherwise noted. Product
 		names and trademarks belong to their respective owners.
 	</p>
 	<h2>Limitation of liability</h2>

@@ -1,16 +1,17 @@
 ---
 import TrustPageLayout from '../layouts/TrustPageLayout.astro';
+import { SITE_NAME } from '../lib/site';
 ---
 
 <TrustPageLayout
 	title="Privacy Policy"
-	description="How ThePickleballCourt.ca handles information when you visit our site."
+	description={`How ${SITE_NAME} handles information when you visit our site.`}
 	canonicalPath="/privacy"
 >
 	<p><strong>Last updated:</strong> July 30, 2026</p>
 	<p>
-		This privacy policy describes how ThePickleballCourt.ca (“we”, “us”) handles information when you visit our
-		website. {'{{ TODO: confirm }}'} — have a Canadian privacy lawyer review before treating this as final legal advice.
+		This privacy policy describes how {SITE_NAME} (“we”, “us”) handles information when you visit our
+		website. {'{{ TODO: confirm }}'} — have a US privacy lawyer review before treating this as final legal advice.
 	</p>
 	<h2>Information we collect</h2>
 	<ul>

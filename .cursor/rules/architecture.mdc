@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Architecture — thepickleballcourt.ca
 
-- Astro affiliate site. Domain: https://thepickleballcourt.ca (`site` in `astro.config.mjs`).
+- Astro affiliate site. Domain: https://uspickleballcourt.com (`site` in `astro.config.mjs`). `.ca` 301s to `.com`.
 - Product source of truth: `src/data/gear.json`. Reference products by **ID only** — never duplicate product fields into articles or components.
 - Extend existing files; do not rewrite from scratch.
 

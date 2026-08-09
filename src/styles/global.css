@@ -1,17 +1,28 @@
 @import "tailwindcss";
 
+/* Self-hosted fonts (same-origin; font-display: swap via fontsource) */
+@import "@fontsource/sora/latin-600.css";
+@import "@fontsource/sora/latin-700.css";
+@import "@fontsource/sora/latin-800.css";
+@import "@fontsource/source-sans-3/latin-400.css";
+@import "@fontsource/source-sans-3/latin-400-italic.css";
+@import "@fontsource/source-sans-3/latin-600.css";
+@import "@fontsource/source-sans-3/latin-700.css";
+@import "@fontsource/source-code-pro/latin-400.css";
+@import "@fontsource/source-code-pro/latin-600.css";
+
 /* Design system — The Pickleball Court (PB Design handoff) */
 @theme {
 	--color-primary: #1c4e80;
 	--color-primary-dark: #123449;
 	--color-secondary: #2e7d5b;
 	--color-secondary-dark: #1f5a41;
-	--color-accent: #ff6b35;
-	--color-accent-dark: #db5220;
+	--color-accent: #c2410c;
+	--color-accent-dark: #9a3412;
 	--color-star: #f0a93b;
 	--color-ink: #1a2027;
 	--color-ink-muted: #5b6570;
-	--color-ink-faint: #8b93a0;
+	--color-ink-faint: #6b7280;
 	--color-border: #e3e0da;
 	--color-bg: #faf8f4;
 	--color-surface: #ffffff;
@@ -206,7 +217,7 @@ button:focus-visible {
 	font-size: 11px;
 	font-weight: 700;
 	letter-spacing: 0.18em;
-	color: #059669;
+	color: #047857;
 }
 
 .site-logo__name {

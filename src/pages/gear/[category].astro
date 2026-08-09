@@ -6,7 +6,7 @@ import GearFilters from '../../components/GearFilters.astro';
 import Disclosure from '../../components/Disclosure.astro';
 import gear from '../../data/gear.json';
 import { getArticlesByCategory, CATEGORY_PILLARS } from '../../lib/articles';
-import { assertAffiliateUrl, getPriceTier, PRICE_TIER_RANK } from '../../lib/products';
+import { getPriceTier, PRICE_TIER_RANK } from '../../lib/products';
 import { absoluteUrl, itemListSchema } from '../../lib/seo';
 import { MARKET_COUNTRY, MARKET_LABEL, MARKET_PLAYERS } from '../../lib/site';
 
@@ -31,7 +31,7 @@ const categoryMeta = {
 	},
 	nets: {
 		h1: `Best Portable Pickleball Nets in ${MARKET_COUNTRY}`,
-		description: `Find premium portable pickleball nets for ${MARKET_LABEL} driveways, parks, and cottage courts. Compare regulation systems from Franklin, ONIX, Rally, and Selkirk.`,
+		description: `Find premium portable pickleball nets for ${MARKET_LABEL} driveways, parks, and backyard courts. Compare regulation systems from Franklin, ONIX, Rally, and Selkirk.`,
 		intro: `Set up a regulation court anywhere with durable portable nets designed for fast assembly, stable tension, and frequent ${MARKET_LABEL} outdoor use.`,
 	},
 	balls: {
@@ -87,7 +87,7 @@ const itemList = itemListSchema({
 	path: `/gear/${typedCategory}`,
 	items: products.map((product, index) => ({
 		name: product.name,
-		url: assertAffiliateUrl(product.affiliateUrl),
+		url: absoluteUrl(`/gear/${typedCategory}#${product.id}`),
 		position: index + 1,
 	})),
 });

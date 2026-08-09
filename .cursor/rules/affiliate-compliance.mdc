@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Affiliate & compliance (hard rules)
 
-1. Every Amazon URL MUST include `tag=thepickleb050-20`. Never emit one without it.
+1. Every Amazon URL MUST include the active Associates tag (`uspickleball-20` on the US site). Never emit one without it.
 2. All affiliate links: `target="_blank"` and `rel="sponsored nofollow noopener"`.
 3. Route every affiliate link through `AffiliateButton.astro`.
 4. Do NOT display prices as current/authoritative. Use “Check current price on Amazon” CTAs; prefer price tiers ($/$$/$$$) or “as of” / approximate labeling — never a guaranteed live price.

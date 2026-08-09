@@ -65,8 +65,9 @@ const SITES: Record<SiteRegion, SiteConfig> = {
 };
 
 function resolveRegion(): SiteRegion {
-	const raw = (import.meta.env.PUBLIC_SITE_REGION ?? 'ca').toString().trim().toLowerCase();
-	return raw === 'us' ? 'us' : 'ca';
+	// US-primary after CA→US consolidation (zone redirect on .ca).
+	const raw = (import.meta.env.PUBLIC_SITE_REGION ?? 'us').toString().trim().toLowerCase();
+	return raw === 'ca' ? 'ca' : 'us';
 }
 
 export const SITE_REGION = resolveRegion();

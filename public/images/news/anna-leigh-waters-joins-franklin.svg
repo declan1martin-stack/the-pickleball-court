@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Anna Leigh Waters joins Franklin news hero">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f1e2b"/>
+      <stop offset="1" stop-color="#1f5a41"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g stroke="#3fa87a" stroke-width="3" opacity="0.3" fill="none">
+    <rect x="60" y="60" width="1080" height="510" rx="8"/>
+    <line x1="600" y1="60" x2="600" y2="570"/>
+    <line x1="60" y1="230" x2="1140" y2="230"/>
+    <line x1="60" y1="400" x2="1140" y2="400"/>
+  </g>
+  <rect x="0" y="0" width="1200" height="10" fill="#2e7d5b"/>
+  <rect x="0" y="620" width="1200" height="10" fill="#c2410c"/>
+  <!-- sponsorship handshake / badge -->
+  <g transform="translate(980,280)">
+    <circle r="110" fill="#123449" stroke="#2e7d5b" stroke-width="8"/>
+    <circle r="70" fill="#2e7d5b"/>
+    <text x="-28" y="12" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="800" fill="#ffffff">ALW</text>
+    <rect x="-80" y="130" width="160" height="40" rx="20" fill="#c2410c"/>
+    <text x="-55" y="157" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#ffffff">FRANKLIN</text>
+  </g>
+  <text x="70" y="150" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#8fd4b0" letter-spacing="4">SPONSORSHIP</text>
+  <text x="70" y="290" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800" fill="#ffffff">Anna Leigh Waters</text>
+  <text x="70" y="368" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800" fill="#ffffff">Joins Franklin</text>
+  <text x="70" y="460" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#b8e0cc">Long-term deal after Paddletek  early 2026</text>
+  <text x="70" y="545" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#8fd4b0">uspickleballcourt.com</text>
+</svg>

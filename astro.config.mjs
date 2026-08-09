@@ -5,10 +5,10 @@ import tailwindcss from '@tailwindcss/vite';
 
 import mdx from '@astrojs/mdx';
 
-const region = (process.env.PUBLIC_SITE_REGION ?? 'ca').toString().trim().toLowerCase();
+const region = (process.env.PUBLIC_SITE_REGION ?? 'us').toString().trim().toLowerCase();
 const site =
 	process.env.PUBLIC_SITE_URL?.trim() ||
-	(region === 'us' ? 'https://uspickleballcourt.com' : 'https://thepickleballcourt.ca');
+	(region === 'ca' ? 'https://thepickleballcourt.ca' : 'https://uspickleballcourt.com');
 
 // https://astro.build/config
 // trailingSlash: 'never' + build.format: 'file' keep sitemap, canonicals, and Cloudflare Pages
@@ -21,13 +21,8 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      // Fresh lastmod on every deploy — helps crawlers prioritize re-crawl after content drops.
-      serialize(item) {
-        return {
-          ...item,
-          lastmod: new Date(),
-        };
-      },
+      // Prefer real content dates when present; do not stamp every URL with deploy time.
+      filter: (page) => !page.endsWith('/404') && !page.includes('/404'),
     }),
     mdx(),
   ],

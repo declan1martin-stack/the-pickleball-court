@@ -1,10 +1,10 @@
-# .cursorrules — thepickleballcourt.ca
+# .cursorrules — uspickleballcourt.com
 
 Persistent rules for every Cursor session in this repo. Canonical copies also live in `.cursor/rules/*.mdc` (alwaysApply).
 
 ## Project
-- Pickleball affiliate site built with **Astro**. Monetized via Amazon Associates, tag `thepickleb050-20`.
-- Live domain: https://thepickleballcourt.ca. `site` is set in `astro.config.mjs`.
+- Pickleball affiliate site built with **Astro**. Monetized via Amazon Associates, tag `uspickleball-20` (US-primary).
+- Live domain: https://uspickleballcourt.com. `thepickleballcourt.ca` 301s there. `site` is set in `astro.config.mjs`.
 - Product source of truth: `src/data/gear.json`. Never duplicate product data elsewhere — reference products by ID.
 
 ## Architecture (do not break)
@@ -17,7 +17,7 @@ Persistent rules for every Cursor session in this repo. Canonical copies also li
 - Extend existing files; do not rewrite from scratch. Keep existing routes working: `/`, `/gear/paddles`, `/gear/shoes`, `/gear/nets`, `/sitemap-index.xml`.
 
 ## Affiliate & compliance (hard rules)
-1. Every Amazon URL MUST include `tag=thepickleb050-20`. Never emit one without it.
+1. Every Amazon URL MUST include `tag=uspickleball-20` (or the active `AFFILIATE_TAG` for the build region). Never emit one without it.
 2. All affiliate links: `target="_blank"` and `rel="sponsored nofollow noopener"`. Route every affiliate link through `AffiliateButton.astro`.
 3. Do NOT display prices as current/authoritative (Amazon Operating Agreement). Use "Check current price on Amazon" CTAs and price tiers ($/$$/$$$) or "as of" labeling — never a guaranteed live price.
 4. FTC + Amazon disclosure on every page with affiliate links (top-of-body `Disclosure.astro` + footer).

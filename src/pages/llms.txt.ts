@@ -1,13 +1,37 @@
 import type { APIRoute } from 'astro';
+import { getCollection } from 'astro:content';
+import { absoluteUrl } from '../lib/seo';
+import { getNewsForMarket, newsPath } from '../lib/news';
 import { AMAZON_LABEL, MARKET_LABEL, SITE_NAME, SITE_URL } from '../lib/site';
 
-const body = `# ${SITE_NAME}
+export const GET: APIRoute = async () => {
+	const articles = (await getCollection('articles')).sort((a, b) =>
+		a.data.title.localeCompare(b.data.title),
+	);
+	const news = await getNewsForMarket();
+	const generated = new Date().toISOString().slice(0, 10);
+
+	const guideLines = articles
+		.map(
+			(article) =>
+				`- [${article.data.title}](${absoluteUrl(`/guides/${article.data.slug}`)}): ${article.data.description}`,
+		)
+		.join('\n');
+
+	const newsLines = news
+		.map(
+			(entry) =>
+				`- [${entry.data.title}](${absoluteUrl(newsPath(entry))}): ${entry.data.summary}`,
+		)
+		.join('\n');
+
+	const body = `# ${SITE_NAME}
 
 > ${MARKET_LABEL} pickleball gear guides and ${AMAZON_LABEL} product catalogs for paddles, shoes, nets, balls, bags, apparel, and accessories.
 
-Site: ${SITE_URL}/
-Affiliate disclosure: ${SITE_URL}/affiliate-disclosure
-Editorial policy: ${SITE_URL}/editorial-policy
+- [Home](${absoluteUrl('/')}): Site homepage
+- [Affiliate disclosure](${absoluteUrl('/affiliate-disclosure')}): How affiliate links work
+- [Editorial policy](${absoluteUrl('/editorial-policy')}): How we research and write guides
 
 ## Purpose
 
@@ -15,53 +39,46 @@ Honest, high-intent buying guidance for ${MARKET_LABEL} players. Product data li
 
 ## Main sections
 
-- Home: ${SITE_URL}/
-- Guides hub: ${SITE_URL}/guides/
-- Gear — paddles: ${SITE_URL}/gear/paddles/
-- Gear — shoes: ${SITE_URL}/gear/shoes/
-- Gear — nets: ${SITE_URL}/gear/nets/
-- Gear — balls: ${SITE_URL}/gear/balls/
-- Gear — bags: ${SITE_URL}/gear/bags/
-- Gear — apparel: ${SITE_URL}/gear/apparel/
-- Gear — accessories: ${SITE_URL}/gear/accessories/
+- [Guides hub](${absoluteUrl('/guides')}): All buying guides
+- [Gear — paddles](${absoluteUrl('/gear/paddles')}): Paddle catalog
+- [Gear — shoes](${absoluteUrl('/gear/shoes')}): Court shoes
+- [Gear — nets](${absoluteUrl('/gear/nets')}): Portable nets
+- [Gear — balls](${absoluteUrl('/gear/balls')}): Indoor and outdoor balls
+- [Gear — bags](${absoluteUrl('/gear/bags')}): Bags and backpacks
+- [Gear — apparel](${absoluteUrl('/gear/apparel')}): Court apparel
+- [Gear — accessories](${absoluteUrl('/gear/accessories')}): Grips, tape, and small upgrades
+- [News](${absoluteUrl('/news')}): Weekly roundups and gear updates
+- [News RSS](${absoluteUrl('/news/feed.xml')}): News feed
+- [Guides RSS](${absoluteUrl('/rss.xml')}): Guides feed
 
-## Pillar guides
+## Guides
 
-- How to choose a paddle: ${SITE_URL}/guides/how-to-choose-a-pickleball-paddle/
-- Best paddles 2026: ${SITE_URL}/guides/best-pickleball-paddles-2026/
-- Best shoes 2026: ${SITE_URL}/guides/best-pickleball-shoes-2026/
-- Best portable nets 2026: ${SITE_URL}/guides/best-portable-pickleball-nets-2026/
-- Balls indoor vs outdoor: ${SITE_URL}/guides/pickleball-balls-buying-guide/
-- Bags by style: ${SITE_URL}/guides/pickleball-bags-buying-guide/
-- Apparel essentials: ${SITE_URL}/guides/pickleball-apparel-buying-guide/
-- Accessories (grips & tape): ${SITE_URL}/guides/pickleball-accessories-buying-guide/
-- Rules for beginners: ${SITE_URL}/guides/pickleball-rules-for-beginners/
-- Terms glossary: ${SITE_URL}/guides/pickleball-terms-glossary/
+${guideLines}
 
 ## News & weekly updates
 
-- News hub: ${SITE_URL}/news/
-- Fresh weekly roundups and gear updates (also in RSS)
+${newsLines}
 
 ## Trust & legal
 
-- About: ${SITE_URL}/about/
-- Editorial policy: ${SITE_URL}/editorial-policy/
-- Privacy: ${SITE_URL}/privacy/
-- Terms: ${SITE_URL}/terms/
-- Contact: ${SITE_URL}/contact/
-- Author: ${SITE_URL}/authors/declan-martin/
-- RSS: ${SITE_URL}/rss.xml
-- Sitemap: ${SITE_URL}/sitemap-index.xml
+- [About](${absoluteUrl('/about')})
+- [Editorial policy](${absoluteUrl('/editorial-policy')})
+- [Privacy](${absoluteUrl('/privacy')})
+- [Terms](${absoluteUrl('/terms')})
+- [Contact](${absoluteUrl('/contact')})
+- [Author — Declan Martin](${absoluteUrl('/authors/declan-martin')})
+- [Sitemap](${absoluteUrl('/sitemap-index.xml')})
 
 ## Notes for crawlers
 
-Content is statically generated (Astro SSG). Key pages are HTML without requiring JavaScript to read the main copy. Affiliate outbound links use rel="sponsored nofollow noopener". Prefer canonical apex hosts (no www).
+Content is statically generated (Astro SSG). Key pages are HTML without requiring JavaScript to read the main copy. Affiliate outbound links use rel="sponsored nofollow noopener". Prefer the apex host ${SITE_URL.replace(/\/$/, '')} (no www).
+
+Last generated: ${generated}
 `;
 
-export const GET: APIRoute = () =>
-	new Response(body, {
+	return new Response(body, {
 		headers: {
 			'Content-Type': 'text/plain; charset=utf-8',
 		},
 	});
+};

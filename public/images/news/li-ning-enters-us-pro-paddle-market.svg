@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Li-Ning enters US pro paddle market news hero">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f1e2b"/>
+      <stop offset="1" stop-color="#1c4e80"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g stroke="#2e7d5b" stroke-width="3" opacity="0.4" fill="none">
+    <rect x="60" y="60" width="1080" height="510" rx="8"/>
+    <line x1="600" y1="60" x2="600" y2="570"/>
+  </g>
+  <rect x="0" y="0" width="1200" height="10" fill="#2e7d5b"/>
+  <rect x="0" y="620" width="1200" height="10" fill="#2e7d5b"/>
+  <!-- market entry motif: arrow into court -->
+  <g transform="translate(980,300)">
+    <circle r="100" fill="#123449" stroke="#2e7d5b" stroke-width="6"/>
+    <path d="M-50,0 L20,-40 L20,-15 L70,-15 L70,15 L20,15 L20,40 Z" fill="#3fa87a"/>
+  </g>
+  <text x="70" y="150" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#8fd4b0" letter-spacing="4">MARKET ENTRY</text>
+  <text x="70" y="290" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="800" fill="#ffffff">Li-Ning Enters</text>
+  <text x="70" y="368" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="800" fill="#ffffff">the U.S. Pro Market</text>
+  <text x="70" y="460" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#9cc2e6">Two competitive paddles  early 2026 launch</text>
+  <text x="70" y="545" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#8fd4b0">uspickleballcourt.com</text>
+</svg>

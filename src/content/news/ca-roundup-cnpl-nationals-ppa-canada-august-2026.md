@@ -1,5 +1,5 @@
 ---
-title: "This Week in Canadian Pickleball: Nationals Coming to Toronto, Participation Still Climbing"
+title: "Canadian Pickleball: Nationals Head to Toronto"
 date: 2026-08-03
 summary: "Canada's National Championship is three weeks out, new survey numbers show the sport still growing fast, and the CNPL's fourth season is bringing international talent to Canadian courts."
 tags: ["weekly-roundup", "pickleball-canada", "participation", "cnpl"]
@@ -8,6 +8,7 @@ markets: ["ca"]
 heroImage: "https://images.unsplash.com/photo-1778180883807-19962eda4d99?w=1200&q=80&auto=format&fit=crop"
 heroAlt: "Aerial view of illuminated pickleball courts at a modern sports facility"
 heroCredit: "Photo: Brian Zajac / Unsplash (Unsplash License, free to use)"
+sourceUrl: "https://pickleballcanada.org/tournaments/pickleball-canada-national-championships/"
 author: "declan-martin"
 ---
 

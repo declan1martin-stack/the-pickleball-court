@@ -4,7 +4,7 @@ import AuthorBox from '../../components/AuthorBox.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getAllAuthors, type Author } from '../../data/authors';
 import { getAllArticles } from '../../lib/articles';
-import { formatNewsDate, getAllNews, newsPath } from '../../lib/news';
+import { formatNewsDate, getNewsForMarket, newsPath } from '../../lib/news';
 import { clampMetaDescription, personSchema } from '../../lib/seo';
 
 export function getStaticPaths() {
@@ -20,7 +20,7 @@ interface Props {
 
 const { author } = Astro.props;
 const articles = (await getAllArticles()).filter((entry) => entry.data.author === author.id);
-const news = (await getAllNews()).filter((entry) => entry.data.author === author.id);
+const news = (await getNewsForMarket()).filter((entry) => entry.data.author === author.id);
 const path = `/authors/${author.id}`;
 const description = clampMetaDescription(
 	`${author.name} — ${author.role}. ${author.bio}`,
@@ -43,7 +43,7 @@ const description = clampMetaDescription(
 					{ label: author.name },
 				]}
 			/>
-			<AuthorBox author={author} class="mt-6" />
+			<AuthorBox author={author} headingLevel="h1" class="mt-6" />
 		</div>
 	</section>
 
