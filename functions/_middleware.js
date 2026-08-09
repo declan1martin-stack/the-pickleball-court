@@ -37,6 +37,7 @@ const US_ONLY_NEWS = new Set([
 	'/news/us-roundup-world-rankings-mlp-playoffs-august-2026',
 	'/news/us-results-mlp-dallas-playoffs-cailyn-campbell-august-2026',
 	'/news/us-feature-mlp-franchise-valuations-teams-august-2026',
+	'/news/us-guide-where-to-play-pickleball-los-angeles-august-2026',
 ]);
 
 function resolveHost(hostname) {
