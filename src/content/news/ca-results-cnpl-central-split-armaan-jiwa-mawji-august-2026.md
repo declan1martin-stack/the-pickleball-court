@@ -9,7 +9,7 @@ heroImage: "https://images.unsplash.com/photo-1693142518820-78d7a05f1546?w=1200&
 heroAlt: "Two pickleball paddles and three balls resting on an outdoor court"
 heroCredit: "Photo: Alex Saks / Unsplash (Unsplash License, free to use)"
 sourceUrl: "https://cnpl.ca/news/your-guide-to-cnpl-central-split-in-london-venue-directions-and-what-to-expect"
-author: "declan-martin"
+author: "deco"
 ---
 
 The CNPL's Central Split wrapped up this weekend in London, Ontario, and by all accounts it delivered some of the most competitive pickleball the league has seen this season. Here's what happened on court, and a young Vancouver Owl who made the most of his debut.

@@ -66,7 +66,7 @@ ${newsLines}
 - [Privacy](${absoluteUrl('/privacy')})
 - [Terms](${absoluteUrl('/terms')})
 - [Contact](${absoluteUrl('/contact')})
-- [Author — Declan Martin](${absoluteUrl('/authors/declan-martin')})
+- [Author — Deco](${absoluteUrl('/authors/deco')})
 - [Sitemap](${absoluteUrl('/sitemap-index.xml')})
 
 ## Notes for crawlers

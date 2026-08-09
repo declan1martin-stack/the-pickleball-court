@@ -8,7 +8,7 @@ markets: ["us"]
 heroImage: "/images/news/us-roundup-world-rankings-mlp-playoffs-august-2026.svg"
 heroAlt: "Graphic hero reading PPA goes global and MLP playoffs heat up, US pickleball roundup for August 1 to 8, 2026"
 sourceUrl: "https://www.ppatour.com/world-pickleball-rankings-be-the-best/"
-author: "declan-martin"
+author: "deco"
 ---
 
 If you follow the pro game, this was one of those weeks where the sport felt like it was outgrowing its own borders. The Carvana PPA Tour made two big moves in as many days, and Major League Pickleball's postseason finally arrived. Here's what actually happened between August 1 and 8, and why it matters for the rest of us hitting the courts on the weekend.

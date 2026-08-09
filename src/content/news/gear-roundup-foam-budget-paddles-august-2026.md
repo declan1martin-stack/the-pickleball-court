@@ -9,7 +9,7 @@ heroImage: "https://images.unsplash.com/photo-1756477558468-b3e485757470?w=1200&
 heroAlt: "Player swinging a pickleball paddle mid-rally on an outdoor court"
 heroCredit: "Photo: Unsplash (Unsplash License, free to use)"
 sourceUrl: "https://www.outdoorsportswire.com/onix-pickleball-launches-theory-paddle-for-power-control-balance/"
-author: "declan-martin"
+author: "deco"
 ---
 
 While pro tours filled the first week of August, paddle brands kept pushing **foam cores down the price ladder**. That matters more for most club shoppers than any single playoff scoreline. Here is the cross-market gear news worth tracking.

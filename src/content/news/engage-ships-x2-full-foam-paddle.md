@@ -6,7 +6,7 @@ tags: ["paddles", "foam-core", "engage", "pro-tour"]
 heroImage: "/images/news/engage-ships-x2-full-foam-paddle.svg"
 heroAlt: "Graphic highlighting Engage's X2 full-foam pickleball paddle"
 sourceUrl: "https://thekitchenpickle.com/blogs/gear/engage-x2-pickleball-paddle-expert-review/"
-author: "declan-martin"
+author: "deco"
 ---
 
 Full-foam paddles are no longer niche experiments. Engage's **X2** is a second-generation take aimed at power and spin without a traditional honeycomb polymer core — worth watching if you are comparing Gen 4 foam options against polymer-core flagships.

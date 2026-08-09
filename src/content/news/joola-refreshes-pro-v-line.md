@@ -6,7 +6,7 @@ tags: ["paddles", "joola", "pro-v", "ben-johns"]
 heroImage: "/images/news/joola-refreshes-pro-v-line.svg"
 heroAlt: "Graphic announcing JOOLA's 2026 Pro V line refresh with KineticFrame"
 sourceUrl: "https://www.pickleheads.com/pickleball-gear/pro-pickleball-paddles"
-author: "declan-martin"
+author: "deco"
 ---
 
 If you are shopping the top of JOOLA's range, check which Pro V generation a listing actually ships. Frame and core language changes between model years, and “Pro V” alone is no longer enough to know what you are buying.

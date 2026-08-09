@@ -6,7 +6,7 @@ tags: ["sponsorships", "paddles", "pro-tour", "franklin"]
 heroImage: "/images/news/anna-leigh-waters-joins-franklin.svg"
 heroAlt: "Graphic announcing Anna Leigh Waters joining Franklin Pickleball"
 sourceUrl: "https://www.thedinkpickleball.com/tracking-all-the-new-pro-paddle-deals-in-2026/"
-author: "declan-martin"
+author: "deco"
 ---
 
 **Anna Leigh Waters'** move from **Paddletek** to **Franklin** reshapes the top of the women's sponsorship board. Industry coverage in early 2026 described the deal as long-term and one of the year's biggest sponsor shifts. Franklin has said it plans to build signature gear around Waters, including paddles in its **C45** carbon-fiber line.

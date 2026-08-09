@@ -9,7 +9,7 @@ heroImage: "https://images.unsplash.com/photo-1747027694225-cbf12dd20826?w=1200&
 heroAlt: "Players competing in a pickleball match on an outdoor court"
 heroCredit: "Photo: Venti Views / Unsplash (Unsplash License, free to use)"
 sourceUrl: "https://majorleaguepickleball.co/news/mlp-playoffs-dallas-presented-by-eisneramper-matchups-schedule/"
-author: "declan-martin"
+author: "deco"
 ---
 
 ## Nationals is coming to Cary

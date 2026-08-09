@@ -75,6 +75,16 @@ export async function onRequest(context) {
 		return context.next();
 	}
 
+	// Legacy author slug → Deco (display name for all bylines).
+	const authorPath = requestUrl.pathname.replace(/\/+$/, '') || '/';
+	if (
+		authorPath === '/authors/declan-martin' ||
+		authorPath === '/authors/declan-martin.html'
+	) {
+		const apex = resolved?.siteUrl || HOSTS.us.siteUrl;
+		return Response.redirect(`${apex}/authors/deco`, 301);
+	}
+
 	const barePath = requestUrl.pathname.replace(/\/+$/, '') || '/';
 	const pathNoHtml = barePath.replace(/\.html$/i, '');
 	if (resolved?.region === 'us') {

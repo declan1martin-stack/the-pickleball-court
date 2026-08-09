@@ -8,7 +8,7 @@ export type Author = {
 	avatar: string;
 };
 
-export const DEFAULT_AUTHOR_ID = 'declan-martin';
+export const DEFAULT_AUTHOR_ID = 'deco';
 
 const authors = authorsData as Author[];
 
@@ -30,6 +30,10 @@ export function requireAuthor(id: string): Author {
 
 /** Resolve a frontmatter author id (or legacy display name) to an Author record. */
 export function resolveAuthor(authorRef: string): Author {
+	// Legacy slug — all bylines now publish as Deco.
+	if (authorRef === 'declan-martin' || authorRef === 'Declan Martin') {
+		return requireAuthor(DEFAULT_AUTHOR_ID);
+	}
 	const byId = getAuthor(authorRef);
 	if (byId) return byId;
 	const byName = authors.find((author) => author.name === authorRef);

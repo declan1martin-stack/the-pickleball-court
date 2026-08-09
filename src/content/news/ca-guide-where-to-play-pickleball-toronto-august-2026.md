@@ -9,7 +9,7 @@ heroImage: "https://images.unsplash.com/photo-1778180883807-19962eda4d99?w=1200&
 heroAlt: "Aerial view of illuminated pickleball courts at a modern sports facility"
 heroCredit: "Photo: Brian Zajac / Unsplash (Unsplash License, free to use)"
 sourceUrl: "https://www.apollopickleball.ca/blogs/canadian-courts/where-to-play-pickleball-in-toronto-2026-25-best-indoor-outdoor-courts"
-author: "declan-martin"
+author: "deco"
 ---
 
 Toronto has quietly become one of the fastest-growing pickleball cities in the country, with well over a hundred venues across the GTA and an estimated 200,000-plus active players. Here's where to actually go, whether you want free outdoor courts or a year-round indoor membership.

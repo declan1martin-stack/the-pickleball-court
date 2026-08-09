@@ -6,7 +6,7 @@ tags: ["paddles", "brands", "li-ning", "pro-tour"]
 heroImage: "/images/news/li-ning-enters-us-pro-paddle-market.svg"
 heroAlt: "Graphic announcing Li-Ning's entry into the US pro paddle market"
 sourceUrl: "https://www.thedinkpickleball.com/tracking-all-the-new-pro-paddle-deals-in-2026/"
-author: "declan-martin"
+author: "deco"
 ---
 
 More brands are chasing the same high-intent paddle buyers. In early 2026, **Li-Ning** — long known in badminton, basketball, and broader sporting goods — launched **two paddles** aimed at competitive U.S. players, according to industry tracking coverage. The move fits a wider wave of new-brand and crossover athletic brands testing the pro paddle market this year.

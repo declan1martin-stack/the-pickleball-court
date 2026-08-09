@@ -6,7 +6,7 @@ tags: ["brands", "selkirk", "bread-and-butter", "industry"]
 heroImage: "/images/news/selkirk-acquires-bread-and-butter.svg"
 heroAlt: "Graphic announcing Selkirk's acquisition of Bread and Butter Pickleball"
 sourceUrl: "https://www.selkirk.com/pages/press-releases/selkirk-deepens-player-first-mission-with-acquisition-of-bread-butter-pickleball-company"
-author: "declan-martin"
+author: "deco"
 ---
 
 Independent paddle labels are getting harder to sustain alone. In May 2026, **Selkirk Sport** announced it had acquired **Bread & Butter Pickleball**. In the brands' own framing, the two lines will keep designing paddles independently while leaning on Selkirk's distribution and operations backbone — a structure that aims to preserve product identity without forcing a full merge of SKUs overnight.

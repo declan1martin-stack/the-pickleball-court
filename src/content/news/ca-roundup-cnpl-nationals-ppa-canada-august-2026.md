@@ -9,7 +9,7 @@ heroImage: "https://images.unsplash.com/photo-1778180883807-19962eda4d99?w=1200&
 heroAlt: "Aerial view of illuminated pickleball courts at a modern sports facility"
 heroCredit: "Photo: Brian Zajac / Unsplash (Unsplash License, free to use)"
 sourceUrl: "https://pickleballcanada.org/tournaments/pickleball-canada-national-championships/"
-author: "declan-martin"
+author: "deco"
 ---
 
 ## National Championship heads to the GTA

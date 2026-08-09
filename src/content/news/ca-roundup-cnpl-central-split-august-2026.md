@@ -8,7 +8,7 @@ markets: ["ca"]
 heroImage: "/images/news/ca-roundup-cnpl-central-split-august-2026.svg"
 heroAlt: "Graphic hero reading CNPL lands in London and a big Canadian August takes shape, Canada pickleball roundup for August 1 to 8, 2026"
 sourceUrl: "https://pickleballcanada.org/tournaments/pickleball-canada-national-championships/"
-author: "declan-martin"
+author: "deco"
 ---
 
 It's a busy stretch for competitive pickleball north of the border, and the next few weeks are shaping up to be some of the biggest of the Canadian season. Here's what moved between August 1 and 8, plus the marquee events worth circling on your calendar.

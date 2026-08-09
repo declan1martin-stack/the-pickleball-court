@@ -9,7 +9,7 @@ heroImage: "https://images.unsplash.com/photo-1669684899238-64c4abe4d3cc?w=1200&
 heroAlt: "Close-up of a pickleball paddle and player on an outdoor court in Texas"
 heroCredit: "Photo: Lesli Whitecotton / Unsplash (Unsplash License, free to use)"
 sourceUrl: "https://majorleaguepickleball.co/news/mlp-playoffs-dallas-presented-by-eisneramper-matchups-schedule/"
-author: "declan-martin"
+author: "deco"
 ---
 
 Round 1 of the MLP Playoffs wrapped up in Dallas this weekend, and four teams are moving on to the Quarterfinals in Newport Beach. Here's who's through, and a teenager worth putting on your radar before the next round.

@@ -117,7 +117,7 @@ export function personSchema(author: Author) {
 		'@type': 'Person',
 		'@id': `${url}#person`,
 		name: author.name,
-		alternateName: author.id === 'declan-martin' ? 'Deco' : undefined,
+		alternateName: author.id === 'deco' ? 'Declan Martin' : undefined,
 		jobTitle: author.role,
 		description: author.bio,
 		url,

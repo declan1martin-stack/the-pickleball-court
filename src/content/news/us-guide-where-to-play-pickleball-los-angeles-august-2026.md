@@ -9,7 +9,7 @@ heroImage: "https://images.unsplash.com/photo-1580763850690-44fd66eb2863?w=1200&
 heroAlt: "An empty pickleball court with a white net on a green surface"
 heroCredit: "Photo: Frankie Lopez / Unsplash (Unsplash License, free to use)"
 sourceUrl: "https://www.thedinkspot.com/blog/best-pickleball-courts-los-angeles"
-author: "declan-martin"
+author: "deco"
 ---
 
 Los Angeles has turned into one of the best cities in the country to actually go play, whether you want free public courts or a paid membership with lessons and leagues attached. Here's where locals and visitors are lining up to play right now.
