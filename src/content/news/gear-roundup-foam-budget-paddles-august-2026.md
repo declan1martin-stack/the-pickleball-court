@@ -29,7 +29,7 @@ On **July 30**, reporting from The Dink detailed **11SIX24’s Jelly Bean 2**, s
 - Four shapes (Hurache-X, Vapor, Ultré, Pegasus)
 - 16mm builds, UPA-A approval called out in coverage
 - Softer/denser foam feel vs. the brand’s Power 2 line (more dwell, less raw pop)
-- Retail target around **$169.99** USD in early reporting
+- Mid-tier / improver pricing in early reporting (confirm live — not a fixed list price)
 
 That sits above true entry fiberglass but squarely in the “serious recreational / improver” band many players graduate into after a first season. Cross-check against our [under-$100 paddle guide](/guides/pickleball-paddles-under-100) and [skill tiers](/guides/how-we-define-skill-tiers) before assuming you need the newest foam SKU.
 
@@ -40,11 +40,11 @@ Foam used to be a flagship talking point. This week’s Theory launch and Jelly 
 1. Name the job (forgiveness vs. spin vs. plow-through).
 2. Ignore density slogans without weight, shape, and thickness.
 3. Prefer return-friendly sellers when feel is the pitch.
-4. Remember catalog prices on this site are approximate — CAD on the Canada host, USD labeling on the U.S. host via our market rewrite — never live checkout prices.
+4. Treat any catalog tier on this site as a relative band only — always confirm the live store price before you buy.
 
 ## Quiet industry backdrop
 
-Broader IP and premium-foam stories (JOOLA’s spring patent actions; earlier Selkirk OMNI ReactCore messaging) remain the structural backdrop, but they are not new this week. The actionable news for buyers right now is simpler: **foam is no longer only a $250+ conversation**. Shortlist two paddles max, demo if you can, and buy for the week you actually play — not the paddle bag you saw on FS1.
+Broader IP and premium-foam stories (JOOLA’s spring patent actions; earlier Selkirk OMNI ReactCore messaging) remain the structural backdrop, but they are not new this week. The actionable news for buyers right now is simpler: **foam is no longer only a flagship conversation**. Shortlist two paddles max, demo if you can, and buy for the week you actually play — not the paddle bag you saw on FS1.
 
 ## Keep reading
 

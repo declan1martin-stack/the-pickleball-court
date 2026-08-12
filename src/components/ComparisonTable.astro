@@ -74,14 +74,14 @@ const fieldLabels: Record<SpecField, string> = {
 								</td>
 							))}
 							<td class="px-4 py-4">
-								<AffiliateButton href={product.affiliateUrl} productId={product.id} variant="secondary" label="Check price" />
+								<AffiliateButton href={product.affiliateUrl} productId={product.id} variant="secondary" label="Check current price" />
 							</td>
 						</tr>
 					))}
 				</tbody>
 			</table>
 			<p class="border-t border-zinc-200 bg-zinc-50 px-4 py-2 text-xs text-zinc-500">
-				Price tiers ($–$$$$$) are approximate catalog bands ($≤50, $$≤75, $$$≤100, $$$$≤150, $$$$$ above $150), not live store prices. Always confirm the current price on {AMAZON_LABEL}.
+				Price tiers ($–$$$$$) are relative catalog bands (entry through flagship), not live store prices. Always confirm the current price on {AMAZON_LABEL}.
 			</p>
 		</div>
 

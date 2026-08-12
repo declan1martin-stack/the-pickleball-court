@@ -55,8 +55,9 @@ export function assertAffiliateUrl(url: string): string {
 export type PriceTier = '$' | '$$' | '$$$' | '$$$$' | '$$$$$';
 
 /**
- * Approximate catalog price tiers (never live store prices):
- * $ ≤ $50 · $$ ≤ $75 · $$$ ≤ $100 · $$$$ ≤ $150 · $$$$$ > $150
+ * Map catalog `price` to a relative tier token ($–$$$$$).
+ * Prefer storing tiers directly in gear.json. Numeric leftovers are mapped once
+ * for safety and must not be displayed as live prices.
  */
 export function getPriceTier(price: string): PriceTier {
 	const trimmed = price.trim();
