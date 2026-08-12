@@ -1,0 +1,29 @@
+---
+import { resolveNewsLink, SITE } from '../lib/newsLink';
+
+interface Props {
+	/** Bare stem (`paddle-roundup`) or full slug (`us-roundup-…` / `/news/us-roundup-…`). */
+	slug: string;
+	class?: string;
+}
+
+const { slug, class: className = 'font-semibold text-primary underline' } = Astro.props;
+const link = await resolveNewsLink(slug);
+const peerLabel = link.peerMarket === 'us' ? 'US site' : link.peerMarket === 'ca' ? 'Canada site' : 'partner site';
+---
+
+<a
+	href={link.href}
+	class={className}
+	{...(link.external
+		? {
+				rel: 'noopener',
+				target: '_blank',
+				title: `Opens on ${SITE.peerHost.replace(/^https?:\/\//, '')}`,
+			}
+		: {})}
+>
+	<slot />{link.external && (
+		<span class="ml-1 text-xs font-medium text-ink-faint no-underline">({peerLabel})</span>
+	)}
+</a>

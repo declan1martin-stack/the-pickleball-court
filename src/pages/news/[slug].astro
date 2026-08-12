@@ -4,6 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
 import RelatedNews from '../../components/RelatedNews.astro';
+import NewsLink from '../../components/NewsLink.astro';
 import { resolveAuthor, authorPath } from '../../data/authors';
 import {
 	formatNewsDate,
@@ -40,6 +41,7 @@ const heroAlt = entry.data.heroAlt ?? entry.data.title;
 const ogImage = heroImage ?? '/og-default.png';
 const markets = entry.data.markets ?? (['ca', 'us'] as const);
 const sharedAcrossMarkets = markets.includes('ca') && markets.includes('us');
+const mdxComponents = { NewsLink };
 ---
 
 <Layout
@@ -105,7 +107,7 @@ const sharedAcrossMarkets = markets.includes('ca') && markets.includes('us');
 
 	<div class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
 		<div class="prose-article max-w-[70ch] text-ink [&_a]:font-semibold [&_a]:text-primary [&_a]:underline [&_p]:my-4 [&_p]:leading-relaxed">
-			<Content />
+			<Content components={mdxComponents} />
 		</div>
 
 		{entry.data.sourceUrl && (
