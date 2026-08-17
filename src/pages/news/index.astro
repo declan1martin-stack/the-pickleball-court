@@ -1,7 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { formatNewsDate, getNewsForMarket, NEWS_PAGE_SIZE, newsPath, newsSlug } from '../../lib/news';
+import {
+	formatNewsDate,
+	getNewsForMarket,
+	NEWS_PAGE_SIZE,
+	newsHeroMedia,
+	newsPath,
+	newsSlug,
+} from '../../lib/news';
 import { MARKET_LABEL, SITE_NAME } from '../../lib/site';
 
 const allNews = await getNewsForMarket();
@@ -41,16 +48,17 @@ const entries = allNews.slice(start, start + NEWS_PAGE_SIZE);
 			{entries.map((entry) => {
 				const slug = newsSlug(entry);
 				const href = newsPath(entry);
+				const hero = newsHeroMedia(entry);
 				return (
 					<li
 						id={slug}
 						class="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)]"
 					>
-						{entry.data.heroImage && (
+						{hero.src && (
 							<a href={href} tabindex="-1" aria-hidden="true">
 								<img
-									src={entry.data.heroImage}
-									alt={entry.data.heroAlt ?? ''}
+									src={hero.src}
+									alt={hero.alt}
 									width="800"
 									height="450"
 									loading="lazy"

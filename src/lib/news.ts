@@ -78,3 +78,27 @@ export function formatNewsDate(
 ): string {
 	return date.toLocaleDateString('en-CA', { timeZone: 'UTC', ...options });
 }
+
+/** Resolve hero media from heroImage* or image* frontmatter. */
+export function newsHeroMedia(entry: NewsEntry): {
+	src: string | undefined;
+	alt: string;
+	credit: string | undefined;
+	creditHref: string | undefined;
+} {
+	const data = entry.data;
+	const src = data.heroImage ?? data.image;
+	const alt = data.heroAlt ?? data.imageAlt ?? data.title;
+	const credit =
+		data.heroCredit ??
+		(data.imageCredit || data.imageLicense
+			? [
+					data.imageCredit ? `Photo: ${data.imageCredit}` : null,
+					data.imageLicense ? `(${data.imageLicense})` : null,
+				]
+					.filter(Boolean)
+					.join(' ')
+			: undefined);
+	const creditHref = data.imageSource;
+	return { src, alt, credit, creditHref };
+}

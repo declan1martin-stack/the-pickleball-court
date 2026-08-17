@@ -87,6 +87,15 @@ export const news = defineCollection({
 		heroAlt: z.string().optional(),
 		/** Optional attribution line (good practice; not legally required for Unsplash). */
 		heroCredit: z.string().optional(),
+		/**
+		 * Alternate hero fields used by some roundups (Wikimedia / local assets).
+		 * Prefer these when present; template falls back to heroImage / heroAlt / heroCredit.
+		 */
+		image: z.string().optional(),
+		imageAlt: z.string().optional(),
+		imageCredit: z.string().optional(),
+		imageSource: z.string().url().optional(),
+		imageLicense: z.string().optional(),
 		sourceUrl: z.string().url().optional(),
 		author: authorIdSchema.default(DEFAULT_AUTHOR_ID),
 	}),

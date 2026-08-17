@@ -10,6 +10,7 @@ import {
 	formatNewsDate,
 	getNewsForMarket,
 	getRelatedNews,
+	newsHeroMedia,
 	newsPath,
 	newsSlug,
 	type NewsEntry,
@@ -36,8 +37,7 @@ const description = clampMetaDescription(entry.data.summary);
 const allNews = await getNewsForMarket();
 const relatedNews = getRelatedNews(allNews, entry, 3);
 const isRoundup = entry.data.type === 'roundup';
-const heroImage = entry.data.heroImage;
-const heroAlt = entry.data.heroAlt ?? entry.data.title;
+const { src: heroImage, alt: heroAlt, credit: heroCredit, creditHref } = newsHeroMedia(entry);
 const ogImage = heroImage ?? '/og-default.png';
 const markets = entry.data.markets ?? (['ca', 'us'] as const);
 const sharedAcrossMarkets = markets.includes('ca') && markets.includes('us');
@@ -97,8 +97,24 @@ const mdxComponents = { NewsLink };
 						decoding="async"
 						class="aspect-[21/9] w-full rounded-[var(--radius-lg)] object-cover object-[center_35%]"
 					/>
-					{entry.data.heroCredit && (
-						<figcaption class="mt-2 text-xs text-ink-faint">{entry.data.heroCredit}</figcaption>
+					{heroCredit && (
+						<figcaption class="mt-2 text-xs text-ink-faint">
+							{creditHref ? (
+								<>
+									{heroCredit}{' '}
+									<a
+										href={creditHref}
+										rel="noopener noreferrer"
+										class="underline"
+										target="_blank"
+									>
+										Source
+									</a>
+								</>
+							) : (
+								heroCredit
+							)}
+						</figcaption>
 					)}
 				</figure>
 			)}

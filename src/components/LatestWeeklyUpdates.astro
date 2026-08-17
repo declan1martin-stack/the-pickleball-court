@@ -1,10 +1,11 @@
 ---
-import { formatNewsDate, getNewsForMarket, newsPath } from '../lib/news';
+import { formatNewsDate, getNewsForMarket, newsHeroMedia, newsPath } from '../lib/news';
 
 const news = await getNewsForMarket();
 /** Prefer the newest roundup as the lead; fall back to newest update. */
 const lead = news.find((entry) => entry.data.type === 'roundup') ?? news[0];
 const more = lead ? news.filter((entry) => entry.id !== lead.id).slice(0, 2) : [];
+const leadHero = lead ? newsHeroMedia(lead) : null;
 ---
 
 {lead && (
@@ -27,11 +28,11 @@ const more = lead ? news.filter((entry) => entry.id !== lead.id).slice(0, 2) : [
 
 			<div class="grid gap-5 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
 				<article class="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)]">
-					{lead.data.heroImage && (
+					{leadHero?.src && (
 						<a href={newsPath(lead)} tabindex="-1" aria-hidden="true">
 							<img
-								src={lead.data.heroImage}
-								alt={lead.data.heroAlt ?? ''}
+								src={leadHero.src}
+								alt={leadHero.alt}
 								width="1200"
 								height="630"
 								loading="eager"
@@ -73,13 +74,15 @@ const more = lead ? news.filter((entry) => entry.id !== lead.id).slice(0, 2) : [
 							More weekly updates
 						</p>
 						<ul class="mt-3 grid gap-4">
-							{more.map((entry) => (
+							{more.map((entry) => {
+								const hero = newsHeroMedia(entry);
+								return (
 								<li class="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)]">
-									{entry.data.heroImage && (
+									{hero.src && (
 										<a href={newsPath(entry)} tabindex="-1" aria-hidden="true">
 											<img
-												src={entry.data.heroImage}
-												alt={entry.data.heroAlt ?? ''}
+												src={hero.src}
+												alt={hero.alt}
 												width="640"
 												height="360"
 												loading="lazy"
@@ -112,7 +115,8 @@ const more = lead ? news.filter((entry) => entry.id !== lead.id).slice(0, 2) : [
 										</p>
 									</div>
 								</li>
-							))}
+								);
+							})}
 						</ul>
 					</div>
 				)}

@@ -1,5 +1,5 @@
 ---
-import { formatNewsDate, newsPath, type NewsEntry } from '../lib/news';
+import { formatNewsDate, newsHeroMedia, newsPath, type NewsEntry } from '../lib/news';
 
 interface Props {
 	entries: NewsEntry[];
@@ -19,13 +19,15 @@ const items = entries.slice(0, 3);
 			<a href="/news" class="link-brand text-sm">All news →</a>
 		</div>
 		<ul class="grid gap-4 md:grid-cols-3">
-			{items.map((entry) => (
+			{items.map((entry) => {
+				const hero = newsHeroMedia(entry);
+				return (
 				<li class="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)]">
-					{entry.data.heroImage && (
+					{hero.src && (
 						<a href={newsPath(entry)} tabindex="-1" aria-hidden="true">
 							<img
-								src={entry.data.heroImage}
-								alt={entry.data.heroAlt ?? ''}
+								src={hero.src}
+								alt={hero.alt}
 								width="640"
 								height="360"
 								loading="lazy"
@@ -55,7 +57,8 @@ const items = entries.slice(0, 3);
 						<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-muted">{entry.data.summary}</p>
 					</div>
 				</li>
-			))}
+				);
+			})}
 		</ul>
 	</section>
 )}
