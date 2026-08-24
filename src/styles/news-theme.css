@@ -1,0 +1,30 @@
+/* Shared newsroom tokens. Layout is identical on both hosts — only the
+   palette changes. Set data-site="us" | "ca" on <html> (Layout.astro). */
+
+:root,
+[data-site='us'] {
+	--nc-surface: #ffffff;
+	--nc-surface-2: #faf8f4;
+	--nc-border: #e3e0da;
+	--nc-ink: #1a2027;
+	--nc-muted: #5b6570;
+
+	/* US — design-system navy + terracotta accent */
+	--nc-brand: #1c4e80;
+	--nc-brand-ink: #123449;
+	--nc-brand-tint: #e7f0f8;
+	--nc-accent: #c2410c;
+}
+
+[data-site='ca'] {
+	/* Canada — maple red brand, charcoal accent */
+	--nc-brand: #b3122b;
+	--nc-brand-ink: #7a0f20;
+	--nc-brand-tint: #fbe9ec;
+	--nc-accent: #1f2d3d;
+}
+
+:root {
+	--nc-radius: 12px;
+	--nc-gap: 1.25rem;
+}

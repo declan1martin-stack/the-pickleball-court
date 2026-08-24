@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/news-theme.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
@@ -74,7 +75,7 @@ const graph = {
 ---
 
 <!doctype html>
-<html lang={site.inLanguage} class="scroll-smooth">
+<html lang={site.inLanguage} class="scroll-smooth" data-site={site.region}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />

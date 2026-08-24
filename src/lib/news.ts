@@ -108,3 +108,116 @@ export function newsHeroMedia(entry: NewsEntry): {
 	const creditHref = data.imageSource;
 	return { src, alt, credit, creditHref };
 }
+
+export type NewsCategory = 'United States' | 'Canada' | 'Rising Stars' | 'Gear' | 'Global';
+
+/** Tag → newsroom section label. Order matters (gear/global before Canada). */
+export function newsCategory(tags: string[] = []): NewsCategory {
+	const t = tags.map((tag) => tag.toLowerCase());
+	if (t.some((tag) => tag.includes('rising star'))) return 'Rising Stars';
+	if (t.includes('gear') || t.includes('paddles') || t.includes('brands')) return 'Gear';
+	if (t.some((tag) => tag.includes('ranking') || tag.includes('world pickleball'))) return 'Global';
+	if (
+		t.some(
+			(tag) =>
+				tag.includes('canada') ||
+				tag.includes('cnpl') ||
+				tag.includes('toronto') ||
+				tag.includes('montreal') ||
+				tag.includes('vancouver'),
+		)
+	) {
+		return 'Canada';
+	}
+	return 'United States';
+}
+
+/** Distinct Commons fallbacks so categories never share a default photo. */
+export const NEWS_CATEGORY_IMAGE: Record<
+	NewsCategory,
+	{ src: string; credit: string; license: string; alt: string }
+> = {
+	'United States': {
+		src: '/images/news/pickleball-pros.jpg',
+		credit: 'Picklerpeej',
+		license: 'CC BY-SA 4.0',
+		alt: 'Two players in a rally on an outdoor pickleball court',
+	},
+	Canada: {
+		src: '/images/news/pickleball-player.jpg',
+		credit: 'Picklerpeej',
+		license: 'CC BY-SA 4.0',
+		alt: 'A pickleball player preparing to hit on an outdoor court',
+	},
+	'Rising Stars': {
+		src: '/images/news/willy-chung.jpg',
+		credit: 'EasonChou0621',
+		license: 'CC0',
+		alt: 'Taiwanese pickleball player Willy Chung in competition',
+	},
+	Gear: {
+		src: '/images/news/sandy-pickle.jpg',
+		credit: 'Proplayerstour',
+		license: 'CC BY-SA 4.0',
+		alt: 'Players competing in sandy pickleball on a beach court',
+	},
+	Global: {
+		src: '/images/news/johns-brothers.jpg',
+		credit: 'Mark.E.Johns',
+		license: 'CC BY-SA 4.0',
+		alt: 'Ben Johns and Collin Johns on a pickleball court',
+	},
+};
+
+const CANADA_EVENTS_IMAGE = {
+	src: '/images/news/pickleballcourt.png',
+	credit: 'Mgreason',
+	license: 'CC0',
+	alt: 'Diagram of a regulation pickleball court with dimensions',
+};
+
+export type NewsCardMedia = {
+	src: string;
+	alt: string;
+	credit: string | undefined;
+	license: string | undefined;
+};
+
+/** Unique frontmatter `image` wins; otherwise a per-category default. */
+export function newsCardMedia(entry: NewsEntry, usedSrcs?: Set<string>): NewsCardMedia {
+	const category = newsCategory(entry.data.tags);
+	const hero = newsHeroMedia(entry);
+	const events = entry.data.tags.some((tag) => {
+		const t = tag.toLowerCase();
+		return t.includes('cnpl') || t.includes('nationals');
+	});
+	const fallback =
+		category === 'Canada' && events ? CANADA_EVENTS_IMAGE : NEWS_CATEGORY_IMAGE[category];
+
+	let src = hero.src || fallback.src;
+	let alt = hero.src ? hero.alt : fallback.alt;
+	let credit = hero.src
+		? (entry.data.imageCredit ?? entry.data.heroCredit)
+		: fallback.credit;
+	let license = hero.src ? entry.data.imageLicense : fallback.license;
+
+	if (usedSrcs?.has(src)) {
+		const unused = [
+			NEWS_CATEGORY_IMAGE['United States'],
+			NEWS_CATEGORY_IMAGE.Canada,
+			NEWS_CATEGORY_IMAGE['Rising Stars'],
+			NEWS_CATEGORY_IMAGE.Gear,
+			NEWS_CATEGORY_IMAGE.Global,
+			CANADA_EVENTS_IMAGE,
+		].find((item) => !usedSrcs.has(item.src));
+		if (unused) {
+			src = unused.src;
+			alt = unused.alt;
+			credit = unused.credit;
+			license = unused.license;
+		}
+	}
+	usedSrcs?.add(src);
+
+	return { src, alt, credit, license };
+}

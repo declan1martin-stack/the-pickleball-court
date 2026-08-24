@@ -1,0 +1,202 @@
+---
+import { formatNewsDate } from '../lib/news';
+
+export interface Props {
+	href: string;
+	title: string;
+	date: Date | string;
+	category?: string;
+	summary?: string;
+	image?: string;
+	imageAlt?: string;
+	imageCredit?: string;
+	imageLicense?: string;
+	variant?: 'hero' | 'standard' | 'list';
+}
+
+const {
+	href,
+	title,
+	date,
+	category = 'News',
+	summary,
+	image,
+	imageAlt = '',
+	imageCredit,
+	imageLicense,
+	variant = 'standard',
+} = Astro.props;
+
+const dateStr = formatNewsDate(new Date(date), { month: 'short', day: 'numeric', year: 'numeric' });
+const creditLabel = imageCredit
+	? imageCredit.replace(/^photo:\s*/i, '')
+	: undefined;
+const showCredit = Boolean(creditLabel && variant !== 'list');
+---
+
+<a
+	class:list={['nc', `nc-${variant}`]}
+	href={href}
+>
+	{image && (
+		<div class="nc-media">
+			<img
+				src={image}
+				alt={imageAlt}
+				width={variant === 'list' ? 176 : 1200}
+				height={variant === 'list' ? 128 : 675}
+				loading={variant === 'hero' ? 'eager' : 'lazy'}
+				fetchpriority={variant === 'hero' ? 'high' : undefined}
+				decoding="async"
+			/>
+			{showCredit && (
+				<span class="nc-credit">
+					Photo: {creditLabel}{imageLicense ? ` · ${imageLicense}` : ''}
+				</span>
+			)}
+		</div>
+	)}
+	<div class="nc-body">
+		<span class="nc-eyebrow">{category}</span>
+		<h3 class="nc-title">{title}</h3>
+		{summary && variant === 'hero' && <p class="nc-summary">{summary}</p>}
+		<span class="nc-meta">{dateStr}</span>
+	</div>
+	{variant === 'list' && <span class="nc-arrow" aria-hidden="true">→</span>}
+</a>
+
+<style>
+	.nc {
+		display: flex;
+		flex-direction: column;
+		text-decoration: none;
+		color: var(--nc-ink);
+		background: var(--nc-surface);
+		border: 1px solid var(--nc-border);
+		border-radius: var(--nc-radius);
+		overflow: hidden;
+		transition: box-shadow 0.15s ease, transform 0.15s ease;
+	}
+	.nc:hover {
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+		transform: translateY(-2px);
+	}
+	.nc:focus-visible {
+		outline: 2px solid var(--nc-brand);
+		outline-offset: 3px;
+	}
+
+	.nc-media {
+		position: relative;
+		aspect-ratio: 16 / 10;
+		background: var(--nc-surface-2);
+	}
+	.nc-media img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+	.nc-credit {
+		position: absolute;
+		left: 8px;
+		bottom: 8px;
+		font-size: 11px;
+		line-height: 1.2;
+		color: #fff;
+		background: rgba(0, 0, 0, 0.55);
+		padding: 2px 6px;
+		border-radius: 4px;
+		max-width: calc(100% - 16px);
+	}
+
+	.nc-body {
+		padding: 0.9rem 1.1rem 1.1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+	.nc-eyebrow {
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--nc-brand);
+	}
+	.nc-title {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 1.35;
+	}
+	.nc-summary {
+		margin: 2px 0 0;
+		font-size: 0.95rem;
+		color: var(--nc-muted);
+		line-height: 1.55;
+	}
+	.nc-meta {
+		font-size: 12px;
+		color: var(--nc-muted);
+	}
+
+	.nc-hero .nc-media {
+		aspect-ratio: 16 / 9;
+	}
+	.nc-hero .nc-title {
+		font-size: 1.5rem;
+	}
+	@media (min-width: 760px) {
+		.nc-hero {
+			flex-direction: row;
+		}
+		.nc-hero .nc-media {
+			flex: 1 1 58%;
+			aspect-ratio: auto;
+			min-height: 300px;
+		}
+		.nc-hero .nc-body {
+			flex: 1 1 42%;
+			justify-content: center;
+			padding: 1.75rem;
+		}
+	}
+
+	.nc-list {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		border: 0;
+		border-bottom: 1px solid var(--nc-border);
+		border-radius: 0;
+		background: transparent;
+		padding: 0.85rem 0.25rem;
+	}
+	.nc-list:hover {
+		box-shadow: none;
+		transform: none;
+		background: var(--nc-surface-2);
+	}
+	.nc-list .nc-media {
+		flex: 0 0 88px;
+		width: 88px;
+		height: 64px;
+		aspect-ratio: auto;
+		border-radius: 8px;
+		overflow: hidden;
+	}
+	.nc-list .nc-body {
+		flex: 1 1 auto;
+		padding: 0;
+		gap: 3px;
+	}
+	.nc-list .nc-title {
+		font-size: 0.98rem;
+	}
+	.nc-arrow {
+		color: var(--nc-brand);
+		font-size: 1rem;
+	}
+</style>
