@@ -1,5 +1,5 @@
 ---
-import { formatNewsDate, newsHeroMedia, newsPath, type NewsEntry } from '../lib/news';
+import { formatNewsDate, newsHeroMedia, newsPath, newsTypeLabel, type NewsEntry } from '../lib/news';
 
 interface Props {
 	entries: NewsEntry[];
@@ -38,7 +38,7 @@ const items = entries.slice(0, 3);
 					)}
 					<div class="p-5">
 						<p class="font-display text-xs font-bold uppercase tracking-wider text-secondary">
-							{entry.data.type === 'roundup' ? 'Roundup' : 'Update'}
+							{newsTypeLabel(entry.data.type)}
 							<span aria-hidden="true"> · </span>
 							<time datetime={entry.data.date.toISOString()}>
 								{formatNewsDate(entry.data.date, {

@@ -33,6 +33,7 @@ const CA_ONLY_NEWS = new Set([
 	'/news/ca-feature-cnpl-biggest-markets-toronto-montreal-vancouver-august-2026',
 	'/news/ca-guide-where-to-play-pickleball-toronto-august-2026',
 	'/news/ca-roundup-ppa-delta-nationals-august-21-2026',
+	'/news/ca-feature-nationals-preview-august-21-2026',
 ]);
 
 const US_ONLY_NEWS = new Set([
@@ -43,6 +44,7 @@ const US_ONLY_NEWS = new Set([
 	'/news/us-guide-where-to-play-pickleball-los-angeles-august-2026',
 	'/news/us-roundup-mlp-semis-central-park-august-21-2026',
 	'/news/us-roundup-rising-stars-august-21-2026',
+	'/news/us-feature-mlp-semifinals-preview-august-21-2026',
 ]);
 
 function resolveHost(hostname) {

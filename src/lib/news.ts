@@ -28,6 +28,12 @@ export function newsSlug(entry: NewsEntry): string {
 	return entry.id.replace(/\.(md|mdx)$/i, '');
 }
 
+export function newsTypeLabel(type: NewsEntry['data']['type']): string {
+	if (type === 'roundup') return 'Roundup';
+	if (type === 'feature') return 'Feature';
+	return 'Update';
+}
+
 export function newsPath(entry: NewsEntry): string {
 	return `/news/${newsSlug(entry)}`;
 }

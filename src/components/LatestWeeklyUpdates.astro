@@ -1,5 +1,5 @@
 ---
-import { formatNewsDate, getNewsForMarket, newsHeroMedia, newsPath } from '../lib/news';
+import { formatNewsDate, getNewsForMarket, newsHeroMedia, newsPath, newsTypeLabel } from '../lib/news';
 
 const news = await getNewsForMarket();
 /** Prefer the newest roundup as the lead; fall back to newest update. */
@@ -45,7 +45,7 @@ const leadHero = lead ? newsHeroMedia(lead) : null;
 					)}
 					<div class="p-6 sm:p-8">
 						<p class="font-display text-xs font-bold uppercase tracking-wider text-secondary">
-							{lead.data.type === 'roundup' ? 'Roundup' : 'Update'}
+							{newsTypeLabel(lead.data.type)}
 							<span aria-hidden="true"> · </span>
 							<time datetime={lead.data.date.toISOString()}>
 								{formatNewsDate(lead.data.date, {
@@ -94,7 +94,7 @@ const leadHero = lead ? newsHeroMedia(lead) : null;
 									)}
 									<div class="p-5">
 										<p class="font-display text-xs font-bold uppercase tracking-wider text-secondary">
-											{entry.data.type === 'roundup' ? 'Roundup' : 'Update'}
+											{newsTypeLabel(entry.data.type)}
 											<span aria-hidden="true"> · </span>
 											<time datetime={entry.data.date.toISOString()}>
 												{formatNewsDate(entry.data.date, {

@@ -75,8 +75,8 @@ export const news = defineCollection({
 		date: z.coerce.date(),
 		summary: z.string().min(40),
 		tags: z.array(z.string()).default([]),
-		/** Single-item update vs multi-story weekly roundup. */
-		type: z.enum(['update', 'roundup']).default('update'),
+		/** Single-item update, weekly roundup, or longer feature. */
+		type: z.enum(['update', 'roundup', 'feature']).default('update'),
 		/**
 		 * Which host should list this entry (homepage widget, /news index, RSS).
 		 * Direct URLs still build for every entry. Default: both markets.
