@@ -5,6 +5,8 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
 import RelatedNews from '../../components/RelatedNews.astro';
 import NewsLink from '../../components/NewsLink.astro';
+import Disclosure from '../../components/Disclosure.astro';
+import SmartImage from '../../components/SmartImage.astro';
 import { resolveAuthor, authorPath } from '../../data/authors';
 import {
 	formatNewsDate,
@@ -88,11 +90,12 @@ const mdxComponents = { NewsLink };
 			</p>
 			{heroImage && (
 				<figure class="mt-8">
-					<img
+					<SmartImage
 						src={heroImage}
 						alt={heroAlt}
-						width="1200"
-						height="630"
+						width={1200}
+						height={630}
+						loading="eager"
 						fetchpriority="high"
 						decoding="async"
 						class="aspect-[21/9] w-full rounded-[var(--radius-lg)] object-cover object-[center_35%]"
@@ -122,7 +125,8 @@ const mdxComponents = { NewsLink };
 	</article>
 
 	<div class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
-		<div class="prose-article max-w-[70ch] text-ink [&_a]:font-semibold [&_a]:text-primary [&_a]:underline [&_p]:my-4 [&_p]:leading-relaxed">
+		<Disclosure compact />
+		<div class="prose-article mt-6 max-w-[70ch] text-ink [&_a]:font-semibold [&_a]:text-primary [&_a]:underline [&_p]:my-4 [&_p]:leading-relaxed">
 			<Content components={mdxComponents} />
 		</div>
 
