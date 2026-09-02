@@ -4,6 +4,7 @@ import '../styles/news-theme.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+import Schema from '../components/Schema.astro';
 import {
 	SITE_URL,
 	DEFAULT_OG_IMAGE,
@@ -97,7 +98,7 @@ const graph = {
 			name="robots"
 			content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'}
 		/>
-		<meta name="theme-color" content="#047857" />
+		<meta name="theme-color" content="#1c4e80" />
 
 		<meta property="og:site_name" content={SITE_NAME} />
 		<meta property="og:locale" content={OG_LOCALE} />
@@ -118,7 +119,7 @@ const graph = {
 		<meta name="twitter:description" content={metaDescription} />
 		<meta name="twitter:image" content={imageUrl} />
 
-		<script type="application/ld+json" set:html={JSON.stringify(graph)} />
+		<Schema data={graph} />
 
 		<Analytics />
 	</head>

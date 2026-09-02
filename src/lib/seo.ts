@@ -37,8 +37,8 @@ export function hreflangAlternates(path = '/'): { hreflang: string; href: string
 	const normalized = normalizePath(path);
 	const suffix = normalized === '/' ? '' : normalized;
 	return [
-		{ hreflang: 'en-CA', href: `${CA_ROOT}${suffix}` },
-		{ hreflang: 'en-US', href: `${US_ROOT}${suffix}` },
+		{ hreflang: 'en-ca', href: `${CA_ROOT}${suffix}` },
+		{ hreflang: 'en-us', href: `${US_ROOT}${suffix}` },
 		{ hreflang: 'x-default', href: `${CA_ROOT}${suffix}` },
 	];
 }
@@ -130,7 +130,14 @@ export function itemListSchema(input: {
 	name: string;
 	description: string;
 	path: string;
-	items: { name: string; url: string; position: number }[];
+	items: {
+		name: string;
+		url: string;
+		position: number;
+		image?: string;
+		brand?: string;
+		description?: string;
+	}[];
 }) {
 	return {
 		'@type': 'ItemList',
@@ -142,7 +149,16 @@ export function itemListSchema(input: {
 			'@type': 'ListItem',
 			position: item.position,
 			name: item.name,
-			url: item.url,
+			item: {
+				'@type': 'Product',
+				name: item.name,
+				url: item.url,
+				...(item.image ? { image: item.image } : {}),
+				...(item.description ? { description: item.description } : {}),
+				...(item.brand
+					? { brand: { '@type': 'Brand', name: item.brand } }
+					: {}),
+			},
 		})),
 	};
 }
@@ -193,7 +209,17 @@ export function articleSchema(input: {
 				? { '@id': `${input.authorUrl}#person`, url: input.authorUrl }
 				: {}),
 		},
-		publisher: { '@id': ORG_ID },
+		publisher: {
+			'@type': 'Organization',
+			'@id': ORG_ID,
+			name: site.region === 'us' ? 'US Pickleball Court' : 'The Pickleball Court',
+			logo: {
+				'@type': 'ImageObject',
+				url: absoluteUrl('/og-default.png'),
+				width: 1200,
+				height: 630,
+			},
+		},
 		datePublished,
 		dateModified,
 		mainEntityOfPage: {

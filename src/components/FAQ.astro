@@ -1,4 +1,6 @@
 ---
+import Schema from './Schema.astro';
+
 interface FaqItem {
 	question: string;
 	answer: string;
@@ -41,6 +43,6 @@ const jsonLd = {
 				</details>
 			))}
 		</div>
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+		<Schema data={jsonLd} />
 	</section>
 )}
