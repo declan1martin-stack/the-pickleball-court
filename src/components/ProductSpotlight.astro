@@ -1,7 +1,9 @@
 ---
 import AffiliateButton from './AffiliateButton.astro';
-import { getPriceTier, getProductById } from '../lib/products';
-import { AMAZON_LABEL } from '../lib/site';
+import SmartImage from './SmartImage.astro';
+import { getAffiliateUrl, getPriceTier, getProductById } from '../lib/products';
+import { AMAZON_STORE } from '../lib/site';
+import { marketizeCopy } from '../lib/marketCopy';
 
 interface Props {
 	productId: string;
@@ -19,34 +21,34 @@ const priceLabel = product
 	<aside class="my-8 overflow-hidden rounded-2xl border border-emerald-200 bg-white shadow-sm">
 		<div class="grid gap-0 md:grid-cols-[220px_1fr]">
 			<div class="relative aspect-[4/3] bg-zinc-100 md:aspect-auto md:min-h-full">
-				<img
+				<SmartImage
 					src={product.imageUrl}
 					alt={`${product.brand} ${product.name}`}
-					width="440"
-					height="330"
+					width={440}
+					height={330}
 					loading="lazy"
 					decoding="async"
 					class="h-full w-full object-cover"
 				/>
 			</div>
 			<div class="flex flex-col p-5 sm:p-6">
-				<p class="text-xs font-bold uppercase tracking-wider text-emerald-700">{eyebrow}</p>
+				<p class="text-xs font-bold uppercase tracking-wider text-emerald-800">{eyebrow}</p>
 				<h3 class="mt-1 text-xl font-black text-zinc-900">{product.name}</h3>
 				<p class="mt-1 text-sm font-semibold text-zinc-500">{product.brand}</p>
-				<p class="mt-3 text-sm leading-relaxed text-zinc-600">{product.description}</p>
+				<p class="mt-3 text-sm leading-relaxed text-zinc-600">{marketizeCopy(product.description)}</p>
 				<p class="mt-3 text-xs text-zinc-500">
-					{priceLabel} — confirm the current price on {AMAZON_LABEL}.
+					{priceLabel} — confirm the current price on {AMAZON_STORE}.
 				</p>
 				<ul class="mt-4 space-y-2 text-sm text-zinc-700">
 					{product.features.map((feature) => (
 						<li class="flex gap-2">
 							<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-600" aria-hidden="true" />
-							<span>{feature}</span>
+							<span>{marketizeCopy(feature)}</span>
 						</li>
 					))}
 				</ul>
 				<div class="mt-5">
-					<AffiliateButton href={product.affiliateUrl} productId={product.id} />
+					<AffiliateButton href={getAffiliateUrl(product)} productId={product.id} />
 				</div>
 			</div>
 		</div>

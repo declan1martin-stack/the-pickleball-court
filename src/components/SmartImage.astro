@@ -1,0 +1,59 @@
+---
+import { Picture } from 'astro:assets';
+
+interface Props {
+	src: string;
+	alt: string;
+	width: number;
+	height: number;
+	loading?: 'lazy' | 'eager';
+	fetchpriority?: 'high' | 'low' | 'auto';
+	decoding?: 'async' | 'auto' | 'sync';
+	class?: string;
+}
+
+const {
+	src,
+	alt,
+	width,
+	height,
+	loading = 'lazy',
+	fetchpriority,
+	decoding = 'async',
+	class: className,
+} = Astro.props;
+
+const remote = /^https?:\/\//i.test(src);
+const eager = loading === 'eager' || fetchpriority === 'high';
+const imgLoading = eager ? 'eager' : 'lazy';
+const imgPriority = fetchpriority === 'high' ? 'high' : undefined;
+---
+
+{
+	remote ? (
+		<Picture
+			src={src}
+			alt={alt}
+			width={width}
+			height={height}
+			formats={['avif', 'webp']}
+			fallbackFormat="jpg"
+			loading={imgLoading}
+			fetchpriority={imgPriority}
+			decoding={decoding}
+			class={className}
+			pictureAttributes={{ class: className }}
+		/>
+	) : (
+		<img
+			src={src}
+			alt={alt}
+			width={width}
+			height={height}
+			loading={imgLoading}
+			fetchpriority={imgPriority}
+			decoding={decoding}
+			class={className}
+		/>
+	)
+}

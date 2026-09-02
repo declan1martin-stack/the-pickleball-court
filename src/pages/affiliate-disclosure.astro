@@ -2,7 +2,7 @@
 import TrustPageLayout from '../layouts/TrustPageLayout.astro';
 import Disclosure from '../components/Disclosure.astro';
 import { partnersConfigured, PARTNER_LABELS } from '../lib/partners';
-import { AFFILIATE_TAG, AMAZON_LABEL, SITE_NAME } from '../lib/site';
+import { AFFILIATE_TAG, AMAZON_LABEL, AMAZON_STORE, SITE_NAME, SITE_REGION } from '../lib/site';
 
 const { selkirkTracked, pickleballSuperstoreTracked } = partnersConfigured();
 ---
@@ -26,13 +26,15 @@ const { selkirkTracked, pickleballSuperstoreTracked } = partnersConfigured();
 	<h2>Affiliate links</h2>
 	<p>
 		{SITE_NAME} participates in affiliate advertising programs designed to provide a means for sites to earn
-		advertising fees by advertising and linking to retail partners, including {AMAZON_LABEL},{' '}
-		{PARTNER_LABELS.selkirk}, and {PARTNER_LABELS.pickleballSuperstore}.
+		advertising fees by advertising and linking to retail partners, including {AMAZON_STORE} and{' '}
+		{PARTNER_LABELS.selkirk}
+		{SITE_REGION === 'ca' ? `, and ${PARTNER_LABELS.pickleballSuperstore}` : ''}.
 	</p>
 	<ul>
 		<li>
-			<strong>{AMAZON_LABEL}:</strong> product links may use our Associates tracking tag
-			<code>{AFFILIATE_TAG}</code>.
+			<strong>{AMAZON_STORE}:</strong> this host’s product links open {AMAZON_STORE} ({AMAZON_LABEL}) with Associates
+			tag <code>{AFFILIATE_TAG}</code>. The Canada site never sends shoppers to Amazon.com, and the US site never
+			sends shoppers to Amazon.ca.
 		</li>
 		<li>
 			<strong>{PARTNER_LABELS.selkirk}:</strong> Selkirk product cards may include a secondary “Shop at Selkirk”
@@ -41,6 +43,7 @@ const { selkirkTracked, pickleballSuperstoreTracked } = partnersConfigured();
 				? ' tracked through the AvantLink affiliate network.'
 				: ' (tracking activates after AvantLink approval — set PUBLIC_AVANTLINK_WEBSITE_ID and PUBLIC_AVANTLINK_SELKIRK_MERCHANT_ID).'}
 		</li>
+		{SITE_REGION === 'ca' && (
 		<li>
 			<strong>{PARTNER_LABELS.pickleballSuperstore}:</strong> product cards may include a secondary “Shop
 			Pickleball Superstore” link
@@ -48,6 +51,7 @@ const { selkirkTracked, pickleballSuperstoreTracked } = partnersConfigured();
 				? ' using our SuperAffiliate code.'
 				: ' (tracking activates after SuperAffiliate enrollment — set PUBLIC_PICKLEBALL_SUPERSTORE_CODE).'}
 		</li>
+		)}
 	</ul>
 	<p>
 		When you click a product link on this site and complete a qualifying purchase, we may earn a commission at no

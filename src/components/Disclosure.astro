@@ -1,6 +1,6 @@
 ---
 import { PARTNER_LABELS } from '../lib/partners';
-import { AMAZON_LABEL, SITE_NAME } from '../lib/site';
+import { AMAZON_STORE, SITE_NAME, SITE_REGION } from '../lib/site';
 
 interface Props {
 	compact?: boolean;
@@ -31,8 +31,11 @@ const { compact = false, omitAmazonSentence = false } = Astro.props;
 		]}
 	>
 		<strong class="font-bold text-ink">Disclosure:</strong>
-		{SITE_NAME} uses affiliate links for {AMAZON_LABEL}, {PARTNER_LABELS.selkirk}, and{' '}
-		{PARTNER_LABELS.pickleballSuperstore}. We may earn a commission from qualifying purchases at no extra cost to
-		you. Always confirm the current price and availability on the retailer you choose.
+		{SITE_NAME} uses affiliate links for {AMAZON_STORE}
+		{SITE_REGION === 'ca'
+			? `, ${PARTNER_LABELS.selkirk}, and ${PARTNER_LABELS.pickleballSuperstore}`
+			: ` and ${PARTNER_LABELS.selkirk}`}
+		. We may earn a commission from qualifying purchases at no extra cost to you. Always confirm the current price
+		and availability on the retailer you choose.
 	</p>
 </aside>

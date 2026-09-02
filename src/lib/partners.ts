@@ -93,7 +93,8 @@ export function getSelkirkOffer(product: Product): PartnerOffer | null {
 }
 
 export function getPickleballSuperstoreOffer(product: Product): PartnerOffer | null {
-	// Specialty multi-brand retailer — useful across gear categories.
+	// Canadian specialty retailer — keep off the US host so shoppers stay on Amazon.com / Selkirk.
+	if (SITE_REGION !== 'ca') return null;
 	const destination = pickleballSuperstoreSearchUrl(product);
 	return {
 		id: 'pickleball-superstore',

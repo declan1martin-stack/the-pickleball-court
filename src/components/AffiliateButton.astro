@@ -1,4 +1,5 @@
 ---
+import { AMAZON_STORE } from '../lib/site';
 import { assertAffiliateUrl } from '../lib/products';
 
 interface Props {
@@ -19,7 +20,7 @@ interface Props {
 
 const {
 	href,
-	label = 'Check current price',
+	label = `Check current price on ${AMAZON_STORE}`,
 	variant = 'primary',
 	class: className = '',
 	productId,

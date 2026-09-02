@@ -1,8 +1,9 @@
 ---
 import AffiliateButton from './AffiliateButton.astro';
 import StarRating from './StarRating.astro';
+import SmartImage from './SmartImage.astro';
 import {
-	assertAffiliateUrl,
+	getAffiliateUrl,
 	getComfortTags,
 	getEffectiveGender,
 	getPriceTier,
@@ -10,18 +11,24 @@ import {
 } from '../lib/products';
 import { getPartnerOffers } from '../lib/partners';
 import { absoluteUrl, productSchema } from '../lib/seo';
-import { AMAZON_LABEL } from '../lib/site';
+import { AMAZON_STORE } from '../lib/site';
 import { DEFAULT_AUTHOR_ID, getAuthor } from '../data/authors';
+import { marketizeCopy } from '../lib/marketCopy';
+import Schema from './Schema.astro';
 
 interface Props {
 	product: Product;
 	/** Only pass a real rating from data — never invent one. */
 	rating?: number | null;
+	/** First-in-viewport card (category LCP). */
+	priority?: boolean;
 }
 
-const { product, rating = null } = Astro.props;
+const { product, rating = null, priority = false } = Astro.props;
 const tier = getPriceTier(product.price);
-const affiliateHref = assertAffiliateUrl(product.affiliateUrl);
+const affiliateHref = getAffiliateUrl(product);
+const description = marketizeCopy(product.description);
+const features = product.features.map((feature) => marketizeCopy(feature));
 const imageAbs = product.imageUrl.startsWith('http')
 	? product.imageUrl
 	: absoluteUrl(product.imageUrl);
@@ -30,14 +37,14 @@ const onSiteUrl = absoluteUrl(`/gear/${product.category}#${product.id}`);
 const author = getAuthor(DEFAULT_AUTHOR_ID);
 const schema = productSchema({
 	name: product.name,
-	description: product.description,
+	description,
 	image: imageAbs,
 	brand: product.brand,
 	url: onSiteUrl,
 	review: author
 		? {
 				author: author.name,
-				reviewBody: product.description,
+				reviewBody: description,
 				datePublished: '2026-01-01',
 				...(typeof rating === 'number' ? { ratingValue: rating } : {}),
 			}
@@ -58,14 +65,15 @@ const imageAlt = product.name.toLowerCase().startsWith(product.brand.toLowerCase
 	data-comfort={comfortTags.join(' ')}
 	class="group flex h-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
 >
-	<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+	<Schema data={schema} />
 	<div class="relative aspect-[4/3] overflow-hidden bg-border/40">
-		<img
+		<SmartImage
 			src={product.imageUrl}
 			alt={imageAlt}
-			width="800"
-			height="600"
-			loading="lazy"
+			width={800}
+			height={600}
+			loading={priority ? 'eager' : 'lazy'}
+			fetchpriority={priority ? 'high' : undefined}
 			decoding="async"
 			class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
 		/>
@@ -84,12 +92,12 @@ const imageAlt = product.name.toLowerCase().startsWith(product.brand.toLowerCase
 			</span>
 		</div>
 		<p class="mt-2 text-xs text-ink-faint">
-			Approximate price tier — confirm current price on {AMAZON_LABEL}
+			Approximate price tier — confirm current price on {AMAZON_STORE}
 		</p>
-		<p class="mt-3 line-clamp-3 text-sm leading-relaxed text-ink-muted">{product.description}</p>
+		<p class="mt-3 line-clamp-3 text-sm leading-relaxed text-ink-muted">{description}</p>
 
 		<ul class="mt-4 space-y-2 text-sm text-ink">
-			{product.features.map((feature) => (
+			{features.map((feature) => (
 				<li class="flex gap-2">
 					<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" aria-hidden="true" />
 					<span>{feature}</span>

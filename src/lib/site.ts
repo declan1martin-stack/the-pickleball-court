@@ -6,7 +6,10 @@ type SiteConfig = {
 	siteName: string;
 	affiliateTag: string;
 	amazonHost: string;
+	/** Phrase: "the Canada store" | "the US store" */
 	amazonLabel: string;
+	/** Button/SERP label: "Amazon.ca" | "Amazon.com" */
+	amazonStore: string;
 	currency: 'CAD' | 'USD';
 	ogLocale: string;
 	inLanguage: string;
@@ -31,6 +34,7 @@ const SITES: Record<SiteRegion, SiteConfig> = {
 		affiliateTag: 'thepickleb050-20',
 		amazonHost: 'www.amazon.ca',
 		amazonLabel: 'the Canada store',
+		amazonStore: 'Amazon.ca',
 		currency: 'CAD',
 		ogLocale: 'en_CA',
 		inLanguage: 'en-CA',
@@ -50,6 +54,7 @@ const SITES: Record<SiteRegion, SiteConfig> = {
 		affiliateTag: 'uspickleball-20',
 		amazonHost: 'www.amazon.com',
 		amazonLabel: 'the US store',
+		amazonStore: 'Amazon.com',
 		currency: 'USD',
 		ogLocale: 'en_US',
 		inLanguage: 'en-US',
@@ -78,6 +83,7 @@ export const SITE_NAME = site.siteName;
 export const AFFILIATE_TAG = site.affiliateTag;
 export const AMAZON_HOST = site.amazonHost;
 export const AMAZON_LABEL = site.amazonLabel;
+export const AMAZON_STORE = site.amazonStore;
 export const PRICE_CURRENCY = site.currency;
 export const OG_LOCALE = site.ogLocale;
 export const SITE_EMAIL = site.email;

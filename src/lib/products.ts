@@ -1,5 +1,5 @@
 import gear from '../data/gear.json';
-import { AFFILIATE_TAG, AMAZON_HOST } from './site';
+import { AFFILIATE_TAG, AMAZON_HOST, SITE_REGION, type SiteRegion } from './site';
 
 export type Product = (typeof gear)[number];
 export type ProductCategory = Product['category'];
@@ -23,24 +23,36 @@ export function getProductsByCategory(category: ProductCategory): Product[] {
 	return products.filter((product) => product.category === category);
 }
 
-/** Normalize marketplace affiliate links to this build's host + Associates tag. */
+function amazonMarketplace(url: string): SiteRegion | null {
+	if (/amazon\.ca/i.test(url)) return 'ca';
+	if (/amazon\.com/i.test(url)) return 'us';
+	return null;
+}
+
+/**
+ * Keep the URL on this build's Amazon marketplace and Associates tag.
+ * Never rewrite a .ca ASIN onto amazon.com (or the reverse) — ASINs are
+ * marketplace-specific. Search URLs may be retargeted; product pages may not.
+ */
 export function withAffiliateTag(url: string): string {
 	try {
 		const parsed = new URL(url);
 		if (!parsed.hostname.includes('amazon.')) return url;
+		const market = amazonMarketplace(url);
+		if (market && market !== SITE_REGION) {
+			throw new Error(
+				`Cross-marketplace Amazon URL on ${SITE_REGION} build: ${url}. Use affiliateUrls.${SITE_REGION}.`,
+			);
+		}
 		parsed.hostname = AMAZON_HOST;
 		parsed.protocol = 'https:';
 		parsed.searchParams.set('tag', AFFILIATE_TAG);
 		return parsed.toString();
-	} catch {
-		const separator = url.includes('?') ? '&' : '?';
-		let next = url
-			.replace(/https?:\/\/(www\.)?amazon\.(ca|com)/i, `https://${AMAZON_HOST}`)
-			.replace(/([?&])tag=[^&]*/, `$1tag=${AFFILIATE_TAG}`);
-		if (!next.includes('tag=')) {
-			next = `${next}${separator}tag=${AFFILIATE_TAG}`;
+	} catch (error) {
+		if (error instanceof Error && error.message.startsWith('Cross-marketplace')) {
+			throw error;
 		}
-		return next;
+		throw new Error(`Invalid Amazon URL: ${url}`);
 	}
 }
 
@@ -49,7 +61,19 @@ export function assertAffiliateUrl(url: string): string {
 	if (!tagged.includes(`tag=${AFFILIATE_TAG}`)) {
 		throw new Error(`Affiliate URL missing required tag: ${url}`);
 	}
+	if (!tagged.includes(AMAZON_HOST.replace('www.', ''))) {
+		throw new Error(`Affiliate URL not on ${AMAZON_HOST}: ${tagged}`);
+	}
 	return tagged;
+}
+
+/** Amazon Associates URL for this product on the current host's marketplace. */
+export function getAffiliateUrl(product: Product): string {
+	const url = product.affiliateUrls?.[SITE_REGION];
+	if (!url) {
+		throw new Error(`Product ${product.id} is missing affiliateUrls.${SITE_REGION}`);
+	}
+	return assertAffiliateUrl(url);
 }
 
 export type PriceTier = '$' | '$$' | '$$$' | '$$$$' | '$$$$$';

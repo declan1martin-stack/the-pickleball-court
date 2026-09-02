@@ -4,11 +4,13 @@ import ProductCard from '../../components/ProductCard.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import GearFilters from '../../components/GearFilters.astro';
 import Disclosure from '../../components/Disclosure.astro';
+import MarketStoreNote from '../../components/MarketStoreNote.astro';
 import gear from '../../data/gear.json';
 import { getArticlesByCategory, CATEGORY_PILLARS } from '../../lib/articles';
 import { getPriceTier, PRICE_TIER_RANK } from '../../lib/products';
 import { absoluteUrl, itemListSchema } from '../../lib/seo';
 import { MARKET_COUNTRY, MARKET_LABEL, MARKET_PLAYERS } from '../../lib/site';
+import { marketizeCopy } from '../../lib/marketCopy';
 
 export function getStaticPaths() {
 	const categories = ['paddles', 'shoes', 'nets', 'balls', 'bags', 'apparel', 'accessories'] as const;
@@ -89,6 +91,11 @@ const itemList = itemListSchema({
 		name: product.name,
 		url: absoluteUrl(`/gear/${typedCategory}#${product.id}`),
 		position: index + 1,
+		brand: product.brand,
+		description: marketizeCopy(product.description),
+		image: product.imageUrl.startsWith('http')
+			? product.imageUrl
+			: absoluteUrl(product.imageUrl),
 	})),
 });
 ---
@@ -109,7 +116,7 @@ const itemList = itemListSchema({
 					{ label: typedCategory },
 				]}
 			/>
-			<p class="text-sm font-bold uppercase tracking-[0.18em] text-emerald-700">{MARKET_LABEL} Gear Guide</p>
+			<p class="text-sm font-bold uppercase tracking-[0.18em] text-emerald-800">{MARKET_LABEL} Gear Guide</p>
 			<h1 class="mt-3 max-w-4xl text-4xl font-black tracking-tight text-zinc-900 sm:text-5xl">{meta.h1}</h1>
 			<p class="mt-5 max-w-3xl text-lg leading-relaxed text-zinc-600">{meta.intro}</p>
 			<p class="mt-4 text-sm font-semibold text-zinc-500">
@@ -117,6 +124,7 @@ const itemList = itemListSchema({
 			</p>
 			<div class="mt-5 max-w-3xl">
 				<Disclosure compact />
+				<MarketStoreNote />
 			</div>
 			{pillar && (
 				<p class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-950">
@@ -131,10 +139,10 @@ const itemList = itemListSchema({
 		{showGearFilters && <GearFilters showGender showComfort />}
 		{products.length > 0 ? (
 			<div id="gear-product-grid" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-				{products.map((product) => (
+				{products.map((product, index) => (
 					<article>
 						<h2 class="sr-only">{product.name}</h2>
-						<ProductCard product={product} />
+						<ProductCard product={product} priority={index === 0} />
 					</article>
 				))}
 			</div>
@@ -163,7 +171,7 @@ const itemList = itemListSchema({
 								class="block h-full rounded-2xl border border-zinc-200 p-5 transition hover:border-emerald-200 hover:shadow-md"
 							>
 								<h3 class="font-bold text-zinc-900">{article.data.title}</h3>
-								<p class="mt-2 line-clamp-3 text-sm text-zinc-600">{article.data.description}</p>
+								<p class="mt-2 line-clamp-3 text-sm text-zinc-600">{marketizeCopy(article.data.description)}</p>
 							</a>
 						</li>
 					))}

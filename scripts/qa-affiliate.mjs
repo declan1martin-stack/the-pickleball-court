@@ -5,8 +5,6 @@ const dist = 'dist';
 const region = (process.env.PUBLIC_SITE_REGION || 'ca').toString().trim().toLowerCase() === 'us' ? 'us' : 'ca';
 const tag = region === 'us' ? 'uspickleball-20' : 'thepickleb050-20';
 const amazonHost = region === 'us' ? 'amazon.com' : 'amazon.ca';
-// Catalog may store CA or US Associates URLs; build-time withAffiliateTag / edge middleware normalize per host.
-const catalogTags = ['thepickleb050-20', 'uspickleball-20'];
 const failures = [];
 const gear = JSON.parse(fs.readFileSync('src/data/gear.json', 'utf8'));
 
@@ -66,28 +64,40 @@ function checkHtml(file) {
 		}
 	}
 
-	// Partner CTAs should exist on gear cards (PBS on all; Selkirk on Selkirk brand cards).
-	if (file.includes(`${path.sep}gear${path.sep}`) && file.endsWith(`${path.sep}index.html`)) {
-		if (!html.includes('Shop Pickleball Superstore')) {
-			failures.push(`${file}: missing Pickleball Superstore partner CTA`);
-		}
-		if (file.includes(`${path.sep}paddles${path.sep}`) && !html.includes('Shop at Selkirk')) {
-			failures.push(`${file}: missing Selkirk partner CTA on paddles page`);
-		}
+	// Partner CTAs: PBS is Canada-only; Selkirk can appear on both hosts.
+	const isGearPage = /[/\\]gear[/\\]/.test(file) && (file.endsWith('.html'));
+	if (isGearPage && /gear[/\\]paddles\.html$/.test(file) && !html.includes('Shop at Selkirk')) {
+		failures.push(`${file}: missing Selkirk partner CTA on paddles page`);
 	}
+	if (isGearPage && region === 'ca' && !html.includes('Shop Pickleball Superstore')) {
+		failures.push(`${file}: missing Pickleball Superstore partner CTA`);
+	}
+	if (isGearPage && region === 'us' && html.includes('Shop Pickleball Superstore')) {
+		failures.push(`${file}: US build leaked Pickleball Superstore CTA`);
+	}
+}
+
+function extractAsin(url) {
+	return url.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/i)?.[1] ?? null;
 }
 
 function checkCatalog() {
 	for (const product of gear) {
-		const url = product.affiliateUrl || '';
-		const hasTag = catalogTags.some((t) => url.includes(`tag=${t}`));
-		if (!hasTag) {
-			failures.push(
-				`gear.json:${product.id}: affiliateUrl missing Associates tag (want one of ${catalogTags.join(', ')})`,
-			);
+		const urls = product.affiliateUrls || {};
+		const ca = urls.ca || '';
+		const us = urls.us || '';
+		if (!ca.includes('amazon.ca') || !ca.includes('tag=thepickleb050-20')) {
+			failures.push(`gear.json:${product.id}: affiliateUrls.ca must be amazon.ca + thepickleb050-20 → ${ca}`);
 		}
-		if (!/amazon\.(ca|com)/i.test(url)) {
-			failures.push(`gear.json:${product.id}: affiliateUrl is not an amazon.ca/com URL → ${url}`);
+		if (!us.includes('amazon.com') || !us.includes('tag=uspickleball-20')) {
+			failures.push(`gear.json:${product.id}: affiliateUrls.us must be amazon.com + uspickleball-20 → ${us}`);
+		}
+		const caAsin = extractAsin(ca);
+		const usAsin = extractAsin(us);
+		if (caAsin && usAsin && caAsin === usAsin) {
+			failures.push(
+				`gear.json:${product.id}: same ASIN ${caAsin} copied across CA and US — ASINs are marketplace-specific`,
+			);
 		}
 		if (!product.imageUrl?.startsWith('/images/products/')) {
 			failures.push(`gear.json:${product.id}: imageUrl is not a local /images/products/ path → ${product.imageUrl}`);

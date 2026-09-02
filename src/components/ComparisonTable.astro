@@ -1,7 +1,8 @@
 ---
 import AffiliateButton from './AffiliateButton.astro';
-import { getPriceTier, getProductsByIds, type Product } from '../lib/products';
-import { AMAZON_LABEL } from '../lib/site';
+import { getAffiliateUrl, getPriceTier, getProductsByIds, type Product } from '../lib/products';
+import { AMAZON_STORE } from '../lib/site';
+import { marketizeCopy } from '../lib/marketCopy';
 
 type SpecField = 'brand' | 'category' | 'priceTier' | 'featureHighlight';
 
@@ -25,7 +26,7 @@ function cellValue(product: Product, field: SpecField): string {
 		case 'priceTier':
 			return getPriceTier(product.price);
 		case 'featureHighlight':
-			return product.features[0] ?? '—';
+			return marketizeCopy(product.features[0] ?? '—');
 		default:
 			return '—';
 	}
@@ -74,14 +75,14 @@ const fieldLabels: Record<SpecField, string> = {
 								</td>
 							))}
 							<td class="px-4 py-4">
-								<AffiliateButton href={product.affiliateUrl} productId={product.id} variant="secondary" label="Check current price" />
+								<AffiliateButton href={getAffiliateUrl(product)} productId={product.id} variant="secondary" />
 							</td>
 						</tr>
 					))}
 				</tbody>
 			</table>
 			<p class="border-t border-zinc-200 bg-zinc-50 px-4 py-2 text-xs text-zinc-500">
-				Price tiers ($–$$$$$) are relative catalog bands (entry through flagship), not live store prices. Always confirm the current price on {AMAZON_LABEL}.
+				Price tiers ($–$$$$$) are relative catalog bands (entry through flagship), not live store prices. Always confirm the current price on {AMAZON_STORE}.
 			</p>
 		</div>
 
@@ -99,7 +100,7 @@ const fieldLabels: Record<SpecField, string> = {
 						))}
 					</dl>
 					<div class="mt-4">
-						<AffiliateButton href={product.affiliateUrl} productId={product.id} label="Check current price" />
+						<AffiliateButton href={getAffiliateUrl(product)} productId={product.id} />
 					</div>
 				</li>
 			))}

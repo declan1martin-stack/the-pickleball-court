@@ -1,0 +1,25 @@
+---
+import { AMAZON_STORE, MARKET_COUNTRY, MARKET_PLAYERS, SITE_REGION } from '../lib/site';
+
+const other =
+	SITE_REGION === 'ca'
+		? { label: 'US shoppers', href: '/go/us', store: 'Amazon.com' }
+		: { label: 'Canadian shoppers', href: '/go/ca', store: 'Amazon.ca' };
+---
+
+<aside class="mt-6 max-w-[70ch] rounded-2xl border border-emerald-200 bg-emerald-50/70 px-5 py-4 text-sm leading-relaxed text-emerald-950">
+	<p class="text-xs font-bold uppercase tracking-[0.14em] text-emerald-800">
+		{MARKET_COUNTRY} store
+	</p>
+	<p class="mt-2">
+		This page is written for {MARKET_PLAYERS}. Every “Check current price” button opens{' '}
+		<strong>{AMAZON_STORE}</strong> with our Associates tag — not the other marketplace.
+	</p>
+	<p class="mt-2">
+		{other.label} should use the{' '}
+		<a href={`${other.href}?next=${encodeURIComponent(Astro.url.pathname)}`} class="font-semibold underline">
+			{other.store} site
+		</a>
+		{' '}so they land on the right catalog and checkout.
+	</p>
+</aside>
