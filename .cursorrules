@@ -29,6 +29,7 @@ Persistent rules for every Cursor session in this repo. Canonical copies also li
 - Original, genuinely useful, written for real pickleball players across all levels. No thin/spun filler, no keyword stuffing.
 - Reference only products that exist in `gear.json`.
 - Articles: clear H1, hierarchical H2/H3, fast-answer intro, comparison tables where useful, FAQ block (feeds FAQPage schema), pros/cons, ≥3 internal links + link to relevant category page.
+- News posts always need a local hero in `public/images/news/` (`image` + `imageAlt`). Never leave Wikimedia `Special:FilePath` in frontmatter. Keep credit/license fields. Run `npm run qa:news`.
 
 ## SEO
 - Every page: unique title (≤60 chars), meta description (≤155 chars), canonical, OG + Twitter with per-page image.

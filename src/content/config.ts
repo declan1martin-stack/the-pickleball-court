@@ -70,35 +70,58 @@ export const articles = defineCollection({
 /** Short industry updates — frequent, lightweight content velocity signal. */
 export const news = defineCollection({
 	loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/news' }),
-	schema: z.object({
-		title: z.string(),
-		date: z.coerce.date(),
-		summary: z.string().min(40),
-		tags: z.array(z.string()).default([]),
-		/** Single-item update, weekly roundup, or longer feature. */
-		type: z.enum(['update', 'roundup', 'feature']).default('update'),
-		/**
-		 * Which host should list this entry (homepage widget, /news index, RSS).
-		 * Direct URLs still build for every entry. Default: both markets.
-		 */
-		markets: z.array(z.enum(['ca', 'us'])).default(['ca', 'us']),
-		/** Same field names as articles — Unsplash/Pexels/Pixabay hotlinks today. */
-		heroImage: z.string().optional(),
-		heroAlt: z.string().optional(),
-		/** Optional attribution line (good practice; not legally required for Unsplash). */
-		heroCredit: z.string().optional(),
-		/**
-		 * Alternate hero fields used by some roundups (Wikimedia / local assets).
-		 * Prefer these when present; template falls back to heroImage / heroAlt / heroCredit.
-		 */
-		image: z.string().optional(),
-		imageAlt: z.string().optional(),
-		imageCredit: z.string().optional(),
-		imageSource: z.string().url().optional(),
-		imageLicense: z.string().optional(),
-		sourceUrl: z.string().url().optional(),
-		author: authorIdSchema.default(DEFAULT_AUTHOR_ID),
-	}),
+	schema: z
+		.object({
+			title: z.string(),
+			date: z.coerce.date(),
+			summary: z.string().min(40),
+			tags: z.array(z.string()).default([]),
+			/** Single-item update, weekly roundup, or longer feature. */
+			type: z.enum(['update', 'roundup', 'feature']).default('update'),
+			/**
+			 * Which host should list this entry (homepage widget, /news index, RSS).
+			 * Direct URLs still build for every entry. Default: both markets.
+			 */
+			markets: z.array(z.enum(['ca', 'us'])).default(['ca', 'us']),
+			/** Same field names as articles — Unsplash/Pexels/Pixabay hotlinks today. */
+			heroImage: z.string().optional(),
+			heroAlt: z.string().optional(),
+			/** Optional attribution line (good practice; not legally required for Unsplash). */
+			heroCredit: z.string().optional(),
+			/**
+			 * Alternate hero fields used by some roundups (Wikimedia / local assets).
+			 * Prefer these when present; template falls back to heroImage / heroAlt / heroCredit.
+			 */
+			image: z.string().optional(),
+			imageAlt: z.string().optional(),
+			imageCredit: z.string().optional(),
+			imageSource: z.string().url().optional(),
+			imageLicense: z.string().optional(),
+			sourceUrl: z.string().url().optional(),
+			author: authorIdSchema.default(DEFAULT_AUTHOR_ID),
+		})
+		.superRefine((data, ctx) => {
+			const src = (data.heroImage ?? data.image ?? '').trim();
+			const alt = (data.heroAlt ?? data.imageAlt ?? '').trim();
+			if (!src) {
+				ctx.addIssue({
+					code: 'custom',
+					message: 'News posts require `image` or `heroImage`. Download the file to public/images/news/.',
+				});
+			} else if (/wikimedia\.org|Special:FilePath/i.test(src)) {
+				ctx.addIssue({
+					code: 'custom',
+					message:
+						'Do not hotlink Wikimedia. Download to public/images/news/ and set `image` to `/images/news/<file>`. Keep imageSource / imageCredit / imageLicense.',
+				});
+			}
+			if (!alt) {
+				ctx.addIssue({
+					code: 'custom',
+					message: 'News posts require `imageAlt` or `heroAlt`.',
+				});
+			}
+		}),
 });
 
 export const collections = { articles, news };

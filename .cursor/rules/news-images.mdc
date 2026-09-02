@@ -1,0 +1,27 @@
+---
+description: Every news post must ship with a local, credited, watermark-free hero
+globs: src/content/news/**/*.{md,mdx}
+alwaysApply: true
+---
+
+# News images (required)
+
+Never add a news post without a hero file in the repo. Build fails without it.
+
+1. Download the image into `public/images/news/<slug>.jpg|png` (resize long edge ~1920). Update `image` to `/images/news/<slug>.…`.
+2. Do **not** leave Wikimedia `Special:FilePath` (or any Commons file URL) in `image` / `heroImage`. Keep `imageSource`, `imageCredit`, `imageLicense` for CC BY-SA / CC0 attribution. The post template already renders the credit caption — do not duplicate the image or italic credit in the body.
+3. Reject photographer/stock watermarks and promotional URL overlays (`sandypickle.com`, federation stamps). Swap the asset if needed; product logos on gear in-scene are OK.
+4. Always set `imageAlt` (or `heroAlt`). Source only Unsplash, Pexels, Pixabay, or Wikimedia with a clear license.
+5. After adding posts, run `npm run qa:news` then `npm run build` / `build:ca`.
+
+```yaml
+# ✅
+image: "/images/news/us-roundup-example.jpg"
+imageAlt: "Two players in a rally on an outdoor court"
+imageCredit: "Picklerpeej"
+imageSource: "https://commons.wikimedia.org/wiki/File:Pickleball_Pros.jpg"
+imageLicense: "CC BY-SA 4.0"
+
+# ❌
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Pickleball%20Pros.jpg"
+```
