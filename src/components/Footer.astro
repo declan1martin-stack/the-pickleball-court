@@ -1,10 +1,16 @@
 ---
 import { PARTNER_LABELS } from '../lib/partners';
-import { AMAZON_LABEL, MARKET_LABEL, SITE_EMAIL, SITE_NAME, SITE_REGION } from '../lib/site';
+import { AMAZON_LABEL, AMAZON_STORE, MARKET_LABEL, SITE_EMAIL, SITE_NAME, SITE_REGION } from '../lib/site';
+import { getLatestGearPost, newsPath } from '../lib/news';
 
 const footerLogo =
 	SITE_REGION === 'us' ? '/brand/pc-logo-us-white.svg' : '/brand/pc-logo-ca-white.svg';
 const footerAlt = SITE_REGION === 'us' ? 'US Pickleball Court' : 'The Pickleball Court';
+const otherRegion = SITE_REGION === 'ca' ? 'us' : 'ca';
+const otherStore = SITE_REGION === 'ca' ? 'Amazon.com' : 'Amazon.ca';
+const otherSite = SITE_REGION === 'ca' ? 'the US site' : 'the Canada site';
+const latestGear = await getLatestGearPost();
+const latestGearHref = latestGear ? newsPath(latestGear) : '/news';
 ---
 
 <footer class="mt-20 bg-footer py-12 text-footer-text">
@@ -24,9 +30,14 @@ const footerAlt = SITE_REGION === 'us' ? 'US Pickleball Court' : 'The Pickleball
 					Knowledgeable, honest gear guides for {MARKET_LABEL} pickleball — paddles, shoes, balls, bags, apparel, and nets.
 				</p>
 				<p class="mt-4 text-xs leading-relaxed text-footer-text/70">
-					Some product links are affiliate links for {AMAZON_LABEL}, {PARTNER_LABELS.selkirk}, and{' '}
-					{PARTNER_LABELS.pickleballSuperstore} — we may earn a commission at no extra cost to you. Always confirm
-					the current price on the retailer you choose.
+					Product links on this host open {AMAZON_STORE} ({AMAZON_LABEL})
+					{SITE_REGION === 'ca' ? `, ${PARTNER_LABELS.selkirk}, and ${PARTNER_LABELS.pickleballSuperstore}` : ` and ${PARTNER_LABELS.selkirk}`}
+					— we may earn a commission at no extra cost to you. Always confirm the current price on the retailer you choose.
+				</p>
+				<p class="mt-3 text-sm">
+					<a href={`/go/${otherRegion}`} class="hover:text-white">
+						Shop {otherSite} · {otherStore}
+					</a>
 				</p>
 				<p class="mt-3 text-sm">
 					<a href={`mailto:${SITE_EMAIL}`} class="hover:text-white">{SITE_EMAIL}</a>
@@ -50,7 +61,7 @@ const footerAlt = SITE_REGION === 'us' ? 'US Pickleball Court' : 'The Pickleball
 				<ul class="mt-3 space-y-2 text-sm">
 					<li><a href="/guides" class="hover:text-white">Guides</a></li>
 					<li><a href="/news" class="hover:text-white">News & weekly updates</a></li>
-					<li><a href="/news/gear-roundup-foam-budget-paddles-august-2026" class="hover:text-white">Latest gear roundup</a></li>
+					<li><a href={latestGearHref} class="hover:text-white">Latest gear roundup</a></li>
 					<li><a href="/guides/how-to-choose-a-pickleball-paddle" class="hover:text-white">Choose a paddle</a></li>
 					<li><a href="/guides/pickleball-rules-for-beginners" class="hover:text-white">Rules for beginners</a></li>
 					<li><a href="/about" class="hover:text-white">About / How we test</a></li>

@@ -24,6 +24,15 @@ export async function getLatestNews(limit = 3): Promise<NewsEntry[]> {
 	return entries.slice(0, limit);
 }
 
+/** Newest market-visible post tagged gear (or a gear-roundup slug). */
+export async function getLatestGearPost(): Promise<NewsEntry | undefined> {
+	const entries = await getNewsForMarket();
+	return entries.find((entry) => {
+		const tags = entry.data.tags.map((tag) => tag.toLowerCase());
+		return tags.includes('gear') || newsSlug(entry).includes('gear-roundup');
+	});
+}
+
 export function newsSlug(entry: NewsEntry): string {
 	return entry.id.replace(/\.(md|mdx)$/i, '');
 }

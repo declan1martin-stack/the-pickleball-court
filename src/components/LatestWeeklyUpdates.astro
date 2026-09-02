@@ -1,10 +1,10 @@
 ---
-import { formatNewsDate, getNewsForMarket, newsHeroMedia, newsPath, newsTypeLabel } from '../lib/news';
+import { formatNewsDate, getLatestNews, newsHeroMedia, newsPath, newsTypeLabel } from '../lib/news';
+import SmartImage from './SmartImage.astro';
 
-const news = await getNewsForMarket();
-/** Prefer the newest roundup as the lead; fall back to newest update. */
-const lead = news.find((entry) => entry.data.type === 'roundup') ?? news[0];
-const more = lead ? news.filter((entry) => entry.id !== lead.id).slice(0, 2) : [];
+const news = await getLatestNews(3);
+const lead = news[0];
+const more = news.slice(1);
 const leadHero = lead ? newsHeroMedia(lead) : null;
 ---
 
@@ -30,16 +30,15 @@ const leadHero = lead ? newsHeroMedia(lead) : null;
 				<article class="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)]">
 					{leadHero?.src && (
 						<a href={newsPath(lead)} tabindex="-1" aria-hidden="true">
-							<img
+							<SmartImage
 								src={leadHero.src}
 								alt={leadHero.alt}
-								width="1200"
-								height="630"
+								width={1200}
+								height={630}
 								loading="eager"
 								fetchpriority="high"
 								decoding="async"
 								class="aspect-[16/9] w-full object-cover"
-								data-news-img
 							/>
 						</a>
 					)}
@@ -55,12 +54,14 @@ const leadHero = lead ? newsHeroMedia(lead) : null;
 								})}
 							</time>
 						</p>
-						<a
-							href={newsPath(lead)}
-							class="mt-3 block font-display text-2xl font-extrabold tracking-tight text-ink hover:text-primary sm:text-3xl"
-						>
-							{lead.data.title}
-						</a>
+						<h3 class="mt-3">
+							<a
+								href={newsPath(lead)}
+								class="block font-display text-2xl font-extrabold tracking-tight text-ink hover:text-primary sm:text-3xl"
+							>
+								{lead.data.title}
+							</a>
+						</h3>
 						<p class="mt-3 text-base leading-relaxed text-ink-muted">{lead.data.summary}</p>
 						<a href={newsPath(lead)} class="link-brand mt-5 inline-flex text-sm font-semibold">
 							Read this week’s update →
@@ -80,15 +81,14 @@ const leadHero = lead ? newsHeroMedia(lead) : null;
 								<li class="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)]">
 									{hero.src && (
 										<a href={newsPath(entry)} tabindex="-1" aria-hidden="true">
-											<img
+											<SmartImage
 												src={hero.src}
 												alt={hero.alt}
-												width="640"
-												height="360"
+												width={640}
+												height={360}
 												loading="lazy"
 												decoding="async"
 												class="aspect-[16/9] w-full object-cover"
-												data-news-img
 											/>
 										</a>
 									)}
@@ -104,12 +104,14 @@ const leadHero = lead ? newsHeroMedia(lead) : null;
 												})}
 											</time>
 										</p>
-										<a
-											href={newsPath(entry)}
-											class="mt-2 block font-display text-base font-bold text-ink hover:text-primary"
-										>
-											{entry.data.title}
-										</a>
+										<h3 class="mt-2">
+											<a
+												href={newsPath(entry)}
+												class="block font-display text-base font-bold text-ink hover:text-primary"
+											>
+												{entry.data.title}
+											</a>
+										</h3>
 										<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-muted">
 											{entry.data.summary}
 										</p>
