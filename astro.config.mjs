@@ -19,6 +19,17 @@ export default defineConfig({
   build: {
     format: 'file',
   },
+  image: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'plus.unsplash.com' },
+      { protocol: 'https', hostname: 'images.pexels.com' },
+      { protocol: 'https', hostname: 'cdn.pixabay.com' },
+      { protocol: 'https', hostname: 'm.media-amazon.com' },
+      { protocol: 'https', hostname: 'images-na.ssl-images-amazon.com' },
+      { protocol: 'https', hostname: 'images-amazon.com' },
+    ],
+  },
   integrations: [
     sitemap({
       // Prefer real content dates when present; do not stamp every URL with deploy time.

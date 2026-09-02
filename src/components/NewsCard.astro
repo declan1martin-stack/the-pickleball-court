@@ -1,5 +1,6 @@
 ---
 import { formatNewsDate } from '../lib/news';
+import SmartImage from './SmartImage.astro';
 
 export interface Props {
 	href: string;
@@ -40,7 +41,7 @@ const showCredit = Boolean(creditLabel && variant !== 'list');
 >
 	{image && (
 		<div class="nc-media">
-			<img
+			<SmartImage
 				src={image}
 				alt={imageAlt}
 				width={variant === 'list' ? 176 : 1200}
@@ -58,7 +59,7 @@ const showCredit = Boolean(creditLabel && variant !== 'list');
 	)}
 	<div class="nc-body">
 		<span class="nc-eyebrow">{category}</span>
-		<h3 class="nc-title">{title}</h3>
+		{variant === 'hero' ? <h2 class="nc-title">{title}</h2> : <h3 class="nc-title">{title}</h3>}
 		{summary && variant === 'hero' && <p class="nc-summary">{summary}</p>}
 		<span class="nc-meta">{dateStr}</span>
 	</div>
@@ -91,11 +92,17 @@ const showCredit = Boolean(creditLabel && variant !== 'list');
 		aspect-ratio: 16 / 10;
 		background: var(--nc-surface-2);
 	}
-	.nc-media img {
+	.nc-media img,
+	.nc-media picture {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		display: block;
+	}
+	.nc-media picture img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 	.nc-credit {
 		position: absolute;

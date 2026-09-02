@@ -1,5 +1,6 @@
 ---
 import { formatNewsDate, newsHeroMedia, newsPath, newsTypeLabel, type NewsEntry } from '../lib/news';
+import SmartImage from './SmartImage.astro';
 
 interface Props {
 	entries: NewsEntry[];
@@ -25,11 +26,11 @@ const items = entries.slice(0, 3);
 				<li class="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)]">
 					{hero.src && (
 						<a href={newsPath(entry)} tabindex="-1" aria-hidden="true">
-							<img
+							<SmartImage
 								src={hero.src}
 								alt={hero.alt}
-								width="640"
-								height="360"
+								width={640}
+								height={360}
 								loading="lazy"
 								decoding="async"
 								class="aspect-[16/9] w-full object-cover"
