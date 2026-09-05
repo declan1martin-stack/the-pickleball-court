@@ -38,7 +38,11 @@ for (const name of fs.readdirSync(newsDir).sort()) {
 		failures.push(`${file}: Wikimedia FilePath still in body — use the template hero, not an inline image`);
 	}
 	const beachLike = `${src} ${alt} ${field(fm, 'imageSource')} ${field(fm, 'imageCredit')}`;
-	if (/sandy-pickle|sandypickle|sandy_pickle|sand court|beach court/i.test(beachLike)) {
+	if (
+		/sandy-pickle|sandypickle|sandy_pickle|proplayerstour|sand court|beach court|beach paddle|on sand|ocean/i.test(
+			beachLike,
+		)
+	) {
 		failures.push(`${file}: beach/sand hero — use a hard-court pickleball photo (no Sandy Pickle)`);
 	}
 	if (src.startsWith('/images/')) {

@@ -1,7 +1,8 @@
 ---
 import AffiliateButton from './AffiliateButton.astro';
 import SmartImage from './SmartImage.astro';
-import { getAffiliateUrl, getPriceTier, getProductById } from '../lib/products';
+import { getAffiliateUrl, getPriceTier, getProductById, getShopCtaLabel } from '../lib/products';
+import { getPartnerOffers } from '../lib/partners';
 import { AMAZON_STORE } from '../lib/site';
 import { marketizeCopy } from '../lib/marketCopy';
 
@@ -15,6 +16,7 @@ const product = getProductById(productId);
 const priceLabel = product
 	? `Approximate price tier ${getPriceTier(product.price)}`
 	: '';
+const partnerOffers = product ? getPartnerOffers(product) : [];
 ---
 
 {product ? (
@@ -47,8 +49,23 @@ const priceLabel = product
 						</li>
 					))}
 				</ul>
-				<div class="mt-5">
-					<AffiliateButton href={getAffiliateUrl(product)} productId={product.id} />
+				<div class="mt-5 flex flex-col gap-2">
+					<AffiliateButton
+						href={getAffiliateUrl(product)}
+						label={getShopCtaLabel(product, AMAZON_STORE)}
+						productId={product.id}
+						partner="amazon"
+					/>
+					{partnerOffers.map((offer) => (
+						<AffiliateButton
+							href={offer.href}
+							label={offer.label}
+							variant="secondary"
+							network="partner"
+							partner={offer.id}
+							productId={product.id}
+						/>
+					))}
 				</div>
 			</div>
 		</div>

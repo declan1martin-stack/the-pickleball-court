@@ -10,6 +10,7 @@ heroAlt: "Aerial view of illuminated pickleball courts at a modern sports facili
 heroCredit: "Photo: Brian Zajac / Unsplash (Unsplash License, free to use)"
 sourceUrl: "https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/pickleball-court-listings/"
 author: "deco"
+productIds: ["ball-franklin-x40-outdoor-12", "franklin-signature-portable-net", "acc-franklin-overgrip"]
 ---
 
 Toronto's pickleball scene has grown fast enough that picking a court now means choosing between dozens of legitimate options rather than hunting for repainted tennis lines. We went to each venue's own site or the City of Toronto's own listings rather than a single aggregator, so the details below, addresses, court counts, and access rules, are pulled from the source. Here are six spots worth knowing across the city and the wider GTA.

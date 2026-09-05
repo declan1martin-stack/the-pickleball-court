@@ -20,11 +20,12 @@ import {
 	categoryPath,
 } from '../../lib/articles';
 import { absoluteUrl, articleSchema } from '../../lib/seo';
-import { getAffiliateUrl, getProductById, getPriceTier, type Product } from '../../lib/products';
+import { getAffiliateUrl, getProductById, getPriceTier, getShopCtaLabel, type Product } from '../../lib/products';
 import { AMAZON_STORE } from '../../lib/site';
 import { authorPath, resolveAuthor } from '../../data/authors';
 import MarketNotes from '../../components/MarketNotes.astro';
 import MarketStoreNote from '../../components/MarketStoreNote.astro';
+import ShopJumpBar from '../../components/ShopJumpBar.astro';
 import { marketizeCopy, marketizeFaq, marketizeTitle } from '../../lib/marketCopy';
 
 export async function getStaticPaths() {
@@ -39,7 +40,10 @@ const { article } = Astro.props;
 const { Content, headings } = await render(article);
 const allArticles = await getAllArticles();
 const related = getRelatedArticles(allArticles, article, 3);
-const categoryHref = categoryPath(article.data.category);
+const rawCategoryHref = categoryPath(article.data.category);
+const isGearCategory = rawCategoryHref !== '/guides';
+const categoryHref = isGearCategory ? rawCategoryHref : '/gear/paddles';
+const catalogLabel = isGearCategory ? article.data.category : 'paddles';
 const path = `/guides/${article.data.slug}`;
 const author = resolveAuthor(article.data.author);
 const mdxComponents = {
@@ -130,13 +134,22 @@ const crumbs = [
 			</div>
 
 			{categoryHref && (
-				<p class="mt-6 text-sm text-zinc-600">
-					Shopping gear?
-					<a href={categoryHref} class="font-semibold text-emerald-800 underline">
-						Browse our {article.data.category} catalog
-					</a>
-					for current store availability.
-				</p>
+				<div class="mt-6 flex flex-col gap-3 rounded-2xl border border-emerald-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
+					<p class="text-sm text-zinc-600">
+						Ready to buy?
+						<a href={categoryHref} class="font-semibold text-emerald-800 underline">
+							Browse our {catalogLabel} catalog
+						</a>
+						{' '}on {AMAZON_STORE}.
+					</p>
+					{relatedProductLinks[0] && (
+						<AffiliateButton
+							href={getAffiliateUrl(relatedProductLinks[0])}
+							label={getShopCtaLabel(relatedProductLinks[0], AMAZON_STORE)}
+							productId={relatedProductLinks[0].id}
+						/>
+					)}
+				</div>
 			)}
 
 			<div
@@ -157,7 +170,12 @@ const crumbs = [
 										Approx. price tier {getPriceTier(product.price)} — confirm on {AMAZON_STORE}
 									</p>
 								</div>
-								<AffiliateButton href={getAffiliateUrl(product)} productId={product.id} variant="secondary" />
+								<AffiliateButton
+									href={getAffiliateUrl(product)}
+									label={getShopCtaLabel(product, AMAZON_STORE)}
+									productId={product.id}
+									variant="secondary"
+								/>
 							</li>
 						))}
 					</ul>
@@ -184,4 +202,5 @@ const crumbs = [
 			<TableOfContents headings={headings} />
 		</aside>
 	</div>
+	<ShopJumpBar />
 </Layout>

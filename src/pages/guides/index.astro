@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import SmartImage from '../../components/SmartImage.astro';
+import ShopJumpBar from '../../components/ShopJumpBar.astro';
 import { getAllArticles } from '../../lib/articles';
 import { MARKET_LABEL, MARKET_PLAYERS } from '../../lib/site';
 import { marketizeCopy } from '../../lib/marketCopy';
@@ -131,4 +132,5 @@ const categories = [
 		const initial = new URLSearchParams(window.location.search).get('category') || 'all';
 		applyFilter(initial);
 	</script>
+	<ShopJumpBar />
 </Layout>

@@ -197,7 +197,7 @@ Hyperion C2 remains a high-intent Canadian search because it blends reach, feedb
 We mapped catalog features to court jobs and avoided inventing lab numbers we do not have. Pair any upgrade with [court shoes](/guides/best-pickleball-shoes-2026) and compare brands in [JOOLA vs Selkirk vs Six Zero](/guides/joola-vs-selkirk-vs-six-zero).
 
 <Callout type="warning" title="Price reminder">
-Never treat on-site prices as checkout truth. Use Check current price on every product.
+Never treat on-site prices as checkout truth. Use Shop now on every product.
 </Callout>
 `,
 	},
@@ -617,7 +617,7 @@ ${pros}
 ${linkMd}
 
 <Callout type="pick" title="Next step">
-Shortlist two options, confirm fit/feel priorities, then use Check current price before you buy.
+Shortlist two options, confirm fit/feel priorities, then use the Shop now button before you buy.
 </Callout>
 `;
 	return { ...a, body };

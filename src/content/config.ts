@@ -98,6 +98,8 @@ export const news = defineCollection({
 			imageSource: z.string().url().optional(),
 			imageLicense: z.string().optional(),
 			sourceUrl: z.string().url().optional(),
+			/** Catalog product IDs to shop on this post (must exist in gear.json). */
+			productIds: z.array(z.string()).optional(),
 			author: authorIdSchema.default(DEFAULT_AUTHOR_ID),
 		})
 		.superRefine((data, ctx) => {
@@ -120,6 +122,15 @@ export const news = defineCollection({
 					code: 'custom',
 					message: 'News posts require `imageAlt` or `heroAlt`.',
 				});
+			}
+			for (const id of data.productIds ?? []) {
+				if (!productIds.has(id)) {
+					ctx.addIssue({
+						code: 'custom',
+						path: ['productIds'],
+						message: `Unknown productIds ID "${id}". Must match an id in src/data/gear.json.`,
+					});
+				}
 			}
 		}),
 });

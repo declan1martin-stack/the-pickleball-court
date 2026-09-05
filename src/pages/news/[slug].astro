@@ -18,6 +18,10 @@ import {
 	type NewsEntry,
 } from '../../lib/news';
 import { absoluteUrl, articleSchema, clampMetaDescription } from '../../lib/seo';
+import ProductSpotlight from '../../components/ProductSpotlight.astro';
+import ShopJumpBar from '../../components/ShopJumpBar.astro';
+import { getProductsByIds } from '../../lib/products';
+import { AMAZON_STORE } from '../../lib/site';
 
 export async function getStaticPaths() {
 	const entries = await getNewsForMarket();
@@ -44,6 +48,19 @@ const ogImage = heroImage ?? '/og-default.png';
 const markets = entry.data.markets ?? (['ca', 'us'] as const);
 const sharedAcrossMarkets = markets.includes('ca') && markets.includes('us');
 const mdxComponents = { NewsLink };
+const namedShopIds = entry.data.productIds ?? [];
+const fallbackShopIds = [
+	'ball-franklin-x40-outdoor-12',
+	'acc-franklin-overgrip',
+	'joola-vision-c15',
+];
+const shopProducts = getProductsByIds(namedShopIds.length > 0 ? namedShopIds : fallbackShopIds);
+const shopHeading =
+	namedShopIds.length > 0 ? 'Shop catalog gear from this update' : 'Club-night essentials';
+const shopIntro =
+	namedShopIds.length > 0
+		? 'These are models we already list — not a live price. Confirm the current listing before you buy.'
+		: `Balls, a grip, and an upgrade paddle from our catalog. Confirm the current listing on ${AMAZON_STORE} before you buy.`;
 ---
 
 <Layout
@@ -126,9 +143,30 @@ const mdxComponents = { NewsLink };
 
 	<div class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
 		<Disclosure compact />
+		{shopProducts.length > 0 && (
+			<p class="mt-4 text-sm">
+				<a href="#news-shop-heading" class="font-semibold text-primary underline">
+					Jump to shop →
+				</a>
+			</p>
+		)}
 		<div class="prose-article mt-6 max-w-[70ch] text-ink [&_a]:font-semibold [&_a]:text-primary [&_a]:underline [&_p]:my-4 [&_p]:leading-relaxed">
 			<Content components={mdxComponents} />
 		</div>
+
+		{shopProducts.length > 0 && (
+			<section class="mt-10" aria-labelledby="news-shop-heading">
+				<h2 id="news-shop-heading" class="font-display text-xl font-bold text-ink">
+					{shopHeading}
+				</h2>
+				<p class="mt-2 text-sm text-ink-muted">
+					{shopIntro}
+				</p>
+				{shopProducts.map((product) => (
+					<ProductSpotlight productId={product.id} eyebrow="From our catalog" />
+				))}
+			</section>
+		)}
 
 		{entry.data.sourceUrl && (
 			<p class="mt-8 text-sm text-ink-muted">
@@ -195,4 +233,5 @@ const mdxComponents = { NewsLink };
 
 		<AuthorBox author={author} />
 	</div>
+	<ShopJumpBar />
 </Layout>

@@ -81,6 +81,13 @@ function extractAsin(url) {
 	return url.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/i)?.[1] ?? null;
 }
 
+/** Same ASIN only when we verified the listing on both marketplaces. */
+const SHARED_ASINS = new Set([
+	'B09VCV2XWK', // JOOLA Vision C15
+	'B00EM2WSW0', // Tourna Mega Tac 3-pack
+	'B07XMKF4NM', // Franklin portable regulation net
+]);
+
 function checkCatalog() {
 	for (const product of gear) {
 		const urls = product.affiliateUrls || {};
@@ -94,7 +101,7 @@ function checkCatalog() {
 		}
 		const caAsin = extractAsin(ca);
 		const usAsin = extractAsin(us);
-		if (caAsin && usAsin && caAsin === usAsin) {
+		if (caAsin && usAsin && caAsin === usAsin && !SHARED_ASINS.has(caAsin)) {
 			failures.push(
 				`gear.json:${product.id}: same ASIN ${caAsin} copied across CA and US — ASINs are marketplace-specific`,
 			);

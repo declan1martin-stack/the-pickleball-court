@@ -4,6 +4,7 @@ import ProductCard from '../components/ProductCard.astro';
 import Disclosure from '../components/Disclosure.astro';
 import MarketStoreNote from '../components/MarketStoreNote.astro';
 import LatestWeeklyUpdates from '../components/LatestWeeklyUpdates.astro';
+import ShopJumpBar from '../components/ShopJumpBar.astro';
 import { getFeaturedArticles, getAllArticles } from '../lib/articles';
 import { getProductsByIds } from '../lib/products';
 import { AMAZON_STORE, MARKET_COUNTRY, MARKET_LABEL, MARKET_PLAYERS } from '../lib/site';
@@ -15,6 +16,12 @@ const featured = getProductsByIds([
 	'joola-vision-c15',
 	'selkirk-slk-halo-control-xl',
 	'joola-perseus-16mm',
+]);
+/** Cheap club-night items — easier first purchase than a flagship paddle. */
+const essentials = getProductsByIds([
+	'ball-franklin-x40-outdoor-12',
+	'acc-franklin-overgrip',
+	'paddle-franklin-activator-wood',
 ]);
 const featuredGuides = await getFeaturedArticles(4);
 const allArticles = await getAllArticles();
@@ -115,18 +122,19 @@ const pillars = [
 			<p class="mt-4 max-w-2xl text-lg leading-relaxed text-footer-text">
 				Original buying guides and catalog picks for paddles, footwear, balls, bags, apparel, and portable nets — built for {MARKET_LABEL} shoppers and real courts in {MARKET_COUNTRY}.
 			</p>
-			<div class="mt-5 flex flex-col gap-3 sm:flex-row">
-				<a href="/guides/how-to-choose-a-pickleball-paddle" class="btn-primary">
-					Start with the paddle guide
+			<div class="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+				<a href="/gear/paddles" class="btn-primary">
+					Shop paddles
 				</a>
-				<a href="/guides" class="btn-secondary border-white/40 text-white hover:border-white hover:bg-white hover:text-primary">
-					Browse all guides
+				<a href="/gear/balls" class="btn-secondary border-white/40 text-white hover:border-white hover:bg-white hover:text-primary">
+					Shop balls
+				</a>
+				<a href="/guides/best-pickleball-paddles-2026" class="btn-secondary border-white/40 text-white hover:border-white hover:bg-white hover:text-primary">
+					Best paddles guide
 				</a>
 			</div>
 		</div>
 	</section>
-
-	<LatestWeeklyUpdates />
 
 	<section class="border-b border-border bg-surface">
 		<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8" aria-labelledby="featured-heading">
@@ -134,7 +142,7 @@ const pillars = [
 				<div>
 					<h2 id="featured-heading" class="font-display text-3xl font-bold tracking-tight text-ink">Featured Gear</h2>
 					<p class="mt-2 max-w-2xl text-ink-muted">
-						Top searched paddles from our {MARKET_LABEL} gear catalog. Price tiers are approximate — confirm on {AMAZON_STORE}.
+						Shop these paddles on {AMAZON_STORE}. Price tiers are approximate — confirm the live listing before you buy.
 					</p>
 				</div>
 				<a href="/gear/paddles" class="link-brand text-sm">See all paddles →</a>
@@ -150,6 +158,29 @@ const pillars = [
 			</div>
 		</div>
 	</section>
+
+	<section class="border-b border-border bg-bg">
+		<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8" aria-labelledby="essentials-heading">
+			<div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+				<div>
+					<h2 id="essentials-heading" class="font-display text-3xl font-bold tracking-tight text-ink">
+						Club-night essentials
+					</h2>
+					<p class="mt-2 max-w-2xl text-ink-muted">
+						Balls, grips, and a starter set — the usual first {AMAZON_STORE} order. Tiers are approximate.
+					</p>
+				</div>
+				<a href="/gear/balls" class="link-brand text-sm">See all balls →</a>
+			</div>
+			<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+				{essentials.map((product) => (
+					<ProductCard product={product} />
+				))}
+			</div>
+		</div>
+	</section>
+
+	<LatestWeeklyUpdates />
 
 	<section class="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8" aria-labelledby="pillars-heading">
 		<div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -257,4 +288,5 @@ const pillars = [
 			</div>
 		</section>
 	)}
+	<ShopJumpBar />
 </Layout>

@@ -6,6 +6,7 @@ tags: ["paddles", "joola", "pro-v", "ben-johns"]
 heroImage: "/images/news/joola-refreshes-pro-v-line.svg"
 heroAlt: "Graphic announcing JOOLA's 2026 Pro V line refresh with KineticFrame"
 sourceUrl: "https://www.pickleheads.com/pickleball-gear/pro-pickleball-paddles"
+productIds: ["joola-perseus-16mm", "paddle-joola-pro-iv"]
 author: "deco"
 ---
 

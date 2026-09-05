@@ -7,6 +7,7 @@ import {
 	getComfortTags,
 	getEffectiveGender,
 	getPriceTier,
+	getShopCtaLabel,
 	type Product,
 } from '../lib/products';
 import { getPartnerOffers } from '../lib/partners';
@@ -108,6 +109,7 @@ const imageAlt = product.name.toLowerCase().startsWith(product.brand.toLowerCase
 		<div class="mt-auto flex flex-col gap-2 pt-6">
 			<AffiliateButton
 				href={affiliateHref}
+				label={getShopCtaLabel(product, AMAZON_STORE)}
 				productId={product.id}
 				partner="amazon"
 				class="w-full sm:w-full"

@@ -6,6 +6,7 @@ tags: ["brands", "selkirk", "bread-and-butter", "industry"]
 heroImage: "/images/news/selkirk-acquires-bread-and-butter.svg"
 heroAlt: "Graphic announcing Selkirk's acquisition of Bread and Butter Pickleball"
 sourceUrl: "https://www.selkirk.com/pages/press-releases/selkirk-deepens-player-first-mission-with-acquisition-of-bread-butter-pickleball-company"
+productIds: ["selkirk-slk-halo-control-xl", "selkirk-luxx-control-air-epic"]
 author: "deco"
 ---
 

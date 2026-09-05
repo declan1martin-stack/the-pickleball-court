@@ -1,0 +1,17 @@
+---
+/**
+ * Mobile shop shortcuts so paddles and balls stay one tap away.
+ * Hidden on large screens where the nav already has catalog links.
+ */
+---
+
+<nav
+	class="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface/95 px-3 py-2.5 backdrop-blur-md lg:hidden"
+	aria-label="Shop shortcuts"
+>
+	<div class="mx-auto flex max-w-7xl gap-2">
+		<a href="/gear/paddles" class="btn-primary flex-1 px-3 py-2.5 text-center text-sm">Shop paddles</a>
+		<a href="/gear/balls" class="btn-secondary flex-1 px-3 py-2.5 text-center text-sm">Shop balls</a>
+	</div>
+</nav>
+<div class="h-16 lg:hidden" aria-hidden="true"></div>

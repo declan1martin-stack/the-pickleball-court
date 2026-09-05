@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import NewsCard from '../../components/NewsCard.astro';
+import ShopJumpBar from '../../components/ShopJumpBar.astro';
 import {
 	getNewsForMarket,
 	newsCardMedia,
@@ -118,6 +119,7 @@ const moreList = posts.slice(10);
 			</section>
 		)}
 	</div>
+	<ShopJumpBar />
 </Layout>
 
 <style>

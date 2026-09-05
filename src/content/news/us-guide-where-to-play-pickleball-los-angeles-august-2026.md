@@ -10,6 +10,7 @@ heroAlt: "An empty pickleball court with a white net on a green surface"
 heroCredit: "Photo: Frankie Lopez / Unsplash (Unsplash License, free to use)"
 sourceUrl: "https://recreation.parks.lacity.gov/pickleball"
 author: "deco"
+productIds: ["ball-franklin-x40-outdoor-12", "franklin-signature-portable-net", "acc-franklin-overgrip"]
 ---
 
 Los Angeles now has enough dedicated pickleball infrastructure that "where do I play" has a real answer no matter which part of the city you're in. We checked each venue's own site or governing city page rather than relying on a single list, so addresses, court counts, and access rules below are pulled straight from the source. Here are six spots worth knowing.

@@ -67,6 +67,28 @@ export function assertAffiliateUrl(url: string): string {
 	return tagged;
 }
 
+/** Buy-button copy. Never includes a live price. */
+export function getShopCtaLabel(product: Product, store: string): string {
+	switch (product.category) {
+		case 'paddles':
+			return `Shop now — this paddle on ${store}`;
+		case 'shoes':
+			return `Shop now — these shoes on ${store}`;
+		case 'nets':
+			return `Shop now — this net on ${store}`;
+		case 'balls':
+			return `Shop now — these balls on ${store}`;
+		case 'bags':
+			return `Shop now — this bag on ${store}`;
+		case 'accessories':
+			return `Shop now — this accessory on ${store}`;
+		case 'apparel':
+			return `Shop now — this on ${store}`;
+		default:
+			return `Shop now on ${store}`;
+	}
+}
+
 /** Amazon Associates URL for this product on the current host's marketplace. */
 export function getAffiliateUrl(product: Product): string {
 	const url = product.affiliateUrls?.[SITE_REGION];

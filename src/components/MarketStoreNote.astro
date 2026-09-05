@@ -8,8 +8,8 @@ interface Props {
 const { compact = false } = Astro.props;
 const other =
 	SITE_REGION === 'ca'
-		? { label: 'US shoppers', href: '/go/us', store: 'Amazon.com' }
-		: { label: 'Canadian shoppers', href: '/go/ca', store: 'Amazon.ca' };
+		? { label: 'US shoppers', href: '/go/us', site: 'the US site' }
+		: { label: 'Canadian shoppers', href: '/go/ca', site: 'the Canada site' };
 ---
 
 <aside
@@ -21,26 +21,26 @@ const other =
 	{
 		compact ? (
 			<p>
-				<strong class="font-bold">{MARKET_COUNTRY} store:</strong> price buttons open{' '}
+				<strong class="font-bold">{MARKET_COUNTRY} store:</strong> Shop now buttons open{' '}
 				<strong>{AMAZON_STORE}</strong>.{' '}
 				<a href={`${other.href}?next=${encodeURIComponent(Astro.url.pathname)}`} class="font-semibold underline">
-					{other.label} → {other.store}
+					{other.label} → {other.site}
 				</a>
 			</p>
 		) : (
 			<>
 				<p class="text-xs font-bold uppercase tracking-[0.14em] text-emerald-800">{MARKET_COUNTRY} store</p>
 				<p class="mt-2">
-					This page is written for {MARKET_PLAYERS}. Every “Check current price” button opens{' '}
+					This page is written for {MARKET_PLAYERS}. Every Shop now button opens{' '}
 					<strong>{AMAZON_STORE}</strong> with our Associates tag — not the other marketplace.
 				</p>
 				<p class="mt-2">
-					{other.label} should use the{' '}
+					{other.label} should use{' '}
 					<a
 						href={`${other.href}?next=${encodeURIComponent(Astro.url.pathname)}`}
 						class="font-semibold underline"
 					>
-						{other.store} site
+						{other.site}
 					</a>{' '}
 					so they land on the right catalog and checkout.
 				</p>
