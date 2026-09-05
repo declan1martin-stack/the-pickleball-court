@@ -37,6 +37,10 @@ for (const name of fs.readdirSync(newsDir).sort()) {
 	if (/Special:FilePath|commons\.wikimedia\.org\/wiki\/Special/i.test(body)) {
 		failures.push(`${file}: Wikimedia FilePath still in body — use the template hero, not an inline image`);
 	}
+	const beachLike = `${src} ${alt} ${field(fm, 'imageSource')} ${field(fm, 'imageCredit')}`;
+	if (/sandy-pickle|sandypickle|sandy_pickle|sand court|beach court/i.test(beachLike)) {
+		failures.push(`${file}: beach/sand hero — use a hard-court pickleball photo (no Sandy Pickle)`);
+	}
 	if (src.startsWith('/images/')) {
 		const onDisk = path.join('public', src.replace(/^\//, ''));
 		if (!fs.existsSync(onDisk)) {

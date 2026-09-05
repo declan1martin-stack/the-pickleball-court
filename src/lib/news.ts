@@ -165,10 +165,10 @@ export const NEWS_CATEGORY_IMAGE: Record<
 		alt: 'Taiwanese pickleball player Willy Chung in competition',
 	},
 	Gear: {
-		src: '/images/news/sandy-pickle.jpg',
-		credit: 'Proplayerstour',
+		src: '/images/news/gear-roundup-diadem-luzz-august-21-2026.jpg',
+		credit: 'TheVillagesFL',
 		license: 'CC BY-SA 4.0',
-		alt: 'Players competing in sandy pickleball on a beach court',
+		alt: 'Four recreational players in a doubles rally on an outdoor pickleball court',
 	},
 	Global: {
 		src: '/images/news/johns-brothers.jpg',
@@ -179,10 +179,10 @@ export const NEWS_CATEGORY_IMAGE: Record<
 };
 
 const CANADA_EVENTS_IMAGE = {
-	src: '/images/news/pickleballcourt.png',
-	credit: 'Mgreason',
-	license: 'CC0',
-	alt: 'Diagram of a regulation pickleball court with dimensions',
+	src: '/images/news/pickleball-player.jpg',
+	credit: 'Picklerpeej',
+	license: 'CC BY-SA 4.0',
+	alt: 'A pickleball player preparing a backhand on an outdoor hard court',
 };
 
 export type NewsCardMedia = {

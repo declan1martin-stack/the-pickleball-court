@@ -10,7 +10,7 @@ Never add a news post without a hero file in the repo. Build fails without it.
 
 1. Download the image into `public/images/news/<slug>.jpg|png` (resize long edge ~1920). Update `image` to `/images/news/<slug>.…`.
 2. Do **not** leave Wikimedia `Special:FilePath` (or any Commons file URL) in `image` / `heroImage`. Keep `imageSource`, `imageCredit`, `imageLicense` for CC BY-SA / CC0 attribution. The post template already renders the credit caption — do not duplicate the image or italic credit in the body.
-3. Reject photographer/stock watermarks and promotional URL overlays (`sandypickle.com`, federation stamps). Swap the asset if needed; product logos on gear in-scene are OK.
+3. Reject photographer/stock watermarks and promotional URL overlays (`sandypickle.com`, federation stamps). **Hard-court pickleball only** — no beach, sand, or “Sandy Pickle” scenes. Swap the asset if needed; product logos on gear in-scene are OK. The court-dimensions diagram stays on the dimensions guide, not as a news hero.
 4. Always set `imageAlt` (or `heroAlt`). Source only Unsplash, Pexels, Pixabay, or Wikimedia with a clear license.
 5. After adding posts, run `npm run qa:news` then `npm run build` / `build:ca`.
 
