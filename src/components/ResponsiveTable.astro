@@ -47,7 +47,7 @@ const titleIndex = 0;
 			</div>
 
 			{/* Mobile / tablet stacked cards — one card per row, labels above values */}
-			<ul class="grid gap-4 lg:hidden">
+			<ul class="grid list-none gap-4 p-0 lg:hidden">
 				{rows.map((row) => (
 					<li class="rounded-2xl border border-border bg-surface p-4 shadow-[var(--shadow-sm)]">
 						<p class="font-display text-base font-bold text-ink">{row[titleIndex] ?? '—'}</p>
