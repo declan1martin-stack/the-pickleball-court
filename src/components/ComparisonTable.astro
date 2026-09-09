@@ -42,9 +42,9 @@ const fieldLabels: Record<SpecField, string> = {
 ---
 
 {products.length > 0 && (
-	<section class="my-8" aria-label={caption}>
+	<section class="my-8 max-w-full" aria-label={caption}>
 		{/* Desktop / tablet table */}
-		<div class="hidden overflow-x-auto rounded-[var(--radius-lg)] border border-border md:block">
+		<div class="hidden max-w-full overflow-x-auto rounded-[var(--radius-lg)] border border-border md:block">
 			<table class="min-w-full divide-y divide-border text-left text-sm">
 				<caption class="sr-only">{caption}</caption>
 				<thead class="bg-primary-dark text-white">

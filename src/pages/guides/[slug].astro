@@ -25,7 +25,6 @@ import { getAffiliateUrl, getProductById, getPriceTier, getShopCtaLabel, type Pr
 import { AMAZON_STORE } from '../../lib/site';
 import { authorPath, resolveAuthor } from '../../data/authors';
 import MarketNotes from '../../components/MarketNotes.astro';
-import MarketStoreNote from '../../components/MarketStoreNote.astro';
 import ShopJumpBar from '../../components/ShopJumpBar.astro';
 import { marketizeCopy, marketizeFaq, marketizeTitle } from '../../lib/marketCopy';
 
@@ -152,8 +151,6 @@ const crumbs = [
 
 	<div class="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:px-8">
 		<div class="min-w-0">
-			<MarketStoreNote compact />
-
 			{/* Answer-first summary for AI/snippet extraction — concrete takeaway, not the meta description. */}
 			<div class="mt-6 max-w-[70ch] rounded-2xl border border-emerald-200 bg-emerald-50/70 px-5 py-4">
 				<p class="text-xs font-bold uppercase tracking-[0.14em] text-emerald-800">Quick answer</p>
