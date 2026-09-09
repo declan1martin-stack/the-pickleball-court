@@ -9,9 +9,11 @@ interface FaqItem {
 interface Props {
 	items: FaqItem[];
 	heading?: string;
+	/** Set false when the page already emits FAQPage in the Layout @graph. */
+	includeSchema?: boolean;
 }
 
-const { items, heading = 'Frequently asked questions' } = Astro.props;
+const { items, heading = 'Frequently asked questions', includeSchema = true } = Astro.props;
 
 const jsonLd = {
 	'@context': 'https://schema.org',
@@ -43,6 +45,6 @@ const jsonLd = {
 				</details>
 			))}
 		</div>
-		<Schema data={jsonLd} />
+		{includeSchema && <Schema data={jsonLd} />}
 	</section>
 )}
