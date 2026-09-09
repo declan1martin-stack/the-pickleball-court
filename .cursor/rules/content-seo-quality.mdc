@@ -24,7 +24,7 @@ alwaysApply: true
 - Run `npm run build` after every meaningful change. Never commit a red build.
 - Semantic HTML, alt text on all images, WCAG AA contrast, keyboard navigable.
 - Prefer Astro `<Image>` with explicit width/height; lazy-load below the fold.
-- Mobile-first; comparison tables must degrade on small screens.
+- Mobile-first; comparison tables must degrade on small screens (stacked cards below `md`, or horizontal scroll with a sticky first column — never six cramped columns).
 
 ## Commits
 

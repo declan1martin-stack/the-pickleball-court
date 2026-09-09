@@ -2,7 +2,6 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import Disclosure from '../../components/Disclosure.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import FAQ from '../../components/FAQ.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
@@ -10,6 +9,8 @@ import RelatedArticles from '../../components/RelatedArticles.astro';
 import ProductSpotlight from '../../components/ProductSpotlight.astro';
 import AffiliateButton from '../../components/AffiliateButton.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import ResponsiveTable from '../../components/ResponsiveTable.astro';
+import MarkdownTable from '../../components/MarkdownTable.astro';
 import ProsCons from '../../components/ProsCons.astro';
 import Callout from '../../components/Callout.astro';
 import NewsLink from '../../components/NewsLink.astro';
@@ -49,6 +50,8 @@ const author = resolveAuthor(article.data.author);
 const mdxComponents = {
 	AffiliateButton,
 	ComparisonTable,
+	ResponsiveTable,
+	table: MarkdownTable,
 	ProsCons,
 	Callout,
 	ProductSpotlight,
@@ -149,8 +152,7 @@ const crumbs = [
 
 	<div class="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:px-8">
 		<div class="min-w-0">
-			<Disclosure />
-			<MarketStoreNote />
+			<MarketStoreNote compact />
 
 			{/* Answer-first summary for AI/snippet extraction — concrete takeaway, not the meta description. */}
 			<div class="mt-6 max-w-[70ch] rounded-2xl border border-emerald-200 bg-emerald-50/70 px-5 py-4">

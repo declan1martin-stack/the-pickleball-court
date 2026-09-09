@@ -225,3 +225,56 @@ button:focus-visible {
 	font-weight: 700;
 	color: #27272a;
 }
+
+/* Markdown tables: scroll instead of squeezing 4–6 columns into ~390px */
+.md-table-scroll {
+	margin-block: 1.5rem;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	background: var(--color-surface);
+}
+
+.md-table-scroll table {
+	width: max-content;
+	min-width: 100%;
+	border-collapse: collapse;
+	font-size: 0.9rem;
+}
+
+.md-table-scroll th,
+.md-table-scroll td {
+	padding: 0.75rem 1rem;
+	text-align: left;
+	vertical-align: top;
+	min-width: 10rem;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.md-table-scroll thead th {
+	background: var(--color-primary-dark);
+	color: #fff;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.md-table-scroll tbody th,
+.md-table-scroll td:first-child,
+.md-table-scroll th:first-child {
+	position: sticky;
+	left: 0;
+	z-index: 1;
+	box-shadow: 1px 0 0 var(--color-border);
+}
+
+.md-table-scroll thead th:first-child {
+	z-index: 2;
+	background: var(--color-primary-dark);
+}
+
+.md-table-scroll tbody th,
+.md-table-scroll tbody td:first-child {
+	background: var(--color-surface);
+	font-weight: 700;
+}

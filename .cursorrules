@@ -10,7 +10,7 @@ Persistent rules for every Cursor session in this repo. Canonical copies also li
 - Product source of truth: `src/data/gear.json`. Never duplicate product data elsewhere — reference products by ID.
 
 ## Architecture (do not break)
-- `Layout.astro` — nav, canonical/OG/Twitter meta, Amazon disclosure footer.
+- `Layout.astro` — nav, canonical/OG/Twitter meta, footer with a short affiliate-disclosure link.
 - `ProductCard.astro` — product display + nofollow CTA.
 - `index.astro` — homepage.
 - `gear/[category].astro` — paddles / shoes / nets category pages.
@@ -22,7 +22,7 @@ Persistent rules for every Cursor session in this repo. Canonical copies also li
 1. Every Amazon URL MUST include `tag=uspickleball-20` (or the active `AFFILIATE_TAG` for the build region). Never emit one without it.
 2. All affiliate links: `target="_blank"` and `rel="sponsored nofollow noopener"`. Route every affiliate link through `AffiliateButton.astro`.
 3. Do NOT display prices as current/authoritative (Amazon Operating Agreement). Use "Check current price on Amazon" CTAs and price tiers ($/$$/$$$) or "as of" labeling — never a guaranteed live price.
-4. FTC + Amazon disclosure on every page with affiliate links (top-of-body `Disclosure.astro` + footer).
+4. FTC + Amazon disclosure: show the full Associates paragraph once, on the homepage (`Disclosure.astro`). Other pages use a footer link to `/affiliate-disclosure` — do not repeat the full disclaimer on guides, news, or gear pages.
 5. Never fabricate prices, specs, weights, materials, ratings, or review counts. If missing, insert `{{ TODO: confirm }}` — do not guess or hallucinate.
 
 ## Content standards

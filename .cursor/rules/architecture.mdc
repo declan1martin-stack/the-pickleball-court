@@ -17,7 +17,7 @@ alwaysApply: true
 
 | Path | Role |
 |---|---|
-| `Layout.astro` | Nav, canonical/OG/Twitter/hreflang, Amazon footer disclosure |
+| `Layout.astro` | Nav, canonical/OG/Twitter/hreflang, footer legal links |
 | `ProductCard.astro` | Product display + affiliate CTA |
 | `index.astro` | Homepage |
 | `gear/[category].astro` | Paddles / shoes / nets |

@@ -9,7 +9,7 @@ alwaysApply: true
 2. All affiliate links: `target="_blank"` and `rel="sponsored nofollow noopener"`.
 3. Route every affiliate link through `AffiliateButton.astro`.
 4. Do NOT display prices as current/authoritative. Use “Check current price on Amazon” CTAs; prefer price tiers ($/$$/$$$) or “as of” / approximate labeling — never a guaranteed live price.
-5. FTC + Amazon disclosure on every page with affiliate links: top-of-body `Disclosure.astro` + footer.
+5. FTC + Amazon disclosure: full Associates paragraph on the **homepage only** (`Disclosure.astro`). Other pages: footer link to `/affiliate-disclosure`, not a repeated Associates paragraph. Keep the dedicated `/affiliate-disclosure` page.
 6. Never fabricate prices, specs, weights, materials, ratings, or review counts. If missing, insert `{{ TODO: confirm }}` — do not guess.
 
 ```astro
