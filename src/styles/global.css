@@ -140,6 +140,17 @@ main :is(h1, h2, h3, h4, section, aside, article, [id]),
 	scroll-margin-top: var(--header-offset);
 }
 
+/*
+ * scroll-margin-top only affects scrollIntoView / :target. Natural scrolling
+ * still tucks in-flow headings under the sticky bar (homepage “Featured Gear”
+ * at ~390px). Padding on later main sections keeps those headings below
+ * --header-offset when the block enters the viewport. Skip :first-child so
+ * the page hero stays flush with the nav.
+ */
+main > :not(:first-child):is(section, article) {
+	padding-top: var(--header-offset);
+}
+
 .prose-article :where(a) {
 	color: var(--color-primary);
 	font-weight: 600;
