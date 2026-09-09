@@ -19,7 +19,7 @@ import {
 	getRelatedArticles,
 	categoryPath,
 } from '../../lib/articles';
-import { absoluteUrl, articleSchema } from '../../lib/seo';
+import { absoluteUrl, articleSchema, faqPageSchema, itemListSchema } from '../../lib/seo';
 import { getAffiliateUrl, getProductById, getPriceTier, getShopCtaLabel, type Product } from '../../lib/products';
 import { AMAZON_STORE } from '../../lib/site';
 import { authorPath, resolveAuthor } from '../../data/authors';
@@ -54,6 +54,7 @@ const mdxComponents = {
 	ProductSpotlight,
 	NewsLink,
 	MarketNotes,
+	SmartImage,
 };
 const title = marketizeTitle(article.data.title);
 const description = marketizeCopy(article.data.description);
@@ -81,16 +82,40 @@ const crumbs = [
 	ogType="article"
 	publishDate={article.data.publishDate}
 	updatedDate={article.data.updatedDate}
-	jsonLd={articleSchema({
-		title,
-		description,
-		path,
-		image: article.data.heroImage,
-		author: author.name,
-		authorUrl: absoluteUrl(authorPath(author.id)),
-		publishDate: article.data.publishDate,
-		updatedDate: article.data.updatedDate,
-	})}
+	jsonLd={[
+		articleSchema({
+			title,
+			description,
+			path,
+			image: article.data.heroImage,
+			author: author.name,
+			authorUrl: absoluteUrl(authorPath(author.id)),
+			publishDate: article.data.publishDate,
+			updatedDate: article.data.updatedDate,
+			articleSection: article.data.category,
+			keywords: article.data.tags,
+		}),
+		...(faq.length > 0 ? [faqPageSchema(faq)] : []),
+		...(relatedProductLinks.length > 0
+			? [
+					itemListSchema({
+						name: `${title} — catalog picks`,
+						description,
+						path,
+						items: relatedProductLinks.map((product, index) => ({
+							name: product.name,
+							url: absoluteUrl(`/gear/${product.category}#${product.id}`),
+							position: index + 1,
+							brand: product.brand,
+							description: marketizeCopy(product.description),
+							image: product.imageUrl.startsWith('http')
+								? product.imageUrl
+								: absoluteUrl(product.imageUrl),
+						})),
+					}),
+				]
+			: []),
+	]}
 >
 	<article class="border-b border-zinc-200 bg-white">
 		<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -186,7 +211,7 @@ const crumbs = [
 				<ProductSpotlight productId={article.data.relatedProducts[0]} eyebrow="Featured from this guide" />
 			)}
 
-			<FAQ items={faq} />
+			<FAQ items={faq} includeSchema={false} />
 			<AuthorBox author={author} />
 			<RelatedArticles
 				articles={related.map((item) => ({

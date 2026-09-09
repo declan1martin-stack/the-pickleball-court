@@ -187,19 +187,22 @@ export function articleSchema(input: {
 	/** Use NewsArticle for news posts. */
 	type?: 'Article' | 'NewsArticle';
 	inLanguage?: string;
+	keywords?: string[];
+	articleSection?: string;
 }) {
 	const pageUrl = absoluteUrl(input.path);
 	const datePublished = new Date(input.publishDate).toISOString();
 	const dateModified = input.updatedDate
 		? new Date(input.updatedDate).toISOString()
 		: datePublished;
+	const image = input.image.startsWith('http') ? input.image : absoluteUrl(input.image);
 	return {
 		'@type': input.type ?? 'Article',
 		'@id': `${pageUrl}#article`,
 		headline: input.title,
 		description: input.description,
 		url: pageUrl,
-		image: [input.image],
+		image: [image],
 		inLanguage: input.inLanguage ?? site.inLanguage,
 		isPartOf: { '@id': WEBSITE_ID },
 		author: {
@@ -226,6 +229,8 @@ export function articleSchema(input: {
 			'@type': 'WebPage',
 			'@id': pageUrl,
 		},
+		...(input.articleSection ? { articleSection: input.articleSection } : {}),
+		...(input.keywords?.length ? { keywords: input.keywords.join(', ') } : {}),
 	};
 }
 
