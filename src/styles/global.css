@@ -136,7 +136,8 @@ button:focus-visible {
 /* Sitewide: hash targets, sections, callouts, and CTAs clear the sticky header */
 main :is(h1, h2, h3, h4, section, aside, article, [id]),
 .btn-primary,
-.btn-secondary {
+.btn-secondary,
+.btn-ghost {
 	scroll-margin-top: var(--header-offset);
 }
 
@@ -224,6 +225,45 @@ main > :not(:first-child):is(section, article) {
 .btn-secondary:hover {
 	background: var(--color-primary);
 	color: #fff;
+}
+
+/*
+ * Ghost / outline buttons for dark surfaces (hero, etc.).
+ * `.btn-secondary` sets color via a custom class that wins over Tailwind
+ * utilities like `text-white`, so dark-on-dark CTAs need this variant.
+ */
+.btn-ghost {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 100%;
+	border-radius: var(--radius-pill);
+	border: 2px solid rgba(255, 255, 255, 0.75);
+	background: transparent;
+	color: #fff;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 0.95rem;
+	padding: 0.8rem 1.35rem;
+	white-space: normal;
+	text-align: center;
+	transition:
+		background 150ms ease,
+		color 150ms ease,
+		border-color 150ms ease;
+}
+
+.btn-ghost:hover {
+	background: #fff;
+	border-color: #fff;
+	color: var(--color-primary);
+}
+
+.btn-ghost:focus-visible {
+	outline: none;
+	box-shadow:
+		0 0 0 3px var(--color-primary-dark),
+		0 0 0 6px #fff;
 }
 
 .link-brand {
