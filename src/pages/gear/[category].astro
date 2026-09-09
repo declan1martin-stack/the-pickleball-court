@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import GearFilters from '../../components/GearFilters.astro';
-import Disclosure from '../../components/Disclosure.astro';
 import MarketStoreNote from '../../components/MarketStoreNote.astro';
 import ShopJumpBar from '../../components/ShopJumpBar.astro';
 import gear from '../../data/gear.json';
@@ -126,8 +125,7 @@ const itemList = itemListSchema({
 				<a href="#gear-product-grid" class="font-bold text-emerald-800 underline">Jump to shop</a>
 			</p>
 			<div class="mt-5 max-w-3xl">
-				<Disclosure compact />
-				<MarketStoreNote />
+				<MarketStoreNote compact />
 			</div>
 			{pillar && (
 				<p class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-950">

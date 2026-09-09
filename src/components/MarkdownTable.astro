@@ -1,0 +1,12 @@
+---
+/**
+ * MDX <table> wrapper: never squeeze wide markdown tables into ~390px.
+ * Horizontal scroll + sticky first column; 4+ column kit tables should use ResponsiveTable.
+ */
+---
+
+<div class="md-table-scroll">
+	<table>
+		<slot />
+	</table>
+</div>

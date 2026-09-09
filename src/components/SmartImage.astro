@@ -42,7 +42,7 @@ const imgPriority = fetchpriority === 'high' ? 'high' : undefined;
 			fetchpriority={imgPriority}
 			decoding={decoding}
 			class={className}
-			pictureAttributes={{ class: className }}
+			pictureAttributes={{ class: `block max-w-full ${className ?? ''}`.trim() }}
 		/>
 	) : (
 		<img

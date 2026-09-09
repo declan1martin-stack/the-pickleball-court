@@ -5,7 +5,6 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
 import RelatedNews from '../../components/RelatedNews.astro';
 import NewsLink from '../../components/NewsLink.astro';
-import Disclosure from '../../components/Disclosure.astro';
 import SmartImage from '../../components/SmartImage.astro';
 import { resolveAuthor, authorPath } from '../../data/authors';
 import {
@@ -20,6 +19,7 @@ import {
 import { absoluteUrl, articleSchema, clampMetaDescription } from '../../lib/seo';
 import ProductSpotlight from '../../components/ProductSpotlight.astro';
 import ShopJumpBar from '../../components/ShopJumpBar.astro';
+import MarkdownTable from '../../components/MarkdownTable.astro';
 import { getProductsByIds } from '../../lib/products';
 import { AMAZON_STORE } from '../../lib/site';
 
@@ -47,7 +47,7 @@ const { src: heroImage, alt: heroAlt, credit: heroCredit, creditHref } = newsHer
 const ogImage = heroImage ?? '/og-default.png';
 const markets = entry.data.markets ?? (['ca', 'us'] as const);
 const sharedAcrossMarkets = markets.includes('ca') && markets.includes('us');
-const mdxComponents = { NewsLink };
+const mdxComponents = { NewsLink, table: MarkdownTable };
 const namedShopIds = entry.data.productIds ?? [];
 const fallbackShopIds = [
 	'ball-franklin-x40-outdoor-12',
@@ -142,7 +142,6 @@ const shopIntro =
 	</article>
 
 	<div class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
-		<Disclosure compact />
 		{shopProducts.length > 0 && (
 			<p class="mt-4 text-sm">
 				<a href="#news-shop-heading" class="font-semibold text-primary underline">
