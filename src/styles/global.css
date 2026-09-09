@@ -56,10 +56,15 @@
 	--space-9: 96px;
 	--measure: 70ch;
 	--space-section: clamp(3.5rem, 6vw, 5.5rem);
+	/* Sticky header is h-16 (4rem) + 1px border ≈ 65px. Offset keeps in-page
+	   targets and mid-page CTAs from landing under the bar. */
+	--header-height: calc(4rem + 1px);
+	--header-offset: calc(var(--header-height) + 0.75rem);
 }
 
 html {
 	scroll-behavior: smooth;
+	scroll-padding-top: var(--header-offset);
 }
 
 body {
@@ -124,8 +129,15 @@ button:focus-visible {
 }
 
 .prose-article :where(h2, h3) {
-	scroll-margin-top: 6rem;
+	scroll-margin-top: var(--header-offset);
 	font-family: var(--font-display);
+}
+
+/* Sitewide: hash targets, sections, callouts, and CTAs clear the sticky header */
+main :is(h1, h2, h3, h4, section, aside, article, [id]),
+.btn-primary,
+.btn-secondary {
+	scroll-margin-top: var(--header-offset);
 }
 
 .prose-article :where(a) {
