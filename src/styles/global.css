@@ -65,6 +65,27 @@
 html {
 	scroll-behavior: smooth;
 	scroll-padding-top: var(--header-offset);
+	height: 100dvh;
+	overflow: hidden;
+}
+
+/* overflow-x-clip on body/main can make those boxes the scrollport;
+   keep the same sticky-header gutter on every possible window-level scroller. */
+body,
+main {
+	scroll-padding-top: var(--header-offset);
+}
+
+/*
+ * Guide (and all-page) content scrolls below the in-flow header so Amazon
+ * Shop now CTAs cannot sit at viewport y≈0 under the 65px bar. Hash jumps
+ * inside this pane only need a small gutter.
+ */
+.site-scroll {
+	scroll-behavior: smooth;
+	scroll-padding-top: 0.75rem;
+	-webkit-overflow-scrolling: touch;
+	overscroll-behavior: contain;
 }
 
 body {
@@ -137,7 +158,9 @@ button:focus-visible {
 main :is(h1, h2, h3, h4, section, aside, article, [id]),
 .btn-primary,
 .btn-secondary,
-.btn-ghost {
+.btn-ghost,
+.affiliate-cta,
+a[data-affiliate]:is(.btn-primary, .btn-secondary) {
 	scroll-margin-top: var(--header-offset);
 }
 
