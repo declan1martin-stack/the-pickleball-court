@@ -76,7 +76,7 @@ const graph = {
 ---
 
 <!doctype html>
-<html lang={site.inLanguage} class="max-w-full scroll-smooth overflow-x-clip" data-site={site.region}>
+<html lang={site.inLanguage} class="h-dvh max-w-full overflow-hidden" data-site={site.region}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -123,7 +123,7 @@ const graph = {
 
 		<Analytics />
 	</head>
-	<body class="min-h-screen flex min-w-0 max-w-full flex-col overflow-x-clip bg-bg text-ink antialiased">
+	<body class="flex h-full min-h-0 min-w-0 max-w-full flex-col overflow-hidden bg-bg text-ink antialiased">
 		<a
 			href="#main-content"
 			class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:rounded-[var(--radius-md)] focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
@@ -133,10 +133,25 @@ const graph = {
 
 		<Nav />
 
-		<main id="main-content" class="min-w-0 max-w-full flex-grow overflow-x-clip">
-			<slot />
-		</main>
+		<div class="site-scroll min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-clip">
+			<div class="flex min-h-full flex-col">
+				<main id="main-content" class="min-w-0 max-w-full flex-grow overflow-x-clip">
+					<slot />
+				</main>
 
-		<Footer />
+				<Footer />
+			</div>
+		</div>
+
+		<script>
+			/** Hash targets live inside .site-scroll, not the window. */
+			function scrollHashIntoView() {
+				const id = decodeURIComponent(location.hash.replace(/^#/, ''));
+				if (!id) return;
+				document.getElementById(id)?.scrollIntoView({ block: 'start' });
+			}
+			scrollHashIntoView();
+			window.addEventListener('hashchange', scrollHashIntoView);
+		</script>
 	</body>
 </html>

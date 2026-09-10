@@ -35,17 +35,38 @@ const variants = {
 	secondary: 'btn-secondary w-full sm:w-auto',
 	inline: 'link-brand underline underline-offset-2',
 };
+
+const linkClass = [variants[variant], className];
+const wrap = variant !== 'inline';
 ---
 
-<a
-	href={safeHref}
-	target="_blank"
-	rel="sponsored nofollow noopener"
-	data-affiliate="retail"
-	data-affiliate-partner={partner}
-	data-product-id={productId}
-	class:list={[variants[variant], className]}
->
-	{label}
-	{variant !== 'inline' && <span class="sr-only"> (opens in a new tab)</span>}
-</a>
+{
+	wrap ? (
+		<div class="affiliate-cta w-full sm:w-auto">
+			<a
+				href={safeHref}
+				target="_blank"
+				rel="sponsored nofollow noopener"
+				data-affiliate="retail"
+				data-affiliate-partner={partner}
+				data-product-id={productId}
+				class:list={linkClass}
+			>
+				{label}
+				<span class="sr-only"> (opens in a new tab)</span>
+			</a>
+		</div>
+	) : (
+		<a
+			href={safeHref}
+			target="_blank"
+			rel="sponsored nofollow noopener"
+			data-affiliate="retail"
+			data-affiliate-partner={partner}
+			data-product-id={productId}
+			class:list={linkClass}
+		>
+			{label}
+		</a>
+	)
+}

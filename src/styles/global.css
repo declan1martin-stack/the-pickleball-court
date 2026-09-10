@@ -56,15 +56,36 @@
 	--space-9: 96px;
 	--measure: 70ch;
 	--space-section: clamp(3.5rem, 6vw, 5.5rem);
-	/* Sticky header is h-16 (4rem) + 1px border ≈ 65px. Offset keeps in-page
-	   targets and mid-page CTAs from landing under the bar. */
+	/* In-flow header is h-16 (4rem) + 1px border ≈ 65px. --header-offset
+	   still pads later main sections (homepage Featured Gear, guide body). */
 	--header-height: calc(4rem + 1px);
 	--header-offset: calc(var(--header-height) + 0.75rem);
+	/* Extra air inside .site-scroll — the header sits outside that scroller. */
+	--scroll-gutter: 0.75rem;
 }
 
 html {
 	scroll-behavior: smooth;
 	scroll-padding-top: var(--header-offset);
+}
+
+/* overflow-x-clip on body/main can make those boxes the scrollport;
+   keep the same header gutter on every possible window-level scroller. */
+body,
+main {
+	scroll-padding-top: var(--header-offset);
+}
+
+/*
+ * Page content scrolls in .site-scroll (below the header) so Shop now CTAs
+ * never tuck under the nav. Hash jumps only need a small gutter — the header
+ * is not overlaying this box.
+ */
+.site-scroll {
+	scroll-behavior: smooth;
+	scroll-padding-top: var(--scroll-gutter);
+	-webkit-overflow-scrolling: touch;
+	overscroll-behavior: contain;
 }
 
 body {
@@ -129,16 +150,17 @@ button:focus-visible {
 }
 
 .prose-article :where(h2, h3) {
-	scroll-margin-top: var(--header-offset);
+	scroll-margin-top: var(--scroll-gutter);
 	font-family: var(--font-display);
 }
 
-/* Sitewide: hash targets, sections, callouts, and CTAs clear the sticky header */
+/* Sitewide: hash targets, sections, callouts, and CTAs clear the header */
 main :is(h1, h2, h3, h4, section, aside, article, [id]),
 .btn-primary,
 .btn-secondary,
-.btn-ghost {
-	scroll-margin-top: var(--header-offset);
+.btn-ghost,
+.affiliate-cta {
+	scroll-margin-top: var(--scroll-gutter);
 }
 
 /*
