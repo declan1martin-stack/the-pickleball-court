@@ -20,9 +20,9 @@ const partnerOffers = product ? getPartnerOffers(product) : [];
 ---
 
 {product ? (
-	<aside class="my-8 overflow-hidden rounded-2xl border border-emerald-200 bg-white shadow-sm">
+	<aside class="my-8 rounded-2xl border border-emerald-200 bg-white shadow-sm">
 		<div class="grid gap-0 md:grid-cols-[220px_1fr]">
-			<div class="relative aspect-[4/3] bg-zinc-100 md:aspect-auto md:min-h-full">
+			<div class="relative aspect-[4/3] overflow-hidden bg-zinc-100 max-md:rounded-t-2xl md:aspect-auto md:min-h-full md:rounded-l-2xl">
 				<SmartImage
 					src={product.imageUrl}
 					alt={`${product.brand} ${product.name}`}
