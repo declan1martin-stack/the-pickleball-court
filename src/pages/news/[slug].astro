@@ -18,7 +18,6 @@ import {
 } from '../../lib/news';
 import { absoluteUrl, articleSchema, clampMetaDescription } from '../../lib/seo';
 import ProductSpotlight from '../../components/ProductSpotlight.astro';
-import ShopJumpBar from '../../components/ShopJumpBar.astro';
 import MarkdownTable from '../../components/MarkdownTable.astro';
 import { getProductsByIds } from '../../lib/products';
 import { AMAZON_STORE } from '../../lib/site';
@@ -232,5 +231,4 @@ const shopIntro =
 
 		<AuthorBox author={author} />
 	</div>
-	<ShopJumpBar />
 </Layout>

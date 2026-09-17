@@ -4,7 +4,6 @@ import ProductCard from '../components/ProductCard.astro';
 import Disclosure from '../components/Disclosure.astro';
 import MarketStoreNote from '../components/MarketStoreNote.astro';
 import LatestWeeklyUpdates from '../components/LatestWeeklyUpdates.astro';
-import ShopJumpBar from '../components/ShopJumpBar.astro';
 import { getFeaturedArticles, getAllArticles } from '../lib/articles';
 import { getProductsByIds } from '../lib/products';
 import { AMAZON_STORE, MARKET_COUNTRY, MARKET_LABEL, MARKET_PLAYERS } from '../lib/site';
@@ -293,5 +292,4 @@ const pillars = [
 			</div>
 		</section>
 	)}
-	<ShopJumpBar />
 </Layout>

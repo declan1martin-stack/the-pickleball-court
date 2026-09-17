@@ -25,7 +25,6 @@ import { getAffiliateUrl, getProductById, getPriceTier, getShopCtaLabel, type Pr
 import { AMAZON_STORE } from '../../lib/site';
 import { authorPath, resolveAuthor } from '../../data/authors';
 import MarketNotes from '../../components/MarketNotes.astro';
-import ShopJumpBar from '../../components/ShopJumpBar.astro';
 import { marketizeCopy, marketizeFaq, marketizeTitle } from '../../lib/marketCopy';
 
 export async function getStaticPaths() {
@@ -226,5 +225,4 @@ const crumbs = [
 			<TableOfContents headings={headings} />
 		</aside>
 	</section>
-	<ShopJumpBar />
 </Layout>
