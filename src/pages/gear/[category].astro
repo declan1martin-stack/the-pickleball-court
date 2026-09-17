@@ -4,7 +4,6 @@ import ProductCard from '../../components/ProductCard.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import GearFilters from '../../components/GearFilters.astro';
 import MarketStoreNote from '../../components/MarketStoreNote.astro';
-import ShopJumpBar from '../../components/ShopJumpBar.astro';
 import gear from '../../data/gear.json';
 import { getArticlesByCategory, CATEGORY_PILLARS } from '../../lib/articles';
 import { getPriceTier, PRICE_TIER_RANK } from '../../lib/products';
@@ -180,5 +179,4 @@ const itemList = itemListSchema({
 			</div>
 		</section>
 	)}
-	<ShopJumpBar />
 </Layout>

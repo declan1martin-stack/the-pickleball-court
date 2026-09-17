@@ -56,36 +56,60 @@
 	--space-9: 96px;
 	--measure: 70ch;
 	--space-section: clamp(3.5rem, 6vw, 5.5rem);
-	/* Sticky header is h-16 (4rem) + 1px border ≈ 65px. Offset keeps in-page
-	   targets and mid-page CTAs from landing under the bar. */
+	/* Chrome is docked outside .site-scroll (not sticky/fixed overlays).
+	   Offsets still gutter hash jumps / scrollIntoView at the pane edges. */
 	--header-height: calc(4rem + 1px);
 	--header-offset: calc(var(--header-height) + 0.75rem);
+	--bottom-bar-height: 0px;
+	--bottom-bar-offset: 0px;
+}
+
+@media (max-width: 1023px) {
+	:root {
+		/* ShopJumpBar: py-2.5 + btn-primary padding + 1px border.
+		   Keep in sync with .shop-jump-bar; extra 0.75rem is the same gutter as --header-offset. */
+		--bottom-bar-height: calc(0.625rem + 0.85rem + 1.52rem + 0.85rem + 0.625rem + 1px);
+		--bottom-bar-offset: calc(var(--bottom-bar-height) + 0.75rem);
+	}
 }
 
 html {
 	scroll-behavior: smooth;
 	scroll-padding-top: var(--header-offset);
+	scroll-padding-bottom: var(--bottom-bar-offset);
+	height: 100%;
 	height: 100dvh;
+	max-height: 100dvh;
 	overflow: hidden;
+	overscroll-behavior: none;
 }
 
 /* overflow-x-clip on body/main can make those boxes the scrollport;
-   keep the same sticky-header gutter on every possible window-level scroller. */
+   keep chrome gutters on every possible window-level scroller. */
 body,
 main {
 	scroll-padding-top: var(--header-offset);
+	scroll-padding-bottom: var(--bottom-bar-offset);
 }
 
 /*
- * Guide (and all-page) content scrolls below the in-flow header so Amazon
- * Shop now CTAs cannot sit at viewport y≈0 under the 65px bar. Hash jumps
- * inside this pane only need a small gutter.
+ * App shell: header + optional mobile shop bar are in-flow flex siblings.
+ * Amazon Shop CTAs scroll only inside this pane, so they cannot park under
+ * the h-16 header or the mobile shop bar during free-scroll (~390px).
  */
 .site-scroll {
 	scroll-behavior: smooth;
 	scroll-padding-top: 0.75rem;
+	scroll-padding-bottom: 0.75rem;
 	-webkit-overflow-scrolling: touch;
 	overscroll-behavior: contain;
+	flex: 1 1 0%;
+}
+
+.shop-jump-bar {
+	position: relative;
+	flex-shrink: 0;
+	padding-bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px));
 }
 
 body {
@@ -154,7 +178,7 @@ button:focus-visible {
 	font-family: var(--font-display);
 }
 
-/* Sitewide: hash targets, sections, callouts, and CTAs clear the sticky header */
+/* Sitewide: hash targets, sections, callouts, and CTAs clear docked chrome */
 main :is(h1, h2, h3, h4, section, aside, article, [id]),
 .btn-primary,
 .btn-secondary,
@@ -162,6 +186,7 @@ main :is(h1, h2, h3, h4, section, aside, article, [id]),
 .affiliate-cta,
 a[data-affiliate]:is(.btn-primary, .btn-secondary) {
 	scroll-margin-top: var(--header-offset);
+	scroll-margin-bottom: var(--bottom-bar-offset);
 }
 
 /*
