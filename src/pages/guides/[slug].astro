@@ -20,7 +20,7 @@ import {
 	getRelatedArticles,
 	categoryPath,
 } from '../../lib/articles';
-import { GUIDES_INDEX_PATH } from '../../lib/breadcrumbs';
+import { GUIDES_INDEX_PATH, isGuidesCrumbLabel } from '../../lib/breadcrumbs';
 import { absoluteUrl, articleSchema, faqPageSchema, itemListSchema } from '../../lib/seo';
 import { getAffiliateUrl, getProductById, getPriceTier, getShopCtaLabel, type Product } from '../../lib/products';
 import { AMAZON_STORE } from '../../lib/site';
@@ -71,7 +71,9 @@ const relatedProductLinks = article.data.relatedProducts
 const crumbs = [
 	{ label: 'Home', href: '/' },
 	{ label: 'Guides', href: GUIDES_INDEX_PATH },
-	{ label: article.data.category, href: categoryCrumbHref },
+	...(isGuidesCrumbLabel(article.data.category)
+		? []
+		: [{ label: article.data.category, href: categoryCrumbHref }]),
 	{ label: title },
 ];
 ---
