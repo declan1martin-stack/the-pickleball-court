@@ -20,8 +20,22 @@ export function hrefForBreadcrumb(label: string, href?: string): string | undefi
 }
 
 export function normalizeBreadcrumbItems(items: BreadcrumbItem[]): BreadcrumbItem[] {
-	return items.map((item) => ({
+	const normalized = items.map((item) => ({
 		...item,
 		href: hrefForBreadcrumb(item.label, item.href),
 	}));
+
+	const collapsed: BreadcrumbItem[] = [];
+	for (const item of normalized) {
+		const prev = collapsed[collapsed.length - 1];
+		const duplicateGuidesCrumb =
+			prev &&
+			isGuidesCrumbLabel(prev.label) &&
+			isGuidesCrumbLabel(item.label) &&
+			(prev.href ?? GUIDES_INDEX_PATH) === GUIDES_INDEX_PATH &&
+			(item.href ?? GUIDES_INDEX_PATH) === GUIDES_INDEX_PATH;
+		if (duplicateGuidesCrumb) continue;
+		collapsed.push(item);
+	}
+	return collapsed;
 }
