@@ -20,7 +20,7 @@ import {
 	getRelatedArticles,
 	categoryPath,
 } from '../../lib/articles';
-import { GUIDES_INDEX_PATH, isGuidesCrumbLabel } from '../../lib/breadcrumbs';
+import { GUIDES_INDEX_PATH, guideArticleBreadcrumbs } from '../../lib/breadcrumbs';
 import { absoluteUrl, articleSchema, faqPageSchema, itemListSchema } from '../../lib/seo';
 import { getAffiliateUrl, getProductById, getPriceTier, getShopCtaLabel, type Product } from '../../lib/products';
 import { AMAZON_STORE } from '../../lib/site';
@@ -45,7 +45,6 @@ const isGearCategory = Boolean(rawCategoryHref && rawCategoryHref !== GUIDES_IND
 // Catalog CTA may fall back to paddles; breadcrumbs must not reuse that href.
 const catalogHref = isGearCategory ? rawCategoryHref : '/gear/paddles';
 const catalogLabel = isGearCategory ? article.data.category : 'paddles';
-const categoryCrumbHref = isGearCategory && rawCategoryHref ? rawCategoryHref : GUIDES_INDEX_PATH;
 const path = `/guides/${article.data.slug}`;
 const author = resolveAuthor(article.data.author);
 const mdxComponents = {
@@ -68,14 +67,7 @@ const relatedProductLinks = article.data.relatedProducts
 	.map((id) => getProductById(id))
 	.filter((product): product is Product => Boolean(product));
 
-const crumbs = [
-	{ label: 'Home', href: '/' },
-	{ label: 'Guides', href: GUIDES_INDEX_PATH },
-	...(isGuidesCrumbLabel(article.data.category)
-		? []
-		: [{ label: article.data.category, href: categoryCrumbHref }]),
-	{ label: title },
-];
+const crumbs = guideArticleBreadcrumbs(title);
 ---
 
 <Layout
