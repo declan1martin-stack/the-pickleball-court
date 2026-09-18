@@ -20,6 +20,7 @@ import {
 	getRelatedArticles,
 	categoryPath,
 } from '../../lib/articles';
+import { GUIDES_INDEX_PATH } from '../../lib/breadcrumbs';
 import { absoluteUrl, articleSchema, faqPageSchema, itemListSchema } from '../../lib/seo';
 import { getAffiliateUrl, getProductById, getPriceTier, getShopCtaLabel, type Product } from '../../lib/products';
 import { AMAZON_STORE } from '../../lib/site';
@@ -40,9 +41,11 @@ const { Content, headings } = await render(article);
 const allArticles = await getAllArticles();
 const related = getRelatedArticles(allArticles, article, 3);
 const rawCategoryHref = categoryPath(article.data.category);
-const isGearCategory = rawCategoryHref !== '/guides';
-const categoryHref = isGearCategory ? rawCategoryHref : '/gear/paddles';
+const isGearCategory = Boolean(rawCategoryHref && rawCategoryHref !== GUIDES_INDEX_PATH);
+// Catalog CTA may fall back to paddles; breadcrumbs must not reuse that href.
+const catalogHref = isGearCategory ? rawCategoryHref : '/gear/paddles';
 const catalogLabel = isGearCategory ? article.data.category : 'paddles';
+const categoryCrumbHref = isGearCategory && rawCategoryHref ? rawCategoryHref : GUIDES_INDEX_PATH;
 const path = `/guides/${article.data.slug}`;
 const author = resolveAuthor(article.data.author);
 const mdxComponents = {
@@ -67,10 +70,8 @@ const relatedProductLinks = article.data.relatedProducts
 
 const crumbs = [
 	{ label: 'Home', href: '/' },
-	{ label: 'Guides', href: '/guides' },
-	...(categoryHref
-		? [{ label: article.data.category, href: categoryHref }]
-		: [{ label: article.data.category, href: `/guides?category=${article.data.category}` }]),
+	{ label: 'Guides', href: GUIDES_INDEX_PATH },
+	{ label: article.data.category, href: categoryCrumbHref },
 	{ label: title },
 ];
 ---
@@ -156,11 +157,11 @@ const crumbs = [
 				<p class="mt-2 text-base leading-relaxed text-emerald-950">{quickAnswer}</p>
 			</div>
 
-			{categoryHref && (
+			{catalogHref && (
 				<div class="mt-6 flex flex-col gap-3 rounded-2xl border border-emerald-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
 					<p class="text-sm text-zinc-600">
 						Ready to buy?
-						<a href={categoryHref} class="font-semibold text-emerald-800 underline">
+						<a href={catalogHref} class="font-semibold text-emerald-800 underline">
 							Browse our {catalogLabel} catalog
 						</a>
 						{' '}on {AMAZON_STORE}.

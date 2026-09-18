@@ -1,21 +1,18 @@
 ---
 import Schema from './Schema.astro';
 import { absoluteUrl } from '../lib/seo';
-
-interface Crumb {
-	label: string;
-	href?: string;
-}
+import { normalizeBreadcrumbItems, type BreadcrumbItem } from '../lib/breadcrumbs';
 
 interface Props {
-	items: Crumb[];
+	items: BreadcrumbItem[];
 }
 
 const { items } = Astro.props;
+const crumbs = normalizeBreadcrumbItems(items);
 
 const jsonLd = {
 	'@type': 'BreadcrumbList',
-	itemListElement: items.map((item, index) => ({
+	itemListElement: crumbs.map((item, index) => ({
 		'@type': 'ListItem',
 		position: index + 1,
 		name: item.label,
@@ -26,15 +23,15 @@ const jsonLd = {
 
 <nav aria-label="Breadcrumb" class="mb-6">
 	<ol class="flex flex-wrap items-center gap-2 text-sm text-zinc-600">
-		{items.map((item, index) => (
+		{crumbs.map((item, index) => (
 			<li class="inline-flex items-center gap-2">
 				{index > 0 && <span class="text-zinc-400" aria-hidden="true">/</span>}
-				{item.href && index < items.length - 1 ? (
+				{item.href && index < crumbs.length - 1 ? (
 					<a href={item.href} class="font-medium transition hover:text-emerald-800">
 						{item.label}
 					</a>
 				) : (
-					<span class="font-semibold text-zinc-900" aria-current={index === items.length - 1 ? 'page' : undefined}>
+					<span class="font-semibold text-zinc-900" aria-current={index === crumbs.length - 1 ? 'page' : undefined}>
 						{item.label}
 					</span>
 				)}
