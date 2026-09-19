@@ -21,7 +21,8 @@
     "qa:live:us": "LIVE_SITE=https://uspickleballcourt.com PUBLIC_SITE_REGION=us node scripts/qa-live.mjs",
     "ping:indexnow": "node scripts/ping-indexnow.mjs --both",
     "ping:indexnow:us": "PUBLIC_SITE_REGION=us node scripts/ping-indexnow.mjs --host=uspickleballcourt.com",
-    "ping:indexnow:ca": "PUBLIC_SITE_REGION=ca node scripts/ping-indexnow.mjs --host=thepickleballcourt.ca"
+    "ping:indexnow:ca": "PUBLIC_SITE_REGION=ca node scripts/ping-indexnow.mjs --host=thepickleballcourt.ca",
+    "ping:indexnow:us:daily": "node scripts/ping-indexnow.mjs --daily-us-guide --host=uspickleballcourt.com --url=https://uspickleballcourt.com/guides/fall-league-pickleball-starter-kit"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.3",

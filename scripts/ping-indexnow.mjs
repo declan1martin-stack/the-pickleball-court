@@ -1,16 +1,31 @@
 #!/usr/bin/env node
 /**
- * Submit sitemap URLs to IndexNow (Bing / Yandex / others).
- * Requires public/<INDEXNOW_KEY>.txt (file body = key) and INDEXNOW_KEY env,
- * or pass --key=.
+ * Submit URLs to IndexNow (Bing / Yandex / others).
+ *
+ * Key: public/<INDEXNOW_KEY>.txt (file body = key). Repo key is
+ * e5fdb4b489461004ccd84ae7e188ac12 and is auto-detected when env is unset.
  *
  * Usage:
- *   INDEXNOW_KEY=... node scripts/ping-indexnow.mjs
- *   node scripts/ping-indexnow.mjs --key=... --host=thepickleballcourt.ca
- *   node scripts/ping-indexnow.mjs --both   # CA + US hosts
+ *   npm run ping:indexnow              # CA + US sitemaps
+ *   npm run ping:indexnow:us           # US sitemap
+ *   npm run ping:indexnow:ca           # CA sitemap
+ *   npm run ping:indexnow:us:daily     # one high-intent US guide (fall-league kit)
+ *
+ *   node scripts/ping-indexnow.mjs --url=https://uspickleballcourt.com/guides/fall-league-pickleball-starter-kit
+ *   node scripts/ping-indexnow.mjs --key=... --host=uspickleballcourt.com
+ *   node scripts/ping-indexnow.mjs --both
+ *
+ * Documented curl (same key + URL as ping:indexnow:us:daily):
+ *   curl -X POST https://api.indexnow.org/indexnow \
+ *     -H 'Content-Type: application/json; charset=utf-8' \
+ *     -d '{"host":"uspickleballcourt.com","key":"e5fdb4b489461004ccd84ae7e188ac12","keyLocation":"https://uspickleballcourt.com/e5fdb4b489461004ccd84ae7e188ac12.txt","urlList":["https://uspickleballcourt.com/guides/fall-league-pickleball-starter-kit"]}'
  */
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
+
+const REPO_INDEXNOW_KEY = 'e5fdb4b489461004ccd84ae7e188ac12';
+const US_DAILY_GUIDE =
+	'https://uspickleballcourt.com/guides/fall-league-pickleball-starter-kit';
 
 const args = process.argv.slice(2);
 const getArg = (name) => {
@@ -18,9 +33,41 @@ const getArg = (name) => {
 	return hit ? hit.slice(name.length + 3) : undefined;
 };
 
-const key = (getArg('key') || process.env.INDEXNOW_KEY || '').trim();
+function discoverKey() {
+	const fromArg = getArg('key');
+	if (fromArg) return fromArg.trim();
+	const fromEnv = (process.env.INDEXNOW_KEY || '').trim();
+	if (fromEnv) return fromEnv;
+
+	const publicDir = resolve(process.cwd(), 'public');
+	const repoFile = resolve(publicDir, `${REPO_INDEXNOW_KEY}.txt`);
+	if (existsSync(repoFile) && readFileSync(repoFile, 'utf8').trim() === REPO_INDEXNOW_KEY) {
+		return REPO_INDEXNOW_KEY;
+	}
+
+	if (!existsSync(publicDir)) return '';
+	for (const file of readdirSync(publicDir)) {
+		if (!file.endsWith('.txt')) continue;
+		const name = file.slice(0, -4);
+		if (!/^[a-f0-9]{32}$/i.test(name)) continue;
+		const body = readFileSync(resolve(publicDir, file), 'utf8').trim();
+		if (body === name) return name;
+	}
+	return '';
+}
+
+const key = discoverKey();
 const both = args.includes('--both');
 const hostArg = getArg('host');
+const dailyUsGuide = args.includes('--daily-us-guide');
+const urlArgs = args
+	.filter((a) => a.startsWith('--url='))
+	.map((a) => a.slice('--url='.length).trim())
+	.filter(Boolean);
+
+if (dailyUsGuide) urlArgs.push(US_DAILY_GUIDE);
+
+const uniqueUrls = [...new Set(urlArgs)];
 
 if (!key || key.length < 8) {
 	console.error('Missing INDEXNOW_KEY (or --key=). Generate with: openssl rand -hex 16');
@@ -33,17 +80,32 @@ if (!existsSync(keyFile)) {
 	process.exit(1);
 }
 
+function hostFromUrl(url) {
+	try {
+		return new URL(url).hostname.replace(/^www\./, '');
+	} catch {
+		return '';
+	}
+}
+
 const hosts = both
 	? ['thepickleballcourt.ca', 'uspickleballcourt.com']
-	: [hostArg || (process.env.PUBLIC_SITE_REGION === 'us' ? 'uspickleballcourt.com' : 'thepickleballcourt.ca')];
+	: [
+			hostArg ||
+				(urlArgs[0] && hostFromUrl(urlArgs[0])) ||
+				(process.env.PUBLIC_SITE_REGION === 'us' ? 'uspickleballcourt.com' : 'thepickleballcourt.ca'),
+		];
 
 async function urlsForHost(host) {
+	if (uniqueUrls.length) {
+		const filtered = uniqueUrls.filter((url) => hostFromUrl(url) === host);
+		return filtered.length ? filtered : uniqueUrls;
+	}
 	const sitemapUrl = `https://${host}/sitemap-0.xml`;
 	const res = await fetch(sitemapUrl);
 	if (!res.ok) throw new Error(`Failed to fetch ${sitemapUrl}: ${res.status}`);
 	const xml = await res.text();
-	const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-	return urls;
+	return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 }
 
 async function submit(host, urlList) {
@@ -62,15 +124,16 @@ async function submit(host, urlList) {
 for (const host of hosts) {
 	const urls = await urlsForHost(host);
 	if (!urls.length) {
-		console.warn(`[${host}] no URLs in sitemap`);
+		console.warn(`[${host}] no URLs to submit`);
 		continue;
 	}
-	// IndexNow allows up to 10k; batch anyway for safety.
 	const batchSize = 100;
 	for (let i = 0; i < urls.length; i += batchSize) {
 		const batch = urls.slice(i, i + batchSize);
 		const result = await submit(host, batch);
-		console.log(`[${host}] submitted ${result.count} urls → HTTP ${result.status}${result.text ? ` ${result.text}` : ''}`);
+		console.log(
+			`[${host}] submitted ${result.count} urls → HTTP ${result.status}${result.text ? ` ${result.text}` : ''}`,
+		);
 		if (![200, 202].includes(result.status)) {
 			process.exitCode = 1;
 		}
