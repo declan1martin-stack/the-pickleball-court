@@ -1,14 +1,19 @@
 ---
 /**
  * GA4 + Google Search Console verification.
- * GA4 defaults to the production property; override via env if needed:
- *   PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+ *
+ * CA: G-JWSBZJ6R4P (thepickleballcourt.ca).
+ * US: G-WE9TTJLH00 (uspickleballcourt.com). Never falls back to the CA property.
+ * Optional override: PUBLIC_GA_MEASUREMENT_ID / PUBLIC_GA_ID /
+ * PUBLIC_GA_MEASUREMENT_ID_US (must not be the other region's ID).
+ *
  *   PUBLIC_GOOGLE_SITE_VERIFICATION=token_from_search_console
  *
- * Both CA and US hostnames share this property. Runtime `site_region`
- * (ca|us) is attached to page views and events so you can filter in GA4.
+ * Runtime `site_region` (ca|us) is attached to page views and events.
  */
-const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID?.trim() || 'G-JWSBZJ6R4P';
+import { resolveGaMeasurementId } from '../lib/analytics';
+
+const gaId = resolveGaMeasurementId();
 const gsc = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 ---
 
@@ -16,7 +21,7 @@ const gsc = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 
 {gaId && (
 	<>
-		<script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+		<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
 		<script is:inline define:vars={{ gaId }}>
 			window.dataLayer = window.dataLayer || [];
 			function gtag() {

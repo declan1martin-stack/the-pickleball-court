@@ -1,0 +1,42 @@
+---
+/**
+ * Compact above-the-fold Amazon Shop now row for a handful of high-intent guides.
+ * Always routes through AffiliateButton (region tag + sponsored rel).
+ */
+import AffiliateButton from './AffiliateButton.astro';
+import { getAffiliateUrl, getProductById, type Product } from '../lib/products';
+import { AMAZON_STORE } from '../lib/site';
+
+interface Props {
+	productIds: string[];
+	heading?: string;
+}
+
+const { productIds, heading = 'Shop now' } = Astro.props;
+const products = productIds
+	.map((id) => getProductById(id))
+	.filter((product): product is Product => Boolean(product));
+---
+
+{
+	products.length > 0 && (
+		<div class="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50/80 p-4 sm:p-5">
+			<p class="text-sm font-bold uppercase tracking-[0.14em] text-emerald-800">{heading}</p>
+			<p class="mt-1 text-sm text-zinc-600">
+				Primary picks from this guide — confirm the current price on {AMAZON_STORE}.
+			</p>
+			<ul class="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+				{products.map((product) => (
+					<li class="flex min-w-0 flex-1 flex-col gap-2 sm:max-w-xs">
+						<p class="text-sm font-semibold text-zinc-900">{product.name}</p>
+						<AffiliateButton
+							href={getAffiliateUrl(product)}
+							label="Shop now"
+							productId={product.id}
+						/>
+					</li>
+				))}
+			</ul>
+		</div>
+	)
+}
