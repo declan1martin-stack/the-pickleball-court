@@ -1,0 +1,19 @@
+# Daily IndexNow ping for one high-intent US guide.
+# Manual: npm run ping:indexnow:us:daily
+name: IndexNow daily US guide
+
+on:
+  schedule:
+    - cron: '15 14 * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Ping IndexNow (fall-league starter kit)
+        run: npm run ping:indexnow:us:daily

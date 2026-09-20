@@ -26,7 +26,17 @@ import { getAffiliateUrl, getProductById, getPriceTier, getShopCtaLabel, type Pr
 import { AMAZON_STORE } from '../../lib/site';
 import { authorPath, resolveAuthor } from '../../data/authors';
 import MarketNotes from '../../components/MarketNotes.astro';
+import GuideAboveFoldShop from '../../components/GuideAboveFoldShop.astro';
 import { marketizeCopy, marketizeFaq, marketizeTitle } from '../../lib/marketCopy';
+
+/** High-intent guides: primary Amazon Shop now CTAs above the fold (before the long body). */
+const ABOVE_FOLD_SHOP_IDS: Record<string, string[]> = {
+	'fall-league-pickleball-starter-kit': ['joola-vision-c15', 'ball-franklin-x40-outdoor-12'],
+	'best-pickleball-paddles-for-intermediate-players': [
+		'six-zero-ruby-16mm',
+		'selkirk-slk-halo-control-xl',
+	],
+};
 
 export async function getStaticPaths() {
 	const articles = await getCollection('articles');
@@ -67,6 +77,7 @@ const faq = marketizeFaq(article.data.faq);
 const relatedProductLinks = article.data.relatedProducts
 	.map((id) => getProductById(id))
 	.filter((product): product is Product => Boolean(product));
+const aboveFoldShopIds = ABOVE_FOLD_SHOP_IDS[article.data.slug] ?? [];
 
 const crumbs = [
 	{ label: 'Home', href: '/' },
@@ -131,6 +142,7 @@ const crumbs = [
 				{title}
 			</h1>
 			<p class="mt-4 max-w-3xl text-lg text-zinc-600">{description}</p>
+			{aboveFoldShopIds.length > 0 && <GuideAboveFoldShop productIds={aboveFoldShopIds} />}
 			<p class="mt-4 text-sm text-zinc-500">
 				By <a href={authorPath(author.id)} class="font-semibold text-emerald-800 underline">{author.name}</a>
 				<span aria-hidden="true"> · </span>
