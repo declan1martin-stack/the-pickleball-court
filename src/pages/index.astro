@@ -1,12 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
-import Disclosure from '../components/Disclosure.astro';
-import MarketStoreNote from '../components/MarketStoreNote.astro';
 import LatestWeeklyUpdates from '../components/LatestWeeklyUpdates.astro';
 import { getFeaturedArticles, getAllArticles } from '../lib/articles';
 import { getProductsByIds } from '../lib/products';
-import { AMAZON_STORE, MARKET_COUNTRY, MARKET_LABEL, MARKET_PLAYERS } from '../lib/site';
+import { MARKET_COUNTRY, MARKET_LABEL, MARKET_PLAYERS } from '../lib/site';
 import { marketizeCopy } from '../lib/marketCopy';
 import SmartImage from '../components/SmartImage.astro';
 
@@ -156,14 +154,10 @@ const pillars = [
 				<div>
 					<h2 id="featured-heading" class="font-display text-3xl font-bold tracking-tight text-ink">Featured Gear</h2>
 					<p class="mt-2 max-w-2xl text-ink-muted">
-						Shop these paddles on {AMAZON_STORE}. Price tiers are approximate — confirm the live listing before you buy.
+						A mix of value and performance paddles. Price tiers are approximate — confirm the listing before you buy.
 					</p>
 				</div>
 				<a href="/gear/paddles" class="link-brand text-sm">See all paddles →</a>
-			</div>
-			<div class="mb-4 space-y-3">
-				<Disclosure />
-				<MarketStoreNote compact />
 			</div>
 			<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 				{featured.map((product) => (
@@ -181,7 +175,7 @@ const pillars = [
 						Club-night essentials
 					</h2>
 					<p class="mt-2 max-w-2xl text-ink-muted">
-						Balls, grips, and a starter set — the usual first {AMAZON_STORE} order. Tiers are approximate.
+						Balls, grips, and a starter set for club night. Price tiers are approximate.
 					</p>
 				</div>
 				<a href="/gear/balls" class="link-brand text-sm">See all balls →</a>

@@ -4,11 +4,9 @@ import { AMAZON_STORE, SITE_NAME, SITE_REGION } from '../lib/site';
 
 interface Props {
 	compact?: boolean;
-	/** When true, skip the verbatim Associates sentence (e.g. already shown above on /affiliate-disclosure). */
-	omitAmazonSentence?: boolean;
 }
 
-const { compact = false, omitAmazonSentence = false } = Astro.props;
+const { compact = false } = Astro.props;
 ---
 
 <aside
@@ -16,26 +14,15 @@ const { compact = false, omitAmazonSentence = false } = Astro.props;
 		'rounded-[var(--radius-md)] border border-border bg-bg text-ink',
 		compact ? 'px-3 py-2 text-xs' : 'px-4 py-3 text-sm',
 	]}
-	aria-label="Affiliate disclosure"
+	aria-label="Affiliate disclosure details"
 >
-	{!omitAmazonSentence && (
-		<p class:list={[compact ? 'leading-snug' : 'leading-relaxed', 'font-medium text-ink']}>
-			As an Amazon Associate I earn from qualifying purchases.
-		</p>
-	)}
-	<p
-		class:list={[
-			compact ? 'leading-snug' : 'leading-relaxed',
-			'text-ink-muted',
-			!omitAmazonSentence && (compact ? 'mt-1.5' : 'mt-2'),
-		]}
-	>
+	<p class:list={[compact ? 'leading-snug' : 'leading-relaxed', 'text-ink-muted']}>
 		<strong class="font-bold text-ink">Disclosure:</strong>
 		{SITE_NAME} uses affiliate links for {AMAZON_STORE}
 		{SITE_REGION === 'ca'
 			? `, ${PARTNER_LABELS.selkirk}, and ${PARTNER_LABELS.pickleballSuperstore}`
 			: ` and ${PARTNER_LABELS.selkirk}`}
 		. We may earn a commission from qualifying purchases at no extra cost to you. Always confirm the current price
-		and availability on the retailer you choose.
+		and availability on the retailer you choose. The short Associates notice lives in the site footer on every page.
 	</p>
 </aside>
