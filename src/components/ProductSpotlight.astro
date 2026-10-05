@@ -5,6 +5,7 @@ import { getAffiliateUrl, getPriceTier, getProductById, getShopCtaLabel } from '
 import { getPartnerOffers } from '../lib/partners';
 import { AMAZON_STORE } from '../lib/site';
 import { marketizeCopy } from '../lib/marketCopy';
+import { truncateOnWordBoundary } from '../lib/featureText';
 
 interface Props {
 	productId: string;
@@ -45,7 +46,7 @@ const partnerOffers = product ? getPartnerOffers(product) : [];
 					{product.features.map((feature) => (
 						<li class="flex gap-2">
 							<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-600" aria-hidden="true" />
-							<span>{marketizeCopy(feature)}</span>
+							<span>{truncateOnWordBoundary(marketizeCopy(feature))}</span>
 						</li>
 					))}
 				</ul>
