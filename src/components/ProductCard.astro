@@ -15,6 +15,7 @@ import { absoluteUrl, productSchema } from '../lib/seo';
 import { AMAZON_STORE } from '../lib/site';
 import { DEFAULT_AUTHOR_ID, getAuthor } from '../data/authors';
 import { marketizeCopy } from '../lib/marketCopy';
+import { truncateOnWordBoundary } from '../lib/featureText';
 import Schema from './Schema.astro';
 
 interface Props {
@@ -29,7 +30,9 @@ const { product, rating = null, priority = false } = Astro.props;
 const tier = getPriceTier(product.price);
 const affiliateHref = getAffiliateUrl(product);
 const description = marketizeCopy(product.description);
-const features = product.features.map((feature) => marketizeCopy(feature));
+const features = product.features.map((feature) =>
+	truncateOnWordBoundary(marketizeCopy(feature)),
+);
 const imageAbs = product.imageUrl.startsWith('http')
 	? product.imageUrl
 	: absoluteUrl(product.imageUrl);

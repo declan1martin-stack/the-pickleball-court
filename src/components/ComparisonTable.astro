@@ -4,6 +4,7 @@ import { getAffiliateUrl, getPriceTier, getProductsByIds, getShopCtaLabel, type 
 import { getPartnerOffers } from '../lib/partners';
 import { AMAZON_STORE } from '../lib/site';
 import { marketizeCopy } from '../lib/marketCopy';
+import { truncateOnWordBoundary } from '../lib/featureText';
 
 type SpecField = 'brand' | 'category' | 'priceTier' | 'featureHighlight';
 
@@ -27,7 +28,7 @@ function cellValue(product: Product, field: SpecField): string {
 		case 'priceTier':
 			return getPriceTier(product.price);
 		case 'featureHighlight':
-			return marketizeCopy(product.features[0] ?? '—');
+			return truncateOnWordBoundary(marketizeCopy(product.features[0] ?? '—'));
 		default:
 			return '—';
 	}
