@@ -21,7 +21,7 @@ import { absoluteUrl, articleSchema, clampMetaDescription } from '../../lib/seo'
 import ProductSpotlight from '../../components/ProductSpotlight.astro';
 import MarkdownTable from '../../components/MarkdownTable.astro';
 import { getProductsByIds } from '../../lib/products';
-import { AMAZON_STORE } from '../../lib/site';
+import { AMAZON_STORE, SITE_REGION } from '../../lib/site';
 
 export async function getStaticPaths() {
 	// Every news file is a real URL on this host. Canada-only posts used to 404 here.
@@ -38,6 +38,10 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const markets = entry.data.markets ?? ['ca', 'us'];
+// Canada-only posts stay as real URLs so retired-host 301s do not 404.
+// On the US build they are noindex, follow so crawl budget stays on US pages.
+const noindex = SITE_REGION === 'us' && !markets.includes('us');
 const author = resolveAuthor(entry.data.author);
 const path = newsPath(entry);
 const description = clampMetaDescription(entry.data.summary);
@@ -81,6 +85,7 @@ const shopIntro =
 		updatedDate: entry.data.date,
 		type: 'NewsArticle',
 	})}
+	noindex={noindex}
 >
 	<article class="border-b border-border bg-surface">
 		<div class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">

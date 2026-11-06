@@ -274,6 +274,88 @@ for (const file of gearPages) {
 	});
 }
 
+function relHtml(file) {
+	return path.relative(dist, file).split(path.sep).join('/');
+}
+
+function robotsMeta(html) {
+	const metas = html.match(/<meta\b[^>]*>/gi) ?? [];
+	for (const tag of metas) {
+		if (!/\bname\s*=\s*["']robots["']/i.test(tag)) continue;
+		const content = tag.match(/\bcontent\s*=\s*["']([^"']*)["']/i);
+		if (content) return content[1].trim();
+	}
+	return '';
+}
+
+function hasNoindexFollow(html) {
+	return /^noindex,\s*follow$/i.test(robotsMeta(html));
+}
+
+const sitemapPath = path.join(dist, 'sitemap-0.xml');
+if (!fs.existsSync(sitemapPath)) {
+	failures.push('sitemap-0.xml is missing');
+} else {
+	const sitemap = fs.readFileSync(sitemapPath, 'utf8');
+	const caLocs = [...sitemap.matchAll(/<loc>([^<]*\/news\/ca-[^<]*)<\/loc>/g)].map((match) => match[1]);
+	if (caLocs.length) {
+		failures.push(`sitemap-0.xml contains ${caLocs.length} /news/ca- URL(s): ${caLocs.slice(0, 3).join(', ')}`);
+	}
+}
+
+const caNewsSources = fs
+	.readdirSync('src/content/news')
+	.filter((name) => /^ca-.*\.(md|mdx)$/i.test(name))
+	.map((name) => name.replace(/\.(md|mdx)$/i, ''));
+if (caNewsSources.length !== 9) {
+	failures.push(`expected 9 src/content/news/ca-* entries, found ${caNewsSources.length}`);
+}
+
+for (const slug of caNewsSources) {
+	const fileHtml = path.join(dist, 'news', `${slug}.html`);
+	const indexHtml = path.join(dist, 'news', slug, 'index.html');
+	const built = fs.existsSync(fileHtml) ? fileHtml : fs.existsSync(indexHtml) ? indexHtml : '';
+	if (!built) {
+		failures.push(`news/${slug}: missing dist HTML (expected news/${slug}.html or news/${slug}/index.html)`);
+		continue;
+	}
+	const html = fs.readFileSync(built, 'utf8');
+	if (!hasNoindexFollow(html)) {
+		failures.push(`${relHtml(built)}: expected <meta name="robots" content="noindex, follow">, found "${robotsMeta(html) || 'none'}"`);
+	}
+}
+
+const indexableRoots = [
+	'index.html',
+	'about.html',
+	'affiliate-disclosure.html',
+	'contact.html',
+	'editorial-policy.html',
+	'privacy.html',
+	'terms.html',
+	'guides.html',
+	'news.html',
+	'authors/deco.html',
+];
+for (const rel of indexableRoots) {
+	const file = path.join(dist, rel);
+	if (!fs.existsSync(file)) {
+		failures.push(`${rel}: missing indexable page`);
+		continue;
+	}
+	const html = fs.readFileSync(file, 'utf8');
+	if (/noindex/i.test(html)) failures.push(`${rel}: indexable page emits noindex`);
+}
+
+for (const file of htmlFiles) {
+	const rel = relHtml(file);
+	const commercial = rel.startsWith('guides/') || rel.startsWith('gear/');
+	const usNews = rel.startsWith('news/') && !rel.startsWith('news/ca-');
+	if (!commercial && !usNews) continue;
+	const html = fs.readFileSync(file, 'utf8');
+	if (/noindex/i.test(html)) failures.push(`${rel}: indexable page emits noindex`);
+}
+
 const allText = htmlFiles.map((file) => fs.readFileSync(file, 'utf8')).join('\n');
 const selkirk = [...allText.matchAll(/selkirk\.com\/search\?q=([^"&]+)/g)].map((m) => decodeURIComponent(m[1].replace(/\+/g, ' ')));
 for (const query of selkirk) {
