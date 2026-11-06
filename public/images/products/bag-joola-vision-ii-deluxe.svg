@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title>JOOLA Vision II Deluxe backpack illustration</title>
+  <desc>Studio illustration of a blue court backpack with a ventilated shoe hatch, shoulder straps, and a fence hook.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f7fb"/>
+      <stop offset="1" stop-color="#dbe7f3"/>
+    </linearGradient>
+    <linearGradient id="pack" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2f6fed"/>
+      <stop offset="0.5" stop-color="#1d4e9b"/>
+      <stop offset="1" stop-color="#16386f"/>
+    </linearGradient>
+    <linearGradient id="shoe" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12345c"/>
+      <stop offset="1" stop-color="#0c243f"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#123449" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="400" cy="508" rx="210" ry="24" fill="#1c4e80" opacity="0.1"/>
+  <g filter="url(#shadow)">
+    <path d="M268 168 C250 250 246 340 262 430" fill="none" stroke="#0e2240" stroke-width="16" stroke-linecap="round"/>
+    <path d="M532 168 C552 250 556 340 540 430" fill="none" stroke="#0e2240" stroke-width="16" stroke-linecap="round"/>
+    <rect x="276" y="112" width="248" height="390" rx="32" fill="url(#pack)"/>
+    <rect x="300" y="146" width="200" height="168" rx="16" fill="#16386f" opacity="0.35"/>
+    <path d="M312 214 H488" stroke="#d5e4ff" stroke-width="3" opacity="0.8"/>
+    <rect x="300" y="360" width="200" height="108" rx="16" fill="url(#shoe)"/>
+    <g stroke="#9fd0ff" stroke-width="3" stroke-linecap="round" opacity="0.85">
+      <path d="M324 388 H392"/>
+      <path d="M324 404 H392"/>
+      <path d="M324 420 H392"/>
+      <path d="M324 436 H392"/>
+    </g>
+    <circle cx="470" cy="414" r="8" fill="#d7e6ff"/>
+    <path d="M548 196 C572 176 590 184 592 208" fill="none" stroke="#c5d0dc" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="596" cy="216" r="10" fill="none" stroke="#d5dde6" stroke-width="4"/>
+    <rect x="360" y="92" width="80" height="28" rx="8" fill="#0f2744"/>
+  </g>
+</svg>

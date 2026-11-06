@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title>ONIX Falcon pickleball eyewear illustration</title>
+  <desc>Studio illustration of protective court glasses with a strap and clear, smoke, and blue lens chips.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f5f8fb"/>
+      <stop offset="1" stop-color="#e4edf5"/>
+    </linearGradient>
+    <linearGradient id="lens" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8f6ff"/>
+      <stop offset="1" stop-color="#9fd4f2"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#123449" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="400" cy="430" rx="220" ry="22" fill="#1c4e80" opacity="0.08"/>
+  <g filter="url(#shadow)">
+    <path d="M150 250 C150 180 210 168 250 210" fill="none" stroke="#1c4e80" stroke-width="10" stroke-linecap="round"/>
+    <path d="M650 250 C650 180 590 168 550 210" fill="none" stroke="#1c4e80" stroke-width="10" stroke-linecap="round"/>
+    <path d="M168 268 C210 300 250 292 250 250" fill="none" stroke="#16324f" stroke-width="8" stroke-linecap="round"/>
+    <path d="M632 268 C590 300 550 292 550 250" fill="none" stroke="#16324f" stroke-width="8" stroke-linecap="round"/>
+    <rect x="188" y="196" width="180" height="112" rx="28" fill="#123449" stroke="#0c2236" stroke-width="8"/>
+    <rect x="432" y="196" width="180" height="112" rx="28" fill="#123449" stroke="#0c2236" stroke-width="8"/>
+    <rect x="204" y="212" width="148" height="80" rx="20" fill="url(#lens)"/>
+    <rect x="448" y="212" width="148" height="80" rx="20" fill="url(#lens)"/>
+    <path d="M368 246 H432" stroke="#123449" stroke-width="8" stroke-linecap="round"/>
+    <path d="M220 228 H336" stroke="#ffffff" stroke-width="3" opacity="0.55" stroke-linecap="round"/>
+  </g>
+  <g>
+    <rect x="250" y="430" width="70" height="46" rx="10" fill="#f7fbff" stroke="#1c4e80" stroke-width="3"/>
+    <rect x="365" y="430" width="70" height="46" rx="10" fill="#5c6670" stroke="#1c4e80" stroke-width="3"/>
+    <rect x="480" y="430" width="70" height="46" rx="10" fill="#3d7edb" stroke="#1c4e80" stroke-width="3"/>
+  </g>
+</svg>

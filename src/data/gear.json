@@ -1602,6 +1602,111 @@
     }
   },
   {
+    "id": "bag-franklin-sling",
+    "name": "Franklin Sports Pickleball Sling Bag",
+    "category": "bags",
+    "brand": "Franklin Sports",
+    "price": "$",
+    "features": [
+      "Franklin Sports calls this the official sling bag of the US Open and says it holds six paddles securely.",
+      "The same Franklin listing says the sling holds six X-Performance 40 official pickleballs, with room to spare.",
+      "A felt-lined soft pocket is set aside for personal devices, and the bag can also carry a sports bottle.",
+      "An easy-to-use fence hook clips the sling to the court fence, and a carry strap is included."
+    ],
+    "description": "Open-play sling that Franklin Sports lists for six paddles, six X-Performance 40 balls, and a fence hook. Skill level: all.",
+    "imageUrl": "/images/products/bag-franklin-sling.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=Franklin+Sports+Pickleball+Sling+Bag&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=Franklin+Sports+Pickleball+Sling+Bag&tag=uspickleball-20"
+    }
+  },
+  {
+    "id": "bag-joola-vision-ii-deluxe",
+    "name": "JOOLA Vision II Deluxe Pickleball Backpack",
+    "category": "bags",
+    "brand": "JOOLA",
+    "price": "$$$",
+    "features": [
+      "Holds up to four paddles in a dedicated, padded, fully enclosed compartment.",
+      "More than ten compartments include a ventilated shoe section and a fence hook that keeps the bag off the court.",
+      "A padded laptop sleeve fits laptops up to 17 inches, and a side mesh pocket holds a water bottle.",
+      "The polyester shell measures 20 by 12 by 8 inches."
+    ],
+    "description": "Court backpack with a ventilated shoe compartment, a four-paddle sleeve, and a fence hook. Skill level: all.",
+    "imageUrl": "/images/products/bag-joola-vision-ii-deluxe.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=JOOLA+Vision+II+Deluxe+Pickleball+Backpack&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=JOOLA+Vision+II+Deluxe+Pickleball+Backpack&tag=uspickleball-20"
+    }
+  },
+  {
+    "id": "bag-head-tour-pickleball-22l",
+    "name": "HEAD Tour Pickleball Backpack 22L",
+    "category": "bags",
+    "brand": "HEAD",
+    "price": "$$",
+    "features": [
+      "HEAD rates this 22-liter backpack for up to three racquets in a single racquet compartment.",
+      "A dedicated shoe compartment stores footwear apart from the rest of the gear.",
+      "A hook hangs the backpack on the court fence.",
+      "Two open accessory pockets and two zippered accessory pockets organize smaller items, including a pocket described for a phone."
+    ],
+    "description": "22-liter court backpack with a three-racquet compartment, a shoe compartment, and a fence hook. Skill level: all.",
+    "imageUrl": "/images/products/bag-head-tour-pickleball-22l.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=HEAD+Tour+Pickleball+Backpack+22+L&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=HEAD+Tour+Pickleball+Backpack+22+L&tag=uspickleball-20"
+    }
+  },
+  {
+    "id": "bag-onix-pro-team-backpack",
+    "name": "ONIX Pro Team Pickleball Backpack",
+    "category": "bags",
+    "brand": "ONIX",
+    "price": "$$$",
+    "features": [
+      "ONIX builds this backpack from durable polyester and lists it at 19 inches long, 14 inches wide, and 9 inches high.",
+      "Four zippered pockets include a shoe and wet-storage compartment that keeps footwear separate from dry gear.",
+      "A padded paddle compartment is there to protect paddles in transit.",
+      "Padded shoulder straps, a top carry handle, side mesh bottle pockets, and a front organizer pocket are part of the pack."
+    ],
+    "description": "Mid-size court backpack with a shoe and wet-storage pocket and a padded paddle compartment. Skill level: all.",
+    "imageUrl": "/images/products/bag-onix-pro-team-backpack.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=ONIX+Pro+Team+Pickleball+Backpack&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=ONIX+Pro+Team+Pickleball+Backpack&tag=uspickleball-20"
+    }
+  },
+  {
+    "id": "bag-crbn-pro-team-tour",
+    "name": "CRBN Pro Team Tour Bag",
+    "category": "bags",
+    "brand": "CRBN",
+    "price": "$$$$$",
+    "features": [
+      "CRBN lists room for up to six paddles, with two padded thermal-lined side pockets that fit three paddles each.",
+      "A vented shoe compartment, a top thermal-lined pocket, a large center pouch, and a lower compartment for dirty clothes are included.",
+      "Built-in coated metal fence hooks tuck away, and the shoulder straps can also carry the bag as a duffle.",
+      "A zip-off sling is built in, the outer shell is weatherproof, and CRBN lists the empty bag at 3 pounds, 23 inches long, 12 inches high, and 14 inches wide."
+    ],
+    "description": "Tour bag with thermal paddle pockets for six paddles, a vented shoe compartment, and a zip-off sling. Skill level: intermediate+.",
+    "imageUrl": "/images/products/bag-crbn-pro-team-tour.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=CRBN+Pro+Team+Tour+Bag&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=CRBN+Pro+Team+Tour+Bag&tag=uspickleball-20"
+    }
+  },
+  {
     "id": "acc-franklin-overgrip",
     "name": "Franklin Pickleball Overgrips (3-Pack)",
     "category": "accessories",
@@ -1685,6 +1790,49 @@
     "affiliateUrls": {
       "ca": "https://www.amazon.ca/dp/B0FS7Z9R7K/?tag=thepickleb050-20",
       "us": "https://www.amazon.com/s?k=Weighted+Tungsten+Tape&tag=uspickleball-20"
+    }
+  },
+  {
+    "id": "acc-onix-falcon-eyewear",
+    "name": "ONIX Falcon Pickleball Eyewear",
+    "category": "accessories",
+    "brand": "ONIX",
+    "price": "$",
+    "features": [
+      "Polycarbonate lenses block 99.9 percent of UV rays and carry anti-scratch and anti-fog treatments.",
+      "The set includes clear, smoke, and blue-tint lenses in a lightweight impact-resistant nylon frame.",
+      "Soft non-slip nose pieces, TRP rubber side-arm padding, soft ear pads, and an adjustable elastic strap hold the glasses on.",
+      "ONIX states that Falcon eyewear meets or exceeds the ASTM F803-11 impact standard, and a microfiber storage pouch is included.",
+      "Printed dimensions are a 6.7 centimeter lens width, a 3.7 centimeter lens height, an 11.5 centimeter temple, and a 14.7 centimeter overall width."
+    ],
+    "description": "Protective court eyewear with three lens tints and an ASTM F803-11 impact claim. Skill level: all.",
+    "imageUrl": "/images/products/acc-onix-falcon-eyewear.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=ONIX+Falcon+Pickleball+Eyewear&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=ONIX+Falcon+Pickleball+Eyewear&tag=uspickleball-20"
+    }
+  },
+  {
+    "id": "acc-crbn-paddle-eraser",
+    "name": "CRBN Pickleball Paddle Eraser",
+    "category": "accessories",
+    "brand": "CRBN",
+    "price": "$",
+    "features": [
+      "CRBN’s rubber eraser is made to lift ball residue, dirt, and light scuffs off carbon-fiber paddle faces.",
+      "The same eraser is listed for other raw peel-ply surfaces, including kevlar faces.",
+      "CRBN does not recommend it on faces that have an aftermarket coating, spray, or paint, and the block contains latex.",
+      "The printed size is 2 inches by 2 inches by 1 inch, and the net weight is 1.5 ounces."
+    ],
+    "description": "Pocket eraser for raw carbon and other peel-ply paddle faces. Skill level: all.",
+    "imageUrl": "/images/products/acc-crbn-paddle-eraser.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=CRBN+Pickleball+Paddle+Eraser&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=CRBN+Pickleball+Paddle+Eraser&tag=uspickleball-20"
     }
   },
   {
