@@ -1,37 +1,33 @@
 /**
- * Geography handoff: /go/ca?next=/path → thepickleballcourt.ca
- *                   /go/us?next=/path → uspickleballcourt.com
- *
- * Relative /go/* links avoid host rewrites in _middleware.js.
+ * Legacy geography handoff. Both regions now land on the US host.
+ * /go/ca and /go/us used to send shoppers to separate domains.
  */
 
-const DESTINATIONS = {
-	ca: 'https://thepickleballcourt.ca',
-	us: 'https://uspickleballcourt.com',
-};
+const DESTINATION = 'https://uspickleballcourt.com';
 
 function safeNextPath(raw) {
 	if (!raw || typeof raw !== 'string') return '/';
 	let path = raw.trim();
 	try {
 		if (/^https?:\/\//i.test(path)) {
-			path = new URL(path).pathname + new URL(path).search;
+			const parsed = new URL(path);
+			path = parsed.pathname + parsed.search;
 		}
 	} catch {
 		return '/';
 	}
 	if (!path.startsWith('/') || path.startsWith('//')) return '/';
+	if (path.length > 1) path = path.replace(/\/+$/, '') || '/';
 	return path;
 }
 
 export async function onRequest(context) {
 	const url = new URL(context.request.url);
 	const region = (context.params.region || '').toLowerCase();
-	const destination = DESTINATIONS[region];
-	if (!destination) {
+	if (region !== 'us' && region !== 'ca') {
 		return new Response('Unknown region', { status: 404 });
 	}
 
 	const next = safeNextPath(url.searchParams.get('next'));
-	return Response.redirect(`${destination}${next}`, 302);
+	return Response.redirect(`${DESTINATION}${next === '/' ? '' : next}`, 301);
 }

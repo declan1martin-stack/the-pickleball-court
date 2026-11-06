@@ -26,20 +26,14 @@ export function absoluteUrl(path = '/'): string {
 	return new URL(normalized, SITE_URL).href;
 }
 
-const CA_ROOT = 'https://thepickleballcourt.ca';
-const US_ROOT = 'https://uspickleballcourt.com';
-
 /**
- * Reciprocal en-CA / en-US / x-default (CA) for shared paths.
- * Only emit when both hosts return 200 for the same path.
+ * US-only alternates. x-default matches en-US because the Canada host is retired.
  */
 export function hreflangAlternates(path = '/'): { hreflang: string; href: string }[] {
-	const normalized = normalizePath(path);
-	const suffix = normalized === '/' ? '' : normalized;
+	const href = absoluteUrl(path);
 	return [
-		{ hreflang: 'en-ca', href: `${CA_ROOT}${suffix}` },
-		{ hreflang: 'en-us', href: `${US_ROOT}${suffix}` },
-		{ hreflang: 'x-default', href: `${CA_ROOT}${suffix}` },
+		{ hreflang: 'en-US', href },
+		{ hreflang: 'x-default', href },
 	];
 }
 
@@ -67,7 +61,7 @@ export function organizationSchema() {
 	return {
 		'@type': 'Organization',
 		'@id': ORG_ID,
-		name: site.region === 'us' ? 'US Pickleball Court' : 'The Pickleball Court',
+		name: 'US Pickleball Court',
 		alternateName: SITE_NAME,
 		url: SITE_URL.replace(/\/$/, ''),
 		logo: {
@@ -149,16 +143,7 @@ export function itemListSchema(input: {
 			'@type': 'ListItem',
 			position: item.position,
 			name: item.name,
-			item: {
-				'@type': 'Product',
-				name: item.name,
-				url: item.url,
-				...(item.image ? { image: item.image } : {}),
-				...(item.description ? { description: item.description } : {}),
-				...(item.brand
-					? { brand: { '@type': 'Brand', name: item.brand } }
-					: {}),
-			},
+			url: item.url,
 		})),
 	};
 }
@@ -215,7 +200,7 @@ export function articleSchema(input: {
 		publisher: {
 			'@type': 'Organization',
 			'@id': ORG_ID,
-			name: site.region === 'us' ? 'US Pickleball Court' : 'The Pickleball Court',
+			name: 'US Pickleball Court',
 			logo: {
 				'@type': 'ImageObject',
 				url: absoluteUrl('/og-default.png'),

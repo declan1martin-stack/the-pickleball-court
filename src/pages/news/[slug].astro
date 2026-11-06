@@ -9,6 +9,7 @@ import SmartImage from '../../components/SmartImage.astro';
 import { resolveAuthor, authorPath } from '../../data/authors';
 import {
 	formatNewsDate,
+	getAllNews,
 	getNewsForMarket,
 	getRelatedNews,
 	newsHeroMedia,
@@ -23,7 +24,8 @@ import { getProductsByIds } from '../../lib/products';
 import { AMAZON_STORE } from '../../lib/site';
 
 export async function getStaticPaths() {
-	const entries = await getNewsForMarket();
+	// Every news file is a real URL on this host. Canada-only posts used to 404 here.
+	const entries = await getAllNews();
 	return entries.map((entry) => ({
 		params: { slug: newsSlug(entry) },
 		props: { entry },
@@ -44,8 +46,6 @@ const relatedNews = getRelatedNews(allNews, entry, 3);
 const isRoundup = entry.data.type === 'roundup';
 const { src: heroImage, alt: heroAlt, credit: heroCredit, creditHref } = newsHeroMedia(entry);
 const ogImage = heroImage ?? '/og-default.png';
-const markets = entry.data.markets ?? (['ca', 'us'] as const);
-const sharedAcrossMarkets = markets.includes('ca') && markets.includes('us');
 const mdxComponents = { NewsLink, table: MarkdownTable };
 const namedShopIds = entry.data.productIds ?? [];
 const fallbackShopIds = [
@@ -70,7 +70,6 @@ const shopIntro =
 	ogImage={ogImage}
 	publishDate={entry.data.date}
 	updatedDate={entry.data.date}
-	hreflang={sharedAcrossMarkets}
 	jsonLd={articleSchema({
 		title: entry.data.title,
 		description: entry.data.summary,

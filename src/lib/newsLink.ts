@@ -1,21 +1,19 @@
 import { getCollection } from 'astro:content';
-import { AFFILIATE_TAG, ALTERNATE_SITE_URL, SITE_REGION, SITE_URL, type SiteRegion } from './site';
+import { SITE_REGION, SITE_URL, type SiteRegion } from './site';
 import { newsSlug, type NewsEntry } from './news';
 
-/** Deterministic per-build site identity (dual Pages projects share this repo). */
+/** Deterministic per-build site identity. One indexable host. */
 export const SITE = {
 	market: SITE_REGION,
 	host: SITE_URL.replace(/\/$/, ''),
-	peerHost: ALTERNATE_SITE_URL.replace(/\/$/, ''),
-	amazonTag: AFFILIATE_TAG,
+	amazonTag: 'uspickleball-20',
 } as const;
 
 export type NewsLinkResult = {
-	/** Path or absolute URL — never trailing slash (trailingSlash: 'never'). */
+	/** Path — never a trailing slash (trailingSlash: 'never'). */
 	href: string;
-	/** True when the href points at the peer market host. */
+	/** Always false. The Canada host is retired, so links stay on this site. */
 	external: boolean;
-	peerMarket?: SiteRegion;
 };
 
 type NewsIndex = {
@@ -35,18 +33,6 @@ async function loadNewsIndex(): Promise<NewsIndex> {
 	return cachedIndex;
 }
 
-function marketsFor(entry: NewsEntry): SiteRegion[] {
-	return (entry.data.markets ?? (['ca', 'us'] as SiteRegion[])) as SiteRegion[];
-}
-
-function availableOn(entry: NewsEntry, region: SiteRegion): boolean {
-	return marketsFor(entry).includes(region);
-}
-
-function otherMarket(region: SiteRegion): SiteRegion {
-	return region === 'us' ? 'ca' : 'us';
-}
-
 /** Strip `/news/` prefix, `.md(x)`, and trailing slashes. */
 export function normalizeNewsSlugInput(input: string): string {
 	let raw = input.trim();
@@ -64,8 +50,9 @@ function parseMarketPrefix(slug: string): { market: SiteRegion | null; bare: str
 }
 
 /**
- * Resolve a news reference to a same-market path when possible, else a peer-host
- * absolute URL, else `/news`.
+ * Resolve a news reference to a path on this host.
+ * Canada-only posts are published here too (the other host is retired).
+ * Unknown slugs fall back to the news index so the link cannot 404.
  */
 export async function resolveNewsLink(input: string): Promise<NewsLinkResult> {
 	const fullSlug = normalizeNewsSlugInput(input);
@@ -74,47 +61,14 @@ export async function resolveNewsLink(input: string): Promise<NewsLinkResult> {
 	}
 
 	const { bySlug } = await loadNewsIndex();
-	const local = SITE_REGION;
-	const peer = otherMarket(local);
-	const { market: requestedMarket, bare } = parseMarketPrefix(fullSlug);
-
-	const tryLocal = (slug: string): NewsLinkResult | null => {
-		const entry = bySlug.get(slug);
-		if (!entry || !availableOn(entry, local)) return null;
-		return { href: `/news/${slug}`, external: false };
-	};
-
-	const tryPeer = (slug: string): NewsLinkResult | null => {
-		const entry = bySlug.get(slug);
-		if (!entry || !availableOn(entry, peer)) return null;
-		return {
-			href: `${SITE.peerHost}/news/${slug}`,
-			external: true,
-			peerMarket: peer,
-		};
-	};
-
-	// 1) Exact slug on this host (shared posts + already-correct market prefix).
-	const exactLocal = tryLocal(fullSlug);
-	if (exactLocal) return exactLocal;
-
-	// 2) Prefer current-market prefixed slug from bare stem.
-	const localPrefixed = tryLocal(`${local}-${bare}`);
-	if (localPrefixed) return localPrefixed;
-
-	// 3) Peer-market prefixed slug (absolute).
-	const peerPrefixed = tryPeer(`${peer}-${bare}`);
-	if (peerPrefixed) return peerPrefixed;
-
-	// 4) Requested-market slug on peer if author hard-coded the other prefix.
-	if (requestedMarket && requestedMarket !== local) {
-		const requested = tryPeer(`${requestedMarket}-${bare}`);
-		if (requested) return requested;
+	const { bare } = parseMarketPrefix(fullSlug);
+	const candidates = [fullSlug, `us-${bare}`, bare, `ca-${bare}`];
+	const seen = new Set<string>();
+	for (const slug of candidates) {
+		if (seen.has(slug)) continue;
+		seen.add(slug);
+		if (bySlug.has(slug)) return { href: `/news/${slug}`, external: false };
 	}
-
-	// 5) Exact slug only on peer (market-only post referenced by full slug).
-	const exactPeer = tryPeer(fullSlug);
-	if (exactPeer) return exactPeer;
 
 	return { href: '/news', external: false };
 }

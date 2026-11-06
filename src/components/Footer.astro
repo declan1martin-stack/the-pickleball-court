@@ -1,12 +1,9 @@
 ---
-import { MARKET_LABEL, SITE_EMAIL, SITE_NAME, SITE_REGION } from '../lib/site';
+import { MARKET_LABEL, SITE_EMAIL, SITE_NAME } from '../lib/site';
 import { getLatestGearPost, newsPath } from '../lib/news';
 
-const footerLogo =
-	SITE_REGION === 'us' ? '/brand/pc-logo-us-white.svg' : '/brand/pc-logo-ca-white.svg';
-const footerAlt = SITE_REGION === 'us' ? 'US Pickleball Court' : 'The Pickleball Court';
-const otherRegion = SITE_REGION === 'ca' ? 'us' : 'ca';
-const otherSite = SITE_REGION === 'ca' ? 'the US site' : 'the Canada site';
+const footerLogo = '/brand/pc-logo-us-white.svg';
+const footerAlt = 'US Pickleball Court';
 const latestGear = await getLatestGearPost();
 const latestGearHref = latestGear ? newsPath(latestGear) : '/news';
 ---
@@ -26,11 +23,6 @@ const latestGearHref = latestGear ? newsPath(latestGear) : '/news';
 				</a>
 				<p class="mt-3 max-w-xs text-sm leading-relaxed text-footer-text/80">
 					Knowledgeable, honest gear guides for {MARKET_LABEL} pickleball — paddles, shoes, balls, bags, apparel, and nets.
-				</p>
-				<p class="mt-3 text-sm">
-					<a href={`/go/${otherRegion}`} class="hover:text-white">
-						Shop {otherSite}
-					</a>
 				</p>
 				<p class="mt-3 text-sm">
 					<a href={`mailto:${SITE_EMAIL}`} class="hover:text-white">{SITE_EMAIL}</a>

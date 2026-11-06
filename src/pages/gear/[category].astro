@@ -7,7 +7,7 @@ import gear from '../../data/gear.json';
 import { getArticlesByCategory, CATEGORY_PILLARS } from '../../lib/articles';
 import { getPriceTier, PRICE_TIER_RANK } from '../../lib/products';
 import { absoluteUrl, itemListSchema } from '../../lib/seo';
-import { MARKET_COUNTRY, MARKET_LABEL, MARKET_PLAYERS } from '../../lib/site';
+import { MARKET_COUNTRY, MARKET_LABEL } from '../../lib/site';
 import { marketizeCopy } from '../../lib/marketCopy';
 
 export function getStaticPaths() {
@@ -19,15 +19,34 @@ export function getStaticPaths() {
 
 const categoryMeta = {
 	paddles: {
-		h1: `Best Pickleball Paddles in ${MARKET_COUNTRY}`,
-		description: `Compare top JOOLA, Selkirk, and Six Zero pickleball paddles popular with ${MARKET_PLAYERS}. Find power, control, and spin options with current store availability.`,
+		h1: 'Best Pickleball Paddles (2026)',
+		description:
+			'Best pickleball paddles for 2026 by job: control, power, spin, or budget. JOOLA, Selkirk, and Six Zero — price tiers only, confirm the live Amazon price.',
+		quickAnswer:
+			'There is no single best pickleball paddle. Pick by the miss: soft hands (control), put-away pace (power), or a first frame under flagship money (budget or hybrid). This catalog sorts $ to $$$$$. Confirm the live model on Amazon.com.',
 		intro:
-			'Browse beginner-friendly value paddles through intermediate and tournament frames — sorted from $ to $$$$$ so budget and flagship options are easy to compare.',
+			'Browse value paddles through tournament frames — sorted from $ to $$$$$ so a first paddle and a flagship are easy to tell apart. Price badges are relative bands, not live cart totals.',
+		links: [
+			{ href: '/guides/best-pickleball-paddles-2026', label: '2026 picks by playing style' },
+			{ href: '/guides/best-budget-pickleball-paddles', label: 'Budget paddles' },
+			{ href: '/guides/best-hybrid-pickleball-paddles', label: 'Hybrid paddles' },
+			{ href: '/guides/how-to-choose-a-pickleball-paddle', label: 'How to choose' },
+		],
 	},
 	shoes: {
-		h1: `Best Pickleball Shoes in ${MARKET_COUNTRY}`,
-		description: `Shop court-ready Skechers and ASICS pickleball shoes for ${MARKET_LABEL} hard courts. Filter by gender and Comfort & Support features like wide fit, arch support, and cushioning.`,
-		intro: `Upgrade from running shoes to court-specific footwear built for lateral cuts, kitchen stops, and long ${MARKET_LABEL} outdoor sessions. Use Gender and Comfort & Support filters to narrow by fit needs — sorted from $ to $$$$$.`,
+		h1: 'Best Pickleball Shoes (2026)',
+		description:
+			'Best pickleball shoes for hard-court cuts: Skechers Viper Court vs ASICS Gel. Court shoes, not running shoes. Confirm the live price on Amazon.',
+		quickAnswer:
+			'Wear court shoes, not running shoes. Skechers Viper Court leans cushion and an easier break-in. ASICS Gel-Dedicate and Gel-Resolution lean structured lateral support. Filter by gender and fit, then confirm the live size on Amazon.com.',
+		intro:
+			'Court shoes for lateral cuts, kitchen stops, and outdoor hard courts. Use Gender and Comfort & Support filters to narrow fit — products stay sorted from $ to $$$$$.',
+		links: [
+			{ href: '/guides/best-pickleball-shoes-2026', label: '2026 shoe picks' },
+			{ href: '/guides/skechers-vs-asics-pickleball', label: 'Skechers vs ASICS' },
+			{ href: '/guides/best-pickleball-shoes-for-wide-feet', label: 'Wide feet' },
+			{ href: '/guides/best-pickleball-shoes-for-plantar-fasciitis', label: 'Plantar fasciitis' },
+		],
 	},
 	nets: {
 		h1: `Best Portable Pickleball Nets in ${MARKET_COUNTRY}`,
@@ -41,10 +60,19 @@ const categoryMeta = {
 			'Pick indoor or outdoor balls by court surface — tournament favourites and practice packs sorted from $ to $$$$$.',
 	},
 	bags: {
-		h1: `Best Pickleball Bags in ${MARKET_COUNTRY}`,
+		h1: 'Best Pickleball Bags (2026)',
 		description:
-			'Compare sling bags, backpacks, and tour bags for paddles, balls, and club-night gear from JOOLA, Selkirk, and value brands.',
-		intro: `Carry paddles and accessories to the court with backpacks, slings, and tour bags built for ${MARKET_LABEL} club and tournament travel.`,
+			'Compare pickleball bags by what you carry: sling, backpack, or tour. JOOLA, Selkirk, and Mangrove layouts — confirm the live Amazon price.',
+		quickAnswer:
+			'Match the bag to the load. A sling is one paddle plus balls. A backpack adds shoes and a second paddle. A tour bag is for several paddles and a full match day. This catalog lists Mangrove ($$), JOOLA Tour Elite ($$), and the Selkirk Team backpack ($$$$$).',
+		intro:
+			'Sling, backpack, or tour bag — pick from what you actually carry to open play, not from the logo. Sorted from $ to $$$$$. Capacity claims below are the lines printed in the catalog.',
+		links: [
+			{ href: '/guides/pickleball-bags-buying-guide', label: 'Bag buying guide' },
+			{ href: '/gear/paddles', label: 'Paddles to pack' },
+			{ href: '/gear/shoes', label: 'Court shoes' },
+			{ href: '/guides/pickleball-accessories-buying-guide', label: 'Grips and accessories' },
+		],
 	},
 	apparel: {
 		h1: `Best Pickleball Apparel in ${MARKET_COUNTRY}`,
@@ -99,7 +127,7 @@ const itemList = itemListSchema({
 ---
 
 <Layout
-	title={meta.h1}
+	title={'title' in meta && meta.title ? meta.title : meta.h1}
 	description={meta.description}
 	canonicalPath={`/gear/${typedCategory}`}
 	ogImage={categoryOgImage}
@@ -116,7 +144,27 @@ const itemList = itemListSchema({
 			/>
 			<p class="text-sm font-bold uppercase tracking-[0.18em] text-emerald-800">{MARKET_LABEL} Gear Guide</p>
 			<h1 class="mt-3 max-w-4xl text-4xl font-black tracking-tight text-zinc-900 sm:text-5xl">{meta.h1}</h1>
+			{'quickAnswer' in meta && meta.quickAnswer && (
+				<div class="mt-5 max-w-3xl rounded-2xl border border-emerald-200 bg-emerald-50/70 px-5 py-4">
+					<p class="text-xs font-bold uppercase tracking-[0.14em] text-emerald-800">Quick answer</p>
+					<p class="mt-2 text-base leading-relaxed text-emerald-950">{meta.quickAnswer}</p>
+				</div>
+			)}
 			<p class="mt-5 max-w-3xl text-lg leading-relaxed text-zinc-600">{meta.intro}</p>
+			{'links' in meta && meta.links && (
+				<ul class="mt-4 flex max-w-3xl flex-wrap gap-2">
+					{meta.links.map((link) => (
+						<li>
+							<a
+								href={link.href}
+								class="inline-flex rounded-full border border-emerald-200 bg-white px-3 py-1 text-sm font-semibold text-emerald-900 underline-offset-2 hover:underline"
+							>
+								{link.label}
+							</a>
+						</li>
+					))}
+				</ul>
+			)}
 			<p class="mt-4 text-sm font-semibold text-zinc-500">
 				{products.length} products curated for {MARKET_LABEL} shoppers
 				{' · '}

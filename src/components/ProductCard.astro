@@ -11,12 +11,9 @@ import {
 	type Product,
 } from '../lib/products';
 import { getPartnerOffers } from '../lib/partners';
-import { absoluteUrl, productSchema } from '../lib/seo';
 import { AMAZON_STORE } from '../lib/site';
-import { DEFAULT_AUTHOR_ID, getAuthor } from '../data/authors';
 import { marketizeCopy } from '../lib/marketCopy';
 import { truncateOnWordBoundary } from '../lib/featureText';
-import Schema from './Schema.astro';
 
 interface Props {
 	product: Product;
@@ -33,27 +30,6 @@ const description = marketizeCopy(product.description);
 const features = product.features.map((feature) =>
 	truncateOnWordBoundary(marketizeCopy(feature)),
 );
-const imageAbs = product.imageUrl.startsWith('http')
-	? product.imageUrl
-	: absoluteUrl(product.imageUrl);
-/** On-site product URL for schema — never the affiliate tracking URL. */
-const onSiteUrl = absoluteUrl(`/gear/${product.category}#${product.id}`);
-const author = getAuthor(DEFAULT_AUTHOR_ID);
-const schema = productSchema({
-	name: product.name,
-	description,
-	image: imageAbs,
-	brand: product.brand,
-	url: onSiteUrl,
-	review: author
-		? {
-				author: author.name,
-				reviewBody: description,
-				datePublished: '2026-01-01',
-				...(typeof rating === 'number' ? { ratingValue: rating } : {}),
-			}
-		: undefined,
-});
 const gender = getEffectiveGender(product);
 const comfortTags = getComfortTags(product);
 const partnerOffers = getPartnerOffers(product);
@@ -69,7 +45,6 @@ const imageAlt = product.name.toLowerCase().startsWith(product.brand.toLowerCase
 	data-comfort={comfortTags.join(' ')}
 	class="group flex h-full flex-col rounded-[var(--radius-lg)] border border-border bg-surface shadow-[var(--shadow-sm)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
 >
-	<Schema data={schema} />
 	<div class="relative aspect-[4/3] overflow-hidden bg-border/40">
 		<SmartImage
 			src={product.imageUrl}
