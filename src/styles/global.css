@@ -407,3 +407,25 @@ main > :not(:first-child):is(section, article) {
 	background: var(--color-surface);
 	font-weight: 700;
 }
+
+/* Phone: a sticky first column hides the left edge of later columns inside a ~343px scroller. */
+@media (max-width: 639px) {
+	.md-table-scroll tbody th,
+	.md-table-scroll td:first-child,
+	.md-table-scroll th:first-child {
+		position: static;
+		box-shadow: none;
+	}
+
+	.md-table-scroll td {
+		min-width: 7.5rem;
+		max-width: 15rem;
+		white-space: normal;
+	}
+
+	.md-table-scroll thead th {
+		min-width: 7.5rem;
+		max-width: 15rem;
+		white-space: normal;
+	}
+}
