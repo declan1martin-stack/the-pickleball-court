@@ -88,9 +88,20 @@ const categoryMeta = {
 	},
 } as const;
 
+const categoryLabels = {
+	paddles: 'Paddles',
+	shoes: 'Shoes',
+	nets: 'Nets',
+	balls: 'Balls',
+	bags: 'Bags',
+	apparel: 'Apparel',
+	accessories: 'Accessories',
+} as const;
+
 const { category } = Astro.params;
 const typedCategory = category as keyof typeof categoryMeta;
 const meta = categoryMeta[typedCategory];
+const categoryLabel = categoryLabels[typedCategory];
 const products = gear
 	.filter((item) => item.category === typedCategory)
 	.slice()
@@ -138,8 +149,7 @@ const itemList = itemListSchema({
 			<Breadcrumbs
 				items={[
 					{ label: 'Home', href: '/' },
-					{ label: 'Gear' },
-					{ label: typedCategory },
+					{ label: categoryLabel, href: `/gear/${typedCategory}` },
 				]}
 			/>
 			<p class="text-sm font-bold uppercase tracking-[0.18em] text-emerald-800">{MARKET_LABEL} Gear Guide</p>
@@ -206,7 +216,7 @@ const itemList = itemListSchema({
 	{relatedArticles.length > 0 && (
 		<section class="border-t border-zinc-200 bg-white">
 			<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-				<h2 class="text-2xl font-black tracking-tight text-zinc-900">Related {typedCategory} guides</h2>
+				<h2 class="text-2xl font-black tracking-tight text-zinc-900">Related {categoryLabel} guides</h2>
 				<ul class="mt-6 grid gap-4 md:grid-cols-3">
 					{relatedArticles.map((article) => (
 						<li>
