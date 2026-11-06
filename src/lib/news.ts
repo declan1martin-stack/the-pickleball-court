@@ -91,7 +91,7 @@ export function formatNewsDate(
 		day: 'numeric',
 	},
 ): string {
-	return date.toLocaleDateString('en-CA', { timeZone: 'UTC', ...options });
+	return date.toLocaleDateString('en-US', { timeZone: 'UTC', ...options });
 }
 
 /** Resolve hero media from heroImage* or image* frontmatter. */

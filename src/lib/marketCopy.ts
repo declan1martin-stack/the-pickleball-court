@@ -1,4 +1,4 @@
-import { MARKET_COUNTRY, SITE_REGION } from './site';
+import { SITE_REGION } from './site';
 
 /**
  * Build-time localization for shared English catalogs and guides.
@@ -75,18 +75,9 @@ export function marketizeCopy(text: string): string {
 		.replaceAll('between states', 'between provinces');
 }
 
-/** Give each host a unique SERP title when the authored title is market-agnostic. */
+/** Authored titles are the SERP titles. The retired Canada host no longer needs a suffix. */
 export function marketizeTitle(title: string): string {
-	const localized = marketizeCopy(title);
-	if (/\bCanada\b|\bCanadian\b|\bthe US\b|\bUS\b/.test(localized)) {
-		return localized;
-	}
-	const loc = SITE_REGION === 'ca' ? 'Canada' : MARKET_COUNTRY;
-	const colon = localized.indexOf(':');
-	if (colon > 0) {
-		return `${localized.slice(0, colon)} in ${loc}${localized.slice(colon)}`;
-	}
-	return `${localized} in ${loc}`;
+	return marketizeCopy(title);
 }
 
 export function marketizeFaq(

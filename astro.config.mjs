@@ -5,10 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 import mdx from '@astrojs/mdx';
 
-const region = (process.env.PUBLIC_SITE_REGION ?? 'us').toString().trim().toLowerCase();
-const site =
-	process.env.PUBLIC_SITE_URL?.trim() ||
-	(region === 'ca' ? 'https://thepickleballcourt.ca' : 'https://uspickleballcourt.com');
+// Single indexable host. PUBLIC_SITE_REGION=ca is accepted by `build:ca` but ignored.
+const site = process.env.PUBLIC_SITE_URL?.trim() || 'https://uspickleballcourt.com';
 
 // https://astro.build/config
 // trailingSlash: 'never' + build.format: 'file' keep sitemap, canonicals, and Cloudflare Pages

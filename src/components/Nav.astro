@@ -1,6 +1,5 @@
 ---
 import SiteLogo from './SiteLogo.astro';
-import { SITE_REGION } from '../lib/site';
 
 const links = [
 	{ href: '/gear/paddles', label: 'Paddles' },
@@ -13,10 +12,6 @@ const links = [
 	{ href: '/guides', label: 'Guides' },
 	{ href: '/news', label: 'News' },
 ];
-
-const otherRegion = SITE_REGION === 'ca' ? 'us' : 'ca';
-const otherLabel = SITE_REGION === 'ca' ? 'United States' : 'Canada';
-const switchHref = `/go/${otherRegion}?next=${encodeURIComponent(Astro.url.pathname || '/')}`;
 ---
 
 <header class="site-header relative z-50 min-w-0 max-w-full shrink-0 overflow-x-clip border-b border-border bg-surface/95 backdrop-blur-md">
@@ -37,13 +32,6 @@ const switchHref = `/go/${otherRegion}?next=${encodeURIComponent(Astro.url.pathn
 				class="btn-primary shrink-0 px-4 py-2 text-sm shadow-sm"
 			>
 				Best Picks
-			</a>
-			<a
-				href={switchHref}
-				class="shrink-0 text-xs font-medium text-ink-faint underline-offset-2 transition hover:text-ink hover:underline"
-				aria-label={`Switch to the ${otherLabel} site`}
-			>
-				{otherLabel}
 			</a>
 		</nav>
 
@@ -85,15 +73,6 @@ const switchHref = `/go/${otherRegion}?next=${encodeURIComponent(Astro.url.pathn
 			</li>
 			<li>
 				<a href="/guides/best-pickleball-paddles-2026" class="btn-secondary w-full">Best Picks</a>
-			</li>
-			<li>
-				<a
-					href={switchHref}
-					class="block rounded-[var(--radius-md)] px-3 py-3 text-base font-semibold text-ink hover:bg-bg hover:text-primary"
-					aria-label={`Switch to the ${otherLabel} site`}
-				>
-					{otherLabel}
-				</a>
 			</li>
 		</ul>
 	</nav>

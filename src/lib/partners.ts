@@ -33,11 +33,32 @@ export const PARTNER_LABELS = {
 
 function utm(url: string, partner: PartnerId): string {
 	const next = new URL(url);
-	next.searchParams.set('utm_source', SITE_REGION === 'us' ? 'uspickleballcourt' : 'thepickleballcourt');
+	next.searchParams.set('utm_source', 'uspickleballcourt');
 	next.searchParams.set('utm_medium', 'affiliate');
 	next.searchParams.set('utm_campaign', partner);
 	next.searchParams.set('utm_content', SITE_NAME);
 	return next.toString();
+}
+
+/**
+ * Manufacturer search query. Do not repeat the brand when the product name
+ * already starts with it (`Selkirk` + `Selkirk LUXX…` → `Selkirk LUXX…`).
+ */
+export function manufacturerSearchQuery(product: { brand?: string; name?: string }): string {
+	const brand = (product.brand || '').trim();
+	const name = (product.name || '').trim();
+	if (!brand) return name;
+	if (!name) return brand;
+	const brandLower = brand.toLowerCase();
+	const nameLower = name.toLowerCase();
+	if (
+		nameLower === brandLower ||
+		nameLower.startsWith(`${brandLower} `) ||
+		nameLower.startsWith(`${brandLower}-`)
+	) {
+		return name;
+	}
+	return `${brand} ${name}`;
 }
 
 /** Wrap a destination URL in an AvantLink custom click tracker when IDs are configured. */
@@ -62,12 +83,12 @@ export function withAvantLink(destinationUrl: string, merchantId = AVANTLINK_SEL
 }
 
 function selkirkSearchUrl(product: Product): string {
-	const query = [product.brand, product.name].filter(Boolean).join(' ').trim();
+	const query = manufacturerSearchQuery(product);
 	return utm(`https://www.selkirk.com/search?q=${encodeURIComponent(query)}`, 'selkirk');
 }
 
 function pickleballSuperstoreSearchUrl(product: Product): string {
-	const query = [product.brand, product.name].filter(Boolean).join(' ').trim();
+	const query = manufacturerSearchQuery(product);
 	const searchPath = `/search?q=${encodeURIComponent(query)}`;
 	if (PBS_AFFILIATE_CODE) {
 		// Shopify-style discount/ref landing used by PBS SuperAffiliate codes.

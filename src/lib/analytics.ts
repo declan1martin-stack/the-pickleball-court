@@ -1,6 +1,6 @@
 import { SITE_REGION, type SiteRegion } from './site';
 
-/** Canada production GA4 property (thepickleballcourt.ca). Never emit on the US host. */
+/** Legacy measurement ID kept only so a leftover env value is ignored on this host. */
 export const CA_GA_MEASUREMENT_ID = 'G-JWSBZJ6R4P';
 
 /** US production GA4 property (uspickleballcourt.com). Confirmed by Cillian. */

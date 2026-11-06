@@ -6,77 +6,53 @@ type SiteConfig = {
 	siteName: string;
 	affiliateTag: string;
 	amazonHost: string;
-	/** Phrase: "the Canada store" | "the US store" */
+	/** Phrase used in prose: "the US store" */
 	amazonLabel: string;
-	/** Button/SERP label: "Amazon.ca" | "Amazon.com" */
+	/** Button/SERP label */
 	amazonStore: string;
-	currency: 'CAD' | 'USD';
+	currency: 'USD';
 	ogLocale: string;
 	inLanguage: string;
 	hreflang: string;
 	areaServed: string;
 	email: string;
-	/** Adjective: "Canadian" | "US" */
+	/** Adjective: "US" */
 	marketLabel: string;
-	/** Noun phrase: "Canada" | "the US" */
+	/** Noun phrase: "the US" */
 	marketCountry: string;
-	/** People label: "Canadian players" | "US players" */
+	/** People label */
 	marketPlayers: string;
-	alternateSiteUrl: string;
-	alternateHreflang: string;
 };
 
-const SITES: Record<SiteRegion, SiteConfig> = {
-	ca: {
-		region: 'ca',
-		siteUrl: 'https://thepickleballcourt.ca',
-		siteName: 'ThePickleballCourt.ca',
-		affiliateTag: 'thepickleb050-20',
-		amazonHost: 'www.amazon.ca',
-		amazonLabel: 'the Canada store',
-		amazonStore: 'Amazon.ca',
-		currency: 'CAD',
-		ogLocale: 'en_CA',
-		inLanguage: 'en-CA',
-		hreflang: 'en-CA',
-		areaServed: 'CA',
-		email: 'hello@thepickleballcourt.ca',
-		marketLabel: 'Canadian',
-		marketCountry: 'Canada',
-		marketPlayers: 'Canadian players',
-		alternateSiteUrl: 'https://uspickleballcourt.com',
-		alternateHreflang: 'en-US',
-	},
-	us: {
-		region: 'us',
-		siteUrl: 'https://uspickleballcourt.com',
-		siteName: 'USPickleballCourt.com',
-		affiliateTag: 'uspickleball-20',
-		amazonHost: 'www.amazon.com',
-		amazonLabel: 'the US store',
-		amazonStore: 'Amazon.com',
-		currency: 'USD',
-		ogLocale: 'en_US',
-		inLanguage: 'en-US',
-		hreflang: 'en-US',
-		areaServed: 'US',
-		email: 'hello@uspickleballcourt.com',
-		marketLabel: 'US',
-		marketCountry: 'the US',
-		marketPlayers: 'US players',
-		alternateSiteUrl: 'https://thepickleballcourt.ca',
-		alternateHreflang: 'en-CA',
-	},
+/**
+ * One indexable host. `PUBLIC_SITE_REGION=ca` (legacy `build:ca`) still
+ * resolves here so that check cannot fail or publish a second canonical.
+ */
+const US_SITE: SiteConfig = {
+	region: 'us',
+	siteUrl: 'https://uspickleballcourt.com',
+	siteName: 'USPickleballCourt.com',
+	affiliateTag: 'uspickleball-20',
+	amazonHost: 'www.amazon.com',
+	amazonLabel: 'the US store',
+	amazonStore: 'Amazon.com',
+	currency: 'USD',
+	ogLocale: 'en_US',
+	inLanguage: 'en-US',
+	hreflang: 'en-US',
+	areaServed: 'US',
+	email: 'hello@uspickleballcourt.com',
+	marketLabel: 'US',
+	marketCountry: 'the US',
+	marketPlayers: 'US players',
 };
 
 function resolveRegion(): SiteRegion {
-	// Dual deploys: PUBLIC_SITE_REGION=ca|us (Pages projects build:ca / build:us).
-	const raw = (import.meta.env.PUBLIC_SITE_REGION ?? 'us').toString().trim().toLowerCase();
-	return raw === 'ca' ? 'ca' : 'us';
+	return 'us';
 }
 
 export const SITE_REGION = resolveRegion();
-export const site = SITES[SITE_REGION];
+export const site = US_SITE;
 
 export const SITE_URL = site.siteUrl;
 export const SITE_NAME = site.siteName;
@@ -90,13 +66,9 @@ export const SITE_EMAIL = site.email;
 export const MARKET_LABEL = site.marketLabel;
 export const MARKET_COUNTRY = site.marketCountry;
 export const MARKET_PLAYERS = site.marketPlayers;
-export const ALTERNATE_SITE_URL = site.alternateSiteUrl;
 export const HREFLANG = site.hreflang;
-export const ALTERNATE_HREFLANG = site.alternateHreflang;
 
 /** Display catalog price using this site's currency code. */
 export function formatCatalogPrice(price: string): string {
-	return price
-		.replace(/\bCAD\b/g, PRICE_CURRENCY)
-		.replace(/\bUSD\b/g, PRICE_CURRENCY);
+	return price.replace(/\bCAD\b/g, PRICE_CURRENCY).replace(/\bUSD\b/g, PRICE_CURRENCY);
 }

@@ -5,65 +5,48 @@
  * NOT rewrite HTML bodies.
  *
  * Responsibilities:
- * - www → apex 301
+ * - one-hop canonical redirect (www, trailing slash, and .html → apex non-trailing URL)
  * - Google Search Console HTML verification stubs
  * - Temporary AvantLink publisher verification files
- * - Market-only news 404s on the wrong host (stale edge / wrong build)
  * - /robots.txt served from the Function so Managed AI blocks cannot prepend Disallow
  */
 
-const HOSTS = {
-	us: {
-		apex: 'uspickleballcourt.com',
-		www: 'www.uspickleballcourt.com',
-		siteUrl: 'https://uspickleballcourt.com',
-	},
-	ca: {
-		apex: 'thepickleballcourt.ca',
-		www: 'www.thepickleballcourt.ca',
-		siteUrl: 'https://thepickleballcourt.ca',
-	},
-};
-
-/** News built only for the opposite market — keep off this host's index. */
-const CA_ONLY_NEWS = new Set([
-	'/news/ca-roundup-cnpl-central-split-august-2026',
-	'/news/ca-roundup-cnpl-nationals-ppa-canada-august-2026',
-	'/news/ca-results-cnpl-central-split-armaan-jiwa-mawji-august-2026',
-	'/news/ca-feature-cnpl-biggest-markets-toronto-montreal-vancouver-august-2026',
-	'/news/ca-guide-where-to-play-pickleball-toronto-august-2026',
-	'/news/ca-roundup-ppa-delta-nationals-august-21-2026',
-	'/news/ca-feature-nationals-preview-august-21-2026',
-	'/news/ca-roundup-nationals-bc-repeat-september-1-2026',
-]);
-
-const US_ONLY_NEWS = new Set([
-	'/news/us-roundup-mlp-playoffs-ppa-august-2026',
-	'/news/us-roundup-world-rankings-mlp-playoffs-august-2026',
-	'/news/us-results-mlp-dallas-playoffs-cailyn-campbell-august-2026',
-	'/news/us-feature-mlp-franchise-valuations-teams-august-2026',
-	'/news/us-guide-where-to-play-pickleball-los-angeles-august-2026',
-	'/news/us-roundup-mlp-semis-central-park-august-21-2026',
-	'/news/us-roundup-rising-stars-august-21-2026',
-	'/news/us-feature-mlp-semifinals-preview-august-21-2026',
-	'/news/us-roundup-mlp-finals-ppa-nationals-september-1-2026',
-	'/news/us-roundup-rising-stars-september-1-2026',
-]);
+const US_SITE = 'https://uspickleballcourt.com';
+const US_APEX = 'uspickleballcourt.com';
+const US_WWW = 'www.uspickleballcourt.com';
 
 function resolveHost(hostname) {
 	const host = (hostname || '').toLowerCase();
-	if (host === HOSTS.us.apex || host === HOSTS.us.www) return { region: 'us', ...HOSTS.us, host };
-	if (host === HOSTS.ca.apex || host === HOSTS.ca.www) return { region: 'ca', ...HOSTS.ca, host };
+	if (host === US_APEX || host === US_WWW) {
+		return { apex: US_APEX, www: US_WWW, siteUrl: US_SITE, host };
+	}
 	return null;
+}
+
+/** Non-trailing-slash path. Strips `.html` except Search Console verification files. */
+function canonicalPathname(pathname) {
+	let path = pathname || '/';
+	if (path.length > 1) path = path.replace(/\/+$/, '') || '/';
+	const gsc = /^\/google[a-z0-9]+\.html$/i.test(path);
+	if (!gsc && path.length > 1 && /\.html$/i.test(path)) {
+		path = path.replace(/\.html$/i, '') || '/';
+	}
+	if (path === '/authors/declan-martin') path = '/authors/deco';
+	if (path === '/index') path = '/';
+	return path;
 }
 
 export async function onRequest(context) {
 	const requestUrl = new URL(context.request.url);
 	const resolved = resolveHost(requestUrl.hostname);
+	const targetPath = canonicalPathname(requestUrl.pathname);
+	const origin = resolved ? resolved.siteUrl : requestUrl.origin;
+	const hostNeedsApex = Boolean(resolved && resolved.host === resolved.www);
+	const pathNeedsCanonical = requestUrl.pathname !== targetPath;
 
-	// Canonical host: apex only (www duplicates dilute crawl signals).
-	if (resolved && resolved.host === resolved.www) {
-		return Response.redirect(`${resolved.siteUrl}${requestUrl.pathname}${requestUrl.search}`, 301);
+	// One hop: www and/or trailing slash and/or .html → apex non-trailing URL.
+	if (hostNeedsApex || pathNeedsCanonical) {
+		return Response.redirect(`${origin}${targetPath}${requestUrl.search}`, 301);
 	}
 
 	// GSC HTML-file verification must stay on the exact `.html` URL (no 308 strip).
@@ -81,43 +64,6 @@ export async function onRequest(context) {
 	// Let /go/* redirect handlers run untouched.
 	if (requestUrl.pathname.startsWith('/go/')) {
 		return context.next();
-	}
-
-	// Legacy author slug → Deco (display name for all bylines).
-	const authorPath = requestUrl.pathname.replace(/\/+$/, '') || '/';
-	if (
-		authorPath === '/authors/declan-martin' ||
-		authorPath === '/authors/declan-martin.html'
-	) {
-		const apex = resolved?.siteUrl || HOSTS.us.siteUrl;
-		return Response.redirect(`${apex}/authors/deco`, 301);
-	}
-
-	const barePath = requestUrl.pathname.replace(/\/+$/, '') || '/';
-	const pathNoHtml = barePath.replace(/\.html$/i, '');
-	if (resolved?.region === 'us') {
-		if (CA_ONLY_NEWS.has(barePath) || CA_ONLY_NEWS.has(pathNoHtml)) {
-			return new Response('Not Found', {
-				status: 404,
-				headers: {
-					'content-type': 'text/plain; charset=utf-8',
-					'cache-control': 'no-store',
-					'x-robots-tag': 'noindex',
-				},
-			});
-		}
-	}
-	if (resolved?.region === 'ca') {
-		if (US_ONLY_NEWS.has(barePath) || US_ONLY_NEWS.has(pathNoHtml)) {
-			return new Response('Not Found', {
-				status: 404,
-				headers: {
-					'content-type': 'text/plain; charset=utf-8',
-					'cache-control': 'no-store',
-					'x-robots-tag': 'noindex',
-				},
-			});
-		}
 	}
 
 	// Temporary AvantLink publisher verification (remove after approval).
@@ -166,7 +112,7 @@ export async function onRequest(context) {
 
 	// Serve robots.txt from the Function so Cloudflare Managed AI blocks cannot prepend Disallow.
 	if (requestUrl.pathname === '/robots.txt') {
-		const siteUrl = resolved?.siteUrl || HOSTS.us.siteUrl;
+		const siteUrl = resolved?.siteUrl || US_SITE;
 		const body = `# AI answer / grounding crawlers — allowed for GEO visibility
 User-agent: GPTBot
 Allow: /

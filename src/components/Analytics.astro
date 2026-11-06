@@ -2,14 +2,11 @@
 /**
  * GA4 + Google Search Console verification.
  *
- * CA: G-JWSBZJ6R4P (thepickleballcourt.ca).
- * US: G-WE9TTJLH00 (uspickleballcourt.com). Never falls back to the CA property.
+ * US: G-WE9TTJLH00 (uspickleballcourt.com).
  * Optional override: PUBLIC_GA_MEASUREMENT_ID / PUBLIC_GA_ID /
- * PUBLIC_GA_MEASUREMENT_ID_US (must not be the other region's ID).
+ * PUBLIC_GA_MEASUREMENT_ID_US (must not be another property's ID).
  *
  *   PUBLIC_GOOGLE_SITE_VERIFICATION=token_from_search_console
- *
- * Runtime `site_region` (ca|us) is attached to page views and events.
  */
 import { resolveGaMeasurementId } from '../lib/analytics';
 
@@ -30,11 +27,7 @@ const gsc = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 			window.gtag = gtag;
 
 			function siteRegion() {
-				const host = window.location.hostname.replace(/^www\./, '').toLowerCase();
-				if (host === 'uspickleballcourt.com') return 'us';
-				if (host === 'thepickleballcourt.ca') return 'ca';
-				const q = new URLSearchParams(window.location.search).get('region');
-				return q === 'us' ? 'us' : 'ca';
+				return 'us';
 			}
 
 			const region = siteRegion();
