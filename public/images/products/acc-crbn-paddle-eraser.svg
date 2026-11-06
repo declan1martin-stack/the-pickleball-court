@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title>CRBN pickleball paddle eraser illustration</title>
+  <desc>Studio illustration of a small rubber paddle eraser beside a raw-carbon paddle face with a cleaned stripe.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f6f8"/>
+      <stop offset="1" stop-color="#e1e7ee"/>
+    </linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2c3540"/>
+      <stop offset="1" stop-color="#151b22"/>
+    </linearGradient>
+    <pattern id="grit" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.7" fill="#ffffff" opacity="0.28"/>
+    </pattern>
+    <linearGradient id="eraser" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a5560"/>
+      <stop offset="1" stop-color="#1d242c"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#123449" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="400" cy="490" rx="240" ry="22" fill="#1c4e80" opacity="0.09"/>
+  <g filter="url(#shadow)">
+    <path d="M250 150 H430 C500 150 540 210 540 280 V360 C540 400 510 430 470 430 H250 C210 430 180 400 180 360 V220 C180 180 210 150 250 150 Z" fill="url(#face)"/>
+    <path d="M250 150 H430 C500 150 540 210 540 280 V360 C540 400 510 430 470 430 H250 C210 430 180 400 180 360 V220 C180 180 210 150 250 150 Z" fill="url(#grit)"/>
+    <path d="M250 168 H400 V412 H250 C222 412 200 390 200 362 V218 C200 190 222 168 250 168 Z" fill="#e8eef3" opacity="0.92"/>
+    <rect x="330" y="430" width="46" height="70" rx="8" fill="#c5ced6"/>
+    <g transform="translate(500 300) rotate(-18)">
+      <rect x="0" y="0" width="150" height="78" rx="14" fill="url(#eraser)"/>
+      <rect x="0" y="0" width="150" height="16" rx="8" fill="#6b7680"/>
+      <path d="M18 40 H132" stroke="#d5dee6" stroke-width="3" opacity="0.5"/>
+    </g>
+  </g>
+</svg>

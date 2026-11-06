@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title>ONIX Pro Team pickleball backpack illustration</title>
+  <desc>Studio illustration of a black court backpack with a coral accent, a shoe compartment, and no fence hook.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6f4f2"/>
+      <stop offset="1" stop-color="#e7e2dc"/>
+    </linearGradient>
+    <linearGradient id="pack" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a2a2a"/>
+      <stop offset="1" stop-color="#121212"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff7a6e"/>
+      <stop offset="1" stop-color="#e2534a"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#123449" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="400" cy="506" rx="210" ry="24" fill="#1c4e80" opacity="0.1"/>
+  <g filter="url(#shadow)">
+    <path d="M274 170 C256 256 252 348 270 440" fill="none" stroke="#3a3a3a" stroke-width="16" stroke-linecap="round"/>
+    <path d="M526 170 C546 256 550 348 532 440" fill="none" stroke="#3a3a3a" stroke-width="16" stroke-linecap="round"/>
+    <rect x="282" y="118" width="236" height="376" rx="30" fill="url(#pack)"/>
+    <rect x="282" y="118" width="22" height="376" rx="12" fill="url(#accent)"/>
+    <rect x="322" y="156" width="168" height="168" rx="14" fill="#1c1c1c" stroke="#3a3a3a"/>
+    <path d="M340 214 H472" stroke="#f0d2cc" stroke-width="3" opacity="0.7"/>
+    <rect x="322" y="344" width="168" height="112" rx="14" fill="#2e2e2e"/>
+    <path d="M340 378 H472" stroke="#ffb0a8" stroke-width="3" opacity="0.7"/>
+    <path d="M340 398 H472" stroke="#ffb0a8" stroke-width="3" opacity="0.45"/>
+    <path d="M340 418 H472" stroke="#ffb0a8" stroke-width="3" opacity="0.3"/>
+    <rect x="372" y="98" width="56" height="26" rx="8" fill="#e2534a"/>
+  </g>
+</svg>
