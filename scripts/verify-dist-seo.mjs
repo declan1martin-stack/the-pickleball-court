@@ -131,13 +131,158 @@ for (const file of htmlFiles) {
 	}
 }
 
+const gear = JSON.parse(fs.readFileSync('src/data/gear.json', 'utf8'));
+const clipWidths = new Set([116, 119, 120, 140]);
+const danglingWord =
+	/(?:^|[\s(])(?:and|or|with|for|to|of|in|on|from|by|at|as|via|into|over|your|its|their|our|including|plus|featuring|the|a|an|but|nor|so|yet|than|per|without|within|about|during|while|although|because|if|when|where|which|that|this|these|those|both|either|just|&)\s*$/i;
+const brokenEntity = /&#|&amp;|&lt;|&gt;|&quot;|&nbsp;|con\/tact/i;
+const midWordEnding =
+	/(?:tournamen|lightweig|comfortabl|includin|slidin|high-cont|ensu|appl|athl|padde|tenni|materi|addi|bui|pai|rotationally)$/i;
+const shortTokenOk = new Set(['us', 'ok', 'xl', 'xs', 'mm', 'ml', 'no', 'go', 'up', 'iv', 'id', 'oz']);
+
+function catalogCopyIssue(text) {
+	const value = String(text ?? '').trim();
+	if (!value) return null;
+	if (brokenEntity.test(value)) return 'broken HTML entity';
+	if (/[,:;]$/.test(value)) return 'dangling punctuation';
+	if (danglingWord.test(value)) return 'dangling word';
+	if (clipWidths.has(value.length) && !/[.!?]$/.test(value)) {
+		return `scraper cutoff at ${value.length} characters`;
+	}
+	if (!/[.!?]$/.test(value)) {
+		const last = value.split(/\s+/).pop().replace(/^[^A-Za-z0-9+]+|[^A-Za-z0-9+]+$/g, '');
+		if (/^[A-Za-z]{1,2}$/.test(last) && !shortTokenOk.has(last.toLowerCase())) {
+			return `mid-word fragment "${last}"`;
+		}
+		if (midWordEnding.test(last)) return `mid-word cutoff "${last}"`;
+	}
+	return null;
+}
+
+for (const product of gear) {
+	for (const field of ['name', 'description']) {
+		const issue = catalogCopyIssue(product[field]);
+		if (issue) failures.push(`gear.json:${product.id}.${field}: ${issue}`);
+	}
+	const seenFeatures = new Set();
+	for (const [index, feature] of (product.features ?? []).entries()) {
+		if (seenFeatures.has(feature)) {
+			failures.push(`gear.json:${product.id}.features[${index}]: exact duplicate bullet`);
+		}
+		seenFeatures.add(feature);
+		const issue = catalogCopyIssue(feature);
+		if (issue) failures.push(`gear.json:${product.id}.features[${index}]: ${issue}`);
+	}
+}
+
+const categoryLabels = {
+	paddles: 'Paddles',
+	shoes: 'Shoes',
+	nets: 'Nets',
+	balls: 'Balls',
+	bags: 'Bags',
+	apparel: 'Apparel',
+	accessories: 'Accessories',
+};
+
+function jsonLdBlocks(html) {
+	const blocks = [];
+	for (const match of html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)) {
+		try {
+			blocks.push(JSON.parse(match[1]));
+		} catch (error) {
+			blocks.push({ __parseError: String(error) });
+		}
+	}
+	return blocks;
+}
+
+function breadcrumbLists(node, found = []) {
+	if (!node || typeof node !== 'object') return found;
+	if (Array.isArray(node)) {
+		for (const item of node) breadcrumbLists(item, found);
+		return found;
+	}
+	if (node.__parseError) return found;
+	if (node['@graph']) breadcrumbLists(node['@graph'], found);
+	if (node['@type'] === 'BreadcrumbList') found.push(node);
+	return found;
+}
+
+const gearPages = htmlFiles.filter((file) => /^gear\/[^/]+\.html$/.test(path.relative(dist, file).split(path.sep).join('/')));
+for (const file of gearPages) {
+	const rel = path.relative(dist, file).split(path.sep).join('/');
+	const slug = rel.replace(/^gear\//, '').replace(/\.html$/, '');
+	const expectedLabel = categoryLabels[slug];
+	const html = fs.readFileSync(file, 'utf8');
+	if (!expectedLabel) {
+		failures.push(`${rel}: unexpected gear category page`);
+		continue;
+	}
+	const nav = html.match(/<nav aria-label="Breadcrumb"[\s\S]*?<\/nav>/i)?.[0] ?? '';
+	if (!nav.includes(`>${expectedLabel}<`)) {
+		failures.push(`${rel}: visible breadcrumb is missing title-cased "${expectedLabel}"`);
+	}
+	if (new RegExp(`>${slug}<`).test(nav)) {
+		failures.push(`${rel}: visible breadcrumb still uses the raw slug`);
+	}
+	if (/href="\/gear"(?![\/\w])/.test(nav)) {
+		failures.push(`${rel}: breadcrumb links to /gear, which is not a page`);
+	}
+
+	const lists = jsonLdBlocks(html).flatMap((block) => breadcrumbLists(block));
+	if (lists.length !== 1) {
+		failures.push(`${rel}: expected one BreadcrumbList, found ${lists.length}`);
+		continue;
+	}
+	const items = lists[0].itemListElement ?? [];
+	if (items.length < 2) failures.push(`${rel}: BreadcrumbList needs Home and ${expectedLabel}`);
+	items.forEach((item, index) => {
+		const name = item?.name;
+		const url = item?.item;
+		if (typeof name !== 'string' || !name.trim()) {
+			failures.push(`${rel}: BreadcrumbList position ${index + 1} is missing a name`);
+		}
+		if (typeof url !== 'string' || !url.startsWith('https://uspickleballcourt.com')) {
+			failures.push(`${rel}: BreadcrumbList position ${index + 1} is missing a US item URL`);
+			return;
+		}
+		let pathname = '';
+		try {
+			pathname = new URL(url).pathname.replace(/\/+$/, '') || '/';
+		} catch {
+			failures.push(`${rel}: BreadcrumbList item is not a valid URL → ${url}`);
+			return;
+		}
+		if (pathname === '/gear') {
+			failures.push(`${rel}: BreadcrumbList item points at /gear, which 404s`);
+		}
+		if (!routeExists(pathname)) {
+			failures.push(`${rel}: BreadcrumbList item is not a built route → ${url}`);
+		}
+		if (index === 0 && (name !== 'Home' || url !== 'https://uspickleballcourt.com')) {
+			failures.push(`${rel}: BreadcrumbList Home crumb should be https://uspickleballcourt.com`);
+		}
+		if (index === items.length - 1) {
+			if (name !== expectedLabel) {
+				failures.push(`${rel}: final BreadcrumbList name is "${name}", expected "${expectedLabel}"`);
+			}
+			if (url !== `https://uspickleballcourt.com/gear/${slug}`) {
+				failures.push(`${rel}: final BreadcrumbList item is ${url}`);
+			}
+		}
+	});
+}
+
 const allText = htmlFiles.map((file) => fs.readFileSync(file, 'utf8')).join('\n');
 const selkirk = [...allText.matchAll(/selkirk\.com\/search\?q=([^"&]+)/g)].map((m) => decodeURIComponent(m[1].replace(/\+/g, ' ')));
 for (const query of selkirk) {
 	if (/selkirk\s+selkirk/i.test(query)) failures.push(`doubled Selkirk search query: ${query}`);
 }
 
-console.log(`Checked ${pagesChecked} HTML files, ${routes.size} routes, ${selkirk.length} Selkirk search links.`);
+console.log(
+	`Checked ${pagesChecked} HTML files, ${routes.size} routes, ${gear.length} catalog items, ${gearPages.length} gear breadcrumbs, ${selkirk.length} Selkirk search links.`,
+);
 if (failures.length) {
 	console.error(`\n${failures.length} failure(s):`);
 	for (const failure of failures.slice(0, 80)) console.error(' - ' + failure);
