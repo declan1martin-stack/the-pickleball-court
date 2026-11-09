@@ -47,6 +47,7 @@ Honest, high-intent buying guidance for ${MARKET_LABEL} players. Product data li
 - [Gear — bags](${absoluteUrl('/gear/bags')}): Bags and backpacks
 - [Gear — apparel](${absoluteUrl('/gear/apparel')}): Court apparel
 - [Gear — accessories](${absoluteUrl('/gear/accessories')}): Grips, tape, and small upgrades
+- [Gear — training](${absoluteUrl('/gear/training')}): Ball machines for solo drills
 - [News](${absoluteUrl('/news')}): Weekly roundups and gear updates
 - [News RSS](${absoluteUrl('/news/feed.xml')}): News feed
 - [Guides RSS](${absoluteUrl('/rss.xml')}): Guides feed

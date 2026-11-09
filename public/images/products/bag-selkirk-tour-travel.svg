@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title>Selkirk Tour backpack illustration</title>
+  <desc>Black court backpack on a light studio background</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <path d="M300 150 C360 90 450 90 510 150" fill="none" stroke="#0f766e" stroke-width="16" stroke-linecap="round"/>
+    <rect x="250" y="160" width="300" height="320" rx="36" fill="#111827"/>
+    <rect x="278" y="196" width="244" height="78" rx="16" fill="#0f766e"/>
+    <rect x="278" y="300" width="244" height="120" rx="16" fill="#1f2937"/>
+  </g>
+  <text x="400" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#334155">Tour backpack</text>
+</svg>

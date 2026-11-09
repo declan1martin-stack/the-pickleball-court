@@ -1877,5 +1877,145 @@
       "ca": "https://www.amazon.ca/dp/B07P9J4SV4/?tag=thepickleb050-20",
       "us": "https://www.amazon.com/s?k=Women%E2%80%99s+Athletic+Skort&tag=uspickleball-20"
     }
+  },
+  {
+    "id": "joola-perseus-pro-v-16mm",
+    "name": "JOOLA Ben Johns Perseus Pro V 16mm",
+    "category": "paddles",
+    "brand": "JOOLA",
+    "price": "$$$$$",
+    "features": [
+      "Elongated face, 16.5 inches long and 7.5 inches wide, with a 16mm honeycomb propulsion core.",
+      "Textured carbon-fiber face with an average weight of 8.1 ounces.",
+      "Approved for USAP and UPA-A play."
+    ],
+    "description": "For players who want leverage and court coverage from an elongated 16mm Perseus.",
+    "imageUrl": "/images/products/joola-perseus-pro-v-16mm.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=JOOLA+Ben+Johns+Perseus+Pro+V+16mm&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/dp/B0GFXT3CRW?tag=uspickleball-20"
+    }
+  },
+  {
+    "id": "crbn-trufoam-barrage-14mm",
+    "name": "CRBN TruFoam Barrage 14mm",
+    "category": "paddles",
+    "brand": "CRBN",
+    "price": "$$$$$",
+    "features": [
+      "Hybrid AeroCurve shape built at a single 14mm thickness.",
+      "TruFoam floating core with officially licensed Toray T700 carbon fiber.",
+      "USAP approved at PBCoR 43, and UPA-A approved."
+    ],
+    "description": "For players who want fast hands and pop during kitchen exchanges.",
+    "imageUrl": "/images/products/crbn-trufoam-barrage-14mm.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=CRBN+TruFoam+Barrage+14mm&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=CRBN+TruFoam+Barrage+14mm&tag=uspickleball-20"
+    }
+  },
+  {
+    "id": "six-zero-black-opal-14mm",
+    "name": "Six Zero Black Opal 14mm",
+    "category": "paddles",
+    "brand": "Six Zero",
+    "price": "$$$$$",
+    "features": [
+      "14mm G4 aerospace solid foam core.",
+      "Diamond Tough raw carbon fiber face.",
+      "Average weight 8.0 to 8.3 ounces, approved by USA Pickleball and the UPA."
+    ],
+    "description": "For serious competitors and aspiring pros who want a thinner foam paddle.",
+    "imageUrl": "/images/products/six-zero-black-opal-14mm.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=Six+Zero+Black+Opal+14mm&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=Six+Zero+Black+Opal+14mm&tag=uspickleball-20"
+    }
+  },
+  {
+    "id": "selkirk-labs-boomstik-16mm",
+    "name": "Selkirk LABS Project Boomstik Elongated 16mm",
+    "category": "paddles",
+    "brand": "Selkirk",
+    "price": "$$$$$",
+    "features": [
+      "Elongated shape, 16.5 inches by 7.45 inches, with a 5.8-inch handle.",
+      "16mm BoomCore that pairs PureFoam with an EVA power ring.",
+      "Multistrata T700 carbon face with an InfiniGrit surface."
+    ],
+    "description": "For aggressive players shopping the elongated Project Boomstik 16mm. Skill level: intermediate to advanced.",
+    "imageUrl": "/images/products/selkirk-labs-boomstik-16mm.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=Selkirk+LABS+Project+Boomstik+Elongated+16mm&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=Selkirk+LABS+Project+Boomstik+Elongated+16mm&tag=uspickleball-20"
+    }
+  },
+  {
+    "id": "franklin-pickleball-launcher",
+    "name": "Franklin Sports Pickleball Launcher",
+    "category": "training",
+    "brand": "Franklin Sports",
+    "price": "$$$$$",
+    "features": [
+      "Five speed levels and four launch angles.",
+      "Shuffle mode changes the feed during solo drills.",
+      "Battery sold separately. Franklin recommends a Ryobi One+ 18V 6.0Ah pack, model PBP007."
+    ],
+    "description": "For solo drills and coaching when you want a portable ball machine. The battery is sold separately. Skill level: all.",
+    "imageUrl": "/images/products/franklin-pickleball-launcher.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=Franklin+Sports+Pickleball+Launcher+59314&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=Franklin+Sports+Pickleball+Launcher+59314&tag=uspickleball-20"
+    }
+  },
+  {
+    "id": "paddle-engage-pursuit-pro1",
+    "name": "Engage Pursuit Pro1 Innovation 12.7mm",
+    "category": "paddles",
+    "brand": "Engage",
+    "price": "$$$$",
+    "features": [
+      "12.7mm Power Flex Polymer core on an elongated 16.6-by-7.4-inch face.",
+      "Raw carbon fiber surface with a 6-inch handle.",
+      "USAP certified. Retailers list an average weight of about 8.0 ounces."
+    ],
+    "description": "For players who want all-around play from a raw-carbon face in the $$$$ band.",
+    "imageUrl": "/images/products/paddle-engage-pursuit-pro1.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=Engage+Pursuit+Pro1+Innovation+12.7mm&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=Engage+Pursuit+Pro1+Innovation+12.7mm&tag=uspickleball-20"
+    }
+  },
+  {
+    "id": "bag-selkirk-tour-travel",
+    "name": "Selkirk Tour Travel Backpack",
+    "category": "bags",
+    "brand": "Selkirk",
+    "price": "$$$$",
+    "features": [
+      "Paddle pouch holds two paddles, with a ventilated shoe compartment.",
+      "Fence clip and a laptop sleeve sized for a 15-inch laptop.",
+      "+V11 Max Polyfiber shell, listed at 14 by 11 by 20.5 inches."
+    ],
+    "description": "For tournament days and road trips that need two paddles, shoes, and a laptop in one pack. Skill level: all.",
+    "imageUrl": "/images/products/bag-selkirk-tour-travel.svg",
+    "gender": "unisex",
+    "comfortTags": [],
+    "affiliateUrls": {
+      "ca": "https://www.amazon.ca/s?k=Selkirk+Core+Tour+Backpack&tag=thepickleb050-20",
+      "us": "https://www.amazon.com/s?k=Selkirk+Core+Tour+Backpack&tag=uspickleball-20"
+    }
   }
 ]
