@@ -84,6 +84,8 @@ export function getShopCtaLabel(product: Product, store: string): string {
 			return `Shop now — this accessory on ${store}`;
 		case 'apparel':
 			return `Shop now — this on ${store}`;
+		case 'training':
+			return `Shop now — this trainer on ${store}`;
 		default:
 			return `Shop now on ${store}`;
 	}

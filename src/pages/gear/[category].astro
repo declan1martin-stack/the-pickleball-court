@@ -11,7 +11,7 @@ import { MARKET_COUNTRY, MARKET_LABEL } from '../../lib/site';
 import { marketizeCopy } from '../../lib/marketCopy';
 
 export function getStaticPaths() {
-	const categories = ['paddles', 'shoes', 'nets', 'balls', 'bags', 'apparel', 'accessories'] as const;
+	const categories = ['paddles', 'shoes', 'nets', 'balls', 'bags', 'apparel', 'accessories', 'training'] as const;
 	return categories.map((category) => ({
 		params: { category },
 	}));
@@ -62,11 +62,11 @@ const categoryMeta = {
 	bags: {
 		h1: 'Best Pickleball Bags (2026)',
 		description:
-			'Eight pickleball bags from $ to $$$$$: Franklin, Mangrove, HEAD, JOOLA, ONIX, CRBN, and Selkirk. Tiers only — confirm the live Amazon price.',
+			'Nine pickleball bags from $ to $$$$$: Franklin, Mangrove, HEAD, JOOLA, ONIX, CRBN, and two Selkirk packs. Tiers only — confirm the live Amazon price.',
 		quickAnswer:
-			'Eight bags, from $ to $$$$$. Franklin sling ($), Mangrove sling ($$), HEAD 22L ($$), JOOLA Tour Elite ($$), JOOLA Vision II ($$$), ONIX Pro Team ($$$), CRBN Pro Team Tour ($$$$$), and Selkirk Team ($$$$$). Tiers are catalog bands, not today’s cart. Confirm Amazon.com.',
+			'Nine bags, from $ to $$$$$. Franklin sling ($), Mangrove sling ($$), HEAD 22L ($$), JOOLA Tour Elite ($$), JOOLA Vision II ($$$), ONIX Pro Team ($$$), Selkirk Tour ($$$$), CRBN Pro Team Tour ($$$$$), and Selkirk Team ($$$$$). Tiers are catalog bands, not today’s cart. Confirm Amazon.com.',
 		intro:
-			'Eight bags, from a Franklin sling through a CRBN tour bag and a Selkirk team pack. Pick from what you carry, not the logo. Sorted from $ to $$$$$. Capacity claims below are the lines printed in the catalog.',
+			'Nine bags, from a Franklin sling through a Selkirk Tour backpack, a CRBN tour bag, and a Selkirk team pack. Pick from what you carry, not the logo. Sorted from $ to $$$$$. Capacity claims below are the lines stored in the catalog.',
 		links: [
 			{ href: '/guides/pickleball-bags-buying-guide', label: 'Bag buying guide' },
 			{ href: '/guides/best-pickleball-stocking-stuffers', label: 'Stocking stuffers' },
@@ -96,6 +96,20 @@ const categoryMeta = {
 			{ href: '/gear/bags', label: 'Bags' },
 		],
 	},
+	training: {
+		h1: 'Pickleball Training Gear (2026)',
+		description:
+			'Franklin Sports Pickleball Launcher: five speeds, four angles, shuffle mode. Battery sold separately. Confirm Amazon.com.',
+		quickAnswer:
+			'One machine is in this catalog: the Franklin Sports Pickleball Launcher, in the $$$$$ band. Franklin lists five speeds, four angles, and a shuffle mode. The Ryobi battery is sold separately. Confirm Amazon.com.',
+		intro:
+			'Practice feeders for solo drills. The launcher below is a ball machine, not a paddle. Price badges are catalog bands, not live cart totals.',
+		links: [
+			{ href: '/guides/best-pickleball-gifts-2026', label: 'Gift guide' },
+			{ href: '/gear/balls', label: 'Balls to feed' },
+			{ href: '/gear/paddles', label: 'Paddles' },
+		],
+	},
 } as const;
 
 const categoryLabels = {
@@ -106,6 +120,7 @@ const categoryLabels = {
 	bags: 'Bags',
 	apparel: 'Apparel',
 	accessories: 'Accessories',
+	training: 'Training',
 } as const;
 
 const { category } = Astro.params;

@@ -58,6 +58,7 @@ const GEAR_CATEGORIES = [
 	'bags',
 	'apparel',
 	'accessories',
+	'training',
 ] as const;
 
 export type GearCategory = (typeof GEAR_CATEGORIES)[number];

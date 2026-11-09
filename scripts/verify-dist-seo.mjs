@@ -183,6 +183,7 @@ const categoryLabels = {
 	bags: 'Bags',
 	apparel: 'Apparel',
 	accessories: 'Accessories',
+	training: 'Training',
 };
 
 function jsonLdBlocks(html) {
