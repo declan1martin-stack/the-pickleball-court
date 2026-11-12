@@ -17,10 +17,16 @@ const { items, heading = 'Frequently asked questions', includeSchema = true } = 
 
 type AnswerPart = { kind: 'text'; value: string } | { kind: 'link'; label: string; href: string };
 
-/** Internal markdown links only. Other answers stay plain text. */
+/** Guide links written as markdown. Other answers, including older /gear/ links, stay plain text. */
+const guideLinkSource = String.raw`\[([^\]]+)\]\((\/guides\/[^)\s]+)\)`;
+
+function guideLinkRe(): RegExp {
+	return new RegExp(guideLinkSource, 'g');
+}
+
 function answerParts(answer: string): AnswerPart[] {
 	const parts: AnswerPart[] = [];
-	const re = /\[([^\]]+)\]\((\/[^)\s]+)\)/g;
+	const re = guideLinkRe();
 	let last = 0;
 	for (const match of answer.matchAll(re)) {
 		const index = match.index ?? 0;
@@ -39,10 +45,10 @@ const jsonLd = {
 	mainEntity: items.map((item) => ({
 		'@type': 'Question',
 		name: item.question,
-			acceptedAnswer: {
-				'@type': 'Answer',
-				text: item.answer.replace(/\[([^\]]+)\]\((\/[^)\s]+)\)/g, '$1'),
-			},
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: item.answer.replace(guideLinkRe(), '$1'),
+		},
 	})),
 };
 ---
