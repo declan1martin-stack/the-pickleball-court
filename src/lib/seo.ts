@@ -307,7 +307,7 @@ export function faqPageSchema(items: { question: string; answer: string }[]) {
 			name: item.question,
 			acceptedAnswer: {
 				'@type': 'Answer',
-				text: item.answer,
+				text: item.answer.replace(/\[([^\]]+)\]\((\/guides\/[^)\s]+)\)/g, '$1'),
 			},
 		})),
 	};

@@ -52,6 +52,8 @@ export const articles = defineCollection({
 		heroImage: z.string(),
 		heroAlt: z.string(),
 		featured: z.boolean().default(false),
+		/** How the featured product photo is fit. `cover` matches every existing guide. */
+		spotlightImageFit: z.enum(['cover', 'contain']).default('cover'),
 		relatedProducts: z.array(z.string()).superRefine((ids, ctx) => {
 			for (const id of ids) {
 				if (!productIds.has(id)) {
