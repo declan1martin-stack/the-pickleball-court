@@ -180,7 +180,11 @@ const crumbs = [
 			)}
 
 			{article.data.relatedProducts[0] && (
-				<ProductSpotlight productId={article.data.relatedProducts[0]} eyebrow="Featured from this guide" />
+				<ProductSpotlight
+					productId={article.data.relatedProducts[0]}
+					eyebrow="Featured from this guide"
+					imageFit={article.data.relatedProducts[0] === 'paddle-vatic-pro-flash' ? 'contain' : 'cover'}
+				/>
 			)}
 
 			<FAQ items={faq} includeSchema={false} />

@@ -10,9 +10,12 @@ import { truncateOnWordBoundary } from '../lib/featureText';
 interface Props {
 	productId: string;
 	eyebrow?: string;
+	/** `contain` shows the whole product photo. Default `cover` is unchanged for every existing call. */
+	imageFit?: 'cover' | 'contain';
 }
 
-const { productId, eyebrow = 'Top pick' } = Astro.props;
+const { productId, eyebrow = 'Top pick', imageFit = 'cover' } = Astro.props;
+const imageClass = imageFit === 'contain' ? 'h-full w-full object-contain' : 'h-full w-full object-cover';
 const product = getProductById(productId);
 const priceLabel = product
 	? `Approximate price tier ${getPriceTier(product.price)}`
@@ -31,7 +34,7 @@ const partnerOffers = product ? getPartnerOffers(product) : [];
 					height={330}
 					loading="lazy"
 					decoding="async"
-					class="h-full w-full object-cover"
+					class={imageClass}
 				/>
 			</div>
 			<div class="flex flex-col p-5 sm:p-6">

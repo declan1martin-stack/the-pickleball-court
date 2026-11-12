@@ -15,16 +15,34 @@ interface Props {
 
 const { items, heading = 'Frequently asked questions', includeSchema = true } = Astro.props;
 
+type AnswerPart = { kind: 'text'; value: string } | { kind: 'link'; label: string; href: string };
+
+/** Internal markdown links only. Other answers stay plain text. */
+function answerParts(answer: string): AnswerPart[] {
+	const parts: AnswerPart[] = [];
+	const re = /\[([^\]]+)\]\((\/[^)\s]+)\)/g;
+	let last = 0;
+	for (const match of answer.matchAll(re)) {
+		const index = match.index ?? 0;
+		if (index > last) parts.push({ kind: 'text', value: answer.slice(last, index) });
+		parts.push({ kind: 'link', label: match[1], href: match[2] });
+		last = index + match[0].length;
+	}
+	if (last < answer.length) parts.push({ kind: 'text', value: answer.slice(last) });
+	if (parts.length === 0) parts.push({ kind: 'text', value: answer });
+	return parts;
+}
+
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'FAQPage',
 	mainEntity: items.map((item) => ({
 		'@type': 'Question',
 		name: item.question,
-		acceptedAnswer: {
-			'@type': 'Answer',
-			text: item.answer,
-		},
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: item.answer.replace(/\[([^\]]+)\]\((\/[^)\s]+)\)/g, '$1'),
+			},
 	})),
 };
 ---
@@ -41,7 +59,15 @@ const jsonLd = {
 							<span class="mt-0.5 text-primary transition group-open:rotate-45" aria-hidden="true">+</span>
 						</span>
 					</summary>
-					<p class="pb-4 text-sm leading-relaxed text-ink-muted">{item.answer}</p>
+					<p class="pb-4 text-sm leading-relaxed text-ink-muted">
+						{answerParts(item.answer).map((part) =>
+							part.kind === 'link' ? (
+								<a href={part.href} class="font-semibold text-emerald-800 underline">{part.label}</a>
+							) : (
+								part.value
+							),
+						)}
+					</p>
 				</details>
 			))}
 		</div>
