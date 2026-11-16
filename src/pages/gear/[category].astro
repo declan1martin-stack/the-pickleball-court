@@ -235,7 +235,11 @@ const itemList = itemListSchema({
 				{products.map((product, index) => (
 					<article>
 						<h2 class="sr-only">{product.name}</h2>
-						<ProductCard product={product} priority={index === 0} />
+						<ProductCard
+							product={product}
+							priority={index === 0}
+							imageFit={typedCategory === 'shoes' ? 'contain' : 'cover'}
+						/>
 					</article>
 				))}
 			</div>
