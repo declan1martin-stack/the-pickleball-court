@@ -54,7 +54,7 @@ const jsonLd = {
 ---
 
 {items.length > 0 && (
-	<section class="my-10" aria-labelledby="faq-heading">
+	<section class="faq my-10" aria-labelledby="faq-heading">
 		<h2 id="faq-heading" class="font-display text-2xl font-bold tracking-tight text-ink">{heading}</h2>
 		<div class="mt-5 divide-y divide-border rounded-[var(--radius-lg)] border border-border bg-surface">
 			{items.map((item, index) => (
@@ -65,10 +65,10 @@ const jsonLd = {
 							<span class="mt-0.5 text-primary transition group-open:rotate-45" aria-hidden="true">+</span>
 						</span>
 					</summary>
-					<p class="pb-4 text-sm leading-relaxed text-ink-muted">
+					<p class="faq-answer pb-4 text-sm text-ink-muted">
 						{answerParts(item.answer).map((part) =>
 							part.kind === 'link' ? (
-								<a href={part.href} class="font-semibold text-emerald-800 underline">{part.label}</a>
+								<a href={part.href} class="faq-answer-link">{part.label}</a>
 							) : (
 								part.value
 							),
@@ -80,3 +80,28 @@ const jsonLd = {
 		{includeSchema && <Schema data={jsonLd} />}
 	</section>
 )}
+
+<style>
+	/* FAQ sits outside .prose-article — give answer links real ≥44px hit areas
+	   without negative margins so wrapped links do not overlap. */
+	.faq-answer {
+		line-height: 2.85;
+	}
+
+	.faq-answer-link {
+		display: inline-block;
+		min-height: 44px;
+		padding-block: 0.55rem;
+		padding-inline: 0.1rem;
+		vertical-align: middle;
+		font-weight: 600;
+		color: #065f46; /* emerald-800 */
+		text-decoration: underline;
+		text-underline-offset: 2px;
+		line-height: 1.35;
+	}
+
+	.faq-answer-link:hover {
+		color: var(--color-accent, #0f766e);
+	}
+</style>
