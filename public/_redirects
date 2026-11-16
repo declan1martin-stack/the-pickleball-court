@@ -1,9 +1,17 @@
 # Cloudflare Pages redirects
 /sitemap.xml    /sitemap-index.xml    301
+/rss            /rss.xml              301
+
+# Authors index → sole author profile
+/authors                  /authors/deco    301
 
 # Legacy author slug
 /authors/declan-martin        /authors/deco    301
 /authors/declan-martin.html   /authors/deco    301
+
+# Renamed news posts (old slugs may still be indexed)
+/news/us-feature-mlp-biggest-teams-valuations-august-2026    /news/us-feature-mlp-franchise-valuations-teams-august-2026    301
+/news/ca-feature-cnpl-biggest-teams-markets-august-2026      /news/ca-feature-cnpl-biggest-markets-toronto-montreal-vancouver-august-2026    301
 
 # trailingSlash: never — one hop from /guides/foo/ to /guides/foo (not the site root)
 /*/             /:splat               301!

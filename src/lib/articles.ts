@@ -50,7 +50,7 @@ export function getRelatedArticles(
 	return [...related, ...fallback].slice(0, limit);
 }
 
-const GEAR_CATEGORIES = [
+export const GEAR_CATEGORIES = [
 	'paddles',
 	'shoes',
 	'nets',
@@ -62,6 +62,29 @@ const GEAR_CATEGORIES = [
 ] as const;
 
 export type GearCategory = (typeof GEAR_CATEGORIES)[number];
+
+export const GEAR_CATEGORY_LABELS: Record<GearCategory, string> = {
+	paddles: 'Paddles',
+	shoes: 'Shoes',
+	nets: 'Nets',
+	balls: 'Balls',
+	bags: 'Bags',
+	apparel: 'Apparel',
+	accessories: 'Accessories',
+	training: 'Training',
+};
+
+/** Short hub blurbs — factual catalog roles, not marketing claims. */
+export const GEAR_CATEGORY_BLURBS: Record<GearCategory, string> = {
+	paddles: 'Control, power, spin, and budget frames sorted by relative price tier.',
+	shoes: 'Court shoes for hard-court cuts — not running shoes.',
+	nets: 'Portable regulation nets for driveways, parks, and backyard courts.',
+	balls: 'Indoor and outdoor packs for clubs, gyms, and driveways.',
+	bags: 'Slings, backpacks, and tour bags for paddles and club-night gear.',
+	apparel: 'Skorts, UV arm sleeves, and court-ready pieces.',
+	accessories: 'Overgrips, edge-guard tape, tungsten tape, and related care items.',
+	training: 'Solo practice feeders and ball machines in the catalog.',
+};
 
 export function categoryPath(category: string): string | null {
 	if ((GEAR_CATEGORIES as readonly string[]).includes(category)) {
