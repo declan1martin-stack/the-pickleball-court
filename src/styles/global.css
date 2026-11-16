@@ -207,10 +207,36 @@ main > :not(:first-child):is(section, article) {
 	font-weight: 600;
 	text-decoration: underline;
 	text-underline-offset: 2px;
+	/* Expand the hit area without changing line layout. */
+	padding-block: 0.7rem;
+	padding-inline: 0.15rem;
+	margin-block: -0.7rem;
+	margin-inline: -0.15rem;
 }
 
 .prose-article :where(a:hover) {
 	color: var(--color-accent);
+}
+
+/* Footer / legal links: ≥44px tap targets, same visual weight as before. */
+.footer-link {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding-inline: 0.1rem;
+	color: inherit;
+	text-decoration: inherit;
+}
+
+.footer-link:hover {
+	color: #fff;
+}
+
+.footer-link--inline {
+	display: inline;
+	padding-block: 0.7rem;
+	margin-block: -0.7rem;
+	line-height: inherit;
 }
 
 .section-y {

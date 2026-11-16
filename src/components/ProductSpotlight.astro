@@ -1,7 +1,13 @@
 ---
 import AffiliateButton from './AffiliateButton.astro';
 import SmartImage from './SmartImage.astro';
-import { getAffiliateUrl, getPriceTier, getProductById, getShopCtaLabel } from '../lib/products';
+import {
+	getAffiliateUrl,
+	getPriceTier,
+	getProductById,
+	getShopCtaLabel,
+	productImageAlt,
+} from '../lib/products';
 import { getPartnerOffers } from '../lib/partners';
 import { AMAZON_STORE } from '../lib/site';
 import { marketizeCopy } from '../lib/marketCopy';
@@ -29,7 +35,7 @@ const partnerOffers = product ? getPartnerOffers(product) : [];
 			<div class="relative aspect-[4/3] overflow-hidden bg-zinc-100 max-md:rounded-t-2xl md:aspect-auto md:min-h-full md:rounded-l-2xl">
 				<SmartImage
 					src={product.imageUrl}
-					alt={`${product.brand} ${product.name}`}
+					alt={productImageAlt(product)}
 					width={440}
 					height={330}
 					loading="lazy"
