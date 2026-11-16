@@ -35,17 +35,23 @@ const categoryMeta = {
 	},
 	shoes: {
 		h1: 'Best Pickleball Shoes (2026)',
+		title: 'Best Pickleball Shoes 2026 | US Court Picks',
 		description:
-			'Best pickleball shoes for hard-court cuts: Skechers Viper Court vs ASICS Gel. Court shoes, not running shoes. Confirm the live price on Amazon.',
+			'Best pickleball shoes for 2026 hard courts: all-court, wide, budget, and durable court shoes. Not running shoes — confirm Amazon.com.',
 		quickAnswer:
 			'Wear court shoes, not running shoes. Skechers Viper Court leans cushion and an easier break-in. ASICS Gel-Dedicate and Gel-Resolution lean structured lateral support. Filter by gender and fit, then confirm the live size on Amazon.com.',
-		intro:
-			'Court shoes for lateral cuts, kitchen stops, and outdoor hard courts. Use Gender and Comfort & Support filters to narrow fit — products stay sorted from $ to $$$$$.',
+		intro: [
+			'Court shoes for US hard-court cuts, kitchen stops, and outdoor acrylic — not road runners. Soft rubber from a jogging shoe flexes the wrong way when you plant and change direction.',
+			'Skechers Viper Court leans cushion and an easier break-in. ASICS Gel-Dedicate and Gel-Resolution lean structured lateral support. K-Swiss and FitVille fill budget, crossover, and wide-fit lanes when those tags are printed.',
+			'Use Gender and Comfort & Support filters to narrow the last, then confirm size and the live price on Amazon.com. Badges stay sorted from $ to $$$$$ as relative catalog bands.',
+		],
 		links: [
 			{ href: '/guides/best-pickleball-shoes-2026', label: '2026 shoe picks' },
 			{ href: '/guides/skechers-vs-asics-pickleball', label: 'Skechers vs ASICS' },
 			{ href: '/guides/best-pickleball-shoes-for-wide-feet', label: 'Wide feet' },
 			{ href: '/guides/best-pickleball-shoes-for-plantar-fasciitis', label: 'Plantar fasciitis' },
+			{ href: '/guides/best-pickleball-shoes-for-women', label: "Women's shoes" },
+			{ href: '/guides/best-pickleball-shoes-for-men', label: "Men's shoes" },
 		],
 	},
 	nets: {
@@ -185,7 +191,15 @@ const itemList = itemListSchema({
 					<p class="mt-2 text-base leading-relaxed text-emerald-950">{meta.quickAnswer}</p>
 				</div>
 			)}
-			<p class="mt-5 max-w-3xl text-lg leading-relaxed text-zinc-600">{meta.intro}</p>
+			{Array.isArray(meta.intro) ? (
+				<div class="mt-5 max-w-3xl space-y-4 text-lg leading-relaxed text-zinc-600">
+					{meta.intro.map((paragraph) => (
+						<p>{paragraph}</p>
+					))}
+				</div>
+			) : (
+				<p class="mt-5 max-w-3xl text-lg leading-relaxed text-zinc-600">{meta.intro}</p>
+			)}
 			{'links' in meta && meta.links && (
 				<ul class="mt-4 flex max-w-3xl flex-wrap gap-2">
 					{meta.links.map((link) => (
