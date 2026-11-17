@@ -8,6 +8,7 @@ import {
 	getEffectiveGender,
 	getPriceTier,
 	getShopCtaLabel,
+	productImageAlt,
 	type Product,
 } from '../lib/products';
 import { getPartnerOffers } from '../lib/partners';
@@ -39,9 +40,7 @@ const features = product.features.map((feature) =>
 const gender = getEffectiveGender(product);
 const comfortTags = getComfortTags(product);
 const partnerOffers = getPartnerOffers(product);
-const imageAlt = product.name.toLowerCase().startsWith(product.brand.toLowerCase())
-	? product.name
-	: `${product.brand} ${product.name}`;
+const imageAlt = productImageAlt(product);
 ---
 
 <article

@@ -1,7 +1,13 @@
 ---
 import AffiliateButton from './AffiliateButton.astro';
 import SmartImage from './SmartImage.astro';
-import { getAffiliateUrl, getPriceTier, getProductById, getShopCtaLabel } from '../lib/products';
+import {
+	getAffiliateUrl,
+	getPriceTier,
+	getProductById,
+	getShopCtaLabel,
+	productImageAlt,
+} from '../lib/products';
 import { getPartnerOffers } from '../lib/partners';
 import { AMAZON_STORE } from '../lib/site';
 import { marketizeCopy } from '../lib/marketCopy';
@@ -23,7 +29,7 @@ const priceLabel = product
 	? `Approximate price tier ${getPriceTier(product.price)}`
 	: '';
 const partnerOffers = product ? getPartnerOffers(product) : [];
-const imageAlt = (alt ?? '').trim() || (product ? `${product.brand} ${product.name}` : '');
+const imageAlt = (alt ?? '').trim() || (product ? productImageAlt(product) : '');
 ---
 
 {product ? (
