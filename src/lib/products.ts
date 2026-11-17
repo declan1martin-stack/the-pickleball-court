@@ -154,3 +154,23 @@ export function getComfortTags(product: Product): ComfortTag[] {
 	const tags = (product as { comfortTags?: ComfortTag[] }).comfortTags;
 	return Array.isArray(tags) ? tags : [];
 }
+
+/**
+ * Image alt for catalog photos. Do not prepend the brand when the product
+ * name already starts with it (avoids "CRBN CRBN …" / "Six Zero Six Zero …").
+ */
+export function productImageAlt(product: Pick<Product, 'brand' | 'name'>): string {
+	const brand = product.brand.trim();
+	const name = product.name.trim();
+	if (!brand) return name;
+	const nameLower = name.toLowerCase();
+	const brandLower = brand.toLowerCase();
+	if (
+		nameLower === brandLower ||
+		nameLower.startsWith(`${brandLower} `) ||
+		nameLower.startsWith(`${brandLower}-`)
+	) {
+		return name;
+	}
+	return `${brand} ${name}`;
+}
