@@ -211,21 +211,17 @@ main > :not(:first-child):is(section, article) {
 }
 
 /*
- * Running paragraph links only (not inside lists): keep .8rem block padding for
- * ≥44px taps. Use inline-block without negative margins so wrapped / neighboring
- * hit boxes do not overlap under getBoundingClientRect.
+ * Running paragraph links (inline sentence anchors): stay display:inline so they
+ * wrap with the text. WCAG 2.5.8 exempts inline links in sentences from the 44px
+ * target — keep hit boxes inside the line (~27.6px) with little/no block padding
+ * and no negative margin so neighbors on adjacent lines do not overlap.
  */
 .prose-article :where(:not(li) > p a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)) {
-	display: inline-block;
-	max-width: 100%;
-	padding-block: 0.8rem;
-	padding-inline: 0.15rem;
+	display: inline;
+	padding-block: 0;
+	padding-inline: 0.1rem;
 	margin-block: 0;
 	margin-inline: 0;
-	line-height: 1.35;
-	vertical-align: baseline;
-	box-decoration-break: clone;
-	-webkit-box-decoration-break: clone;
 }
 
 /*
