@@ -202,18 +202,63 @@ main > :not(:first-child):is(section, article) {
 	padding-top: var(--header-offset);
 }
 
-/* Inline prose links only — exclude AffiliateButton / btn-* CTAs so stacked
-   Amazon + partner buttons keep their gap (negative margin would overlap them). */
+/* Prose link color/weight — exclude AffiliateButton / btn-* CTAs. */
 .prose-article :where(a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)) {
 	color: var(--color-primary);
 	font-weight: 600;
 	text-decoration: underline;
 	text-underline-offset: 2px;
-	/* Expand the hit area without changing line layout (≥44px at text-sm). */
+}
+
+/*
+ * Running paragraph links only (not inside lists): keep .8rem block padding for
+ * ≥44px taps. Use inline-block without negative margins so wrapped / neighboring
+ * hit boxes do not overlap under getBoundingClientRect.
+ */
+.prose-article :where(:not(li) > p a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)) {
+	display: inline-block;
+	max-width: 100%;
 	padding-block: 0.8rem;
 	padding-inline: 0.15rem;
-	margin-block: -0.8rem;
-	margin-inline: -0.15rem;
+	margin-block: 0;
+	margin-inline: 0;
+	line-height: 1.35;
+	vertical-align: baseline;
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
+}
+
+/*
+ * List links (Keep learning / Keep reading / bullets with mid-item anchors):
+ * ≥44px row, no .8rem padding, no negative margins. Whole-item links are block
+ * flex so stacked rows clear each other.
+ */
+.prose-article :where(li a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)) {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding-block: 0;
+	padding-inline: 0.15rem;
+	margin-block: 0;
+	margin-inline: 0;
+	line-height: 1.35;
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
+	vertical-align: middle;
+}
+
+.prose-article :where(
+	li > a:only-child:not(.btn-primary):not(.btn-secondary):not(.btn-ghost),
+	li > p:only-child > a:only-child:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)
+) {
+	display: flex;
+	width: fit-content;
+	max-width: 100%;
+}
+
+/* Stacked Keep-learning rows: at least 44px between item tops. */
+.prose-article :where(li:has(> a:only-child), li:has(> p:only-child > a:only-child)) {
+	min-height: 44px;
 }
 
 .prose-article :where(a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost):hover) {
@@ -245,10 +290,58 @@ main > :not(:first-child):is(section, article) {
 }
 
 .footer-link--inline {
-	display: inline;
-	padding-block: 0.8rem;
-	margin-block: -0.8rem;
-	line-height: inherit;
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding-block: 0;
+	margin-block: 0;
+	line-height: 1.35;
+	vertical-align: middle;
+}
+
+/*
+ * Text links outside .prose-article (bylines, jump links, roundup “shop the guides”
+ * lists, gear pillar lines, author index rows). Cards/grids already have large hit areas.
+ */
+main
+	:where(p a, li a, h1 a, h2 a, h3 a, figcaption a):not(
+		.btn-primary,
+		.btn-secondary,
+		.btn-ghost,
+		.footer-link,
+		.breadcrumb-link,
+		.site-logo,
+		.link-brand,
+		.faq-answer-link
+	):not(.prose-article a) {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding-block: 0;
+	margin-block: 0;
+	line-height: 1.35;
+}
+
+/* Related news / author listing title links (block font-display anchors). */
+main a.block.font-display:not(.btn-primary):not(.btn-secondary):not(.btn-ghost) {
+	display: flex;
+	align-items: center;
+	min-height: 44px;
+	padding-block: 0;
+	margin-block: 0;
+}
+
+/* News index section-head RSS and similar bare text links in .sec-head */
+.news .sec-head a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost) {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+}
+
+/* Gear category chip links and similar pill filters */
+main a.inline-flex.rounded-full {
+	min-height: 44px;
+	align-items: center;
 }
 
 .section-y {
@@ -355,6 +448,9 @@ main > :not(:first-child):is(section, article) {
 }
 
 .link-brand {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
 	color: var(--color-primary);
 	font-weight: 600;
 }
@@ -362,6 +458,13 @@ main > :not(:first-child):is(section, article) {
 .link-brand:hover {
 	color: var(--color-accent);
 	text-decoration: underline;
+}
+
+/* Desktop primary nav text links: ≥44px tap without changing header height layout. */
+.site-header nav[aria-label='Primary'] a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost) {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
 }
 
 /* Brand mark + HTML wordmark (header / light surfaces) */
