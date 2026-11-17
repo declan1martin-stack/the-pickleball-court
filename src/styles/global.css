@@ -209,15 +209,25 @@ main > :not(:first-child):is(section, article) {
 	font-weight: 600;
 	text-decoration: underline;
 	text-underline-offset: 2px;
-	/* Expand the hit area without changing line layout. */
-	padding-block: 0.7rem;
+	/* Expand the hit area without changing line layout (≥44px at text-sm). */
+	padding-block: 0.8rem;
 	padding-inline: 0.15rem;
-	margin-block: -0.7rem;
+	margin-block: -0.8rem;
 	margin-inline: -0.15rem;
 }
 
 .prose-article :where(a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost):hover) {
 	color: var(--color-accent);
+}
+
+/* Breadcrumb anchors: ≥44px tap box via padding; negative margin keeps row height. */
+.breadcrumb-link {
+	display: inline-flex;
+	align-items: center;
+	padding-block: 0.8rem;
+	padding-inline: 0.15rem;
+	margin-block: -0.8rem;
+	margin-inline: -0.15rem;
 }
 
 /* Footer / legal links: ≥44px tap targets, same visual weight as before. */
@@ -236,8 +246,8 @@ main > :not(:first-child):is(section, article) {
 
 .footer-link--inline {
 	display: inline;
-	padding-block: 0.7rem;
-	margin-block: -0.7rem;
+	padding-block: 0.8rem;
+	margin-block: -0.8rem;
 	line-height: inherit;
 }
 
