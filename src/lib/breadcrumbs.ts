@@ -5,8 +5,25 @@ export interface BreadcrumbItem {
 
 export const GUIDES_INDEX_PATH = '/guides';
 
+const GEAR_CATEGORY_LABELS: Record<string, string> = {
+	paddles: 'Paddles',
+	shoes: 'Shoes',
+	nets: 'Nets',
+	balls: 'Balls',
+	bags: 'Bags',
+	apparel: 'Apparel',
+	accessories: 'Accessories',
+	training: 'Training',
+};
+
 export function isGuidesCrumbLabel(label: string): boolean {
 	return label.trim().toLowerCase() === 'guides';
+}
+
+/** Title-case known gear category crumbs; leave other labels unchanged. */
+export function titleCaseBreadcrumbLabel(label: string): string {
+	const key = label.trim().toLowerCase();
+	return GEAR_CATEGORY_LABELS[key] ?? label;
 }
 
 /**
@@ -21,7 +38,7 @@ export function hrefForBreadcrumb(label: string, href?: string): string | undefi
 
 export function normalizeBreadcrumbItems(items: BreadcrumbItem[]): BreadcrumbItem[] {
 	const normalized = items.map((item) => ({
-		...item,
+		label: titleCaseBreadcrumbLabel(item.label),
 		href: hrefForBreadcrumb(item.label, item.href),
 	}));
 

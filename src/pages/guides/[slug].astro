@@ -20,6 +20,7 @@ import {
 	getRelatedArticles,
 } from '../../lib/articles';
 import { GUIDES_INDEX_PATH } from '../../lib/breadcrumbs';
+import { inlineStrongParts } from '../../lib/inlineMarkdown';
 import { absoluteUrl, articleSchema, faqPageSchema, itemListSchema } from '../../lib/seo';
 import { getAffiliateUrl, getProductById, getPriceTier, getShopCtaLabel, type Product } from '../../lib/products';
 import { AMAZON_STORE } from '../../lib/site';
@@ -146,7 +147,11 @@ const crumbs = [
 			{/* Answer-first summary for AI/snippet extraction — concrete takeaway, not the meta description. */}
 			<div class="mt-6 max-w-[70ch] rounded-2xl border border-emerald-200 bg-emerald-50/70 px-5 py-4">
 				<p class="text-xs font-bold uppercase tracking-[0.14em] text-emerald-800">Quick answer</p>
-				<p class="mt-2 text-base leading-relaxed text-emerald-950">{quickAnswer}</p>
+				<p class="mt-2 text-base leading-relaxed text-emerald-950">
+					{inlineStrongParts(quickAnswer).map((part) =>
+						part.kind === 'strong' ? <strong>{part.value}</strong> : part.value,
+					)}
+				</p>
 			</div>
 
 			<div
@@ -184,6 +189,7 @@ const crumbs = [
 					productId={article.data.relatedProducts[0]}
 					eyebrow="Featured from this guide"
 					imageFit={article.data.spotlightImageFit}
+					alt={article.data.spotlightImageAlt}
 				/>
 			)}
 
