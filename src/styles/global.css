@@ -202,7 +202,9 @@ main > :not(:first-child):is(section, article) {
 	padding-top: var(--header-offset);
 }
 
-.prose-article :where(a) {
+/* Inline prose links only — exclude AffiliateButton / btn-* CTAs so stacked
+   Amazon + partner buttons keep their gap (negative margin would overlap them). */
+.prose-article :where(a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)) {
 	color: var(--color-primary);
 	font-weight: 600;
 	text-decoration: underline;
@@ -214,7 +216,7 @@ main > :not(:first-child):is(section, article) {
 	margin-inline: -0.15rem;
 }
 
-.prose-article :where(a:hover) {
+.prose-article :where(a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost):hover) {
 	color: var(--color-accent);
 }
 
