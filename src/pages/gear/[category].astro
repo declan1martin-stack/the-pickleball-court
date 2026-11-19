@@ -4,15 +4,19 @@ import ProductCard from '../../components/ProductCard.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import GearFilters from '../../components/GearFilters.astro';
 import gear from '../../data/gear.json';
-import { getArticlesByCategory, CATEGORY_PILLARS } from '../../lib/articles';
+import {
+	getArticlesByCategory,
+	CATEGORY_PILLARS,
+	GEAR_CATEGORIES,
+	GEAR_CATEGORY_LABELS,
+} from '../../lib/articles';
 import { getPriceTier, PRICE_TIER_RANK } from '../../lib/products';
 import { absoluteUrl, itemListSchema } from '../../lib/seo';
 import { MARKET_COUNTRY, MARKET_LABEL } from '../../lib/site';
 import { marketizeCopy } from '../../lib/marketCopy';
 
 export function getStaticPaths() {
-	const categories = ['paddles', 'shoes', 'nets', 'balls', 'bags', 'apparel', 'accessories', 'training'] as const;
-	return categories.map((category) => ({
+	return GEAR_CATEGORIES.map((category) => ({
 		params: { category },
 	}));
 }
@@ -118,21 +122,10 @@ const categoryMeta = {
 	},
 } as const;
 
-const categoryLabels = {
-	paddles: 'Paddles',
-	shoes: 'Shoes',
-	nets: 'Nets',
-	balls: 'Balls',
-	bags: 'Bags',
-	apparel: 'Apparel',
-	accessories: 'Accessories',
-	training: 'Training',
-} as const;
-
 const { category } = Astro.params;
 const typedCategory = category as keyof typeof categoryMeta;
 const meta = categoryMeta[typedCategory];
-const categoryLabel = categoryLabels[typedCategory];
+const categoryLabel = GEAR_CATEGORY_LABELS[typedCategory];
 const products = gear
 	.filter((item) => item.category === typedCategory)
 	.slice()
@@ -180,6 +173,7 @@ const itemList = itemListSchema({
 			<Breadcrumbs
 				items={[
 					{ label: 'Home', href: '/' },
+					{ label: 'Gear', href: '/gear' },
 					{ label: categoryLabel, href: `/gear/${typedCategory}` },
 				]}
 			/>

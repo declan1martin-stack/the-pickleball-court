@@ -40,6 +40,7 @@ Honest, high-intent buying guidance for ${MARKET_LABEL} players. Product data li
 ## Main sections
 
 - [Guides hub](${absoluteUrl('/guides')}): All buying guides
+- [Gear hub](${absoluteUrl('/gear')}): All gear category catalogs
 - [Gear — paddles](${absoluteUrl('/gear/paddles')}): Paddle catalog
 - [Gear — shoes](${absoluteUrl('/gear/shoes')}): Court shoes
 - [Gear — nets](${absoluteUrl('/gear/nets')}): Portable nets
