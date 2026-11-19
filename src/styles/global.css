@@ -229,11 +229,12 @@ main > :not(:first-child):is(section, article) {
 
 /*
  * Whole-item list links only (Keep learning / Keep reading rows): ≥44px row,
- * flex so stacked rows clear each other. Mid-bullet anchors stay inline above.
+ * flex so stacked rows clear each other. Class comes from rehype-whole-item-list
+ * (true sole-link items). Mid-bullet / "link — description" anchors stay inline.
  */
 .prose-article :where(
-	li > a:only-child:not(.btn-primary):not(.btn-secondary):not(.btn-ghost),
-	li > p:only-child > a:only-child:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)
+	li.whole-item > a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost),
+	li.whole-item > p > a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)
 ) {
 	display: flex;
 	align-items: center;
@@ -251,7 +252,7 @@ main > :not(:first-child):is(section, article) {
 }
 
 /* Stacked Keep-learning rows: at least 44px between item tops. */
-.prose-article :where(li:has(> a:only-child), li:has(> p:only-child > a:only-child)) {
+.prose-article :where(li.whole-item) {
 	min-height: 44px;
 }
 
