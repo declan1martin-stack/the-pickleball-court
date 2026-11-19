@@ -17,16 +17,16 @@ const { items, heading = 'Frequently asked questions', includeSchema = true } = 
 
 type AnswerPart = { kind: 'text'; value: string } | { kind: 'link'; label: string; href: string };
 
-/** Guide links written as markdown. Other answers, including older /gear/ links, stay plain text. */
-const guideLinkSource = String.raw`\[([^\]]+)\]\((\/guides\/[^)\s]+)\)`;
+/** Markdown links in FAQ answers (`[label](/path)`). Renders as .faq-answer-link. */
+const markdownLinkSource = String.raw`\[([^\]]+)\]\(([^)\s]+)\)`;
 
-function guideLinkRe(): RegExp {
-	return new RegExp(guideLinkSource, 'g');
+function markdownLinkRe(): RegExp {
+	return new RegExp(markdownLinkSource, 'g');
 }
 
 function answerParts(answer: string): AnswerPart[] {
 	const parts: AnswerPart[] = [];
-	const re = guideLinkRe();
+	const re = markdownLinkRe();
 	let last = 0;
 	for (const match of answer.matchAll(re)) {
 		const index = match.index ?? 0;
@@ -47,7 +47,7 @@ const jsonLd = {
 		name: item.question,
 		acceptedAnswer: {
 			'@type': 'Answer',
-			text: item.answer.replace(guideLinkRe(), '$1'),
+			text: item.answer.replace(markdownLinkRe(), '$1'),
 		},
 	})),
 };
