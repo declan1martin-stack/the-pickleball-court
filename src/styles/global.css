@@ -307,6 +307,7 @@ main
 		.site-logo,
 		.link-brand,
 		.faq-answer-link,
+		.sentence-link,
 		.flex
 	):not(.prose-article a) {
 	display: inline-flex;
@@ -315,6 +316,15 @@ main
 	padding-block: 0;
 	margin-block: 0;
 	line-height: 1.35;
+}
+
+/* Mid-sentence anchors outside .prose-article (e.g. /gear intro): stay inline. */
+main a.sentence-link {
+	display: inline;
+	min-height: 0;
+	padding-block: 0;
+	padding-inline: 0.1rem;
+	margin: 0;
 }
 
 /* Related news / author listing title links (block font-display anchors). */
