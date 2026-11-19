@@ -112,6 +112,7 @@ for (const file of htmlFiles) {
 	if (withoutFooter.includes(assoc)) failures.push(`${rel}: Associates sentence appears outside footer`);
 
 	const internal = [...html.matchAll(/<a\b[^>]*href="(\/[^"]*)"/g)].map((m) => m[1]);
+	const isCaNewsPage = /^news\/ca-/.test(rel.replace(/\\/g, '/'));
 	for (const href of internal) {
 		const [pathOnly, hash] = href.split('#');
 		const queryless = pathOnly.split('?')[0];
@@ -123,6 +124,9 @@ for (const file of htmlFiles) {
 		}
 		if (!routeExists(queryless) && queryless !== '/') {
 			failures.push(`${rel}: internal link 404 ${href}${hash ? '#' + hash : ''}`);
+		}
+		if (!isCaNewsPage && /^\/news\/ca-/.test(queryless)) {
+			failures.push(`${rel}: US page links to Canada news URL ${href}`);
 		}
 	}
 
@@ -227,8 +231,11 @@ for (const file of gearPages) {
 	if (new RegExp(`>${slug}<`).test(nav)) {
 		failures.push(`${rel}: visible breadcrumb still uses the raw slug`);
 	}
-	if (/href="\/gear"(?![\/\w])/.test(nav)) {
-		failures.push(`${rel}: breadcrumb links to /gear, which is not a page`);
+	if (!/href="\/gear"(?![\/\w])/.test(nav)) {
+		failures.push(`${rel}: breadcrumb should link to the /gear hub`);
+	}
+	if (!nav.includes('>Gear<')) {
+		failures.push(`${rel}: visible breadcrumb is missing the Gear hub crumb`);
 	}
 
 	const lists = jsonLdBlocks(html).flatMap((block) => breadcrumbLists(block));
@@ -237,7 +244,9 @@ for (const file of gearPages) {
 		continue;
 	}
 	const items = lists[0].itemListElement ?? [];
-	if (items.length < 2) failures.push(`${rel}: BreadcrumbList needs Home and ${expectedLabel}`);
+	if (items.length < 3) {
+		failures.push(`${rel}: BreadcrumbList needs Home, Gear, and ${expectedLabel}`);
+	}
 	items.forEach((item, index) => {
 		const name = item?.name;
 		const url = item?.item;
@@ -255,14 +264,14 @@ for (const file of gearPages) {
 			failures.push(`${rel}: BreadcrumbList item is not a valid URL → ${url}`);
 			return;
 		}
-		if (pathname === '/gear') {
-			failures.push(`${rel}: BreadcrumbList item points at /gear, which 404s`);
-		}
 		if (!routeExists(pathname)) {
 			failures.push(`${rel}: BreadcrumbList item is not a built route → ${url}`);
 		}
 		if (index === 0 && (name !== 'Home' || url !== 'https://uspickleballcourt.com')) {
 			failures.push(`${rel}: BreadcrumbList Home crumb should be https://uspickleballcourt.com`);
+		}
+		if (index === 1 && (name !== 'Gear' || url !== 'https://uspickleballcourt.com/gear')) {
+			failures.push(`${rel}: BreadcrumbList Gear crumb should be https://uspickleballcourt.com/gear`);
 		}
 		if (index === items.length - 1) {
 			if (name !== expectedLabel) {
@@ -273,6 +282,44 @@ for (const file of gearPages) {
 			}
 		}
 	});
+}
+
+const gearHub = path.join(dist, 'gear.html');
+if (!fs.existsSync(gearHub)) {
+	failures.push('gear.html: missing /gear hub page');
+} else {
+	const hubHtml = fs.readFileSync(gearHub, 'utf8');
+	const hubCanonical = hubHtml.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+	if (hubCanonical !== 'https://uspickleballcourt.com/gear') {
+		failures.push(`gear.html: expected canonical https://uspickleballcourt.com/gear, got ${hubCanonical || 'none'}`);
+	}
+	const hubLists = jsonLdBlocks(hubHtml).flatMap((block) => breadcrumbLists(block));
+	if (hubLists.length !== 1) {
+		failures.push(`gear.html: expected one BreadcrumbList, found ${hubLists.length}`);
+	} else {
+		const items = hubLists[0].itemListElement ?? [];
+		const last = items[items.length - 1];
+		if (last?.name !== 'Gear' || last?.item !== 'https://uspickleballcourt.com/gear') {
+			failures.push('gear.html: final BreadcrumbList crumb should be Gear → https://uspickleballcourt.com/gear');
+		}
+	}
+	const hasItemList = jsonLdBlocks(hubHtml).some((block) => {
+		const types = [];
+		const walk = (node) => {
+			if (!node || typeof node !== 'object') return;
+			if (Array.isArray(node)) return node.forEach(walk);
+			if (node['@type'] === 'ItemList') types.push('ItemList');
+			if (node['@graph']) walk(node['@graph']);
+		};
+		walk(block);
+		return types.includes('ItemList');
+	});
+	if (!hasItemList) failures.push('gear.html: missing ItemList JSON-LD');
+	for (const slug of Object.keys(categoryLabels)) {
+		if (!hubHtml.includes(`href="/gear/${slug}"`)) {
+			failures.push(`gear.html: missing category link /gear/${slug}`);
+		}
+	}
 }
 
 function relHtml(file) {
@@ -301,6 +348,22 @@ if (!fs.existsSync(sitemapPath)) {
 	const caLocs = [...sitemap.matchAll(/<loc>([^<]*\/news\/ca-[^<]*)<\/loc>/g)].map((match) => match[1]);
 	if (caLocs.length) {
 		failures.push(`sitemap-0.xml contains ${caLocs.length} /news/ca- URL(s): ${caLocs.slice(0, 3).join(', ')}`);
+	}
+	if (!sitemap.includes('<loc>https://uspickleballcourt.com/gear</loc>')) {
+		failures.push('sitemap-0.xml is missing https://uspickleballcourt.com/gear');
+	}
+	const sitemapLocs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+	for (const loc of sitemapLocs) {
+		let pathname = '';
+		try {
+			pathname = new URL(loc).pathname.replace(/\/+$/, '') || '/';
+		} catch {
+			failures.push(`sitemap-0.xml: invalid loc ${loc}`);
+			continue;
+		}
+		if (!routeExists(pathname)) {
+			failures.push(`sitemap-0.xml: loc 404 ${loc}`);
+		}
 	}
 }
 
@@ -335,6 +398,7 @@ const indexableRoots = [
 	'privacy.html',
 	'terms.html',
 	'guides.html',
+	'gear.html',
 	'news.html',
 	'authors/deco.html',
 ];
