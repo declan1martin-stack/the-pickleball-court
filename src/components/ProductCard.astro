@@ -22,9 +22,15 @@ interface Props {
 	rating?: number | null;
 	/** First-in-viewport card (category LCP). */
 	priority?: boolean;
+	/** `contain` shows the whole product photo (shoes). Default `cover` is unchanged elsewhere. */
+	imageFit?: 'cover' | 'contain';
 }
 
-const { product, rating = null, priority = false } = Astro.props;
+const { product, rating = null, priority = false, imageFit = 'cover' } = Astro.props;
+const imageClass =
+	imageFit === 'contain'
+		? 'h-full w-full object-contain'
+		: 'h-full w-full object-cover transition duration-500 group-hover:scale-105';
 const tier = getPriceTier(product.price);
 const affiliateHref = getAffiliateUrl(product);
 const description = marketizeCopy(product.description);
@@ -53,7 +59,7 @@ const imageAlt = productImageAlt(product);
 			loading={priority ? 'eager' : 'lazy'}
 			fetchpriority={priority ? 'high' : undefined}
 			decoding="async"
-			class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+			class={imageClass}
 		/>
 	</div>
 
