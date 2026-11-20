@@ -27,6 +27,14 @@ const remote = /^https?:\/\//i.test(src);
 const eager = loading === 'eager' || fetchpriority === 'high';
 const imgLoading = eager ? 'eager' : 'lazy';
 const imgPriority = fetchpriority === 'high' ? 'high' : undefined;
+
+/**
+ * Do not mirror `class` onto <picture>. Duplicating margin/aspect-ratio onto both
+ * <picture> and <img> caused cold-load CLS (~0.09) on guide heroes: the two
+ * mt-8 values collapsed inconsistently as the image sized, shifting the page.
+ * Layout classes stay on the <img> (or an outer wrapper); <picture> is only a
+ * block wrapper.
+ */
 ---
 
 {
@@ -42,7 +50,7 @@ const imgPriority = fetchpriority === 'high' ? 'high' : undefined;
 			fetchpriority={imgPriority}
 			decoding={decoding}
 			class={className}
-			pictureAttributes={{ class: `block max-w-full ${className ?? ''}`.trim() }}
+			pictureAttributes={{ class: 'block h-full w-full max-w-full' }}
 		/>
 	) : (
 		<img
