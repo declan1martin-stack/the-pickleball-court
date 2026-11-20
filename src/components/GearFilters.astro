@@ -36,7 +36,7 @@ const comfortOptions = [
 					{genderOptions.map((option) => (
 						<button
 							type="button"
-							class="gear-gender-filter rounded-full px-4 py-2 text-sm font-semibold transition bg-white text-zinc-700 ring-1 ring-zinc-200 hover:ring-emerald-300 aria-[pressed=true]:bg-emerald-700 aria-[pressed=true]:text-white aria-[pressed=true]:ring-emerald-700"
+							class="gear-gender-filter inline-flex min-h-[44px] items-center rounded-full px-4 py-2 text-sm font-semibold transition bg-white text-zinc-700 ring-1 ring-zinc-200 hover:ring-emerald-300 aria-[pressed=true]:bg-emerald-700 aria-[pressed=true]:text-white aria-[pressed=true]:ring-emerald-700"
 							data-gender={option.value}
 							aria-pressed={option.value === 'all' ? 'true' : 'false'}
 						>
@@ -57,7 +57,7 @@ const comfortOptions = [
 					{comfortOptions.map((option) => (
 						<button
 							type="button"
-							class="gear-comfort-filter rounded-full px-4 py-2 text-sm font-semibold transition bg-white text-zinc-700 ring-1 ring-zinc-200 hover:ring-emerald-300 aria-[pressed=true]:bg-emerald-700 aria-[pressed=true]:text-white aria-[pressed=true]:ring-emerald-700"
+							class="gear-comfort-filter inline-flex min-h-[44px] items-center rounded-full px-4 py-2 text-sm font-semibold transition bg-white text-zinc-700 ring-1 ring-zinc-200 hover:ring-emerald-300 aria-[pressed=true]:bg-emerald-700 aria-[pressed=true]:text-white aria-[pressed=true]:ring-emerald-700"
 							data-comfort={option.value}
 							aria-pressed="false"
 						>
