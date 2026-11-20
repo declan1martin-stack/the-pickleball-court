@@ -25,7 +25,7 @@ const categoryMeta = {
 	paddles: {
 		h1: 'Best Pickleball Paddles (2026)',
 		description:
-			'Best pickleball paddles for 2026 by job: control, power, spin, or budget. JOOLA, Selkirk, and Six Zero — price tiers only, confirm the live Amazon price.',
+			'Best pickleball paddles for 2026 by job: control, power, spin, or budget. JOOLA, Selkirk, and Six Zero — price tiers only.',
 		quickAnswer:
 			'There is no single best pickleball paddle. Pick by the miss: soft hands (control), put-away pace (power), or a first frame under flagship money (budget or hybrid). This catalog sorts $ to $$$$$. Confirm the live model on Amazon.com.',
 		intro:
@@ -72,9 +72,9 @@ const categoryMeta = {
 	bags: {
 		h1: 'Best Pickleball Bags (2026)',
 		description:
-			'Nine pickleball bags from $ to $$$$$: Franklin, Mangrove, HEAD, JOOLA, ONIX, CRBN, and two Selkirk packs. Tiers only — confirm the live Amazon price.',
+			'Nine pickleball bags from $ to $$$$$: Franklin, Mangrove, HEAD, JOOLA, ONIX, CRBN, and two Selkirk packs.',
 		quickAnswer:
-			'Nine bags, from $ to $$$$$. Franklin sling ($), Mangrove sling ($$), HEAD 22L ($$), JOOLA Tour Elite ($$), JOOLA Vision II ($$$), ONIX Pro Team ($$$), Selkirk Tour ($$$$), CRBN Pro Team Tour ($$$$$), and Selkirk Team ($$$$$). Tiers are catalog bands, not today’s cart. Confirm Amazon.com.',
+			'Nine bags, from $ to $$$$$. Franklin sling ($), Mangrove sling ($$), HEAD 22L ($$), JOOLA Tour Elite ($$), JOOLA Vision II ($$$), ONIX Pro Team ($$$), Selkirk Tour ($$$$), CRBN Pro Team Tour ($$$$$), and Selkirk Team ($$$$$). Tiers are catalog bands, not today’s cart.',
 		intro:
 			'Nine bags, from a Franklin sling through a Selkirk Tour backpack, a CRBN tour bag, and a Selkirk team pack. Pick from what you carry, not the logo. Sorted from $ to $$$$$. Capacity claims below are the lines stored in the catalog.',
 		links: [
@@ -94,9 +94,9 @@ const categoryMeta = {
 	accessories: {
 		h1: 'Best Pickleball Accessories (2026)',
 		description:
-			'Overgrips, edge-guard tape, tungsten tape, ONIX Falcon eyewear, and a CRBN raw-carbon paddle eraser. Tiers only — confirm the live Amazon price.',
+			'Overgrips, edge-guard tape, tungsten tape, ONIX Falcon eyewear, and a CRBN raw-carbon paddle eraser.',
 		quickAnswer:
-			'Paddle care and court protection, all in the $ band here: Franklin and Tourna overgrips, Professor Pickleball edge-guard tape, tungsten tape, ONIX Falcon eyewear, and the CRBN eraser for raw-carbon faces. Tiers are not live prices. Confirm Amazon.com.',
+			'Paddle care and court protection, all in the $ band here: Franklin and Tourna overgrips, Professor Pickleball edge-guard tape, tungsten tape, ONIX Falcon eyewear, and the CRBN eraser for raw-carbon faces. Tiers are not live prices.',
 		intro:
 			'Overgrips, edge-guard tape, tungsten tape, protective court eyewear, and a raw-carbon paddle eraser. Sorted from $ to $$$$$. Price badges are catalog bands, not live cart totals.',
 		links: [
@@ -109,9 +109,9 @@ const categoryMeta = {
 	training: {
 		h1: 'Pickleball Training Gear (2026)',
 		description:
-			'Franklin Sports Pickleball Launcher: five speeds, four angles, shuffle mode. Battery sold separately. Confirm Amazon.com.',
+			'Franklin Sports Pickleball Launcher: five speeds, four angles, shuffle mode. Battery sold separately.',
 		quickAnswer:
-			'One machine is in this catalog: the Franklin Sports Pickleball Launcher, in the $$$$$ band. Franklin lists five speeds, four angles, and a shuffle mode. The Ryobi battery is sold separately. Confirm Amazon.com.',
+			'One machine is in this catalog: the Franklin Sports Pickleball Launcher, in the $$$$$ band. Franklin lists five speeds, four angles, and a shuffle mode. The Ryobi battery is sold separately.',
 		intro:
 			'Practice feeders for solo drills. The launcher below is a ball machine, not a paddle. Price badges are catalog bands, not live cart totals.',
 		links: [
@@ -215,8 +215,8 @@ const itemList = itemListSchema({
 			</p>
 			{pillar && (
 				<p class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-950">
-					Start with our pillar guide:
-					<a href={pillar.href} class="font-bold underline">{pillar.title}</a>
+					Start with our pillar guide:{' '}
+					<a href={pillar.href} class="sentence-link font-bold underline">{pillar.title}</a>
 				</p>
 			)}
 		</div>
@@ -232,7 +232,11 @@ const itemList = itemListSchema({
 						<ProductCard
 							product={product}
 							priority={index === 0}
-							imageFit={typedCategory === 'shoes' ? 'contain' : 'cover'}
+							imageFit={
+								typedCategory === 'shoes' || typedCategory === 'paddles' || typedCategory === 'nets'
+									? 'contain'
+									: 'cover'
+							}
 						/>
 					</article>
 				))}

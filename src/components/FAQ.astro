@@ -82,23 +82,23 @@ const jsonLd = {
 )}
 
 <style>
-	/* FAQ sits outside .prose-article — give answer links real ≥44px hit areas
-	   without negative margins so wrapped links do not overlap. */
+	/* FAQ sits outside .prose-article. Answer copy uses normal paragraph spacing;
+	   mid-sentence links stay inline (same pattern as .sentence-link). */
 	.faq-answer {
-		line-height: 2.85;
+		line-height: 1.6;
 	}
 
 	.faq-answer-link {
-		display: inline-block;
-		min-height: 44px;
-		padding-block: 0.55rem;
+		display: inline;
+		min-height: 0;
+		padding-block: 0;
 		padding-inline: 0.1rem;
-		vertical-align: middle;
+		margin: 0;
 		font-weight: 600;
 		color: #065f46; /* emerald-800 */
 		text-decoration: underline;
 		text-underline-offset: 2px;
-		line-height: 1.35;
+		line-height: inherit;
 	}
 
 	.faq-answer-link:hover {
