@@ -232,11 +232,6 @@ const itemList = itemListSchema({
 						<ProductCard
 							product={product}
 							priority={index === 0}
-							imageFit={
-								typedCategory === 'shoes' || typedCategory === 'paddles' || typedCategory === 'nets'
-									? 'contain'
-									: 'cover'
-							}
 						/>
 					</article>
 				))}

@@ -55,7 +55,7 @@ const titleIndex = 0;
 							{headers.map((header, index) =>
 								index === titleIndex ? null : (
 									<div>
-										<dt class="text-xs font-bold uppercase tracking-[0.12em] text-ink-muted">
+										<dt class="comparison-card-label text-ink-muted">
 											{header}
 										</dt>
 										<dd class="mt-1 text-sm leading-relaxed text-ink">{row[index] ?? '—'}</dd>
@@ -69,3 +69,22 @@ const titleIndex = 0;
 		</section>
 	)
 }
+
+<style>
+	/* Keep all-caps mobile card labels on one line at 390px (e.g. fiberglass price-tier header). */
+	.comparison-card-label {
+		font-size: 0.625rem;
+		font-weight: 700;
+		letter-spacing: 0.03em;
+		line-height: 1.3;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	@media (min-width: 480px) {
+		.comparison-card-label {
+			font-size: 0.75rem;
+			letter-spacing: 0.08em;
+		}
+	}
+</style>
