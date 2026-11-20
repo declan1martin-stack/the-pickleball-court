@@ -62,13 +62,13 @@ const itemList = itemListSchema({
 	</section>
 
 	<section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-		<div class="flex min-h-[148px] flex-wrap gap-2 sm:min-h-0" role="list" aria-label="Filter guides by category">
+		<div class="flex flex-wrap gap-2" role="list" aria-label="Filter guides by category">
 			{categories.map((category) => (
 				<button
 					type="button"
 					role="listitem"
 					data-filter={category}
-					class="guide-filter inline-flex min-h-[44px] items-center rounded-full px-4 py-2 text-sm font-semibold transition bg-white text-zinc-700 ring-1 ring-zinc-200 hover:ring-emerald-300 aria-[current=page]:bg-emerald-700 aria-[current=page]:text-white aria-[current=page]:ring-emerald-700 [font-family:ui-sans-serif,system-ui,sans-serif]"
+					class="guide-filter inline-flex min-h-[44px] items-center rounded-full px-4 py-2 text-sm font-semibold transition bg-white text-zinc-700 ring-1 ring-zinc-200 hover:ring-emerald-300 aria-[current=page]:bg-emerald-700 aria-[current=page]:text-white aria-[current=page]:ring-emerald-700"
 					aria-current={category === 'all' ? 'page' : undefined}
 				>
 					{category === 'all' ? 'All' : category}
