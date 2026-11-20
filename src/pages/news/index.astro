@@ -9,6 +9,7 @@ import {
 	newsPath,
 	type NewsEntry,
 } from '../../lib/news';
+import { absoluteUrl, itemListSchema } from '../../lib/seo';
 import { MARKET_LABEL, SITE_NAME } from '../../lib/site';
 
 const posts = await getNewsForMarket();
@@ -34,12 +35,28 @@ const featureBlock = posts.slice(1, 5);
 const gridThree = posts.slice(5, 8);
 const wideTwo = posts.slice(8, 10);
 const moreList = posts.slice(10);
+
+const title = `Pickleball News & Updates | ${SITE_NAME}`;
+const description = `Short ${MARKET_LABEL} pickleball industry updates — sponsor moves, paddle launches, and brand news for gear shoppers.`;
+
+const itemList = itemListSchema({
+	name: title,
+	description,
+	path: '/news',
+	items: posts.map((entry, index) => ({
+		name: entry.data.title,
+		url: absoluteUrl(newsPath(entry)),
+		position: index + 1,
+		description: entry.data.summary,
+	})),
+});
 ---
 
 <Layout
-	title={`Pickleball News & Updates | ${SITE_NAME}`}
-	description={`Short ${MARKET_LABEL} pickleball industry updates — sponsor moves, paddle launches, and brand news for gear shoppers.`}
+	title={title}
+	description={description}
 	canonicalPath="/news"
+	jsonLd={itemList}
 >
 	<section class="border-b border-border bg-surface">
 		<div class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
