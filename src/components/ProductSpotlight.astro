@@ -25,11 +25,9 @@ interface Props {
 const { productId, eyebrow = 'Top pick', imageFit = 'cover', alt } = Astro.props;
 const imageClass = imageFit === 'contain' ? 'h-full w-full object-contain' : 'h-full w-full object-cover';
 const product = getProductById(productId);
-const priceLabel = product
-	? `Approximate price tier ${getPriceTier(product.price)}`
-	: '';
 const partnerOffers = product ? getPartnerOffers(product) : [];
 const imageAlt = (alt ?? '').trim() || (product ? productImageAlt(product) : '');
+const tier = product ? getPriceTier(product.price) : '';
 ---
 
 {product ? (
@@ -51,8 +49,8 @@ const imageAlt = (alt ?? '').trim() || (product ? productImageAlt(product) : '')
 				<h3 class="mt-1 text-xl font-black text-zinc-900">{product.name}</h3>
 				<p class="mt-1 text-sm font-semibold text-zinc-500">{product.brand}</p>
 				<p class="mt-3 text-sm leading-relaxed text-zinc-600">{marketizeCopy(product.description)}</p>
-				<p class="mt-3 text-xs text-zinc-500">
-					{priceLabel} — confirm the current price on {AMAZON_STORE}.
+				<p class="mt-3 text-xs text-zinc-500" title={`Catalog band ${tier}`}>
+					Approximate price tier — check current price
 				</p>
 				<ul class="mt-4 space-y-2 text-sm text-zinc-700">
 					{product.features.map((feature) => (

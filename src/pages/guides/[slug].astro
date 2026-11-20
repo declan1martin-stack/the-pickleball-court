@@ -22,7 +22,7 @@ import {
 import { GUIDES_INDEX_PATH } from '../../lib/breadcrumbs';
 import { inlineStrongParts } from '../../lib/inlineMarkdown';
 import { absoluteUrl, articleSchema, faqPageSchema, itemListSchema } from '../../lib/seo';
-import { getAffiliateUrl, getProductById, getPriceTier, getShopCtaLabel, type Product } from '../../lib/products';
+import { getAffiliateUrl, getProductById, getShopCtaLabel, type Product } from '../../lib/products';
 import { AMAZON_STORE } from '../../lib/site';
 import { authorPath, resolveAuthor } from '../../data/authors';
 import MarketNotes from '../../components/MarketNotes.astro';
@@ -169,7 +169,7 @@ const crumbs = [
 								<div>
 									<p class="font-bold text-zinc-900">{product.name}</p>
 									<p class="text-xs text-zinc-500">
-										Approx. price tier {getPriceTier(product.price)} — confirm on {AMAZON_STORE}
+										Approximate price tier — check current price
 									</p>
 								</div>
 								<AffiliateButton

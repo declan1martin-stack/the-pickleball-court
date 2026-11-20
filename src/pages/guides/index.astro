@@ -54,21 +54,21 @@ const itemList = itemListSchema({
 				Practical buying advice and rules explainers for {MARKET_PLAYERS} — from first paddle to tournament prep.
 			</p>
 			<p class="mt-4 max-w-3xl text-sm text-zinc-600">
-				For short, dated industry notes — MLP/PPA, CNPL, Nationals, and paddle launches — see our
-				<a href="/news" class="font-semibold text-emerald-800 underline">news & weekly updates</a>, including the latest
-				<a href={latestGearHref} class="font-semibold text-emerald-800 underline">gear roundup</a>.
+				For short, dated industry notes — MLP/PPA, CNPL, Nationals, and paddle launches — see our{' '}
+				<a href="/news" class="sentence-link font-semibold text-emerald-800 underline">news & weekly updates</a>, including the latest{' '}
+				<a href={latestGearHref} class="sentence-link font-semibold text-emerald-800 underline">gear roundup</a>.
 			</p>
 		</div>
 	</section>
 
 	<section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-		<div class="flex flex-wrap gap-2" role="list" aria-label="Filter guides by category">
+		<div class="flex min-h-[148px] flex-wrap gap-2 sm:min-h-0" role="list" aria-label="Filter guides by category">
 			{categories.map((category) => (
 				<button
 					type="button"
 					role="listitem"
 					data-filter={category}
-					class="guide-filter rounded-full px-4 py-2 text-sm font-semibold transition bg-white text-zinc-700 ring-1 ring-zinc-200 hover:ring-emerald-300 aria-[current=page]:bg-emerald-700 aria-[current=page]:text-white aria-[current=page]:ring-emerald-700"
+					class="guide-filter inline-flex min-h-[44px] items-center rounded-full px-4 py-2 text-sm font-semibold transition bg-white text-zinc-700 ring-1 ring-zinc-200 hover:ring-emerald-300 aria-[current=page]:bg-emerald-700 aria-[current=page]:text-white aria-[current=page]:ring-emerald-700 [font-family:ui-sans-serif,system-ui,sans-serif]"
 					aria-current={category === 'all' ? 'page' : undefined}
 				>
 					{category === 'all' ? 'All' : category}
