@@ -16,13 +16,13 @@ import { truncateOnWordBoundary } from '../lib/featureText';
 interface Props {
 	productId: string;
 	eyebrow?: string;
-	/** `contain` shows the whole product photo. Default `cover` is unchanged for every existing call. */
+	/** How the 4:3 product photo is fit. Default `contain` shows the whole product; pass `cover` to crop. */
 	imageFit?: 'cover' | 'contain';
 	/** Optional image alt. Use when `brand` is already in `name` so the default does not double it. */
 	alt?: string;
 }
 
-const { productId, eyebrow = 'Top pick', imageFit = 'cover', alt } = Astro.props;
+const { productId, eyebrow = 'Top pick', imageFit = 'contain', alt } = Astro.props;
 const imageClass = imageFit === 'contain' ? 'h-full w-full object-contain' : 'h-full w-full object-cover';
 const product = getProductById(productId);
 const partnerOffers = product ? getPartnerOffers(product) : [];

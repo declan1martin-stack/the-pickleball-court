@@ -22,11 +22,11 @@ interface Props {
 	rating?: number | null;
 	/** First-in-viewport card (category LCP). */
 	priority?: boolean;
-	/** `contain` shows the whole product photo (shoes). Default `cover` is unchanged elsewhere. */
+	/** How the 4:3 product photo is fit. Default `contain` shows the whole product; pass `cover` to crop. */
 	imageFit?: 'cover' | 'contain';
 }
 
-const { product, rating = null, priority = false, imageFit = 'cover' } = Astro.props;
+const { product, rating = null, priority = false, imageFit = 'contain' } = Astro.props;
 const imageClass =
 	imageFit === 'contain'
 		? 'h-full w-full object-contain'
