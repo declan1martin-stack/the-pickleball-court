@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import SmartImage from '../../components/SmartImage.astro';
 import { getAllArticles } from '../../lib/articles';
+import { absoluteUrl, itemListSchema } from '../../lib/seo';
 import { MARKET_LABEL, MARKET_PLAYERS } from '../../lib/site';
 import { marketizeCopy } from '../../lib/marketCopy';
 import { getLatestGearPost, newsPath } from '../../lib/news';
@@ -22,12 +23,28 @@ const categories = [
 	'guides',
 	'rules',
 ] as const;
+
+const title = 'Pickleball Guides & Buying Advice';
+const description = `In-depth ${MARKET_LABEL} pickleball buying guides, comparisons, and rules explainers for paddles, shoes, balls, bags, apparel, accessories, and portable nets.`;
+
+const itemList = itemListSchema({
+	name: title,
+	description,
+	path: '/guides',
+	items: allArticles.map((article, index) => ({
+		name: article.data.title,
+		url: absoluteUrl(`/guides/${article.data.slug}`),
+		position: index + 1,
+		description: marketizeCopy(article.data.description),
+	})),
+});
 ---
 
 <Layout
-	title="Pickleball Guides & Buying Advice"
-	description={`In-depth ${MARKET_LABEL} pickleball buying guides, comparisons, and rules explainers for paddles, shoes, balls, bags, apparel, accessories, and portable nets.`}
+	title={title}
+	description={description}
 	canonicalPath="/guides"
+	jsonLd={itemList}
 >
 	<section class="border-b border-zinc-200 bg-white">
 		<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
