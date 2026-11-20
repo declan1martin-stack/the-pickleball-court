@@ -211,12 +211,15 @@ main > :not(:first-child):is(section, article) {
 }
 
 /*
- * Running paragraph links (inline sentence anchors): stay display:inline so they
- * wrap with the text. WCAG 2.5.8 exempts inline links in sentences from the 44px
- * target — keep hit boxes inside the line (~27.6px) with little/no block padding
- * and no negative margin so neighbors on adjacent lines do not overlap.
+ * Running paragraph links + mixed-prose list links (mid-bullet anchors): stay
+ * display:inline so they wrap with the text. WCAG 2.5.8 exempts inline links in
+ * sentences from the 44px target — keep hit boxes inside the line (~27.6px) with
+ * little/no block padding and no negative margin so neighbors do not overlap.
  */
-.prose-article :where(:not(li) > p a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)) {
+.prose-article :where(
+	:not(li) > p a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost),
+	li a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)
+) {
 	display: inline;
 	padding-block: 0;
 	padding-inline: 0.1rem;
@@ -225,13 +228,18 @@ main > :not(:first-child):is(section, article) {
 }
 
 /*
- * List links (Keep learning / Keep reading / bullets with mid-item anchors):
- * ≥44px row, no .8rem padding, no negative margins. Whole-item links are block
- * flex so stacked rows clear each other.
+ * Whole-item list links only (Keep learning / Keep reading rows): ≥44px row,
+ * flex so stacked rows clear each other. Class comes from rehype-whole-item-list
+ * (true sole-link items). Mid-bullet / "link — description" anchors stay inline.
  */
-.prose-article :where(li a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)) {
-	display: inline-flex;
+.prose-article :where(
+	li.whole-item > a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost),
+	li.whole-item > p > a:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)
+) {
+	display: flex;
 	align-items: center;
+	width: fit-content;
+	max-width: 100%;
 	min-height: 44px;
 	padding-block: 0;
 	padding-inline: 0.15rem;
@@ -243,17 +251,8 @@ main > :not(:first-child):is(section, article) {
 	vertical-align: middle;
 }
 
-.prose-article :where(
-	li > a:only-child:not(.btn-primary):not(.btn-secondary):not(.btn-ghost),
-	li > p:only-child > a:only-child:not(.btn-primary):not(.btn-secondary):not(.btn-ghost)
-) {
-	display: flex;
-	width: fit-content;
-	max-width: 100%;
-}
-
 /* Stacked Keep-learning rows: at least 44px between item tops. */
-.prose-article :where(li:has(> a:only-child), li:has(> p:only-child > a:only-child)) {
+.prose-article :where(li.whole-item) {
 	min-height: 44px;
 }
 
@@ -308,7 +307,9 @@ main
 		.breadcrumb-link,
 		.site-logo,
 		.link-brand,
-		.faq-answer-link
+		.faq-answer-link,
+		.sentence-link,
+		.flex
 	):not(.prose-article a) {
 	display: inline-flex;
 	align-items: center;
@@ -316,6 +317,15 @@ main
 	padding-block: 0;
 	margin-block: 0;
 	line-height: 1.35;
+}
+
+/* Mid-sentence anchors outside .prose-article (e.g. /gear intro): stay inline. */
+main a.sentence-link {
+	display: inline;
+	min-height: 0;
+	padding-block: 0;
+	padding-inline: 0.1rem;
+	margin: 0;
 }
 
 /* Related news / author listing title links (block font-display anchors). */

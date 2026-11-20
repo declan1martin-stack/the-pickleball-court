@@ -259,10 +259,11 @@ const itemList = itemListSchema({
 						<li>
 							<a
 								href={`/guides/${article.data.slug}`}
-								class="block h-full rounded-2xl border border-zinc-200 p-5 transition hover:border-emerald-200 hover:shadow-md"
+								class="flex h-full min-w-0 flex-col rounded-2xl border border-zinc-200 p-5 transition hover:border-emerald-200 hover:shadow-md"
 							>
-								<h3 class="font-bold text-zinc-900">{article.data.title}</h3>
-								<p class="mt-2 line-clamp-3 text-sm text-zinc-600">{marketizeCopy(article.data.description)}</p>
+								<p class="text-xs font-bold uppercase tracking-wider text-emerald-800">{article.data.category}</p>
+								<h3 class="mt-2 w-full font-bold text-zinc-900">{article.data.title}</h3>
+								<p class="mt-2 w-full line-clamp-3 text-sm text-zinc-600">{marketizeCopy(article.data.description)}</p>
 							</a>
 						</li>
 					))}

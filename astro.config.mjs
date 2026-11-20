@@ -4,11 +4,14 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 import mdx from '@astrojs/mdx';
+import rehypeWholeItemList from './src/lib/rehype-whole-item-list.mjs';
 
 // Single indexable host. PUBLIC_SITE_REGION=ca is accepted by `build:ca` but ignored.
 const site = process.env.PUBLIC_SITE_URL?.trim() || 'https://uspickleballcourt.com';
 const siteRegion = (process.env.PUBLIC_SITE_REGION || 'us').trim().toLowerCase();
 const isUsBuild = siteRegion === 'us';
+
+const wholeItemRehype = [rehypeWholeItemList];
 
 // https://astro.build/config
 // trailingSlash: 'never' + build.format: 'file' keep sitemap, canonicals, and Cloudflare Pages
@@ -30,6 +33,9 @@ export default defineConfig({
       { protocol: 'https', hostname: 'images-amazon.com' },
     ],
   },
+  markdown: {
+    rehypePlugins: wholeItemRehype,
+  },
   integrations: [
     sitemap({
       // Prefer real content dates when present; do not stamp every URL with deploy time.
@@ -45,7 +51,9 @@ export default defineConfig({
         }
       },
     }),
-    mdx(),
+    mdx({
+      rehypePlugins: wholeItemRehype,
+    }),
   ],
   vite: {
     plugins: [tailwindcss()]
