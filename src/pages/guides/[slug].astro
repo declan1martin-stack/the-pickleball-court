@@ -129,11 +129,12 @@ const crumbs = [
 				<span aria-hidden="true"> · </span>
 				Last updated {article.data.updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
 			</p>
+			{/* width/height match aspect-[21/9] so the attr ratio matches CSS (avoids cold-load CLS). */}
 			<SmartImage
 				src={article.data.heroImage}
 				alt={article.data.heroAlt}
 				width={1200}
-				height={630}
+				height={514}
 				loading="eager"
 				fetchpriority="high"
 				decoding="async"

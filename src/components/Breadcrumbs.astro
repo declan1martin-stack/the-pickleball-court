@@ -24,17 +24,28 @@ const jsonLd = {
 };
 ---
 
-<nav aria-label="Breadcrumb" class="mb-6">
-	<ol class="flex flex-wrap items-center gap-2 text-sm text-zinc-600">
+{/* nowrap + truncate: long current-page labels must not wrap then unwrap on
+    font/width settle (cold-load CLS ~0.09 on fiberglass guide at 390px). */}
+<nav aria-label="Breadcrumb" class="mb-6 min-w-0">
+	<ol class="flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden text-sm text-zinc-600">
 		{crumbs.map((item, index) => (
-			<li class="inline-flex items-center gap-2">
-				{index > 0 && <span class="text-zinc-400" aria-hidden="true">/</span>}
+			<li
+				class:list={[
+					'inline-flex min-w-0 items-center gap-2',
+					index === crumbs.length - 1 ? 'shrink' : 'shrink-0',
+				]}
+			>
+				{index > 0 && <span class="shrink-0 text-zinc-400" aria-hidden="true">/</span>}
 				{item.href && index < crumbs.length - 1 ? (
 					<a href={item.href} class="breadcrumb-link font-medium transition hover:text-emerald-800">
 						{item.label}
 					</a>
 				) : (
-					<span class="font-semibold text-zinc-900" aria-current={index === crumbs.length - 1 ? 'page' : undefined}>
+					<span
+						class="truncate font-semibold text-zinc-900"
+						aria-current={index === crumbs.length - 1 ? 'page' : undefined}
+						title={item.label}
+					>
 						{item.label}
 					</span>
 				)}
