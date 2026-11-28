@@ -129,6 +129,11 @@ const comfortOptions = [
 				genderButtons.forEach((b) => {
 					b.setAttribute('aria-pressed', b.dataset.gender === selectedGender ? 'true' : 'false');
 				});
+				// "All" clears every filter group (gender + comfort), not just gender
+				if (selectedGender === 'all') {
+					selectedComfort.clear();
+					comfortButtons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
+				}
 				applyFilters();
 			});
 		});
