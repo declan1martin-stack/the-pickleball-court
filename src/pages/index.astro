@@ -4,6 +4,7 @@ import ProductCard from '../components/ProductCard.astro';
 import LatestWeeklyUpdates from '../components/LatestWeeklyUpdates.astro';
 import { getFeaturedArticles, getAllArticles } from '../lib/articles';
 import { getProductsByIds } from '../lib/products';
+import { absoluteUrl, itemListSchema } from '../lib/seo';
 import { MARKET_COUNTRY, MARKET_LABEL, MARKET_PLAYERS } from '../lib/site';
 import { marketizeCopy } from '../lib/marketCopy';
 import SmartImage from '../components/SmartImage.astro';
@@ -127,13 +128,30 @@ const pillars = [
 		blurb: 'What full-foam and Quad Density marketing actually mean before you upgrade.',
 	},
 ];
+
+const homeTitle = `${MARKET_LABEL} Pickleball Gear Guides`;
+const homeDescription = `Compare paddles, court shoes, balls, bags, apparel, and nets for ${MARKET_PLAYERS} — with practical buying guides and store links.`;
+
+/** Match the visible Shop by Category grid — same ItemList pattern as /gear, /guides, /news hubs. */
+const categoryItemList = itemListSchema({
+	name: `${MARKET_LABEL} pickleball gear categories`,
+	description: homeDescription,
+	path: '/',
+	items: categories.map((category, index) => ({
+		name: category.title,
+		url: absoluteUrl(category.href),
+		position: index + 1,
+		description: category.blurb,
+	})),
+});
 ---
 
 <Layout
-	title={`${MARKET_LABEL} Pickleball Gear Guides`}
-	description={`Compare paddles, court shoes, balls, bags, apparel, and nets for ${MARKET_PLAYERS} — with practical buying guides and store links.`}
+	title={homeTitle}
+	description={homeDescription}
 	ogImage="/og-default.png"
 	canonicalPath="/"
+	jsonLd={categoryItemList}
 >
 	<section class="relative overflow-hidden bg-primary-dark text-white">
 		<div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(46,125,91,0.35),_transparent_45%),radial-gradient(circle_at_bottom_left,_rgba(255,107,53,0.18),_transparent_40%)]" />
