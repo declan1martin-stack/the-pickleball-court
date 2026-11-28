@@ -5,7 +5,8 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getAllAuthors, type Author } from '../../data/authors';
 import { getAllArticles } from '../../lib/articles';
 import { formatNewsDate, getNewsForMarket, newsPath } from '../../lib/news';
-import { clampMetaDescription, personSchema } from '../../lib/seo';
+import { absoluteUrl, clampMetaDescription, itemListSchema, personSchema } from '../../lib/seo';
+import { marketizeCopy } from '../../lib/marketCopy';
 
 export function getStaticPaths() {
 	return getAllAuthors().map((author) => ({
@@ -25,6 +26,19 @@ const path = `/authors/${author.id}`;
 const description = clampMetaDescription(
 	`${author.name} — ${author.role}. ${author.bio}`,
 );
+
+/** Match the visible Guides byline list — same ItemList pattern as /guides, /news, /gear hubs. */
+const guidesItemList = itemListSchema({
+	name: `Guides by ${author.name}`,
+	description,
+	path,
+	items: articles.map((article, index) => ({
+		name: article.data.title,
+		url: absoluteUrl(`/guides/${article.data.slug}`),
+		position: index + 1,
+		description: marketizeCopy(article.data.description),
+	})),
+});
 ---
 
 <Layout
@@ -32,15 +46,15 @@ const description = clampMetaDescription(
 	description={description}
 	canonicalPath={path}
 	ogImage={author.avatar}
-	jsonLd={personSchema(author)}
+	jsonLd={[personSchema(author), guidesItemList]}
 >
 	<section class="border-b border-border bg-surface">
 		<div class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
+			{/* /authors 301s to /authors/deco — no separate authors index, so skip an orphan crumb. */}
 			<Breadcrumbs
 				items={[
 					{ label: 'Home', href: '/' },
-					{ label: 'Authors' },
-					{ label: author.name },
+					{ label: author.name, href: path },
 				]}
 			/>
 			<AuthorBox author={author} headingLevel="h1" class="mt-6" />
